@@ -1,42 +1,44 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-/// <summary>
-/// Base AI,
-/// doesn't move or react.
-/// </summary>
-[RequireComponent(typeof(DefenseComponent))]
-public class BaseAI : MonoBehaviour
+namespace Terrria.AI
 {
-    [SerializeField] private AIBaseData m_Data;
-    public AIBaseData Data => m_Data;
-
-    // Component
-    private IDefend m_DefenseComponent;
-    public IDefend DefenseComponent
+    /// <summary>
+    /// Base AI,
+    /// doesn't move or react.
+    /// </summary>
+    [RequireComponent(typeof(DefenseComponent))]
+    public class BaseAI : MonoBehaviour
     {
-        get
+        [SerializeField] private AIBaseData m_Data;
+        public AIBaseData Data => m_Data;
+
+        // Component
+        private IDefend m_DefenseComponent;
+        public IDefend DefenseComponent
         {
-            if (m_DefenseComponent == null)
-                m_DefenseComponent = GetComponent<IDefend>();
-            return m_DefenseComponent;
+            get
+            {
+                if (m_DefenseComponent == null)
+                    m_DefenseComponent = GetComponent<IDefend>();
+                return m_DefenseComponent;
+            }
         }
-    }
 
-    protected virtual void OnEnable()
-    {
-        // KB resist
-        // Subscribe.
-    }
+        protected virtual void OnEnable()
+        {
+            // KB resist
+            // Subscribe.
+        }
 
-    protected virtual void Start()
-    {
-        DefenseComponent.Init(/*inMaxHealth:*/ Data.MaxHealth, /*inDefense:*/ Data.Defense);
-    }
+        protected virtual void Start()
+        {
+            DefenseComponent.Init(/*inMaxHealth:*/ Data.MaxHealth, /*inDefense:*/ Data.Defense);
+        }
 
-    protected virtual void OnDisable()
-    {
-        // KB resist
-        // Unsuscribe.
+        protected virtual void OnDisable()
+        {
+            // KB resist
+            // Unsuscribe.
+        }
     }
 }

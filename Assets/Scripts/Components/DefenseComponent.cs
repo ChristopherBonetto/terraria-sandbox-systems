@@ -11,7 +11,7 @@ public class DefenseComponent : MonoBehaviour, IDefend
     public float CurrentHealth => m_CurrentHealth;
     public float Defense => m_Defense;
 
-
+    #region MonoBehaviour
     protected virtual void OnEnable()
     {
         // Subscribe.
@@ -21,6 +21,7 @@ public class DefenseComponent : MonoBehaviour, IDefend
     {
         // Unsuscribe.
     }
+    #endregion
 
     public void Init(float inMaxHealth)
     {

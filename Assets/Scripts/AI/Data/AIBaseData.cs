@@ -1,33 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "Data_MonsterName", menuName = "AI/Data")]
-public class AIBaseData : ScriptableObject
+namespace Terrria.AI
 {
-    [Header("Identification")]
+    public enum EnemyType
+    {
+        None,
+        Slime,
+        Undead,
+    }
 
-    [SerializeField] private string m_MonsterName;
-    [SerializeField] private int m_ID;
-    //[SerializeField] private EnemyType Type;
+    [CreateAssetMenu(fileName = "Data_MonsterName", menuName = "AI/Data")]
+    public class AIBaseData : ScriptableObject
+    {
+        [Header("Identification")]
 
-    [Header("Stats")]
+        [SerializeField] private string m_MonsterName;
+        [SerializeField] private int m_ID;
+        [SerializeField] private EnemyType m_Type;
 
-    [SerializeField] private float m_MaxHealth;
-    [SerializeField] private float m_Defense;
-    [SerializeField] private float m_Damage;
-    [SerializeField] private float m_KbResist;
+        [Header("Stats")]
 
-    //[Header("Drops")]
+        [SerializeField] private float m_MaxHealth;
+        [SerializeField] private float m_Defense;
+        [SerializeField] private float m_Damage;
+        [SerializeField] private float m_KbResist;
 
-    //[SerializeField] private List<Item> m_Drops;
+        //[Header("Drops")]
+
+        //[SerializeField] private List<Item> m_Drops;
 
 
-    public string MonsterName => m_MonsterName;
-    public int ID => m_ID;
+        // Getters
+        public string MonsterName => m_MonsterName;
+        public int ID => m_ID;
+        public EnemyType Type => m_Type;
 
-    public float MaxHealth => m_MaxHealth;
-    public float Defense => m_Defense;
-    public float Damage => m_Damage;
-    public float KbResist => m_KbResist;
+        public float MaxHealth => m_MaxHealth;
+        public float Defense => m_Defense;
+        public float Damage => m_Damage;
+        public float KbResist => m_KbResist;
+    }
 }
