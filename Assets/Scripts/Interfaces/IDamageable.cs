@@ -1,0 +1,12 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public interface IDamageable 
+{
+    float MaxHealth { get; }
+    float CurrentHealth { get; }
+
+    void Init(float inMaxHealth);
+    void TakeDamage(float inAmount);
+    void OndamageTaken(float inAmount);
+}
