@@ -24,6 +24,14 @@ public class JumpComponent : MonoBehaviour, IJump
         m_Force = inForce;
     }
 
+    private void Update()
+    {
+        if (Rb.velocity.y < 0)
+        {
+            Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.5f);
+        }
+    }
+
     public void Jump(Vector2 inDirection)
     {
         Rb.AddForce(inDirection.normalized * m_Force);

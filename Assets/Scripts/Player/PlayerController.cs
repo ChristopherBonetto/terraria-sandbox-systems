@@ -56,6 +56,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
             JumpComponent.Jump(Vector2.up);
+
+        else if (!Input.GetKey(KeyCode.Space) && JumpComponent.Rb.velocity.y > 0)
+        {
+            JumpComponent.Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.5f);
+        }
     }
 
     private void OnDisable()
