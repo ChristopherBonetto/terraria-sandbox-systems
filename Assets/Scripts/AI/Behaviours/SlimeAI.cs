@@ -9,6 +9,15 @@ namespace Terrria.AI
     [RequireComponent(typeof(JumpComponent))]
     public class SlimeAI : BaseAI
     {
+        public enum SlimeState
+        {
+            Idle,
+            Chasing
+        }
+
+        public SlimeState CurrentState { get; private set; }
+
+
         [SerializeField]
         private float m_JumpDelay;      // @TEMP
         private float m_LastJumpTime;   // @TEMP
@@ -24,52 +33,86 @@ namespace Terrria.AI
             }
         }
 
+        private Transform m_Target;
+        private Vector2[] m_PossibleDirections;
+
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+
+            // subscrive method on change day/night event.
+        }
+
         protected override void Start()
         {
             base.Start();
 
             // if someday the model must contains other value like "jump force"
             // Init the "jump force here"
+
+            m_PossibleDirections = new Vector2[CreateJumpVectors().Length];
+            m_PossibleDirections = CreateJumpVectors();
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            // unsubscrive method on change day/night event.
         }
 
         private void Update()
         {
-            /*
-             
-             Jump system
-             main notes: follow the player if it's night or it's damaged.
-
-             Randomize a bunch of vectors with positive sign.
-
-             Randomize the signs only for X axis,
-             if it's chasing the player, get the sign of player direction.
-
-            Recap:
-            2 states [ Idle, Chasing ].
-            Idle ==> randomize sign.
-            Chasing ==> get sign.
-
-            Bunch of Vectors (i'm not sure  about this but it's intresting)
-             */
-
             if (Time.time > m_LastJumpTime + m_JumpDelay)
             {
-                // @TEMP
-                // Create possible slime's jump vector
-                Vector2[] directions = {
-                    new Vector2(1, 1),
-                    new Vector2(-1, 1),
-                    new Vector2(-0.6f, 1),
-                    new Vector2(0.8f, 1),
-                    new Vector2(-0.2f, 1),
-                    new Vector2(0.5f, 1)
-                };
+                // Pick a vector
+                Vector2 direction = m_PossibleDirections[Random.Range(0, m_PossibleDirections.Length)];
 
-                // randomize one (in line) and execute jump
-                JumpComponent.Jump(directions[Random.Range(0, directions.Length)]);
+                switch (CurrentState)
+                {
+                    case SlimeState.Idle:
+                        bool isPositive = Random.Range(0, 2) == 1;
+
+                        if (!isPositive)
+                            direction.x = -direction.x;
+
+                        // Execute jump
+                        JumpComponent.Jump(direction);
+                        break;
+
+                    case SlimeState.Chasing:
+                        float sign = Mathf.Sign(-10);
+
+                        // Execute jump
+                        JumpComponent.Jump(direction * sign);
+                        break;
+                }
 
                 m_LastJumpTime = Time.time;
             }
+        }
+
+        public void SetState(SlimeState state)
+        {
+            CurrentState = state;
+
+            //if (state == SlimeState.Chasing)
+                // m_Target = GameManager.Insatce.Player;
+            // else
+                // m_Target = null
+        }
+
+        private Vector2[] CreateJumpVectors()
+        {
+            Vector2[] directions = {
+                    new Vector2(1, 1),
+                    new Vector2(0.6f, 1),
+                    new Vector2(0.8f, 1),
+                    new Vector2(0.5f, 1)
+                };
+
+            return directions;
         }
     }
 }
