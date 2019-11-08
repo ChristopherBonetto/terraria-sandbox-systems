@@ -24,9 +24,22 @@ public class InventorySlot : MonoBehaviour
         m_slotImage.sprite = ItemInSlot.ItemSprite;
     }
 
-    public void CallChangeHandItem()
+    public void ChangeHandItemWithThisSlot()
     {        
-        ItemHandler.Instance.StartDragItemEvent(this.ItemInSlot);
+        ItemHandler.Instance.StartDragItemEvent(this);
+        ItemInSlot = null;
+        m_slotImage.sprite = null;
+
+        ItemHandler.OnStopDragEvent += TakeImageAndItem;
+    }
+
+
+    public void TakeImageAndItem()
+    {
+        ItemInSlot = ItemHandler.Instance.itemInHand;
+        m_slotImage.sprite = ItemInSlot.ItemSprite;
+
+        ItemHandler.OnStopDragEvent -= TakeImageAndItem;
     }
 
 }

@@ -8,7 +8,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnBeginDrag(PointerEventData eventData)
     {
         InventorySlot tempSlot = eventData.pointerDrag.GetComponent<InventorySlot>();
-        tempSlot.CallChangeHandItem();       
+
+        if(tempSlot != null)
+        {
+            tempSlot.ChangeHandItemWithThisSlot();
+        }
+             
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -18,8 +23,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("FINISH");
-
+        ItemHandler.Instance.StopDragItemEvent();
     }
     
 }

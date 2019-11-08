@@ -11,14 +11,14 @@ public class ItemHandler : MonoBehaviour
 
 
 
-    public delegate void OnBeginDragDelegate(ItemScriptable tempSlottedItem);
+    public delegate void OnBeginDragDelegate(InventorySlot tempSlottedItem);
     public static OnBeginDragDelegate OnBeginDragEvent;
 
-    public void StartDragItemEvent(ItemScriptable tempSlottedItem)
+    public void StartDragItemEvent(InventorySlot tempSlottedItem)
     {
         if(tempSlottedItem != null)
         {
-            itemInHand = tempSlottedItem;
+            itemInHand = tempSlottedItem.ItemInSlot;
             OnDragEvent();
         }
     }
@@ -35,6 +35,17 @@ public class ItemHandler : MonoBehaviour
         }
     }
 
+
+    public delegate void OnStopDragDelegate();
+    public static OnStopDragDelegate OnStopDragEvent;
+
+    public void StopDragItemEvent()
+    {
+        if (OnStopDragEvent != null)
+        {
+            OnStopDragEvent();
+        }
+    }
 
     public delegate void OnDropDelegate();
     public static OnDropDelegate OnDropEvent;

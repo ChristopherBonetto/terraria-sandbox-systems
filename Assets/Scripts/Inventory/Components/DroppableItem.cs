@@ -33,12 +33,12 @@ public class DroppableItem : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        //Debug.Log("exit");
+        Debug.Log("exit");
     }
 
     public void OnDrop(PointerEventData eventData)
     {
-        ItemHandler.Instance.DropItemEvent();
+        Debug.Log("drop");
     }
 
 
@@ -52,4 +52,6 @@ public class DroppableItem : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
             Debug.Log(m_slot.ItemInSlot);
         }
     }
+
+
 }

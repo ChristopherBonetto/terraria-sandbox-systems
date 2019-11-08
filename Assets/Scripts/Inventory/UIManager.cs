@@ -21,11 +21,13 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        ItemHandler.OnDragEvent += ActivateAndChangeItemInHand;
+        ItemHandler.OnDragEvent += ChangeImageItemInHand;
+        ItemHandler.OnStopDragEvent += DisableImageItemInHand;
     }
     private void OnDisable()
     {
-        ItemHandler.OnDragEvent -= ActivateAndChangeItemInHand;
+        ItemHandler.OnDragEvent -= ChangeImageItemInHand;
+        ItemHandler.OnStopDragEvent -= DisableImageItemInHand;
     }
 
 
@@ -39,6 +41,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         InstantiateSlotsInInventory();
+        
     }
 
     
@@ -62,8 +65,9 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void ActivateAndChangeItemInHand()
+    public void ChangeImageItemInHand()
     {
+        m_itemInHandUI.gameObject.SetActive(true);
         m_itemInHandUI.sprite = ItemHandler.Instance.itemInHand.ItemSprite;
     }
 
@@ -71,4 +75,10 @@ public class UIManager : MonoBehaviour
     {
         m_itemInHandUI.transform.position = Input.mousePosition;
     }
+
+    public void DisableImageItemInHand()
+    {
+        m_itemInHandUI.gameObject.SetActive(false);
+        m_itemInHandUI.sprite = null;
+    } 
 }
