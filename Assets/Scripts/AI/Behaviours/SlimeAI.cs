@@ -33,6 +33,17 @@ namespace Terrria.AI
             }
         }
 
+        private Rigidbody2D m_Rb;
+        public Rigidbody2D Rb
+        {
+            get
+            {
+                if (m_Rb == null)
+                    m_Rb = GetComponent<Rigidbody2D>();
+                return m_Rb;
+            }
+        }
+
         private Transform m_Target;
         private Vector2[] m_PossibleDirections;
 
@@ -50,6 +61,8 @@ namespace Terrria.AI
 
             // if someday the model must contains other value like "jump force"
             // Init the "jump force here"
+
+            JumpComponent.Init(Rb);
 
             m_PossibleDirections = new Vector2[CreateJumpVectors().Length];
             m_PossibleDirections = CreateJumpVectors();
@@ -78,14 +91,14 @@ namespace Terrria.AI
                             direction.x = -direction.x;
 
                         // Execute jump
-                        JumpComponent.Jump(direction);
+                        JumpComponent.OnJumpDecision(direction);
                         break;
 
                     case SlimeState.Chasing:
                         float sign = Mathf.Sign(-10);
 
                         // Execute jump
-                        JumpComponent.Jump(direction * sign);
+                        JumpComponent.OnJumpDecision(direction * sign);
                         break;
                 }
 

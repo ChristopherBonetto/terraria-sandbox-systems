@@ -4,17 +4,20 @@ using System.Collections;
 public class LinearMovement : MonoBehaviour, IMovable
 {
     [SerializeField] private float m_MovementSpeed;
+
+    public event Move OnMove;
+
     public float MovementSpeed => m_MovementSpeed;
 
 
     private void OnEnable()
     {
-        // subscribe
+        OnMove += Move;
     }
 
     private void OnDisable()
     {
-        // unsibscribe
+        OnMove -= Move;
     }
 
     public void Init(float inSpeed)
@@ -29,5 +32,6 @@ public class LinearMovement : MonoBehaviour, IMovable
 
     public void OnMovement(Vector2 inDirection)
     {
+        OnMove(inDirection);
     }
 }

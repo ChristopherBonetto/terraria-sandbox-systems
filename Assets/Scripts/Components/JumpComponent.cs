@@ -7,21 +7,25 @@ public class JumpComponent : MonoBehaviour, IJump
     private Rigidbody2D m_Rb;
     [SerializeField] private float m_Force;
 
-    public Rigidbody2D Rb
-    {
-        get
-        {
-            if (m_Rb == null)
-                m_Rb = GetComponent<Rigidbody2D>();
-            return m_Rb;
-        }
-    }
+    public event Jump OnJump;
+
+    public Rigidbody2D Rb => m_Rb;
     public float Force => m_Force;
 
-
-    public void Init(float inForce)
+    public void Init(Rigidbody2D rb)
     {
+        m_Rb = rb;
+    }
+
+    public void Init(Rigidbody2D rb, float inForce)
+    {
+        m_Rb = rb;
         m_Force = inForce;
+    }
+
+    private void OnEnable()
+    {
+        OnJump += Jump;
     }
 
     private void Update()
@@ -32,6 +36,11 @@ public class JumpComponent : MonoBehaviour, IJump
         }
     }
 
+    private void OnDisable()
+    {
+        OnJump -= Jump;
+    }
+
     public void Jump(Vector2 inDirection)
     {
         Rb.AddForce(inDirection.normalized * m_Force);
@@ -39,6 +48,6 @@ public class JumpComponent : MonoBehaviour, IJump
 
     public void OnJumpDecision(Vector2 inDirection)
     {
-        // Call event
+        OnJump(inDirection);
     }
 }
