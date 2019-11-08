@@ -46,12 +46,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     [SerializeField] private LayerMask m_JumpableMask;
     public LayerMask JumpableMask => m_JumpableMask;
 
     [SerializeField] private float m_MaxHealth;
     public float MaxHealth => m_MaxHealth;
+
+    [SerializeField] private float m_DistanceToDetection; //@TEMP
+
 
     private void OnEnable()
     {
@@ -66,13 +68,20 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         float direction = Input.GetAxisRaw("Horizontal");
+        Debug.DrawRay(transform.position, Vector2.right * direction * m_DistanceToDetection, Color.blue); // @TEMP
 
         if (direction != 0)
-            MovementComponent.OnMovement(Vector2.right * direction);
+        {
+            if (!Physics2D.Raycast(transform.position, Vector2.right * direction, m_DistanceToDetection, JumpableMask))
+            {
+                transform.localScale = new Vector3(1 * direction, 1, 1); // @TODO : delete this and add right and left animation.
+                MovementComponent.OnMovement(Vector2.right * direction);
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Physics2D.OverlapCircle(transform.position, 0.2f, JumpableMask, 0))
+            if (Physics2D.OverlapCircle(transform.position, m_DistanceToDetection, JumpableMask, 0))
                 JumpComponent.OnJumpDecision(Vector2.up);
         }
         else if (!Input.GetKey(KeyCode.Space) && JumpComponent.Rb.velocity.y > 0)
