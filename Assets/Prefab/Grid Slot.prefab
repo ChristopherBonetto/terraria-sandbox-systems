@@ -217,7 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2421dc7c7d299e4db2cd0957ab80339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_parentToThisItem: {fileID: 0}
 --- !u!114 &1448641037879471624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb453457ee2799e41a2f7f89210aeda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemInSlot: {fileID: 0}
+  ItemInSlot: {fileID: 11400000, guid: fe73e03c22a877349af2d56d1ed22aa2, type: 2}
   DraggableComponent: {fileID: 6553325833643196061}
   DroppableComponent: {fileID: 1448641037879471624}
 --- !u!225 &3639225300502098365

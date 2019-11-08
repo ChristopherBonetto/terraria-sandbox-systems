@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360fbdabe910137489fbaa03d58fd229, type: 3}
-  m_Name: Pietra
+  m_Script: {fileID: 11500000, guid: 626f480969f831a41ae87d21fb8ee93f, type: 3}
+  m_Name: Legna
   m_EditorClassIdentifier: 
-  ItemName: Pietra
+  ItemName: 
   ItemQuantity: 0
   Durability: 1
   Attack: 1
   Defence: 1
   TimeToAttack: 1
-  ItemSprite: {fileID: 0}
+  ItemSprite: {fileID: -7957035643422257789, guid: ee887326e75edad4f909b42b097059f1,
+    type: 3}

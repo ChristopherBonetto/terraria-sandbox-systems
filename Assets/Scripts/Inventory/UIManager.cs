@@ -15,6 +15,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private int m_slotsNumber;
     private int m_slotCounter = 0;
 
+    [SerializeField] private Image m_itemInHandUI;
+
+
+
+    private void OnEnable()
+    {
+        ItemHandler.OnDragEvent += ActivateAndChangeItemInHand;
+    }
+    private void OnDisable()
+    {
+        ItemHandler.OnDragEvent -= ActivateAndChangeItemInHand;
+    }
 
 
     private void Awake()
@@ -22,7 +34,8 @@ public class UIManager : MonoBehaviour
         Instance = this;
     }
 
-    // Start is called before the first frame update
+    
+
     void Start()
     {
         InstantiateSlotsInInventory();
@@ -49,4 +62,13 @@ public class UIManager : MonoBehaviour
     }
 
 
+    public void ActivateAndChangeItemInHand()
+    {
+        m_itemInHandUI.sprite = ItemHandler.Instance.itemInHand.ItemSprite;
+    }
+
+    public void ItemFollowMousePosition()
+    {
+        m_itemInHandUI.transform.position = Input.mousePosition;
+    }
 }
