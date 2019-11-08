@@ -6,7 +6,7 @@ namespace Terrria.AI
     /// Base AI,
     /// doesn't move or react.
     /// </summary>
-    [RequireComponent(typeof(DefenseComponent))]
+    [RequireComponent(typeof(TDefenseComponent))]
     public class BaseAI : MonoBehaviour
     {
         [SerializeField] private AIBaseData m_Data;

@@ -1,14 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(JumpComponent), typeof(DefenseComponent), typeof(LinearMovement))]
-public class PlayerController : MonoBehaviour
+[RequireComponent(typeof(TJumpComponent), typeof(TDefenseComponent), typeof(TLinearMovement))]
+public class TPlayerController : MonoBehaviour
 {
+    #region Private
     private IMovable m_MovementComponent;
     private IDefend m_DefenseComponent;
     private IJump m_JumpComponent;
     private Rigidbody2D m_Rb;
 
+    [SerializeField] private float m_DistanceToDetection; //@TEMP
+    [SerializeField] private LayerMask m_JumpableMask;
+    [SerializeField] private float m_MaxHealth;
+    #endregion
+
+    #region Properties
     public IMovable MovementComponent
     {
         get
@@ -46,13 +53,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    [SerializeField] private LayerMask m_JumpableMask;
     public LayerMask JumpableMask => m_JumpableMask;
-
-    [SerializeField] private float m_MaxHealth;
     public float MaxHealth => m_MaxHealth;
-
-    [SerializeField] private float m_DistanceToDetection; //@TEMP
+    #endregion
 
 
     private void OnEnable()
@@ -67,18 +70,24 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // Movement
         float direction = Input.GetAxisRaw("Horizontal");
-        Debug.DrawRay(transform.position, Vector2.right * direction * m_DistanceToDetection, Color.blue); // @TEMP
+
+        // @TEMP
+        Debug.DrawRay(transform.position, Vector2.right * direction * m_DistanceToDetection, Color.blue);
 
         if (direction != 0)
         {
             if (!Physics2D.Raycast(transform.position, Vector2.right * direction, m_DistanceToDetection, JumpableMask))
             {
-                transform.localScale = new Vector3(1 * direction, 1, 1); // @TODO : delete this and add right and left animation.
+                // @TODO : delete this and add right and left animation.
+                transform.localScale = new Vector3(1 * direction, 1, 1); 
+
                 MovementComponent.OnMovement(Vector2.right * direction);
             }
         }
 
+        // Jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (Physics2D.OverlapCircle(transform.position, m_DistanceToDetection, JumpableMask, 0))

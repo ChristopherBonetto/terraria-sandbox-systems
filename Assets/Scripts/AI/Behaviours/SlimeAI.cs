@@ -3,26 +3,32 @@ using System.Collections;
 
 namespace Terrria.AI
 {
+    public enum SlimeState
+    {
+        Idle,
+        Chasing
+    }
+
     /// <summary>
     /// Hops in one direction, slides on slopes, floats in water, follows player if damaged or it's nighttime.
     /// </summary>
-    [RequireComponent(typeof(JumpComponent))]
+    [RequireComponent(typeof(TJumpComponent))]
     public class SlimeAI : BaseAI
     {
-        public enum SlimeState
-        {
-            Idle,
-            Chasing
-        }
-
         public SlimeState CurrentState { get; private set; }
 
-
-        [SerializeField]
-        private float m_JumpDelay;      // @TEMP
-        private float m_LastJumpTime;   // @TEMP
-
+        #region Private
         private IJump m_JumpComponent;
+        private Rigidbody2D m_Rb;
+
+        [SerializeField] private float m_JumpDelay;      // @TEMP
+
+        private float m_LastJumpTime;   // @TEMP
+        private Transform m_Target;
+        private Vector2[] m_PossibleDirections;
+        #endregion
+
+        #region Properties
         public IJump JumpComponent
         {
             get
@@ -32,8 +38,6 @@ namespace Terrria.AI
                 return m_JumpComponent;
             }
         }
-
-        private Rigidbody2D m_Rb;
         public Rigidbody2D Rb
         {
             get
@@ -43,10 +47,7 @@ namespace Terrria.AI
                 return m_Rb;
             }
         }
-
-        private Transform m_Target;
-        private Vector2[] m_PossibleDirections;
-
+        #endregion
 
         protected override void OnEnable()
         {
@@ -81,6 +82,7 @@ namespace Terrria.AI
             {
                 // Pick a vector
                 Vector2 direction = m_PossibleDirections[Random.Range(0, m_PossibleDirections.Length)];
+
 
                 switch (CurrentState)
                 {

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LinearMovement : MonoBehaviour, IMovable
+public class TLinearMovement : MonoBehaviour, IMovable
 {
-    [SerializeField] private float m_MovementSpeed;
-
     public event Move OnMove;
+
+    [SerializeField] private float m_MovementSpeed;
 
     public float MovementSpeed => m_MovementSpeed;
 

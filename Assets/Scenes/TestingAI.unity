@@ -594,5 +594,6 @@ PrefabInstance:
       propertyPath: m_DistanceToDetection
       value: 0.4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1515749216250244065, guid: 27d74ee8cfa35a44294aa5cacf90038c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 27d74ee8cfa35a44294aa5cacf90038c, type: 3}

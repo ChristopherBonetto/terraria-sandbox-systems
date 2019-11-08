@@ -1,25 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DefenseComponent : MonoBehaviour, IDefend
+public class TDefenseComponent : MonoBehaviour, IDefend
 {
+    public event Damage OnDamage;
+
+    #region Private
     private float m_MaxHealth;
     private float m_CurrentHealth;
     private float m_Defense;
+    #endregion
 
+    #region Properties
     public float MaxHealth => m_MaxHealth;
     public float CurrentHealth => m_CurrentHealth;
     public float Defense => m_Defense;
+    #endregion
 
     #region MonoBehaviour
     protected virtual void OnEnable()
     {
-        // Subscribe.
+        OnDamage += TakeDamage;
     }
 
     protected virtual void OnDisable()
     {
-        // Unsuscribe.
+        OnDamage -= TakeDamage;
     }
     #endregion
 
@@ -36,11 +42,6 @@ public class DefenseComponent : MonoBehaviour, IDefend
         m_Defense = inDefense;
     }
 
-    public void OndamageTaken(float inAmount)
-    {
-        // Call event
-    }
-
     public void TakeDamage(float inAmount)
     {
         m_CurrentHealth -= Mathf.Max(1, inAmount - Defense);
@@ -48,5 +49,10 @@ public class DefenseComponent : MonoBehaviour, IDefend
         // Call dead functions...
         if (m_CurrentHealth <= 0)
             gameObject.SetActive(false);
+    }
+
+    public void OnDamageTaken(float inAmount)
+    {
+        OnDamage(inAmount);
     }
 }

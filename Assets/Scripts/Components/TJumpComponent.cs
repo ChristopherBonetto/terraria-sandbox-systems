@@ -2,26 +2,16 @@
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class JumpComponent : MonoBehaviour, IJump
+public class TJumpComponent : MonoBehaviour, IJump
 {
-    private Rigidbody2D m_Rb;
-    [SerializeField] private float m_Force;
-
     public event Jump OnJump;
 
-    public Rigidbody2D Rb => m_Rb;
+    [SerializeField] private float m_Force;
+    private Rigidbody2D m_Rb;
+
     public float Force => m_Force;
+    public Rigidbody2D Rb => m_Rb;
 
-    public void Init(Rigidbody2D rb)
-    {
-        m_Rb = rb;
-    }
-
-    public void Init(Rigidbody2D rb, float inForce)
-    {
-        m_Rb = rb;
-        m_Force = inForce;
-    }
 
     private void OnEnable()
     {
@@ -39,6 +29,17 @@ public class JumpComponent : MonoBehaviour, IJump
     private void OnDisable()
     {
         OnJump -= Jump;
+    }
+
+    public void Init(Rigidbody2D rb)
+    {
+        m_Rb = rb;
+    }
+
+    public void Init(Rigidbody2D rb, float inForce)
+    {
+        m_Rb = rb;
+        m_Force = inForce;
     }
 
     public void Jump(Vector2 inDirection)
