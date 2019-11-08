@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    public static Camera MainCamera { get; private set; }
+
     [SerializeField] private Transform m_Target;
 
     [SerializeField] private bool m_IsSmooth;
 
     [SerializeField] private float m_MovementSpeed;
+
+    private void Awake()
+    {
+        MainCamera = GetComponent<Camera>();
+    }
 
     // Update is called once per frame
     void LateUpdate()

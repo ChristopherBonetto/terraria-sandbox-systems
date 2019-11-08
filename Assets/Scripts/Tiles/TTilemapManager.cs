@@ -12,6 +12,15 @@ public enum TMap
 
 public class TTilemapManager : MonoBehaviour
 {
+    #region Static properties
+
+    /// <summary>
+    /// Singleton instance reference.
+    /// </summary>
+    public static TTilemapManager SharedInstance { get; private set; }
+
+    #endregion
+
     #region Serialized variables
 
     [SerializeField] private Tilemap m_ForegroundMap;
@@ -29,7 +38,12 @@ public class TTilemapManager : MonoBehaviour
     #endregion
 
     #region MonoBehaviour cycle
-    
+
+    private void Awake()
+    {
+        SharedInstance = this;
+    }
+
     // TEST METHOD
 
     //private void Update()
@@ -50,13 +64,13 @@ public class TTilemapManager : MonoBehaviour
     /// <summary>
     /// Returns the Tile at the specified position on the requested Tilemap.
     /// </summary>
-    /// <param name="position"></param>
-    /// <param name="map"></param>
+    /// <param name="inPosition"></param>
+    /// <param name="inMap"></param>
     /// <returns></returns>
-    public TDestructibleTile GetTile(Vector3Int position, TMap map = TMap.Foreground)
+    public TDestructibleTile GetTile(Vector3Int inPosition, TMap inMap = TMap.Foreground)
     {
-        if (map == TMap.Foreground)
-            return m_ForegroundMap.GetTile<TDestructibleTile>(position);
+        if (inMap == TMap.Foreground)
+            return m_ForegroundMap.GetTile<TDestructibleTile>(inPosition);
 
         return null;
     }
@@ -64,54 +78,54 @@ public class TTilemapManager : MonoBehaviour
     /// <summary>
     /// Damages the Tile at the specified position on the requested Tilemap.
     /// </summary>
-    /// <param name="position"></param>
-    /// <param name="map"></param>
+    /// <param name="inPosition"></param>
+    /// <param name="inMap"></param>
     /// <param name="damage"></param>
-    public void DamageTile(Vector3Int position, TMap map = TMap.Foreground, int damage = 1)
+    public void DamageTile(Vector3Int inPosition, TMap inMap = TMap.Foreground, int damage = 1)
     {
 
         // Get affected Tilemap
         Tilemap affectedMap;
 
-        if (map == TMap.Foreground)
+        if (inMap == TMap.Foreground)
             affectedMap = m_ForegroundMap;
         else
             return;
 
 
         // Get affected Tile
-        TDestructibleTile affectedTile = affectedMap.GetTile<TDestructibleTile>(position);
+        TDestructibleTile affectedTile = affectedMap.GetTile<TDestructibleTile>(inPosition);
 
         // If the position is empty, return
         if (!affectedTile)
             return;
         
         // If the Tile has been damaged already, update current HP value
-        if (m_DamagedTiles.ContainsKey(position))
+        if (m_DamagedTiles.ContainsKey(inPosition))
         {
-            int hitPoints = m_DamagedTiles[position];
+            int hitPoints = m_DamagedTiles[inPosition];
             hitPoints -= damage;
 
             if (hitPoints <= 0)
             {
                 // Call OnDestruction method
-                affectedTile.OnDestruction(m_ForegroundMap.CellToWorld(position));
+                affectedTile.OnDestruction(m_ForegroundMap.CellToWorld(inPosition));
 
                 // Remove Tile from Tilemap and Damage dictionary
-                m_ForegroundMap.SetTile(position, null);
-                m_DamagedTiles.Remove(position);
+                m_ForegroundMap.SetTile(inPosition, null);
+                m_DamagedTiles.Remove(inPosition);
             }
             else
             {
                 // Update HP
-                m_DamagedTiles[position] = hitPoints;
-                Debug.Log("Damaged tile at pos: " + position);
+                m_DamagedTiles[inPosition] = hitPoints;
+                Debug.Log("Damaged tile at pos: " + inPosition);
             }
         }
         else
         {
             // Get the Tile
-            TDestructibleTile tile = m_ForegroundMap.GetTile<TDestructibleTile>(position);
+            TDestructibleTile tile = m_ForegroundMap.GetTile<TDestructibleTile>(inPosition);
 
             // Init its HP to be stored by taking the damage into account
             int hitPoints = tile.HitPoints - damage;
@@ -119,18 +133,28 @@ public class TTilemapManager : MonoBehaviour
             if (hitPoints <= 0)
             {
                 // Call OnDestruction method
-                affectedTile.OnDestruction(m_ForegroundMap.CellToWorld(position));
+                affectedTile.OnDestruction(m_ForegroundMap.CellToWorld(inPosition));
 
                 // Remove Tile from Tilemap
-                m_ForegroundMap.SetTile(position, null);
+                m_ForegroundMap.SetTile(inPosition, null);
             }
             else
             {
                 // Add the Tile to the Damage dictionary
-                m_DamagedTiles.Add(position, hitPoints);
-                Debug.Log("Damaged tile at pos: " + position);
+                m_DamagedTiles.Add(inPosition, hitPoints);
+                Debug.Log("Damaged tile at pos: " + inPosition);
             }
         }
+    }
+
+    /// <summary>
+    /// Converts a World position to the corresponding position on the Tilemap's grid.
+    /// </summary>
+    /// <param name="inWorldPosition"></param>
+    /// <returns></returns>
+    public Vector3Int WorldToGridPosition(Vector3 inWorldPosition)
+    {
+        return m_ForegroundMap.WorldToCell(inWorldPosition);
     }
 
     #endregion
