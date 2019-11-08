@@ -97,7 +97,7 @@ public class TInputManager : MonoBehaviour
     {
         #region Horizontal movement
 
-        float moveAxis = Input.GetAxisRaw(Controls.MovementAxis);
+        float moveAxis = Input.GetAxisRaw(TControls.MovementAxis);
 
         if (moveAxis != 0)
             OnMovementAxis?.Invoke(moveAxis);
@@ -106,10 +106,10 @@ public class TInputManager : MonoBehaviour
 
         #region Jump
 
-        if (Input.GetButtonDown(Controls.Jump))
+        if (Input.GetButtonDown(TControls.Jump))
             OnJumpDown?.Invoke();
 
-        else if (Input.GetButtonUp(Controls.Jump))
+        else if (Input.GetButtonUp(TControls.Jump))
             OnJumpUp?.Invoke();
 
         #endregion
@@ -145,7 +145,7 @@ public struct TClickData
 /// <summary>
 /// Class containing constant string identification for the game's controls.
 /// </summary>
-public static class Controls
+public static class TControls
 {
     public static readonly string Jump = "Jump";
     public static readonly string MovementAxis = "Horizontal";
