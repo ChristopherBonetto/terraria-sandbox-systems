@@ -26,18 +26,18 @@ public class TEventManager
 
     #region Delegates definition
 
+    // Item
+    public delegate void TItemEvent(ItemScriptable inItem);
+    
     // Timing
     public delegate void TDayPhaseEvent(bool isNight);
-
-    // Generic
-    public delegate void TCallbackEvent();
 
     #endregion
 
     #region Events
 
     // Items
-    public event TCallbackEvent OnItemEquipped;
+    public event TItemEvent OnItemEquipped;
 
     // Day-night cycle
     public event TDayPhaseEvent OnDayPhaseChanged;
@@ -45,4 +45,17 @@ public class TEventManager
     #endregion
 
 
+    #region Public methods
+
+    public void InvokeOnItemEquipped(ItemScriptable inItem)
+    {
+        OnItemEquipped?.Invoke(inItem);
+    }
+
+    public void InvokeOnDayPhaseChanged(bool isNight)
+    {
+        OnDayPhaseChanged?.Invoke(isNight);
+    }
+
+    #endregion
 }
