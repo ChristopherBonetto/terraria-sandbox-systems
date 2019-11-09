@@ -7,11 +7,20 @@ public class TJumpComponent : MonoBehaviour, IJump
     public event Jump OnJump;
 
     [SerializeField] private float m_Force;
+    [SerializeField] private LayerMask m_JumpableMask;
+    [SerializeField] private float m_DistanceToDetection; //@TEMP
+
     private Rigidbody2D m_Rb;
+    private Collider2D m_Col;
 
     public float Force => m_Force;
     public Rigidbody2D Rb => m_Rb;
+    public LayerMask JumpableMask => m_JumpableMask;
 
+    private void Awake()
+    {
+        m_Col = GetComponent<Collider2D>();    
+    }
 
     private void OnEnable()
     {
@@ -44,7 +53,9 @@ public class TJumpComponent : MonoBehaviour, IJump
 
     public void Jump(Vector2 inDirection)
     {
-        Rb.AddForce(inDirection.normalized * m_Force);
+        if (Physics2D.Raycast(transform.position, Vector2.down + Vector2.right * m_Col.bounds.extents.x, m_DistanceToDetection, JumpableMask) ||
+            Physics2D.Raycast(transform.position, Vector2.down + Vector2.right * -m_Col.bounds.extents.x, m_DistanceToDetection, JumpableMask))
+            Rb.AddForce(inDirection.normalized * m_Force);
     }
 
     public void OnJumpDecision(Vector2 inDirection)

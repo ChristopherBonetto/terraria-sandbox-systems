@@ -11,7 +11,6 @@ public class TPlayerController : MonoBehaviour
     private Rigidbody2D m_Rb;
 
     [SerializeField] private float m_DistanceToDetection; //@TEMP
-    [SerializeField] private LayerMask m_JumpableMask;
     [SerializeField] private float m_MaxHealth;
     #endregion
 
@@ -53,7 +52,6 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
-    public LayerMask JumpableMask => m_JumpableMask;
     public float MaxHealth => m_MaxHealth;
     #endregion
 
@@ -78,20 +76,16 @@ public class TPlayerController : MonoBehaviour
 
         if (direction != 0)
         {
-            if (!Physics2D.Raycast(transform.position, Vector2.right * direction, m_DistanceToDetection, JumpableMask))
-            {
-                // @TODO : delete this and add right and left animation.
-                transform.localScale = new Vector3(1 * direction, 1, 1); 
+            // @TODO : delete this and add right and left animation.
+            transform.localScale = new Vector3(1 * direction, 1, 1); 
 
-                MovementComponent.OnMovement(Vector2.right * direction);
-            }
-        }
+            MovementComponent.OnMovement(Vector2.right * direction);
+        }   
 
         // Jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Physics2D.OverlapCircle(transform.position, m_DistanceToDetection, JumpableMask, 0))
-                JumpComponent.OnJumpDecision(Vector2.up);
+            JumpComponent.OnJumpDecision(Vector2.up);
         }
         else if (!Input.GetKey(KeyCode.Space) && JumpComponent.Rb.velocity.y > 0)
         {

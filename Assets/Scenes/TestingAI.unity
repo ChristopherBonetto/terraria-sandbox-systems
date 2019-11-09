@@ -412,6 +412,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Force: 50
+  m_DistanceToDetection: 0.2
+  m_JumpableMask:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!50 &2095338924
 Rigidbody2D:
   serializedVersion: 4
@@ -593,6 +597,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_DistanceToDetection
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593420807902170184, guid: 27d74ee8cfa35a44294aa5cacf90038c,
+        type: 3}
+      propertyPath: m_DistanceToDetection
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593420807902170184, guid: 27d74ee8cfa35a44294aa5cacf90038c,
+        type: 3}
+      propertyPath: m_JumpableMask.m_Bits
+      value: 768
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1515749216250244065, guid: 27d74ee8cfa35a44294aa5cacf90038c, type: 3}
