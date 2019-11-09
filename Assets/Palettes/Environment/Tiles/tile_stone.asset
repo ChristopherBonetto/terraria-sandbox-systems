@@ -263,3 +263,6 @@ MonoBehaviour:
     m_ColliderType: 1
     m_RandomTransform: 0
   m_HitPoints: 4
+  m_ContainedItems:
+  - Item: {fileID: 11400000, guid: 785147c22cb57ea479d01641ce58b9fa, type: 2}
+    Amount: 2

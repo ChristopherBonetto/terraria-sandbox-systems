@@ -22,3 +22,22 @@ public class ItemScriptable : ScriptableObject
     public Sprite ItemSprite;
     
 }
+
+
+[System.Serializable]
+public struct TItemQuantity
+{
+    public ItemScriptable Item;
+    public int Amount;
+
+    public TItemQuantity(ItemScriptable inItem, int inAmount = 1)
+    {
+        Item = inItem;
+        Amount = inAmount;
+    }
+
+    public override string ToString()
+    {
+        return Item.ItemName + " (" + Amount + ")";
+    }
+}

@@ -46,16 +46,16 @@ public class TTilemapManager : MonoBehaviour
 
     // TEST METHOD
 
-    //private void Update()
-    //{
-    //    if (Input.GetMouseButtonUp(0))
-    //    {
-    //        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //        Vector3Int gridPosition = m_ForegroundMap.WorldToCell(mousePos);
+    private void Update()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3Int gridPosition = m_ForegroundMap.WorldToCell(mousePos);
 
-    //        DamageTile(gridPosition);
-    //    }
-    //}
+            DamageTile(gridPosition);
+        }
+    }
 
     #endregion
 
@@ -109,7 +109,7 @@ public class TTilemapManager : MonoBehaviour
             if (hitPoints <= 0)
             {
                 // Call OnDestruction method
-                affectedTile.OnDestruction(m_ForegroundMap.CellToWorld(inPosition));
+                affectedTile.DropContainedItems(m_ForegroundMap.GetCellCenterWorld(inPosition));
 
                 // Remove Tile from Tilemap and Damage dictionary
                 m_ForegroundMap.SetTile(inPosition, null);
@@ -133,7 +133,7 @@ public class TTilemapManager : MonoBehaviour
             if (hitPoints <= 0)
             {
                 // Call OnDestruction method
-                affectedTile.OnDestruction(m_ForegroundMap.CellToWorld(inPosition));
+                affectedTile.DropContainedItems(m_ForegroundMap.CellToWorld(inPosition));
 
                 // Remove Tile from Tilemap
                 m_ForegroundMap.SetTile(inPosition, null);
