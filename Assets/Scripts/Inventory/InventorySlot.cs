@@ -33,9 +33,16 @@ public class InventorySlot : MonoBehaviour
         DroppableComponent = gameObject.GetComponent<DroppableItem>();
 
         m_slotImage = gameObject.GetComponent<Image>();
+    }
 
-        //implement a ui'method that it do that with parameters.
-        m_slotImage.sprite = ItemInSlot.ItemSprite;
+
+    private void Start()
+    {
+        if(ItemInSlot != null)
+        {
+            //implement a ui'method that it do that with parameters.
+            m_slotImage.sprite = ItemInSlot.ItemSprite;
+        }
     }
 
 
@@ -43,14 +50,17 @@ public class InventorySlot : MonoBehaviour
 
     //Used to change the ItemHandler's variable itemInHand and subscribe the class of this item to another event.
     public void ChangeHandItemWithThisSlot()
-    {        
-        ItemHandler.Instance.StartDragItemEvent(this);
-        ItemInSlot = null;
+    {   
+        if(ItemInSlot != null)
+        {
+            ItemHandler.Instance.StartDragItemEvent(this);
+            ItemInSlot = null;
 
-        //implement a ui'method that it do that with parameters.
-        m_slotImage.sprite = null;
+            //implement a ui'method that it do that with parameters.
+            m_slotImage.sprite = null;
 
-        ItemHandler.OnStopDragEvent += RestoreImageAndItemInSlot;
+            ItemHandler.OnStopDragEvent += RestoreImageAndItemInSlot;
+        }
     }
 
 
@@ -68,8 +78,6 @@ public class InventorySlot : MonoBehaviour
         if(slot == this)
         {
             ItemHandler.Instance.TakeSlotFromHand(this);
-                        
-            
         }
     }
 

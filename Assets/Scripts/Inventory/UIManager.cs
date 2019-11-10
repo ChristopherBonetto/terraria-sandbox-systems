@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
             GameObject slot = Instantiate(m_slotPrefab) as GameObject;
             slot.transform.parent = m_inventoryItemsHolder.transform;
             slot.transform.localScale = new Vector3(1,1,1);
-            Inventory.Instance.AddToInventory(slot.GetComponentInChildren<InventorySlot>());
+            Inventory.Instance.AddSlotToInventory(slot.GetComponentInChildren<InventorySlot>());
             m_slotCounter++;
             InstantiateSlotsInInventory();
         }

@@ -862,3 +862,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventorySlots: []
+  itemToAdd: {fileID: 11400000, guid: fe73e03c22a877349af2d56d1ed22aa2, type: 2}

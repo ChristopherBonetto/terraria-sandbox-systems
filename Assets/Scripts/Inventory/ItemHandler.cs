@@ -57,8 +57,12 @@ public class ItemHandler : MonoBehaviour
     {
         if(OnDropEventAction != null)
         {
-            OnDropEventAction(itemToEquip);
-            DropEvent();
+            if(itemInHand != null)
+            {
+                OnDropEventAction(itemToEquip);
+                DropEvent();
+            }
+            
         }
     }
 

@@ -9,6 +9,8 @@ public class Inventory : MonoBehaviour
     public List<InventorySlot> InventorySlots = new List<InventorySlot>();
     private int m_inventoryCount = 0;
 
+    public ItemScriptable itemToAdd;
+
     private void Awake()
     {
         Instance = this;
@@ -19,25 +21,27 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            CollectedItem();
+            if(itemToAdd != null)
+            CheckFreeSlotAndCollect(itemToAdd);
         } 
 
         
     }
 
 
-    public void CollectedItem()
+    public void CheckFreeSlotAndCollect(ItemScriptable addThisItem)
     {
         if (m_inventoryCount <= InventorySlots.Count)
         {
             if(InventorySlots[m_inventoryCount].ItemInSlot == null)
             {
-                Debug.Log(m_inventoryCount + " addItem ");
+                InventorySlots[m_inventoryCount].ItemInSlot = addThisItem;
+                InventorySlots[m_inventoryCount].m_slotImage.sprite = addThisItem.ItemSprite;
             }
             else
             {
                 m_inventoryCount++;
-                CollectedItem();
+                CheckFreeSlotAndCollect(addThisItem);
             }
             
         }
@@ -48,7 +52,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddToInventory(InventorySlot inSlotToAdd)
+    public void AddSlotToInventory(InventorySlot inSlotToAdd)
     {
         if (!InventorySlots.Contains(inSlotToAdd))
         {
@@ -59,53 +63,6 @@ public class Inventory : MonoBehaviour
             Debug.Log("the list contains this element");
         }
     }
-
-    //public int? GiveIndex(InventorySlot inItemInInventory)
-    //{
-    //    if (InventorySlots.Contains(inItemInInventory))
-    //    {
-    //        int index = InventorySlots.FindIndex(d => d == inItemInInventory);
-    //        return index;
-    //    }
-    //    else
-    //    {
-    //        return null;
-    //    }
-        
-    //}
-
-    //public void SwapItemsInList(InventorySlot inFirstItem, InventorySlot inSecondItem)
-    //{
-    //    int Aindex = 0;
-    //    int Bindex = 0;
-
-    //    if (InventorySlots.Contains(inFirstItem))
-    //    {
-    //        Aindex = InventorySlots.FindIndex(d => d == inFirstItem);
-            
-    //    }
-
-
-    //    int indexFirstItem = GiveIndex(inFirstItem) ?? 0;
-
-    //    int indexSecondItem = GiveIndex(inSecondItem) ?? 0;
-
-    //    Debug.Log(indexFirstItem + " " + indexSecondItem);
-
-    //    InventorySlot a = new InventorySlot();
-        
-
-    //    InventorySlots[indexFirstItem] = InventorySlots[indexSecondItem];
-    //    InventorySlots[indexSecondItem] = InventorySlots[indexFirstItem];
-
-
-    //    int test = GiveIndex(inFirstItem) ?? 0;
-
-    //    Debug.Log(test);
-        
-        
-        
-    //}
 
 
     
