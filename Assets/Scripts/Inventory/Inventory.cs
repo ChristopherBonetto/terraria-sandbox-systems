@@ -24,8 +24,6 @@ public class Inventory : MonoBehaviour
             if(itemToAdd != null)
             CheckFreeSlotAndCollect(itemToAdd);
         } 
-
-        
     }
 
 

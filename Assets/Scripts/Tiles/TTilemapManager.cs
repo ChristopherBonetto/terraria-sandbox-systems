@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
 public enum TMap
@@ -48,12 +49,16 @@ public class TTilemapManager : MonoBehaviour
 
     private void Update()
     {
+        
         if (Input.GetMouseButtonUp(0))
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int gridPosition = m_ForegroundMap.WorldToCell(mousePos);
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3Int gridPosition = m_ForegroundMap.WorldToCell(mousePos);
 
-            DamageTile(gridPosition);
+                DamageTile(gridPosition);
+            }
         }
     }
 

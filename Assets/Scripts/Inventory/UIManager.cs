@@ -12,12 +12,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject m_inventoryItemsHolder;
     [SerializeField] private GameObject m_slotPrefab;
 
+    [SerializeField] private RectTransform m_inventoryUI;
+    private Vector2 m_startingInventorySize;
+
     [SerializeField] private int m_slotsNumber;
     private int m_slotCounter = 0;
 
     [SerializeField] private Image m_itemInHandUI;
 
+    private List<GameObject> m_InventorySlotsUI = new List<GameObject>();
 
+    public bool InventoryIsOpen = false;
 
     private void OnEnable()
     {
@@ -46,20 +51,37 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        m_startingInventorySize = m_inventoryUI.sizeDelta;
+
         InstantiateSlotsInInventory();
-        
+        DisableImageItemInHand();
+
+        OpenCloseInventory(InventoryIsOpen);
+
+        Debug.Log(m_InventorySlotsUI.Count);
     }
 
-    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            InventoryIsOpen = !InventoryIsOpen;
+            OpenCloseInventory(InventoryIsOpen);
+        }
+    }
 
     public void InstantiateSlotsInInventory()
     {
         if(m_slotCounter <= m_slotsNumber)
         {
             GameObject slot = Instantiate(m_slotPrefab) as GameObject;
+
             slot.transform.parent = m_inventoryItemsHolder.transform;
             slot.transform.localScale = new Vector3(1,1,1);
+
+            AddSlotToInventoryUI(slot);
             Inventory.Instance.AddSlotToInventory(slot.GetComponentInChildren<InventorySlot>());
+
             m_slotCounter++;
             InstantiateSlotsInInventory();
         }
@@ -70,6 +92,47 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void DisableButtons()
+    {
+        for(int i = 10; i < m_InventorySlotsUI.Count; i++)
+        {
+            DisableEnableItemUI(m_InventorySlotsUI[i]);
+        }
+    }
+
+    public void AddSlotToInventoryUI(GameObject slotToAdd)
+    {
+        if (!m_InventorySlotsUI.Contains(slotToAdd))
+        {
+            m_InventorySlotsUI.Add(slotToAdd);
+        }
+    }
+
+    public void DisableEnableItemUI(GameObject item)
+    {
+        if (item.activeInHierarchy)
+        {
+            item.SetActive(false);
+        }
+        else
+        {
+            item.SetActive(true);
+        }
+    }
+
+    public void OpenCloseInventory(bool isClose)
+    {
+        if (isClose)
+        {
+            m_inventoryUI.sizeDelta = new Vector2(m_inventoryUI.sizeDelta.x, 85);
+            DisableButtons();
+        }
+        else
+        {
+            m_inventoryUI.sizeDelta = m_startingInventorySize;
+            DisableButtons();
+        }
+    }
 
     public void ChangeImageItemInHand()
     {

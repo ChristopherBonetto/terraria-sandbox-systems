@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+[RequireComponent(typeof(DroppableItem), typeof(DraggableItem))]
 public class InventorySlot : MonoBehaviour
 {
     public ItemScriptable ItemInSlot = null;

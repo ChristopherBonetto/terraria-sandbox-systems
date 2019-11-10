@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public enum MouseIndex
 {
@@ -71,7 +72,7 @@ public class TInputManager : MonoBehaviour
     {
         #region Left click
 
-        if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             OnLeftClickDown?.Invoke(new TClickData(Input.mousePosition));
 
         else if (Input.GetMouseButtonUp(0))
