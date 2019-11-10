@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,8 +10,8 @@ public class ItemHandler : MonoBehaviour
 
     public ItemScriptable itemInHand = null;
 
-
-
+    #region Drag
+    //Assign the itemInHand as another slotted item
     public delegate void OnBeginDragDelegate(InventorySlot tempSlottedItem);
     public static OnBeginDragDelegate OnBeginDragEvent;
 
@@ -23,7 +24,7 @@ public class ItemHandler : MonoBehaviour
         }
     }
 
-
+    //Start to drag the item
     public delegate void OnDragDelegate();
     public static OnDragDelegate OnDragEvent;
 
@@ -35,7 +36,7 @@ public class ItemHandler : MonoBehaviour
         }
     }
 
-
+    // **Chiedere in classe se e meglio fare un action come sotto oppure iscriverlo e disiscriverlo dall'evento ogni volta.
     public delegate void OnStopDragDelegate();
     public static OnStopDragDelegate OnStopDragEvent;
 
@@ -46,29 +47,43 @@ public class ItemHandler : MonoBehaviour
             OnStopDragEvent();
         }
     }
+    #endregion
 
+    #region Drop
+    //Used to drop an item to the selected slot
+    public event Action<InventorySlot> OnDropEventAction;
+
+    public void DropItemAction(InventorySlot itemToEquip)
+    {
+        if(OnDropEventAction != null)
+        {
+            OnDropEventAction(itemToEquip);
+            DropEvent();
+        }
+    }
+
+    
     public delegate void OnDropDelegate();
     public static OnDropDelegate OnDropEvent;
 
-    public void DropItemEvent()
+    public void DropEvent()
     {
         if (OnDropEvent != null)
         {
             OnDropEvent();
         }
     }
-
-
+    #endregion
 
     private void OnEnable()
     {
         OnBeginDragEvent = StartDragItemEvent;
-        OnDragEvent += StartHoldingItem;
+        
     }
     private void OnDisable()
     {
         OnBeginDragEvent = StartDragItemEvent;
-        OnDragEvent -= StartHoldingItem;
+        
     }
 
     private void Awake()
@@ -97,21 +112,12 @@ public class ItemHandler : MonoBehaviour
         }
 
     }
-
     
 
-    public void StartHoldingItem()
+    public void TakeSlotFromHand(InventorySlot slotToEquipItem)
     {
-        StartCoroutine(ItemInHand());
-    }
-
-    IEnumerator ItemInHand()
-    {
-        while(itemInHand != null)
-        {            
-            UIManager.Instance.ItemFollowMousePosition();
-            yield return null;
-        }
-        yield return new WaitForSeconds(1f);
+        slotToEquipItem.ItemInSlot = itemInHand;
+        slotToEquipItem.m_slotImage.sprite = itemInHand.ItemSprite;
+        itemInHand = null;
     }
 }

@@ -23,11 +23,17 @@ public class UIManager : MonoBehaviour
     {
         ItemHandler.OnDragEvent += ChangeImageItemInHand;
         ItemHandler.OnStopDragEvent += DisableImageItemInHand;
+        ItemHandler.OnDropEvent += DisableImageItemInHand;        
+
+        ItemHandler.OnDragEvent += StartHoldingItem;
     }
     private void OnDisable()
     {
         ItemHandler.OnDragEvent -= ChangeImageItemInHand;
         ItemHandler.OnStopDragEvent -= DisableImageItemInHand;
+        ItemHandler.OnDropEvent -= DisableImageItemInHand;
+
+        ItemHandler.OnDragEvent -= StartHoldingItem;
     }
 
 
@@ -80,5 +86,21 @@ public class UIManager : MonoBehaviour
     {
         m_itemInHandUI.gameObject.SetActive(false);
         m_itemInHandUI.sprite = null;
-    } 
+    }
+
+
+    public void StartHoldingItem()
+    {
+        StartCoroutine(ItemInHand());
+    }
+
+    IEnumerator ItemInHand()
+    {
+        while (ItemHandler.Instance.itemInHand != null)
+        {
+            ItemFollowMousePosition();
+            yield return null;
+        }
+        yield return new WaitForSeconds(1f);
+    }
 }

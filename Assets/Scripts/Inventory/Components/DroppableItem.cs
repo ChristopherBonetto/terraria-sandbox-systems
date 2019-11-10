@@ -8,27 +8,15 @@ public class DroppableItem : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
     private InventorySlot m_slot;
 
 
-    private void OnEnable()
-    {
-        ItemHandler.OnDropEvent += TakeItemInHand;
-    }
-    private void OnDisable()
-    {
-        ItemHandler.OnDropEvent -= TakeItemInHand;
-    }
-
-
     private void Awake()
     {
         m_slot = gameObject.GetComponent<InventorySlot>();
     }
 
 
-
-
     public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        Debug.Log("enter");
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -38,20 +26,22 @@ public class DroppableItem : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
 
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("drop");
-    }
-
-
-
-
-    public void TakeItemInHand()
-    {
-        if(ItemHandler.Instance.itemInHand != null)
+        if(m_slot.ItemInSlot != null)
         {
-            m_slot.ItemInSlot = ItemHandler.Instance.itemInHand;
-            Debug.Log(m_slot.ItemInSlot);
+            InventorySlot originarySlot = eventData.pointerDrag.GetComponent<InventorySlot>();
+
+            if (originarySlot != null)
+            {
+                originarySlot.ItemInSlot = m_slot.ItemInSlot;
+                originarySlot.m_slotImage.sprite = m_slot.ItemInSlot.ItemSprite;
+            }
+            ItemHandler.Instance.DropItemAction(m_slot);
+        }
+        else
+        {
+            ItemHandler.Instance.DropItemAction(m_slot);
         }
     }
 
-
+    
 }

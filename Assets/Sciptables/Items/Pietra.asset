@@ -18,4 +18,5 @@ MonoBehaviour:
   Attack: 1
   Defence: 1
   TimeToAttack: 1
-  ItemSprite: {fileID: 0}
+  ItemSprite: {fileID: -6171771482679843355, guid: ee887326e75edad4f909b42b097059f1,
+    type: 3}
