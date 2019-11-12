@@ -5,15 +5,14 @@ public class TDefenseComponent : MonoBehaviour, IDefend
 {
     public event Damage OnDamage;
 
-    #region Private
-    private float m_MaxHealth;
-    private float m_CurrentHealth;
-    private float m_Defense;
-    #endregion
-
     #region Properties
+    private float m_MaxHealth;
     public float MaxHealth => m_MaxHealth;
+
+    private float m_CurrentHealth;
     public float CurrentHealth => m_CurrentHealth;
+
+    private float m_Defense;
     public float Defense => m_Defense;
     #endregion
 

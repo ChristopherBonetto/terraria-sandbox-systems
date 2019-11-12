@@ -63,8 +63,6 @@ namespace Terrria.AI
             // if someday the model must contains other value like "jump force"
             // Init the "jump force here"
 
-            JumpComponent.Init(Rb);
-
             m_PossibleDirections = new Vector2[CreateJumpVectors().Length];
             m_PossibleDirections = CreateJumpVectors();
         }

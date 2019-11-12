@@ -5,16 +5,12 @@ using System.Collections;
 public class TPlayerController : MonoBehaviour
 {
     #region Private
-    private IMovable m_MovementComponent;
-    private IDefend m_DefenseComponent;
-    private IJump m_JumpComponent;
-    private Rigidbody2D m_Rb;
-
-    [SerializeField] private float m_DistanceToDetection; //@TEMP
-    [SerializeField] private float m_MaxHealth;
+    [SerializeField]
+    private float m_DistanceToDetection; //@TEMP
     #endregion
 
     #region Properties
+    private IMovable m_MovementComponent;
     public IMovable MovementComponent
     {
         get
@@ -24,6 +20,8 @@ public class TPlayerController : MonoBehaviour
             return m_MovementComponent;
         }
     }
+
+    private IDefend m_DefenseComponent;
     public IDefend DefenseComponent
     {
         get
@@ -33,6 +31,8 @@ public class TPlayerController : MonoBehaviour
             return m_DefenseComponent;
         }
     }
+
+    private IJump m_JumpComponent;
     public IJump JumpComponent
     {
         get
@@ -42,16 +42,21 @@ public class TPlayerController : MonoBehaviour
             return m_JumpComponent;
         }
     }
-    public Rigidbody2D Rb
+
+    private TPlayerView m_View;
+    public TPlayerView View
     {
         get
         {
-            if (m_Rb == null)
-                m_Rb = GetComponent<Rigidbody2D>();
-            return m_Rb;
+            if (m_View == null)
+                m_View = GetComponent<TPlayerView>();
+            return m_View;
         }
     }
 
+
+    [SerializeField]
+    private float m_MaxHealth;
     public float MaxHealth => m_MaxHealth;
     #endregion
 
@@ -59,11 +64,13 @@ public class TPlayerController : MonoBehaviour
     private void OnEnable()
     {
         // subscribe
+        MovementComponent.OnMove += View.Flip;
     }
 
-    private void Start()
+    private void OnDisable()
     {
-        JumpComponent.Init(Rb);
+        // unsubscripted
+        MovementComponent.OnMove -= View.Flip;
     }
 
     private void Update()
@@ -71,14 +78,8 @@ public class TPlayerController : MonoBehaviour
         // Movement
         float direction = Input.GetAxisRaw("Horizontal");
 
-        // @TEMP
-        Debug.DrawRay(transform.position, Vector2.right * direction * m_DistanceToDetection, Color.blue);
-
         if (direction != 0)
         {
-            // @TODO : delete this and add right and left animation.
-            transform.localScale = new Vector3(1 * direction, 1, 1); 
-
             MovementComponent.OnMovement(Vector2.right * direction);
         }   
 
@@ -91,10 +92,5 @@ public class TPlayerController : MonoBehaviour
         {
             JumpComponent.Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.5f);
         }
-    }
-
-    private void OnDisable()
-    {
-        // unsibscribe
     }
 }

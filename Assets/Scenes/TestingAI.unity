@@ -412,10 +412,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Force: 50
-  m_DistanceToDetection: 0.2
   m_JumpableMask:
     serializedVersion: 2
     m_Bits: 768
+  m_Legs: {fileID: 2095338926}
+  m_DistanceToDetection: 0.2
 --- !u!50 &2095338924
 Rigidbody2D:
   serializedVersion: 4

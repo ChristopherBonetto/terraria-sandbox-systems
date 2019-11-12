@@ -6,20 +6,30 @@ public class TJumpComponent : MonoBehaviour, IJump
 {
     public event Jump OnJump;
 
-    [SerializeField] private float m_Force;
-    [SerializeField] private LayerMask m_JumpableMask;
-    [SerializeField] private float m_DistanceToDetection; //@TEMP
+    [SerializeField]
+    private float m_Force;
+    public float Force => m_Force;
 
-    private Rigidbody2D m_Rb;
+    [SerializeField]
+    private LayerMask m_JumpableMask;
+    public LayerMask JumpableMask => m_JumpableMask;
+
+    [SerializeField]
+    private Transform m_Legs;
+
+    [SerializeField]
+    private float m_DistanceToDetection; //@TEMP
+
     private Collider2D m_Col;
 
-    public float Force => m_Force;
+    private Rigidbody2D m_Rb;
     public Rigidbody2D Rb => m_Rb;
-    public LayerMask JumpableMask => m_JumpableMask;
+
 
     private void Awake()
     {
-        m_Col = GetComponent<Collider2D>();    
+        m_Col = GetComponent<Collider2D>();
+        m_Rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnEnable()
@@ -40,11 +50,6 @@ public class TJumpComponent : MonoBehaviour, IJump
         OnJump -= Jump;
     }
 
-    public void Init(Rigidbody2D rb)
-    {
-        m_Rb = rb;
-    }
-
     public void Init(Rigidbody2D rb, float inForce)
     {
         m_Rb = rb;
@@ -53,8 +58,10 @@ public class TJumpComponent : MonoBehaviour, IJump
 
     public void Jump(Vector2 inDirection)
     {
-        if (Physics2D.Raycast(transform.position, Vector2.down + Vector2.right * m_Col.bounds.extents.x, m_DistanceToDetection, JumpableMask) ||
-            Physics2D.Raycast(transform.position, Vector2.down + Vector2.right * -m_Col.bounds.extents.x, m_DistanceToDetection, JumpableMask))
+            // Check bottom right point
+        if (Physics2D.Raycast(m_Legs.position, Vector2.down + Vector2.right * m_Col.bounds.extents.x, m_DistanceToDetection, JumpableMask) ||
+            // Check bottom left point
+            Physics2D.Raycast(m_Legs.position, Vector2.down + Vector2.right * -m_Col.bounds.extents.x, m_DistanceToDetection, JumpableMask))
             Rb.AddForce(inDirection.normalized * m_Force);
     }
 
