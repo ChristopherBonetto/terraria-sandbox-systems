@@ -4,15 +4,15 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class TJumpComponent : MonoBehaviour, IJump
 {
-    public event Jump OnJump;
+    public event JumpEvent OnJumpEvent;
 
     [SerializeField]
     private float m_Force;
-    public float Force => m_Force;
+    public float Force { get { return m_Force; } }
 
     [SerializeField]
     private LayerMask m_JumpableMask;
-    public LayerMask JumpableMask => m_JumpableMask;
+    public LayerMask JumpableMask { get { return m_JumpableMask; } }
 
     [SerializeField]
     private Transform m_Legs;
@@ -21,9 +21,10 @@ public class TJumpComponent : MonoBehaviour, IJump
     private float m_DistanceToDetection; //@TEMP
 
     private Collider2D m_Col;
+    public Collider2D Col { get { return m_Col; } }
 
     private Rigidbody2D m_Rb;
-    public Rigidbody2D Rb => m_Rb;
+    public Rigidbody2D Rb { get{return m_Rb; } }
 
 
     private void Awake()
@@ -34,7 +35,7 @@ public class TJumpComponent : MonoBehaviour, IJump
 
     private void OnEnable()
     {
-        OnJump += Jump;
+        OnJumpEvent += Jump;
     }
 
     private void Update()
@@ -47,7 +48,7 @@ public class TJumpComponent : MonoBehaviour, IJump
 
     private void OnDisable()
     {
-        OnJump -= Jump;
+        OnJumpEvent -= Jump;
     }
 
     public void Init(Rigidbody2D rb, float inForce)
@@ -67,6 +68,6 @@ public class TJumpComponent : MonoBehaviour, IJump
 
     public void OnJumpDecision(Vector2 inDirection)
     {
-        OnJump(inDirection);
+        OnJumpEvent(inDirection);
     }
 }

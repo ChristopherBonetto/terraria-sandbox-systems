@@ -3,15 +3,17 @@ using System.Collections;
 
 public class TLinearMovement : MonoBehaviour, IMovable
 {
-    public event Move OnMove;
+    public event MoveEvent OnMoveEvent;
 
+    [Header("Movement variables")]
     [SerializeField]
     private float m_MovementSpeed;
-    public float MovementSpeed => m_MovementSpeed;
+    public float MovementSpeed { get { return m_MovementSpeed; } }
 
-    [SerializeField]
-    private LayerMask m_JumpableMask;
-    public LayerMask JumpableMask => m_JumpableMask;
+    [Header("Movement Fix")]
+    [SerializeField] [Tooltip("If player detect this mask, he can't walk along that direction")]
+    private LayerMask m_ObstacleMask;
+    public LayerMask ObstacleMasl { get { return m_ObstacleMask; } }
 
     [SerializeField]
     private float m_DistanceToDetection; //@TEMP
@@ -21,12 +23,12 @@ public class TLinearMovement : MonoBehaviour, IMovable
 
     private void OnEnable()
     {
-        OnMove += Move;
+        OnMoveEvent += Move;
     }
 
     private void OnDisable()
     {
-        OnMove -= Move;
+        OnMoveEvent -= Move;
     }
 
     public void Init(float inSpeed)
@@ -36,14 +38,16 @@ public class TLinearMovement : MonoBehaviour, IMovable
 
     public void Move(Vector2 inDirection)
     {
+        // Store last direction
         m_LastDirection = inDirection.normalized;
 
-        if (!Physics2D.Raycast(transform.position, inDirection, m_DistanceToDetection, m_JumpableMask))
+        // Check if it's colliding with walls
+        if (!Physics2D.Raycast(transform.position, inDirection, m_DistanceToDetection, m_ObstacleMask))
             transform.position += (Vector3) (LastDirection * MovementSpeed * Time.deltaTime); 
     }
 
     public void OnMovement(Vector2 inDirection)
     {
-        OnMove(inDirection);
+        OnMoveEvent(inDirection);
     }
 }

@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(TJumpComponent), typeof(TDefenseComponent), typeof(TLinearMovement))]
+/// <summary>
+/// Player controller => It works as connection between model and view.
+/// </summary>
+[RequireComponent(typeof(TJumpComponent), 
+                  typeof(TDefenseComponent), 
+                  typeof(TLinearMovement))]
+
 public class TPlayerController : MonoBehaviour
 {
-    #region Private
-    [SerializeField]
-    private float m_DistanceToDetection; //@TEMP
-    #endregion
-
-    #region Properties
+    /// <summary>
+    /// Player's movement component
+    /// </summary>
     private IMovable m_MovementComponent;
     public IMovable MovementComponent
     {
@@ -21,6 +24,9 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Player's defense component
+    /// </summary>
     private IDefend m_DefenseComponent;
     public IDefend DefenseComponent
     {
@@ -32,6 +38,9 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Player's jump component
+    /// </summary>
     private IJump m_JumpComponent;
     public IJump JumpComponent
     {
@@ -43,6 +52,10 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Player view.
+    /// It's used to show armor sprites and other visual.
+    /// </summary>
     private TPlayerView m_View;
     public TPlayerView View
     {
@@ -54,23 +67,34 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
-
+    // @TO DO: create a model for player.
+    // TO DELETE
     [SerializeField]
     private float m_MaxHealth;
     public float MaxHealth => m_MaxHealth;
-    #endregion
 
 
     private void OnEnable()
     {
         // subscribe
-        MovementComponent.OnMove += View.Flip;
+        MovementComponent.OnMoveEvent += View.Flip;
+        DefenseComponent.OnDamageEvent += View.UpdateHealthBar;
     }
 
     private void OnDisable()
     {
         // unsubscripted
-        MovementComponent.OnMove -= View.Flip;
+        MovementComponent.OnMoveEvent -= View.Flip;
+        DefenseComponent.OnDamageEvent -= View.UpdateHealthBar;
+    }
+
+    private void Start()
+    {
+        DefenseComponent.Init(MaxHealth);
+
+        m_View.HealthBar.minValue = 0;
+        m_View.HealthBar.maxValue = MaxHealth;
+        m_View.HealthBar.value = MaxHealth;
     }
 
     private void Update()
