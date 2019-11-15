@@ -17,6 +17,8 @@ public class TPlayerController : MonoBehaviour
     private TPlayerData m_Data;
     public TPlayerData Data { get { return m_Data; } }
 
+    #region Components
+
     /// <summary>
     /// Player's movement component
     /// </summary>
@@ -88,10 +90,47 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Weapon handler
+
+    [SerializeField]
+    private TItemScriptable m_ItemInHand;
+    public TItemScriptable ItemInHand
+    {
+        get { return m_ItemInHand; }
+        set
+        {
+            m_ItemInHand = value;
+
+            // reset stats
+            if (m_ItemInHand == null)
+            {
+                DefenseComponent.Init(Data.MaxHealth, Data.Defense);
+                MovementComponent.Init(Data.Speed);
+                JumpComponent.Init(Rb, Data.JumpForce);
+            }
+        }
+    }
+
+    #endregion
+
 
     private void OnEnable()
     {
         // subscribe
+
+        // Input
+        TInputManager.SharedInstance.OnMovementAxis += OnPlayerMovement;
+        TInputManager.SharedInstance.OnJumpDown += OnPlayerJumpDown;
+        TInputManager.SharedInstance.OnJumpUp += OnPlayerJumpUp;
+
+        // model
+        DefenseComponent.OnDamageEvent += DefenseComponent.TakeDamage;
+        MovementComponent.OnMoveEvent += MovementComponent.Move;
+        JumpComponent.OnJumpEvent += JumpComponent.Jump;
+
+        // view
         MovementComponent.OnMoveEvent += View.Flip;
         DefenseComponent.OnDamageEvent += View.UpdateHealthBar;
     }
@@ -99,13 +138,25 @@ public class TPlayerController : MonoBehaviour
     private void OnDisable()
     {
         // unsubscripted
+
+        // Input
+        TInputManager.SharedInstance.OnMovementAxis -= OnPlayerMovement;
+        TInputManager.SharedInstance.OnJumpDown -= OnPlayerJumpDown;
+        TInputManager.SharedInstance.OnJumpUp -= OnPlayerJumpUp;
+
+        // model
+        DefenseComponent.OnDamageEvent -= DefenseComponent.TakeDamage;
+        MovementComponent.OnMoveEvent -= MovementComponent.Move;
+        JumpComponent.OnJumpEvent -= JumpComponent.Jump;
+
+        // view
         MovementComponent.OnMoveEvent -= View.Flip;
         DefenseComponent.OnDamageEvent -= View.UpdateHealthBar;
     }
 
     private void Start()
     {
-        DefenseComponent.Init(Data.MaxHealth);
+        DefenseComponent.Init(Data.MaxHealth, Data.Defense);
         MovementComponent.Init(Data.Speed);
         JumpComponent.Init(Rb, Data.JumpForce);
 
@@ -114,24 +165,55 @@ public class TPlayerController : MonoBehaviour
         m_View.HealthBar.value = Data.MaxHealth;
     }
 
-    private void Update()
+    #region Input manager event methods
+
+    private void OnPlayerMovement(float inDirection)
     {
         // Movement
-        float direction = Input.GetAxisRaw("Horizontal");
+        inDirection = Input.GetAxisRaw("Horizontal");
 
-        if (direction != 0)
+        if (inDirection != 0)
         {
-            MovementComponent.OnMovement(Vector2.right * direction);
-        }   
+            MovementComponent.OnMovement(Vector2.right * inDirection);
+        }
+    }
 
+    private void OnPlayerJumpDown()
+    {
         // Jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
             JumpComponent.OnJumpDecision(Vector2.up);
         }
-        else if (!Input.GetKey(KeyCode.Space) && JumpComponent.Rb.velocity.y > 0)
+    }
+
+    private void OnPlayerJumpUp()
+    {
+        StartCoroutine("JumpUp");
+    }
+
+    IEnumerator JumpUp()
+    {
+        while (Rb.velocity.y > 0)
         {
-            JumpComponent.Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.5f);
+            Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.0f);
+            yield return null;
         }
     }
+
+    #endregion
+
+    #region Generic event manager methods
+
+    private void OnItemEquipped(TItemScriptable item)
+    {
+        ItemInHand = item;
+
+        // set stats as default + item
+        DefenseComponent.Init(Data.MaxHealth, Data.Defense + item.Defence);
+        MovementComponent.Init(Data.Speed);
+        JumpComponent.Init(Rb, Data.JumpForce);
+    }
+
+    #endregion
 }

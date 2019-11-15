@@ -21,15 +21,6 @@ public class TLinearMovement : MonoBehaviour, IMovable
     private Vector3 m_LastDirection;
     public Vector3 LastDirection { get { return m_LastDirection; } }
 
-    private void OnEnable()
-    {
-        OnMoveEvent += Move;
-    }
-
-    private void OnDisable()
-    {
-        OnMoveEvent -= Move;
-    }
 
     public void Init(float inSpeed)
     {

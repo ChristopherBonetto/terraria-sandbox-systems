@@ -25,16 +25,6 @@ public class TDefenseComponent : MonoBehaviour, IDefend
         Debug.Log(CurrentHealth);
     }
 
-    protected virtual void OnEnable()
-    {
-        OnDamageEvent += TakeDamage;
-    }
-
-    protected virtual void OnDisable()
-    {
-        OnDamageEvent -= TakeDamage;
-    }
-
     public void Init(float inMaxHealth)
     {
         m_MaxHealth = inMaxHealth;

@@ -32,22 +32,12 @@ public class TJumpComponent : MonoBehaviour, IJump
         m_Col = GetComponent<Collider2D>();
     }
 
-    private void OnEnable()
-    {
-        OnJumpEvent += Jump;
-    }
-
     private void Update()
     {
         if (Rb.velocity.y < 0)
         {
             Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.5f);
         }
-    }
-
-    private void OnDisable()
-    {
-        OnJumpEvent -= Jump;
     }
 
     public void Init(Rigidbody2D rb, float inForce)
