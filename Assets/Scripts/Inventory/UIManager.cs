@@ -6,9 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-
-    public GameObject MainCanvas;
-
+    
     [SerializeField] private GameObject m_inventoryItemsHolder;
     [SerializeField] private GameObject m_slotPrefab;
 
@@ -26,19 +24,19 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        ItemHandler.OnDragEvent += ChangeImageItemInHand;
-        ItemHandler.OnStopDragEvent += DisableImageItemInHand;
-        ItemHandler.OnDropEvent += DisableImageItemInHand;        
+        TItemHandler.OnDragEvent += ChangeImageItemInHand;
+        TItemHandler.OnStopDragEvent += DisableImageItemInHand;
+        TItemHandler.OnDropEvent += DisableImageItemInHand;        
 
-        ItemHandler.OnDragEvent += StartHoldingItem;
+        TItemHandler.OnDragEvent += StartHoldingItem;
     }
     private void OnDisable()
     {
-        ItemHandler.OnDragEvent -= ChangeImageItemInHand;
-        ItemHandler.OnStopDragEvent -= DisableImageItemInHand;
-        ItemHandler.OnDropEvent -= DisableImageItemInHand;
+        TItemHandler.OnDragEvent -= ChangeImageItemInHand;
+        TItemHandler.OnStopDragEvent -= DisableImageItemInHand;
+        TItemHandler.OnDropEvent -= DisableImageItemInHand;
 
-        ItemHandler.OnDragEvent -= StartHoldingItem;
+        TItemHandler.OnDragEvent -= StartHoldingItem;
     }
 
 
@@ -56,9 +54,7 @@ public class UIManager : MonoBehaviour
         InstantiateSlotsInInventory();
         DisableImageItemInHand();
 
-        OpenCloseInventory(InventoryIsOpen);
-
-        Debug.Log(m_InventorySlotsUI.Count);
+        OpenCloseInventory(InventoryIsOpen);        
     }
 
     private void Update()
@@ -80,7 +76,7 @@ public class UIManager : MonoBehaviour
             slot.transform.localScale = new Vector3(1,1,1);
 
             AddSlotToInventoryUI(slot);
-            Inventory.Instance.AddSlotToInventory(slot.GetComponentInChildren<InventorySlot>());
+            TInventory.Instance.AddSlotToInventory(slot.GetComponentInChildren<TInventorySlot>());
 
             m_slotCounter++;
             InstantiateSlotsInInventory();
@@ -120,6 +116,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void ChangeSpriteFromImage(Image imageToChange, Sprite spriteToView)
+    {
+        imageToChange.sprite = spriteToView;
+    }
+
     public void OpenCloseInventory(bool isClose)
     {
         if (isClose)
@@ -137,7 +138,7 @@ public class UIManager : MonoBehaviour
     public void ChangeImageItemInHand()
     {
         m_itemInHandUI.gameObject.SetActive(true);
-        m_itemInHandUI.sprite = ItemHandler.Instance.itemInHand.ItemSprite;
+        m_itemInHandUI.sprite = TItemHandler.Instance.itemInHand.ItemSprite;
     }
 
     public void ItemFollowMousePosition()
@@ -159,7 +160,7 @@ public class UIManager : MonoBehaviour
 
     IEnumerator ItemInHand()
     {
-        while (ItemHandler.Instance.itemInHand != null)
+        while (TItemHandler.Instance.itemInHand != null)
         {
             ItemFollowMousePosition();
             yield return null;

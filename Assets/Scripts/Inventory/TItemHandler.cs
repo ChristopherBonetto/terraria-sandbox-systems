@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemHandler : MonoBehaviour
+public class TItemHandler : MonoBehaviour
 {
-    public static ItemHandler Instance;
+    public static TItemHandler Instance;
 
-    public ItemScriptable itemInHand = null;
+    public TItemScriptable itemInHand = null;
 
     #region Drag
     //Assign the itemInHand as another slotted item
-    public delegate void OnBeginDragDelegate(InventorySlot tempSlottedItem);
+    public delegate void OnBeginDragDelegate(TInventorySlot tempSlottedItem);
     public static OnBeginDragDelegate OnBeginDragEvent;
 
-    public void StartDragItemEvent(InventorySlot tempSlottedItem)
+    public void StartDragItemEvent(TInventorySlot tempSlottedItem)
     {
         if(tempSlottedItem != null)
         {
@@ -51,9 +51,9 @@ public class ItemHandler : MonoBehaviour
 
     #region Drop
     //Used to drop an item to the selected slot
-    public event Action<InventorySlot> OnDropEventAction;
+    public event Action<TInventorySlot> OnDropEventAction;
 
-    public void DropItemAction(InventorySlot itemToEquip)
+    public void DropItemAction(TInventorySlot itemToEquip)
     {
         if(OnDropEventAction != null)
         {
@@ -118,10 +118,11 @@ public class ItemHandler : MonoBehaviour
     }
     
 
-    public void TakeSlotFromHand(InventorySlot slotToEquipItem)
+    public void TakeSlotFromHand(TInventorySlot slotToEquipItem)
     {
         slotToEquipItem.ItemInSlot = itemInHand;
-        slotToEquipItem.m_slotImage.sprite = itemInHand.ItemSprite;
+        UIManager.Instance.ChangeSpriteFromImage(slotToEquipItem.m_slotImage, itemInHand.ItemSprite);
+        //slotToEquipItem.m_slotImage.sprite = itemInHand.ItemSprite;
         itemInHand = null;
     }
 }
