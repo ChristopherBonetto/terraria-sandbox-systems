@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class TPlayerView : MonoBehaviour
 {
+    /// <summary>
+    /// Player's slider health.
+    /// </summary>
     [Header("Health")]
     [SerializeField]
     private Slider m_HealthBar;

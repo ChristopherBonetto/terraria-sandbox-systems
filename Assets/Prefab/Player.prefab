@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b861e336ecec845813721236052181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxHealth: 100
+  m_Data: {fileID: 11400000, guid: 038574074c1361b43b343d5d3f0a1e6f, type: 2}
 --- !u!114 &2069652337104169511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e503c37604a1e428f1aa6c1197421a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_HealthBar: {fileID: 0}
 --- !u!1 &8241897150657624130
 GameObject:
   m_ObjectHideFlags: 0

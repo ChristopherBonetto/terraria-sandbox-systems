@@ -9,7 +9,7 @@ namespace Terrria.AI
         Undead,
     }
 
-    [CreateAssetMenu(fileName = "Data_MonsterName", menuName = "AI/Data")]
+    [CreateAssetMenu(fileName = "Data_MonsterName", menuName = "Terraria/AI/Data")]
     public class AIBaseData : ScriptableObject
     {
         [Header("Identification")]

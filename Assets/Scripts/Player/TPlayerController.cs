@@ -11,6 +11,13 @@ using System.Collections;
 public class TPlayerController : MonoBehaviour
 {
     /// <summary>
+    /// Default player's stats
+    /// </summary>
+    [SerializeField]
+    private TPlayerData m_Data;
+    public TPlayerData Data { get { return m_Data; } }
+
+    /// <summary>
     /// Player's movement component
     /// </summary>
     private IMovable m_MovementComponent;
@@ -67,11 +74,19 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
-    // @TO DO: create a model for player.
-    // TO DELETE
-    [SerializeField]
-    private float m_MaxHealth;
-    public float MaxHealth => m_MaxHealth;
+    /// <summary>
+    /// Player's rigid body.
+    /// </summary>
+    private Rigidbody2D m_Rb;
+    public Rigidbody2D Rb
+    {
+        get
+        {
+            if (m_Rb == null)
+                m_Rb = GetComponent<Rigidbody2D>();
+            return m_Rb;
+        }
+    }
 
 
     private void OnEnable()
@@ -90,11 +105,13 @@ public class TPlayerController : MonoBehaviour
 
     private void Start()
     {
-        DefenseComponent.Init(MaxHealth);
+        DefenseComponent.Init(Data.MaxHealth);
+        MovementComponent.Init(Data.Speed);
+        JumpComponent.Init(Rb, Data.JumpForce);
 
         m_View.HealthBar.minValue = 0;
-        m_View.HealthBar.maxValue = MaxHealth;
-        m_View.HealthBar.value = MaxHealth;
+        m_View.HealthBar.maxValue = Data.MaxHealth;
+        m_View.HealthBar.value = Data.MaxHealth;
     }
 
     private void Update()

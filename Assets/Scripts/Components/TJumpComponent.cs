@@ -30,7 +30,6 @@ public class TJumpComponent : MonoBehaviour, IJump
     private void Awake()
     {
         m_Col = GetComponent<Collider2D>();
-        m_Rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnEnable()

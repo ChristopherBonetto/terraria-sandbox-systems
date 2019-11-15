@@ -15,7 +15,9 @@ public class TDefenseComponent : MonoBehaviour, IDefend
     private float m_Defense;
     public float Defense => m_Defense;
 
-
+    /// <summary>
+    /// Editor testing.
+    /// </summary>
     [ContextMenu("Take Damage")]
     public void DamageEntity()
     {
