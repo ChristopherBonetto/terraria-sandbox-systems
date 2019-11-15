@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TWeaponComponent : MonoBehaviour
 {
-    private ItemScriptable m_ItemInHand;    // @TEMP change this into weapon type.
-    public ItemScriptable ItemInHand        // @TEMP change this into weapon type.
+    private TItemScriptable m_ItemInHand;    // @TEMP change this into weapon type.
+    public TItemScriptable ItemInHand        // @TEMP change this into weapon type.
     {
         get { return m_ItemInHand; }
         set

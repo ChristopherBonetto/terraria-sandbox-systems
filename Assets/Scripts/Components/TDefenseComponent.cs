@@ -3,9 +3,9 @@ using System.Collections;
 
 public class TDefenseComponent : MonoBehaviour, IDefend
 {
-    public event Damage OnDamage;
+    public event DamageEvent OnDamageEvent;
 
-    #region Properties
+    // Stats
     private float m_MaxHealth;
     public float MaxHealth => m_MaxHealth;
 
@@ -14,19 +14,24 @@ public class TDefenseComponent : MonoBehaviour, IDefend
 
     private float m_Defense;
     public float Defense => m_Defense;
-    #endregion
 
-    #region MonoBehaviour
+
+    [ContextMenu("Take Damage")]
+    public void DamageEntity()
+    {
+        OnDamageTaken(1);
+        Debug.Log(CurrentHealth);
+    }
+
     protected virtual void OnEnable()
     {
-        OnDamage += TakeDamage;
+        OnDamageEvent += TakeDamage;
     }
 
     protected virtual void OnDisable()
     {
-        OnDamage -= TakeDamage;
+        OnDamageEvent -= TakeDamage;
     }
-    #endregion
 
     public void Init(float inMaxHealth)
     {
@@ -52,6 +57,6 @@ public class TDefenseComponent : MonoBehaviour, IDefend
 
     public void OnDamageTaken(float inAmount)
     {
-        OnDamage(inAmount);
+        OnDamageEvent(inAmount);
     }
 }
