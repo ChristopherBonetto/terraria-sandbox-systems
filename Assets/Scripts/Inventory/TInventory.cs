@@ -19,15 +19,15 @@ public class TInventory : MonoBehaviour
     
 
 
-    public void CheckFreeSlotAndCollect(TItemScriptable addThisItem)
+    public void CheckFreeSlotAndCollect(TItemQuantity addThisItem)
     {
         if (m_inventoryCount <= InventorySlots.Count)
         {
-            if(InventorySlots[m_inventoryCount].ItemInSlot == null)
+            if(InventorySlots[m_inventoryCount].ItemInSlot.Item == null)
             {
-                InventorySlots[m_inventoryCount].ItemInSlot = addThisItem;
+                InventorySlots[m_inventoryCount].ItemInSlot.Item = addThisItem.Item;
 
-                UIManager.Instance.ChangeSpriteFromImage(InventorySlots[m_inventoryCount].m_slotImage, addThisItem.ItemSprite);
+                UIManager.Instance.ChangeSpriteFromImage(InventorySlots[m_inventoryCount].m_slotImage, addThisItem.Item.ItemSprite);
             }
             else
             {

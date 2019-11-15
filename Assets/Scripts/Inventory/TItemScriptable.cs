@@ -20,6 +20,7 @@ public class TItemScriptable : ScriptableObject
 [System.Serializable]
 public struct TItemQuantity
 {
+    
     public TItemScriptable Item;
     public int Amount;
 
@@ -28,6 +29,8 @@ public struct TItemQuantity
         Item = inItem;
         Amount = inAmount;
     }
+
+
 
     public override string ToString()
     {

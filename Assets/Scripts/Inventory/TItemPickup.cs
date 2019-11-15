@@ -52,7 +52,7 @@ public class TItemPickup : MonoBehaviour
 
         if (pc)
         {
-            TInventory.Instance.CheckFreeSlotAndCollect(m_ContainedItem.Item);
+            TInventory.Instance.CheckFreeSlotAndCollect(m_ContainedItem);
             gameObject.SetActive(false);
         }
     }

@@ -34,7 +34,7 @@ public class TDraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IE
     //Used to restore the state of the last grabbed item before being dragged.
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(TItemHandler.Instance.itemInHand != null)
+        if(TItemHandler.Instance.itemInHand.Item != null)
         {
             TItemHandler.Instance.StopDragItemEvent();
         }

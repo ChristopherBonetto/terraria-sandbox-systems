@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(TDroppableItem), typeof(TDraggableItem))]
 public class TInventorySlot : MonoBehaviour
 {
-    public TItemScriptable ItemInSlot = null;
+    public TItemQuantity ItemInSlot;
     
     public Image m_slotImage;
 
@@ -33,9 +33,9 @@ public class TInventorySlot : MonoBehaviour
 
     private void Start()
     {
-        if(ItemInSlot != null)
+        if(ItemInSlot.Item != null)
         {
-            UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.ItemSprite);
+            UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.Item.ItemSprite);
         }
     }
 
@@ -45,10 +45,10 @@ public class TInventorySlot : MonoBehaviour
     //Used to change the ItemHandler's variable itemInHand and subscribe the class of this item to another event.
     public void ChangeHandItemWithThisSlot()
     {   
-        if(ItemInSlot != null)
+        if(ItemInSlot.Item != null)
         {
             TItemHandler.Instance.StartDragItemEvent(this);
-            ItemInSlot = null;
+            ItemInSlot.Item = null;
             UIManager.Instance.ChangeSpriteFromImage(m_slotImage, null);
 
             TItemHandler.OnStopDragEvent += RestoreImageAndItemInSlot;
@@ -61,7 +61,7 @@ public class TInventorySlot : MonoBehaviour
     public void RestoreImageAndItemInSlot()
     {
         ItemInSlot = TItemHandler.Instance.itemInHand;
-        UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.ItemSprite);
+        UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.Item.ItemSprite);
     }
 
     //Take the item in hand and equip it in this slot.

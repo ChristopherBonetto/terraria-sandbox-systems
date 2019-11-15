@@ -8,7 +8,7 @@ public class TItemHandler : MonoBehaviour
 {
     public static TItemHandler Instance;
 
-    public TItemScriptable itemInHand = null;
+    public TItemQuantity itemInHand;
 
     #region Drag
     //Assign the itemInHand as another slotted item
@@ -57,7 +57,7 @@ public class TItemHandler : MonoBehaviour
     {
         if(OnDropEventAction != null)
         {
-            if(itemInHand != null)
+            if(itemInHand.Item != null)
             {
                 OnDropEventAction(itemToEquip);
                 DropEvent();
@@ -103,7 +103,7 @@ public class TItemHandler : MonoBehaviour
 
     void Update()
     {
-        if(itemInHand != null)
+        if(itemInHand.Item != null)
         {
             Debug.Log(itemInHand);
         }
@@ -112,7 +112,7 @@ public class TItemHandler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            itemInHand = null;
+            itemInHand.Item = null;
         }
 
     }
@@ -121,8 +121,8 @@ public class TItemHandler : MonoBehaviour
     public void TakeSlotFromHand(TInventorySlot slotToEquipItem)
     {
         slotToEquipItem.ItemInSlot = itemInHand;
-        UIManager.Instance.ChangeSpriteFromImage(slotToEquipItem.m_slotImage, itemInHand.ItemSprite);
+        UIManager.Instance.ChangeSpriteFromImage(slotToEquipItem.m_slotImage, itemInHand.Item.ItemSprite);
         //slotToEquipItem.m_slotImage.sprite = itemInHand.ItemSprite;
-        itemInHand = null;
+        itemInHand.Item = null;
     }
 }
