@@ -61,22 +61,22 @@ public class InputTester : MonoBehaviour
         Debug.Log("Axis value: " + inAxis);
     }
 
-    private void LeftClickDownTest(TClickData inData)
+    private void LeftClickDownTest(TPointerData inData)
     {
         Debug.Log("Left click DOWN at " + inData);
     }
 
-    private void RightClickDownTest(TClickData inData)
+    private void RightClickDownTest(TPointerData inData)
     {
         Debug.Log("Right click DOWN at " + inData);
     }
 
-    private void LeftClickUpTest(TClickData inData)
+    private void LeftClickUpTest(TPointerData inData)
     {
         Debug.Log("Left click UP at " + inData);
     }
 
-    private void RightClickUpTest(TClickData inData)
+    private void RightClickUpTest(TPointerData inData)
     {
         Debug.Log("Right click UP at " + inData);
     }

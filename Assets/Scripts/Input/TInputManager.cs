@@ -23,7 +23,7 @@ public class TInputManager : MonoBehaviour
 
     #region Input delegates definition
 
-    public delegate void TClickEvent(TClickData inData);
+    public delegate void TPointerEvent(TPointerData inData);
     public delegate void TAxisEvent(float inAxis);
     public delegate void TButtonEvent();
 
@@ -32,12 +32,15 @@ public class TInputManager : MonoBehaviour
     #region Input events
     
     // Left click
-    public event TClickEvent OnLeftClickDown;
-    public event TClickEvent OnLeftClickUp;
+    public event TPointerEvent OnLeftClickDown;
+    public event TPointerEvent OnLeftClickUp;
 
     // Right click
-    public event TClickEvent OnRightClickDown;
-    public event TClickEvent OnRightClickUp;
+    public event TPointerEvent OnRightClickDown;
+    public event TPointerEvent OnRightClickUp;
+
+    // Pointer movement
+    public event TPointerEvent OnPointerMovedOnGrid;
 
     // Movement
     public event TAxisEvent OnMovementAxis;
@@ -61,6 +64,16 @@ public class TInputManager : MonoBehaviour
         CheckMovementInput();
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine(PointerTrackerCoroutine());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
     #endregion
 
     #region Private methods
@@ -73,20 +86,20 @@ public class TInputManager : MonoBehaviour
         #region Left click
 
             if (Input.GetMouseButtonDown(0))
-            OnLeftClickDown?.Invoke(new TClickData(Input.mousePosition));
+            OnLeftClickDown?.Invoke(new TPointerData(Input.mousePosition));
 
         else if (Input.GetMouseButtonUp(0))
-            OnLeftClickUp?.Invoke(new TClickData(Input.mousePosition));
+            OnLeftClickUp?.Invoke(new TPointerData(Input.mousePosition));
 
         #endregion
 
         #region Right click
 
         if (Input.GetMouseButtonDown(1))
-            OnRightClickDown?.Invoke(new TClickData(Input.mousePosition));
+            OnRightClickDown?.Invoke(new TPointerData(Input.mousePosition));
 
         else if (Input.GetMouseButtonUp(1))
-            OnRightClickUp?.Invoke(new TClickData(Input.mousePosition));
+            OnRightClickUp?.Invoke(new TPointerData(Input.mousePosition));
 
         #endregion
     }
@@ -116,6 +129,57 @@ public class TInputManager : MonoBehaviour
         #endregion
     }
 
+
+    /// <summary>
+    /// Checks if the pointer moved from a grid cell to another and raises an event when it happens. The coroutine runs only if there is at least one subscriber to the event.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator PointerTrackerCoroutine()
+    {
+        // Wait for subscribers
+        yield return new WaitUntil(IsPointerTrackingBeingRequested);
+
+        // On first frame, save cell
+        Vector3Int oldPointerCell = TTilemapManager.SharedInstance.WorldToGridPosition(CameraFollow.MainCamera.ScreenToWorldPoint(Input.mousePosition));
+
+        yield return null;
+
+        // From second frame on, perform the check when running
+        Vector3Int newPointerCell;
+
+        while (Application.isPlaying)
+        {
+            // If there no subscribers, wait for new subscribers
+            if (OnPointerMovedOnGrid == null)
+            {
+                yield return new WaitUntil(IsPointerTrackingBeingRequested);
+            }
+            else
+            {
+                // Get current cell the pointer is hovering on
+                newPointerCell = TTilemapManager.SharedInstance.WorldToGridPosition(CameraFollow.MainCamera.ScreenToWorldPoint(Input.mousePosition));
+
+                // If it's different from the previous one, update it and raise event
+                if (newPointerCell != oldPointerCell)
+                {
+                    oldPointerCell = newPointerCell;
+                    OnPointerMovedOnGrid?.Invoke(new TPointerData(Input.mousePosition));
+                }
+                
+                yield return null;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Checks if anyone is requesting pointer tracking.
+    /// </summary>
+    /// <returns>True if pointer tracking is requested.</returns>
+    private bool IsPointerTrackingBeingRequested()
+    {
+        return OnPointerMovedOnGrid != null;
+    }
+
     #endregion
 
 }
@@ -123,13 +187,13 @@ public class TInputManager : MonoBehaviour
 /// <summary>
 /// Struct containing information about a Click event.
 /// </summary>
-public struct TClickData
+public struct TPointerData
 {
     public Vector3 ScreenPosition;
     public Vector3 WorldPosition;
     public Vector3Int GridPosition;
 
-    public TClickData(Vector3 inMousePosition)
+    public TPointerData(Vector3 inMousePosition)
     {
         ScreenPosition = inMousePosition;
         WorldPosition = CameraFollow.MainCamera.ScreenToWorldPoint(inMousePosition);
