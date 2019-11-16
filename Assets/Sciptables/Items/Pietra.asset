@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626f480969f831a41ae87d21fb8ee93f, type: 3}
   m_Name: Pietra
   m_EditorClassIdentifier: 
-  ItemName: 
-  ItemQuantity: 0
-  Durability: 1
+  ItemName: Pietra
   Attack: 1
   Defence: 1
   TimeToAttack: 1

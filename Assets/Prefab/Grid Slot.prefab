@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 1448641037879471624}
   - component: {fileID: 521143849575262180}
   - component: {fileID: 3639225300502098365}
+  - component: {fileID: 4646912224330590888}
   m_Layer: 5
   m_Name: Item Slot Button
   m_TagString: Untagged
@@ -202,7 +203,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2401622769573948475}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 521143849575262180}
+        m_MethodName: SelectThisSlotForEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &6553325833643196061
@@ -241,9 +253,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb453457ee2799e41a2f7f89210aeda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemInSlot: {fileID: 0}
-  DraggableComponent: {fileID: 6553325833643196061}
-  DroppableComponent: {fileID: 1448641037879471624}
+  ItemInSlot:
+    Item: {fileID: 0}
+    Amount: 0
   m_slotImage: {fileID: 0}
 --- !u!225 &3639225300502098365
 CanvasGroup:
@@ -257,6 +269,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4646912224330590888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2401622769573948470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1a7f2cae5920a43a9f2cd0de5b07a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4277470830733030595
 GameObject:
   m_ObjectHideFlags: 0

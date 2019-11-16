@@ -72,7 +72,7 @@ public class UIManager : MonoBehaviour
         {
             GameObject slot = Instantiate(m_slotPrefab) as GameObject;
 
-            slot.transform.parent = m_inventoryItemsHolder.transform;
+            slot.transform.SetParent(m_inventoryItemsHolder.transform);
             slot.transform.localScale = new Vector3(1,1,1);
 
             AddSlotToInventoryUI(slot);
@@ -120,6 +120,10 @@ public class UIManager : MonoBehaviour
     {
         imageToChange.sprite = spriteToView;
     }
+    public void ChangeColorFromImage(Image imageToChange, Color newColor)
+    {
+        imageToChange.color = newColor;
+    }
 
     public void OpenCloseInventory(bool isClose)
     {
@@ -138,7 +142,7 @@ public class UIManager : MonoBehaviour
     public void ChangeImageItemInHand()
     {
         m_itemInHandUI.gameObject.SetActive(true);
-        m_itemInHandUI.sprite = TItemHandler.Instance.itemInHand.Item.ItemSprite;
+        m_itemInHandUI.sprite = TItemHandler.Instance.ItemDraggedInHand.Item.ItemSprite;
     }
 
     public void ItemFollowMousePosition()
@@ -160,7 +164,7 @@ public class UIManager : MonoBehaviour
 
     IEnumerator ItemInHand()
     {
-        while (TItemHandler.Instance.itemInHand.Item != null)
+        while (TItemHandler.Instance.ItemDraggedInHand.Item != null)
         {
             ItemFollowMousePosition();
             yield return null;

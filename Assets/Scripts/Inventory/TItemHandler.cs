@@ -8,7 +8,8 @@ public class TItemHandler : MonoBehaviour
 {
     public static TItemHandler Instance;
 
-    public TItemQuantity itemInHand;
+    public TItemQuantity ItemDraggedInHand;
+    public TInventorySlot CurrentSelectedItem;
 
     #region Drag
     //Assign the itemInHand as another slotted item
@@ -19,7 +20,7 @@ public class TItemHandler : MonoBehaviour
     {
         if(tempSlottedItem != null)
         {
-            itemInHand = tempSlottedItem.ItemInSlot;
+            ItemDraggedInHand = tempSlottedItem.ItemInSlot;
             OnDragEvent();
         }
     }
@@ -57,12 +58,11 @@ public class TItemHandler : MonoBehaviour
     {
         if(OnDropEventAction != null)
         {
-            if(itemInHand.Item != null)
+            if(ItemDraggedInHand.Item != null)
             {
                 OnDropEventAction(itemToEquip);
                 DropEvent();
             }
-            
         }
     }
 
@@ -79,15 +79,25 @@ public class TItemHandler : MonoBehaviour
     }
     #endregion
 
+    public event Action<TInventorySlot> OnSelectedSlotEventAction;
+
+    public void SelectedSlotAction(TInventorySlot slotToSelect)
+    {
+        if (OnSelectedSlotEventAction != null)
+        {
+            if(CurrentSelectedItem != null)
+            {
+                UIManager.Instance.ChangeColorFromImage(CurrentSelectedItem.m_slotImage, Color.white);
+                OnSelectedSlotEventAction(slotToSelect);
+            }
+            
+            
+        }
+    }
+
     private void OnEnable()
     {
-        OnBeginDragEvent = StartDragItemEvent;
-        
-    }
-    private void OnDisable()
-    {
-        OnBeginDragEvent = StartDragItemEvent;
-        
+        OnBeginDragEvent = StartDragItemEvent;      
     }
 
     private void Awake()
@@ -100,29 +110,10 @@ public class TItemHandler : MonoBehaviour
         
     }
     
-
-    void Update()
-    {
-        if(itemInHand.Item != null)
-        {
-            Debug.Log(itemInHand);
-        }
-        
-
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            itemInHand.Item = null;
-        }
-
-    }
-    
-
     public void TakeSlotFromHand(TInventorySlot slotToEquipItem)
     {
-        slotToEquipItem.ItemInSlot = itemInHand;
-        UIManager.Instance.ChangeSpriteFromImage(slotToEquipItem.m_slotImage, itemInHand.Item.ItemSprite);
-        //slotToEquipItem.m_slotImage.sprite = itemInHand.ItemSprite;
-        itemInHand.Item = null;
+        slotToEquipItem.ItemInSlot = ItemDraggedInHand;
+        UIManager.Instance.ChangeSpriteFromImage(slotToEquipItem.m_slotImage, ItemDraggedInHand.Item.ItemSprite);
+        ItemDraggedInHand.Item = null;
     }
 }
