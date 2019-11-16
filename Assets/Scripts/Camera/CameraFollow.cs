@@ -6,7 +6,10 @@ public class CameraFollow : MonoBehaviour
 {
     public static Camera MainCamera { get; private set; }
 
+    public Transform TransformComponent { get; private set; }
+
     [SerializeField] private Transform m_Target;
+    [SerializeField] private Vector3 m_Offset;
 
     [SerializeField] private bool m_IsSmooth;
 
@@ -20,7 +23,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        var newPosition = new Vector3(m_Target.transform.position.x, m_Target.transform.position.y, transform.position.z);
+        var newPosition = m_Target.position + m_Offset;
 
         if (m_IsSmooth)
             transform.position = Vector3.MoveTowards(transform.position, newPosition, m_MovementSpeed * Time.deltaTime);
