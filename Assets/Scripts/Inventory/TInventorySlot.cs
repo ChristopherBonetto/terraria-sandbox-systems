@@ -51,7 +51,7 @@ public class TInventorySlot : MonoBehaviour
     {
         if (ItemInSlot.Item != null && TItemHandler.Instance.CurrentSelectedItem != this)
         {
-            StartSelectedSlotEvent(this);
+            TItemHandler.Instance.SelectedSlotAction(this);
         }
     }
 

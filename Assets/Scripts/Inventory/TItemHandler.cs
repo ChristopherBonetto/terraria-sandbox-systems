@@ -9,7 +9,7 @@ public class TItemHandler : MonoBehaviour
     public static TItemHandler Instance;
 
     public TItemQuantity ItemDraggedInHand;
-    public TInventorySlot CurrentSelectedItem;
+    public TInventorySlot CurrentSelectedItem = null;
 
     #region Drag
     //Assign the itemInHand as another slotted item
@@ -85,13 +85,15 @@ public class TItemHandler : MonoBehaviour
     {
         if (OnSelectedSlotEventAction != null)
         {
-            if(CurrentSelectedItem != null)
+            if(CurrentSelectedItem == null)
+            {
+                OnSelectedSlotEventAction(slotToSelect);
+            }
+            else
             {
                 UIManager.Instance.ChangeColorFromImage(CurrentSelectedItem.m_slotImage, Color.white);
                 OnSelectedSlotEventAction(slotToSelect);
-            }
-            
-            
+            }            
         }
     }
 
@@ -105,11 +107,14 @@ public class TItemHandler : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            CurrentSelectedItem = null;
+        }
     }
-    
+
     public void TakeSlotFromHand(TInventorySlot slotToEquipItem)
     {
         slotToEquipItem.ItemInSlot = ItemDraggedInHand;
