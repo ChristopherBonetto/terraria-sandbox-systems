@@ -310,7 +310,7 @@ Transform:
   m_GameObject: {fileID: 7593420807902170189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.94, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 2826148556646059618}
   - {fileID: 486078349784539313}
@@ -373,7 +373,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   m_Legs: {fileID: 3718000970134068218}
-  m_DistanceToDetection: 0.2
+  m_DistanceToDetection: 0.5
 --- !u!114 &7593420807902170185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_ObstacleMask:
     serializedVersion: 2
     m_Bits: 256
-  m_DistanceToDetection: 0.3
+  m_DistanceToDetection: 0.6
 --- !u!114 &7593420807902170188
 MonoBehaviour:
   m_ObjectHideFlags: 0
