@@ -62,6 +62,7 @@ public class TInputManager : MonoBehaviour
     {
         CheckMouseInput();
         CheckMovementInput();
+        CheckKeyboardNumber();
     }
 
     private void OnEnable()
@@ -127,6 +128,71 @@ public class TInputManager : MonoBehaviour
             OnJumpUp?.Invoke();
 
         #endregion
+    }
+
+    private void CheckKeyboardNumber()
+    {
+        if (Input.anyKeyDown)
+        {
+            int? tempNumber = ReturnKeyboardNumber();
+
+            if (tempNumber.HasValue)
+            {
+                int effectiveNumber = (int)tempNumber - 1;
+
+                TInventory.Instance.InventorySlots[effectiveNumber].SelectThisSlotForEvent();
+
+            }
+        }
+    }
+
+    private int? ReturnKeyboardNumber()
+    {        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            return 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            return 2;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            return 3;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            return 4;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            return 5;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            return 6;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            return 7;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            return 8;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            return 9;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            return 10;
+        }
+        else
+        {
+            return null;
+        }
+        
     }
 
 

@@ -18,31 +18,44 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Image m_itemInHandUI;
 
-    private List<GameObject> m_InventorySlotsUI = new List<GameObject>();
+    public List<GameObject> m_InventorySlotsUI = new List<GameObject>();
 
     public bool InventoryIsOpen = false;
 
     private void OnEnable()
     {
         TItemHandler.OnDragEvent += ChangeImageItemInHand;
-        TItemHandler.OnStopDragEvent += DisableImageItemInHand;
-        TItemHandler.OnDropEvent += DisableImageItemInHand;        
-
         TItemHandler.OnDragEvent += StartHoldingItem;
+        //TItemHandler.OnDragEvent += RestoreColorToSelectedSlotWhenDragged;
+
+        TItemHandler.OnStopDragEvent += DisableImageItemInHand;
+
+        TItemHandler.OnDropEvent += DisableImageItemInHand;
+
     }
     private void OnDisable()
     {
         TItemHandler.OnDragEvent -= ChangeImageItemInHand;
-        TItemHandler.OnStopDragEvent -= DisableImageItemInHand;
-        TItemHandler.OnDropEvent -= DisableImageItemInHand;
-
         TItemHandler.OnDragEvent -= StartHoldingItem;
+        //TItemHandler.OnDragEvent -= RestoreColorToSelectedSlotWhenDragged;
+
+        TItemHandler.OnStopDragEvent -= DisableImageItemInHand;
+
+        TItemHandler.OnDropEvent -= DisableImageItemInHand;
     }
 
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    public void RestoreColorToSelectedSlotWhenDragged()
+    {
+        if (TItemHandler.Instance.CurrentSelectedItem != null)
+        {
+            UIManager.Instance.ChangeColorFromImage(TItemHandler.Instance.CurrentSelectedItem.m_slotImage, Color.white);
+        }
     }
 
     

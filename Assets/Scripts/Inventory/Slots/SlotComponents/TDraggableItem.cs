@@ -39,7 +39,6 @@ public class TDraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IE
     {
         if(TItemHandler.Instance.ItemDraggedInHand!= null)
         {
-            Debug.Log("ciao");
             TItemHandler.Instance.StopDragItemEvent();
         }
         else

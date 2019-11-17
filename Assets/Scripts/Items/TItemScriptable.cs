@@ -29,9 +29,7 @@ public struct TItemQuantity
         Item = inItem;
         Amount = inAmount;
     }
-
-
-
+    
     public override string ToString()
     {
         return Item.ItemName + " (" + Amount + ")";

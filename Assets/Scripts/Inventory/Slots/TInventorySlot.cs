@@ -47,7 +47,7 @@ public class TInventorySlot : MonoBehaviour
 
 
 
-
+    //Used from button click.
     public void SelectThisSlotForEvent()
     {
         if(ItemInSlot != null)

@@ -19,8 +19,8 @@ public class TItemHandler : MonoBehaviour
     public void StartDragItemEvent(TInventorySlot tempSlottedItem)
     {
         if(tempSlottedItem != null)
-        {
-            if(tempSlottedItem.ItemInSlot != null)
+        {            
+            if (tempSlottedItem.ItemInSlot != null)
             {
                 ItemDraggedInHand = tempSlottedItem.ItemInSlot;
                 OnDragEvent();
@@ -62,7 +62,7 @@ public class TItemHandler : MonoBehaviour
         if(OnDropEventAction != null)
         {
             if(ItemDraggedInHand.StatsOfThisItem.Item != null)
-            {
+            {                
                 OnDropEventAction(itemToEquip);
                 DropEvent();
             }
@@ -102,7 +102,14 @@ public class TItemHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        OnBeginDragEvent = StartDragItemEvent;      
+        OnBeginDragEvent = StartDragItemEvent;
+
+        OnDragEvent += DeselectCurrentSelectedItem;
+    }
+
+    private void OnDisable()
+    {
+        OnDragEvent -= DeselectCurrentSelectedItem;
     }
 
     private void Awake()
@@ -123,5 +130,14 @@ public class TItemHandler : MonoBehaviour
         slotToEquipItem.ItemInSlot = ItemDraggedInHand;
         UIManager.Instance.ChangeSpriteFromImage(slotToEquipItem.m_slotImage, ItemDraggedInHand.StatsOfThisItem.Item.ItemSprite);
         ItemDraggedInHand = null;
+    }
+
+    public void DeselectCurrentSelectedItem()
+    {
+        if(CurrentSelectedItem != null)
+        {
+            UIManager.Instance.RestoreColorToSelectedSlotWhenDragged();
+            CurrentSelectedItem = null;
+        }
     }
 }
