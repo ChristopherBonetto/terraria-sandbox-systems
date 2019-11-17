@@ -224,11 +224,11 @@ public class TPlayerController : MonoBehaviour
 
     private void OnItemEquipped(TItemWeapon item)
     {
-        WeaponInHand = item;
+        //WeaponInHand = item;
 
-        // set stats as default + item
-        DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense + item.Defence);
-        AttackComponent.Init(DataAssigned.Damage + item.Attack);
+        //// set stats as default + item
+        //DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense + item.Defence);
+        //AttackComponent.Init(DataAssigned.Damage + item.Attack);
     }
 
     #endregion
