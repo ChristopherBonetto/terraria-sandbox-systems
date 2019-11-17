@@ -33,9 +33,9 @@ public class TAttackComponent : MonoBehaviour, IAttack
         }
     }
 
-    public void ExecuteAttack()
+    public void ExecuteAttack(TItemWeapon inWeapon)
     {
-        throw new System.NotImplementedException();
+        // Check if hit something damageable.
     }
 
     public void OnExecuteAttack()

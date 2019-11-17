@@ -7,22 +7,41 @@ using System.Collections;
 [RequireComponent(typeof(TJumpComponent), 
                   typeof(TDefenseComponent), 
                   typeof(TLinearMovement))]
+[RequireComponent(typeof(TAttackComponent))]
 
 public class TPlayerController : MonoBehaviour
 {
+    #region Data
+
+    [SerializeField]
+    private TPlayerData m_DataToAssign;
     /// <summary>
     /// Default player's stats
     /// </summary>
-    [SerializeField]
-    private TPlayerData m_Data;
-    public TPlayerData Data { get { return m_Data; } }
+    public TPlayerData DataToAssign { get { return m_DataToAssign; } }
+
+    private TPlayerData m_DataAssigned;
+    /// <summary>
+    /// Return a copy of the data.
+    /// </summary>
+    public TPlayerData DataAssigned
+    {
+        get
+        {
+            if (m_DataAssigned == null)
+                m_DataAssigned = Instantiate(DataToAssign);
+            return m_DataAssigned;
+        }
+    }
+
+    #endregion
 
     #region Components
 
+    private IMovable m_MovementComponent;
     /// <summary>
     /// Player's movement component
     /// </summary>
-    private IMovable m_MovementComponent;
     public IMovable MovementComponent
     {
         get
@@ -33,10 +52,10 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
+    private IDefend m_DefenseComponent;
     /// <summary>
     /// Player's defense component
     /// </summary>
-    private IDefend m_DefenseComponent;
     public IDefend DefenseComponent
     {
         get
@@ -47,10 +66,10 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
+    private IJump m_JumpComponent;
     /// <summary>
     /// Player's jump component
     /// </summary>
-    private IJump m_JumpComponent;
     public IJump JumpComponent
     {
         get
@@ -61,11 +80,26 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
+    private IAttack m_AttackComponent;
+    /// <summary>
+    /// Player's Attack Component.
+    /// </summary>
+    public IAttack AttackComponent
+    {
+        get
+        {
+            if (m_AttackComponent == null)
+                m_AttackComponent = GetComponent<IAttack>();
+            return m_AttackComponent;
+        }
+    }
+
+
+    private TPlayerView m_View;
     /// <summary>
     /// Player view.
     /// It's used to show armor sprites and other visual.
     /// </summary>
-    private TPlayerView m_View;
     public TPlayerView View
     {
         get
@@ -76,10 +110,10 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
+    private Rigidbody2D m_Rb;
     /// <summary>
     /// Player's rigid body.
     /// </summary>
-    private Rigidbody2D m_Rb;
     public Rigidbody2D Rb
     {
         get
@@ -95,21 +129,13 @@ public class TPlayerController : MonoBehaviour
     #region Weapon handler
 
     [SerializeField]
-    private TItemScriptable m_ItemInHand;
-    public TItemScriptable ItemInHand
+    private TItemWeapon m_WeaponInHand;
+    public TItemWeapon WeaponInHand
     {
-        get { return m_ItemInHand; }
+        get { return m_WeaponInHand; }
         set
         {
-            m_ItemInHand = value;
-
-            // reset stats
-            if (m_ItemInHand == null)
-            {
-                DefenseComponent.Init(Data.MaxHealth, Data.Defense);
-                MovementComponent.Init(Data.Speed);
-                JumpComponent.Init(Rb, Data.JumpForce);
-            }
+            m_WeaponInHand = value;
         }
     }
 
@@ -125,11 +151,6 @@ public class TPlayerController : MonoBehaviour
         TInputManager.SharedInstance.OnJumpDown += OnPlayerJumpDown;
         TInputManager.SharedInstance.OnJumpUp += OnPlayerJumpUp;
 
-        // model
-        DefenseComponent.OnDamageEvent += DefenseComponent.TakeDamage;
-        MovementComponent.OnMoveEvent += MovementComponent.Move;
-        JumpComponent.OnJumpEvent += JumpComponent.Jump;
-
         // view
         MovementComponent.OnMoveEvent += View.Flip;
         DefenseComponent.OnDamageEvent += View.UpdateHealthBar;
@@ -144,11 +165,6 @@ public class TPlayerController : MonoBehaviour
         TInputManager.SharedInstance.OnJumpDown -= OnPlayerJumpDown;
         TInputManager.SharedInstance.OnJumpUp -= OnPlayerJumpUp;
 
-        // model
-        DefenseComponent.OnDamageEvent -= DefenseComponent.TakeDamage;
-        MovementComponent.OnMoveEvent -= MovementComponent.Move;
-        JumpComponent.OnJumpEvent -= JumpComponent.Jump;
-
         // view
         MovementComponent.OnMoveEvent -= View.Flip;
         DefenseComponent.OnDamageEvent -= View.UpdateHealthBar;
@@ -156,13 +172,14 @@ public class TPlayerController : MonoBehaviour
 
     private void Start()
     {
-        DefenseComponent.Init(Data.MaxHealth, Data.Defense);
-        MovementComponent.Init(Data.Speed);
-        JumpComponent.Init(Rb, Data.JumpForce);
+        DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
+        MovementComponent.Init(DataAssigned.Speed);
+        JumpComponent.Init(Rb, DataAssigned.JumpForce);
+        AttackComponent.Init(DataAssigned.Damage);
 
         m_View.HealthBar.minValue = 0;
-        m_View.HealthBar.maxValue = Data.MaxHealth;
-        m_View.HealthBar.value = Data.MaxHealth;
+        m_View.HealthBar.maxValue = DataAssigned.MaxHealth;
+        m_View.HealthBar.value = DataAssigned.MaxHealth;
     }
 
     #region Input manager event methods
@@ -205,14 +222,13 @@ public class TPlayerController : MonoBehaviour
 
     #region Generic event manager methods
 
-    private void OnItemEquipped(TItemScriptable item)
+    private void OnItemEquipped(TItemWeapon item)
     {
-        ItemInHand = item;
+        WeaponInHand = item;
 
         // set stats as default + item
-        DefenseComponent.Init(Data.MaxHealth, Data.Defense + item.Defence);
-        MovementComponent.Init(Data.Speed);
-        JumpComponent.Init(Rb, Data.JumpForce);
+        DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense + item.Defence);
+        AttackComponent.Init(DataAssigned.Damage + item.Attack);
     }
 
     #endregion

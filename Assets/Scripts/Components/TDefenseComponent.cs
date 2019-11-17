@@ -5,7 +5,6 @@ public class TDefenseComponent : MonoBehaviour, IDefend
 {
     public event DamageEvent OnDamageEvent;
 
-    // Stats
     private float m_MaxHealth;
     public float MaxHealth => m_MaxHealth;
 
@@ -15,6 +14,7 @@ public class TDefenseComponent : MonoBehaviour, IDefend
     private float m_Defense;
     public float Defense => m_Defense;
 
+
     /// <summary>
     /// Editor testing.
     /// </summary>
@@ -23,6 +23,16 @@ public class TDefenseComponent : MonoBehaviour, IDefend
     {
         OnDamageTaken(1);
         Debug.Log(CurrentHealth);
+    }
+
+    private void OnEnable()
+    {
+        OnDamageEvent += TakeDamage;
+    }
+
+    private void OnDisable()
+    {
+        OnDamageEvent -= TakeDamage;
     }
 
     public void Init(float inMaxHealth)

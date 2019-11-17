@@ -38,6 +38,7 @@ public class TEventManager
 
     // Items
     public event TItemEvent OnItemEquipped;
+    public event TItemEvent OnItemUnequip;
 
     // Day-night cycle
     public event TDayPhaseEvent OnDayPhaseChanged;
@@ -50,6 +51,11 @@ public class TEventManager
     public void InvokeOnItemEquipped(TItemScriptable inItem)
     {
         OnItemEquipped?.Invoke(inItem);
+    }
+
+    public void InvokeOnItemUnequip(TItemScriptable inItem)
+    {
+        OnItemUnequip?.Invoke(inItem);
     }
 
     public void InvokeOnDayPhaseChanged(bool isNight)

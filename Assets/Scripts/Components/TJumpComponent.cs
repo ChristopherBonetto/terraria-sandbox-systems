@@ -27,6 +27,16 @@ public class TJumpComponent : MonoBehaviour, IJump
     public Rigidbody2D Rb { get{return m_Rb; } }
 
 
+    private void OnEnable()
+    {
+        OnJumpEvent += Jump;
+    }
+
+    private void OnDisable()
+    {
+        OnJumpEvent -= Jump;
+    }
+
     private void Awake()
     {
         m_Col = GetComponent<Collider2D>();
