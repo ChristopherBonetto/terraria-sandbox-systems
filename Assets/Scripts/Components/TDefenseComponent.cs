@@ -22,7 +22,6 @@ public class TDefenseComponent : MonoBehaviour, IDefend
     public void DamageEntity()
     {
         OnDamageTaken(1);
-        Debug.Log(CurrentHealth);
     }
 
     private void OnEnable()
@@ -33,6 +32,12 @@ public class TDefenseComponent : MonoBehaviour, IDefend
     private void OnDisable()
     {
         OnDamageEvent -= TakeDamage;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+            DamageEntity();
     }
 
     public void Init(float inMaxHealth)
