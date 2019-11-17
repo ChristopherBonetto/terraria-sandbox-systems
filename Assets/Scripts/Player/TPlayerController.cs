@@ -7,7 +7,6 @@ using System.Collections;
 [RequireComponent(typeof(TJumpComponent), 
                   typeof(TDefenseComponent), 
                   typeof(TLinearMovement))]
-[RequireComponent(typeof(TAttackComponent))]
 
 public class TPlayerController : MonoBehaviour
 {
@@ -80,21 +79,6 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
-    private IWeapon m_AttackComponent;
-    /// <summary>
-    /// Player's Attack Component.
-    /// </summary>
-    public IWeapon AttackComponent
-    {
-        get
-        {
-            if (m_AttackComponent == null)
-                m_AttackComponent = GetComponent<IWeapon>();
-            return m_AttackComponent;
-        }
-    }
-
-
     private TPlayerView m_View;
     /// <summary>
     /// Player view.
@@ -126,7 +110,6 @@ public class TPlayerController : MonoBehaviour
 
     #endregion
 
-
     private void OnEnable()
     {
         // subscribe
@@ -135,7 +118,6 @@ public class TPlayerController : MonoBehaviour
         TInputManager.SharedInstance.OnMovementAxis += OnPlayerMovement;
         TInputManager.SharedInstance.OnJumpDown += OnPlayerJumpDown;
         TInputManager.SharedInstance.OnJumpUp += OnPlayerJumpUp;
-        TInputManager.SharedInstance.OnLeftClickDown += OnPlayerAttack;
 
         // view
         MovementComponent.OnMoveEvent += View.Flip;
@@ -150,7 +132,6 @@ public class TPlayerController : MonoBehaviour
         TInputManager.SharedInstance.OnMovementAxis -= OnPlayerMovement;
         TInputManager.SharedInstance.OnJumpDown -= OnPlayerJumpDown;
         TInputManager.SharedInstance.OnJumpUp -= OnPlayerJumpUp;
-        TInputManager.SharedInstance.OnLeftClickDown -= OnPlayerAttack;
 
         // view
         MovementComponent.OnMoveEvent -= View.Flip;
@@ -162,7 +143,6 @@ public class TPlayerController : MonoBehaviour
         DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
         MovementComponent.Init(DataAssigned.Speed);
         JumpComponent.Init(Rb, DataAssigned.JumpForce);
-        AttackComponent.Init(DataAssigned.Damage);
 
         m_View.HealthBar.minValue = 0;
         m_View.HealthBar.maxValue = DataAssigned.MaxHealth;
@@ -203,11 +183,6 @@ public class TPlayerController : MonoBehaviour
             Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.0f);
             yield return null;
         }
-    }
-
-    private void OnPlayerAttack(TPointerData pointrData)
-    {
-        AttackComponent.OnExecuteAttack();
     }
 
     #endregion

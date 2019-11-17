@@ -465,7 +465,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 4e-45}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -583,25 +583,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753199491}
   m_CullTransparentMesh: 0
---- !u!1 &870890402 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7593420807902170189, guid: 27d74ee8cfa35a44294aa5cacf90038c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1121159869}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &870890403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 870890402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 788cc5359b638f34f810c352f503edca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_WeaponToEquip: {fileID: 0}
 --- !u!1 &885823567
 GameObject:
   m_ObjectHideFlags: 0
@@ -34206,6 +34187,7 @@ MonoBehaviour:
   m_inventoryUI: {fileID: 1444712113}
   m_slotsNumber: 39
   m_itemInHandUI: {fileID: 885823568}
+  m_InventorySlotsUI: []
   InventoryIsOpen: 1
 --- !u!4 &1474534075
 Transform:
@@ -41743,12 +41725,12 @@ PrefabInstance:
     - target: {fileID: 3362241282394509263, guid: 4124b2ee1abfdb94898c285d5a580efc,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -49.52
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 3362241282394509263, guid: 4124b2ee1abfdb94898c285d5a580efc,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 155
+      value: 132
       objectReference: {fileID: 0}
     - target: {fileID: 3362241282394509263, guid: 4124b2ee1abfdb94898c285d5a580efc,
         type: 3}

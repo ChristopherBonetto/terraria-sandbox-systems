@@ -5,15 +5,37 @@ using UnityEngine.UI;
 
 public class TPlayerView : MonoBehaviour
 {
-    /// <summary>
-    /// Player's slider health.
-    /// </summary>
     [Header("Health")]
     [SerializeField]
     private Slider m_HealthBar;
+    /// <summary>
+    /// Player's slider health.
+    /// </summary>
     public Slider HealthBar{ get { return m_HealthBar; } }
 
+    [Header("Animator")]
+    [SerializeField]
+    private Animator m_Anim;
+    /// <summary>
+    /// Player's animator.
+    /// </summary>
+    public Animator Anim { get { return m_Anim; } }
+
+    [SerializeField]
+    private GameObject m_ItemRootAnimation;
+
+
     private Vector3 m_Scale;
+
+    private void OnEnable()
+    {
+        TInputManager.SharedInstance.OnLeftClickDown += PlayerAttackAnimation;
+    }
+
+    private void OnDisable()
+    {
+        TInputManager.SharedInstance.OnLeftClickDown -= PlayerAttackAnimation;
+    }
 
     private void Awake()
     {
@@ -26,6 +48,20 @@ public class TPlayerView : MonoBehaviour
     public void UpdateHealthBar(float inValue)
     {
         m_HealthBar.value -= inValue;
+    }
+
+    private void PlayerAttackAnimation(TPointerData pointerData)
+    {
+        if (!m_ItemRootAnimation.activeSelf)
+        {
+            m_ItemRootAnimation.SetActive(true);
+            Anim.SetTrigger("Attack");
+        }
+    }
+
+    public void TurnOffItemRoot()
+    {
+        m_ItemRootAnimation.SetActive(false);
     }
 
     public void Flip(Vector2 inDirection)

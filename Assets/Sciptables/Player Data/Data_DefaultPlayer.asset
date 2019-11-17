@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7a1621cdbf0d147ac8fc450f03e4f2, type: 3}
   m_Name: Data_DefaultPlayer
   m_EditorClassIdentifier: 
-  m_MaxHealth: 7
+  m_MaxHealth: 6
   m_Defense: 2
   m_Damage: 5
   m_KbResist: 2
