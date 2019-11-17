@@ -310,9 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9312689a82924dc409e1bcb07157aa52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemDraggedInHand:
-    Item: {fileID: 0}
-    Amount: 0
+  ItemDraggedInHand: {fileID: 0}
   CurrentSelectedItem: {fileID: 0}
 --- !u!4 &247751180
 Transform:
@@ -13447,7 +13445,8 @@ Tilemap:
       m_TileSpriteIndex: 47
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
+      m_ObjectToInstantiate: {fileID: 249408360906685395, guid: 32181f90b7ce28c4e8ec47d0068b998f,
+        type: 3}
       m_TileFlags: 2
       m_ColliderType: 2
   - first: {x: -29, y: -17, z: 0}
@@ -13933,7 +13932,8 @@ Tilemap:
       m_TileSpriteIndex: 47
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
+      m_ObjectToInstantiate: {fileID: 249408360906685395, guid: 32181f90b7ce28c4e8ec47d0068b998f,
+        type: 3}
       m_TileFlags: 2
       m_ColliderType: 2
   - first: {x: 25, y: -17, z: 0}
@@ -27541,7 +27541,8 @@ Tilemap:
       m_TileSpriteIndex: 47
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
+      m_ObjectToInstantiate: {fileID: 249408360906685395, guid: 32181f90b7ce28c4e8ec47d0068b998f,
+        type: 3}
       m_TileFlags: 2
       m_ColliderType: 2
   - first: {x: -29, y: 17, z: 0}
@@ -28027,7 +28028,8 @@ Tilemap:
       m_TileSpriteIndex: 47
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
+      m_ObjectToInstantiate: {fileID: 249408360906685395, guid: 32181f90b7ce28c4e8ec47d0068b998f,
+        type: 3}
       m_TileFlags: 2
       m_ColliderType: 2
   - first: {x: 25, y: 17, z: 0}
@@ -41196,7 +41198,8 @@ Tilemap:
       m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
+      m_ObjectToInstantiate: {fileID: 249408360906685395, guid: 32181f90b7ce28c4e8ec47d0068b998f,
+        type: 3}
       m_TileFlags: 2
       m_ColliderType: 2
   - first: {x: -3, y: -2, z: 0}
@@ -41205,7 +41208,8 @@ Tilemap:
       m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
+      m_ObjectToInstantiate: {fileID: 249408360906685395, guid: 32181f90b7ce28c4e8ec47d0068b998f,
+        type: 3}
       m_TileFlags: 2
       m_ColliderType: 2
   - first: {x: -2, y: -2, z: 0}

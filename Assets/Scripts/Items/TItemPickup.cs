@@ -18,7 +18,7 @@ public class TItemPickup : MonoBehaviour
     /// <summary>
     /// Item contained inside of the pickup.
     /// </summary>
-    [SerializeField] private TItemQuantity m_ContainedItem;
+    [SerializeField] private TItem m_ContainedItem;
 
     #endregion
 
@@ -65,12 +65,12 @@ public class TItemPickup : MonoBehaviour
     /// Loads the specified Item as contained in the pick up.
     /// </summary>
     /// <param name="inItemQuantity"></param>
-    public void LoadItem(TItemQuantity inItemQuantity)
+    public void LoadItem(TItem inItemQuantity)
     {
         // Set contained Item
         m_ContainedItem = inItemQuantity;
         // Set Sprite
-        m_SpriteRendererComponent.sprite = inItemQuantity.Item.ItemSprite;
+        m_SpriteRendererComponent.sprite = inItemQuantity.StatsOfThisItem.Item.ItemSprite;
     }
 
     #endregion

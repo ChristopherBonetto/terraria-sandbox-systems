@@ -8,7 +8,7 @@ public class TItemHandler : MonoBehaviour
 {
     public static TItemHandler Instance;
 
-    public TItemQuantity ItemDraggedInHand;
+    public TItem ItemDraggedInHand;
     public TInventorySlot CurrentSelectedItem = null;
 
     #region Drag
@@ -20,8 +20,11 @@ public class TItemHandler : MonoBehaviour
     {
         if(tempSlottedItem != null)
         {
-            ItemDraggedInHand = tempSlottedItem.ItemInSlot;
-            OnDragEvent();
+            if(tempSlottedItem.ItemInSlot != null)
+            {
+                ItemDraggedInHand = tempSlottedItem.ItemInSlot;
+                OnDragEvent();
+            }
         }
     }
 
@@ -58,7 +61,7 @@ public class TItemHandler : MonoBehaviour
     {
         if(OnDropEventAction != null)
         {
-            if(ItemDraggedInHand.Item != null)
+            if(ItemDraggedInHand.StatsOfThisItem.Item != null)
             {
                 OnDropEventAction(itemToEquip);
                 DropEvent();
@@ -118,7 +121,7 @@ public class TItemHandler : MonoBehaviour
     public void TakeSlotFromHand(TInventorySlot slotToEquipItem)
     {
         slotToEquipItem.ItemInSlot = ItemDraggedInHand;
-        UIManager.Instance.ChangeSpriteFromImage(slotToEquipItem.m_slotImage, ItemDraggedInHand.Item.ItemSprite);
-        ItemDraggedInHand.Item = null;
+        UIManager.Instance.ChangeSpriteFromImage(slotToEquipItem.m_slotImage, ItemDraggedInHand.StatsOfThisItem.Item.ItemSprite);
+        ItemDraggedInHand = null;
     }
 }

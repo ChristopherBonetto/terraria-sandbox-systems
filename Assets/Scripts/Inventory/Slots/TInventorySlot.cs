@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(TDroppableItem), typeof(TDraggableItem))]
 public class TInventorySlot : MonoBehaviour
 {
-    public TItemQuantity ItemInSlot;
+    public TItem ItemInSlot = null;
     
     public Image m_slotImage;
 
@@ -37,9 +37,10 @@ public class TInventorySlot : MonoBehaviour
 
     private void Start()
     {
-        if(ItemInSlot.Item != null)
+        if(ItemInSlot != null)
         {
-            UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.Item.ItemSprite);
+            UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.StatsOfThisItem.Item.ItemSprite);
+            
         }
     }
     
@@ -49,10 +50,14 @@ public class TInventorySlot : MonoBehaviour
 
     public void SelectThisSlotForEvent()
     {
-        if (ItemInSlot.Item != null && TItemHandler.Instance.CurrentSelectedItem != this)
+        if(ItemInSlot != null)
         {
-            TItemHandler.Instance.SelectedSlotAction(this);
+            if (ItemInSlot.StatsOfThisItem.Item != null && TItemHandler.Instance.CurrentSelectedItem != this)
+            {
+                TItemHandler.Instance.SelectedSlotAction(this);
+            }
         }
+        
     }
 
     public void StartSelectedSlotEvent(TInventorySlot slot)
@@ -67,14 +72,17 @@ public class TInventorySlot : MonoBehaviour
 
     //Used to change the ItemHandler's variable itemInHand and subscribe the class of this item to another event.
     public void ChangeDraggedItemWithThisSlot()
-    {   
-        if(ItemInSlot.Item != null)
+    {
+        if(ItemInSlot != null)
         {
-            TItemHandler.Instance.StartDragItemEvent(this);
-            ItemInSlot.Item = null;
-            UIManager.Instance.ChangeSpriteFromImage(m_slotImage, null);
+            if (ItemInSlot.StatsOfThisItem.Item != null)
+            {
+                TItemHandler.Instance.StartDragItemEvent(this);
+                ItemInSlot = null;
+                UIManager.Instance.ChangeSpriteFromImage(m_slotImage, null);
 
-            TItemHandler.OnStopDragEvent += RestoreImageAndItemInSlot;
+                TItemHandler.OnStopDragEvent += RestoreImageAndItemInSlot;
+            }
         }
     }
 
@@ -84,7 +92,7 @@ public class TInventorySlot : MonoBehaviour
     public void RestoreImageAndItemInSlot()
     {
         ItemInSlot = TItemHandler.Instance.ItemDraggedInHand;
-        UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.Item.ItemSprite);
+        UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.StatsOfThisItem.Item.ItemSprite);
     }
 
     //Take the item in hand and equip it in this slot.

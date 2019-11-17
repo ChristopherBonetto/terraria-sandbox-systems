@@ -20,7 +20,10 @@ public class TDraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IE
         {
             if (m_slot != null)
             {
-                m_slot.ChangeDraggedItemWithThisSlot();
+                if(m_slot.ItemInSlot != null)
+                {
+                    m_slot.ChangeDraggedItemWithThisSlot();
+                }
             }
         }             
     }
@@ -34,8 +37,9 @@ public class TDraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler ,IE
     //Used to restore the state of the last grabbed item before being dragged.
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(TItemHandler.Instance.ItemDraggedInHand.Item != null)
+        if(TItemHandler.Instance.ItemDraggedInHand!= null)
         {
+            Debug.Log("ciao");
             TItemHandler.Instance.StopDragItemEvent();
         }
         else

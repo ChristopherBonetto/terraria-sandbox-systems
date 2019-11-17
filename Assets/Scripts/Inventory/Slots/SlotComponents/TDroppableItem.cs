@@ -26,14 +26,14 @@ public class TDroppableItem : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 
     public void OnDrop(PointerEventData eventData)
     {
-        if(m_slot.ItemInSlot.Item != null)
+        if(m_slot.ItemInSlot != null)
         {
             TInventorySlot originarySlot = eventData.pointerDrag.GetComponent<TInventorySlot>();
 
             if (originarySlot != null)
             {
                 originarySlot.ItemInSlot = m_slot.ItemInSlot;
-                UIManager.Instance.ChangeSpriteFromImage(originarySlot.m_slotImage, m_slot.ItemInSlot.Item.ItemSprite);
+                UIManager.Instance.ChangeSpriteFromImage(originarySlot.m_slotImage, m_slot.ItemInSlot.StatsOfThisItem.Item.ItemSprite);
             }
             TItemHandler.Instance.DropItemAction(m_slot);
         }

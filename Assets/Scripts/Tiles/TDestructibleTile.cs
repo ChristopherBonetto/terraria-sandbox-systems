@@ -26,7 +26,7 @@ namespace UnityEngine.Tilemaps
         /// Items contained inside the Tile.
         /// </summary>
         [Tooltip("Items contained inside the Tile.")]
-        [SerializeField] private TItemQuantity[] m_ContainedItems;
+        [SerializeField] private TItem[] m_ContainedItems;
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace UnityEngine.Tilemaps
         {
             Debug.Log("Destroyed tile at world pos: " + inWorldPosition);
 
-            foreach(TItemQuantity containedItem in m_ContainedItems)
+            foreach(TItem containedItem in m_ContainedItems)
             {
                 // Get Pickup object from the pool
                 GameObject pickupObj = ObjectPooler.SharedInstance.GetPooledObject("Pickup");

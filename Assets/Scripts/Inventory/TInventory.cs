@@ -19,7 +19,7 @@ public class TInventory : MonoBehaviour
                 
     }
 
-    public void CollectItem(TItemQuantity addThisItem)
+    public void CollectItem(TItem addThisItem)
     {
         if (!CheckSimilarItems(addThisItem))
         {
@@ -27,30 +27,34 @@ public class TInventory : MonoBehaviour
         }
     }
 
-    public bool CheckSimilarItems(TItemQuantity addThisItem)
+    public bool CheckSimilarItems(TItem addThisItem)
     {
         for (int i = 0; i < InventorySlots.Count; i++)
         {
-            if (InventorySlots[i].ItemInSlot.Item == addThisItem.Item)
+            if(InventorySlots[i].ItemInSlot != null)
             {
-                InventorySlots[i].ItemInSlot.Amount += addThisItem.Amount;
+                if (InventorySlots[i].ItemInSlot.StatsOfThisItem.Item == addThisItem.StatsOfThisItem.Item)
+                {
+                    InventorySlots[i].ItemInSlot.StatsOfThisItem.Amount += addThisItem.StatsOfThisItem.Amount;
 
-                Debug.Log("now you have " + InventorySlots[i].ItemInSlot.Item.ItemName + " : " + InventorySlots[i].ItemInSlot.Amount);
+                    Debug.Log("now you have " + InventorySlots[i].ItemInSlot.StatsOfThisItem.Item.ItemName + " : " + InventorySlots[i].ItemInSlot.StatsOfThisItem.Amount);
 
-                return true;
+                    return true;
+                }
             }
+            
         }
         return false;
     }
 
-    public void CheckFreeSlotAndCollect(TItemQuantity addThisItem)
+    public void CheckFreeSlotAndCollect(TItem addThisItem)
     {
         for (int i = 0; i < InventorySlots.Count; i++)
         {
-            if (InventorySlots[i].ItemInSlot.Item == null)
+            if(InventorySlots[i].ItemInSlot == null)
             {
                 InventorySlots[i].ItemInSlot = addThisItem;
-                UIManager.Instance.ChangeSpriteFromImage(InventorySlots[i].m_slotImage, addThisItem.Item.ItemSprite);
+                UIManager.Instance.ChangeSpriteFromImage(InventorySlots[i].m_slotImage, addThisItem.StatsOfThisItem.Item.ItemSprite);
 
                 return;
             }

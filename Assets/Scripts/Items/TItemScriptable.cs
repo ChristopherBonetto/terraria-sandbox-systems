@@ -20,7 +20,7 @@ public class TItemScriptable : ScriptableObject
 [System.Serializable]
 public struct TItemQuantity
 {
-    
+
     public TItemScriptable Item;
     public int Amount;
 

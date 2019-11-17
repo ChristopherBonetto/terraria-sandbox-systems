@@ -142,7 +142,8 @@ public class UIManager : MonoBehaviour
     public void ChangeImageItemInHand()
     {
         m_itemInHandUI.gameObject.SetActive(true);
-        m_itemInHandUI.sprite = TItemHandler.Instance.ItemDraggedInHand.Item.ItemSprite;
+        ChangeSpriteFromImage(m_itemInHandUI, TItemHandler.Instance.ItemDraggedInHand.StatsOfThisItem.Item.ItemSprite);
+        //m_itemInHandUI.sprite = TItemHandler.Instance.ItemDraggedInHand.Item.ItemSprite;
     }
 
     public void ItemFollowMousePosition()
@@ -164,7 +165,7 @@ public class UIManager : MonoBehaviour
 
     IEnumerator ItemInHand()
     {
-        while (TItemHandler.Instance.ItemDraggedInHand.Item != null)
+        while (TItemHandler.Instance.ItemDraggedInHand != null)
         {
             ItemFollowMousePosition();
             yield return null;
