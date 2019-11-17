@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class TItemWeapon : TItem
 {
-    
+    public virtual void OnUse()
+    {
+        Debug.Log("Attacking...");
+    }
 }

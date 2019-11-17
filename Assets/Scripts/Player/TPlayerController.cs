@@ -80,16 +80,16 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
-    private IAttack m_AttackComponent;
+    private IWeapon m_AttackComponent;
     /// <summary>
     /// Player's Attack Component.
     /// </summary>
-    public IAttack AttackComponent
+    public IWeapon AttackComponent
     {
         get
         {
             if (m_AttackComponent == null)
-                m_AttackComponent = GetComponent<IAttack>();
+                m_AttackComponent = GetComponent<IWeapon>();
             return m_AttackComponent;
         }
     }
@@ -126,21 +126,6 @@ public class TPlayerController : MonoBehaviour
 
     #endregion
 
-    #region Weapon handler
-
-    [SerializeField]
-    private TItemWeapon m_WeaponInHand;
-    public TItemWeapon WeaponInHand
-    {
-        get { return m_WeaponInHand; }
-        set
-        {
-            m_WeaponInHand = value;
-        }
-    }
-
-    #endregion
-
 
     private void OnEnable()
     {
@@ -150,6 +135,7 @@ public class TPlayerController : MonoBehaviour
         TInputManager.SharedInstance.OnMovementAxis += OnPlayerMovement;
         TInputManager.SharedInstance.OnJumpDown += OnPlayerJumpDown;
         TInputManager.SharedInstance.OnJumpUp += OnPlayerJumpUp;
+        TInputManager.SharedInstance.OnLeftClickDown += OnPlayerAttack;
 
         // view
         MovementComponent.OnMoveEvent += View.Flip;
@@ -164,6 +150,7 @@ public class TPlayerController : MonoBehaviour
         TInputManager.SharedInstance.OnMovementAxis -= OnPlayerMovement;
         TInputManager.SharedInstance.OnJumpDown -= OnPlayerJumpDown;
         TInputManager.SharedInstance.OnJumpUp -= OnPlayerJumpUp;
+        TInputManager.SharedInstance.OnLeftClickDown -= OnPlayerAttack;
 
         // view
         MovementComponent.OnMoveEvent -= View.Flip;
@@ -216,6 +203,11 @@ public class TPlayerController : MonoBehaviour
             Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.0f);
             yield return null;
         }
+    }
+
+    private void OnPlayerAttack(TPointerData pointrData)
+    {
+        AttackComponent.OnExecuteAttack();
     }
 
     #endregion

@@ -35,7 +35,7 @@ public interface IAttack
     /// <summary>
     /// Execute attack operation.
     /// </summary>
-    void ExecuteAttack(TItemWeapon inWeapon);
+    void ExecuteAttack(float inAmount);
 
     /// <summary>
     /// Execute attack delay.

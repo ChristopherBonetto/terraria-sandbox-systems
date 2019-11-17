@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TAttackComponent : MonoBehaviour, IAttack
+public class TAttackComponent : MonoBehaviour, IWeapon
 {
     public event AttackEvent OnAttackEvent;
 
@@ -11,8 +11,28 @@ public class TAttackComponent : MonoBehaviour, IAttack
     private float m_AttackDelay;
     public float AttackDelay { get { return m_AttackDelay; } }
 
+    [SerializeField]
+    private TItemWeapon m_WeaponToEquip;
+    public TItemWeapon WeaponEquipped => m_WeaponToEquip;
+
     private float m_CurrentDelay;
 
+
+    private void OnEnable()
+    {
+        OnAttackEvent += ExecuteAttack;
+    }
+
+    private void OnDisable()
+    {
+        
+        OnAttackEvent -= ExecuteAttack;
+    }
+
+    private void Update()
+    {
+        ExecuteDelay();
+    }
 
     public void Init(float inAttackDamage)
     {
@@ -33,9 +53,12 @@ public class TAttackComponent : MonoBehaviour, IAttack
         }
     }
 
-    public void ExecuteAttack(TItemWeapon inWeapon)
+    public void ExecuteAttack(float inAmount)
     {
-        // Check if hit something damageable.
+        if (m_CurrentDelay <= 0)
+        {
+            WeaponEquipped.OnUse();
+        }
     }
 
     public void OnExecuteAttack()

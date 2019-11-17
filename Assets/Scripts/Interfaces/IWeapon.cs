@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IUsable
+public interface IWeapon : IAttack
 {
-    void OnUse();
+    TItemWeapon WeaponEquipped { get; }
 }
