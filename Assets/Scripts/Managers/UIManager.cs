@@ -178,7 +178,7 @@ public class UIManager : MonoBehaviour
 
     IEnumerator ItemInHand()
     {
-        while (TItemHandler.Instance.ItemDraggedInHand != null)
+        while (TItemHandler.Instance.ItemDraggedInHand.Item != null)
         {
             ItemFollowMousePosition();
             yield return null;

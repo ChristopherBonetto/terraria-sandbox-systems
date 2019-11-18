@@ -27,7 +27,7 @@ public class TEventManager
     #region Delegates definition
 
     // Item
-    public delegate void TItemEvent(TItem inItem);
+    public delegate void TItemEvent(TItemQuantity inItem);
     
     // Timing
     public delegate void TDayPhaseEvent(bool isNight);
@@ -48,12 +48,12 @@ public class TEventManager
 
     #region Public methods
 
-    public void InvokeOnItemEquipped(TItem inItem)
+    public void InvokeOnItemEquipped(TItemQuantity inItem)
     {
         OnItemEquipped?.Invoke(inItem);
     }
 
-    public void InvokeOnItemUnequip(TItem inItem)
+    public void InvokeOnItemUnequip(TItemQuantity inItem)
     {
         OnItemUnequip?.Invoke(inItem);
     }

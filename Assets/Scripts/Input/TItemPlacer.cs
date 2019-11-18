@@ -30,12 +30,15 @@ public class TItemPlacer : MonoBehaviour
 
     // Current Tile being placed
     private TDestructibleTile m_CurrentTile;
+    private TMap m_TargetTilemap;
 
     // Current World Item being placed
     private TWorldItem m_CurrentWorldItem;
 
     // Bounds of the Current World Item's collider
     private Vector3 m_CurrentBoundsExtents;
+
+    private TInventorySlot m_ReferencedSlot;
 
     #endregion
 
@@ -47,14 +50,14 @@ public class TItemPlacer : MonoBehaviour
         TransformComponent = transform;
     }
 
-    // TEST METHOD
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-            LoadTileTest(m_TestTile);
+        TItemHandler.Instance.OnSelectedSlotEventAction += LoadItem;
+    }
 
-        if (Input.GetKeyDown(KeyCode.K))
-            LoadWorldItemTest(m_TestWorldItem);
+    private void OnDestroy()
+    {
+        TItemHandler.Instance.OnSelectedSlotEventAction -= LoadItem;
     }
 
     #endregion
@@ -64,10 +67,20 @@ public class TItemPlacer : MonoBehaviour
     /// <summary>
     /// Loads an Items on the placer, activating it.
     /// </summary>
-    /// <param name="inItem"></param>
-    public void LoadItem(TItem inItem)
+    /// <param name="inSlot"></param>
+    public void LoadItem(TInventorySlot inSlot)
     {
-        throw new System.NotImplementedException();
+        if (inSlot.ItemInSlot.Item is TItemTileObject)
+        {
+            LoadTile((TItemTileObject)inSlot.ItemInSlot.Item);
+            m_ReferencedSlot = inSlot;
+        }
+
+        else if (inSlot.ItemInSlot.Item is TItemWorldObject)
+        {
+            LoadWorldItem((TItemWorldObject)inSlot.ItemInSlot.Item);
+            m_ReferencedSlot = inSlot;
+        }
     }
 
     #region Test methods
@@ -75,11 +88,12 @@ public class TItemPlacer : MonoBehaviour
     /// <summary>
     /// Loads a specific Tile to be placed.
     /// </summary>
-    /// <param name="inTile"></param>
-    public void LoadTileTest(TDestructibleTile inTile)
+    /// <param name="inItem"></param>
+    public void LoadTile(TItemTileObject inItem)
     {
         // Set current tile
-        m_CurrentTile = inTile;
+        m_CurrentTile = inItem.Tile;
+        m_TargetTilemap = inItem.TargetTilemap;
 
         // Subscribe to click event
         TInputManager.SharedInstance.OnLeftClickDown += PlaceTile;
@@ -89,19 +103,9 @@ public class TItemPlacer : MonoBehaviour
     /// Loads a specific World Item to be placed.
     /// </summary>
     /// <param name="inWorldItemPrefab"></param>
-    public void LoadWorldItemTest(TWorldItem inWorldItemPrefab)
+    public void LoadWorldItem(TItemWorldObject inItem)
     {
-        // Instantiate copy
-        m_CurrentWorldItem = Instantiate(inWorldItemPrefab, TTilemapManager.SharedInstance.TransformComponent);
-
-        // Set Renderer's color as half-transparent
-        Color col = m_CurrentWorldItem.RendererComponent.material.color;
-        col.a = 0.5f;
-        m_CurrentWorldItem.RendererComponent.material.color = col;
-
-        // Save bounds extents before disabling the collider
-        m_CurrentBoundsExtents = m_CurrentWorldItem.ColliderComponent.bounds.extents;
-        m_CurrentWorldItem.ColliderComponent.enabled = false;
+        InstantiateWorldItem(inItem.Prefab);
 
         // Subscribe to input events
         TInputManager.SharedInstance.OnLeftClickDown += PlaceWorldItem;
@@ -125,12 +129,16 @@ public class TItemPlacer : MonoBehaviour
         // 2. There should be at least one neighbor on the Tilemaps (four neighbours on target map and same position on the other map)
         // 3. The corresponding cell should not be occupied by any object.
         if (IsInRange(inData.GridPosition)
-            && TTilemapManager.SharedInstance.CheckForNeighbors(inData.GridPosition, TMap.Foreground)
+            && TTilemapManager.SharedInstance.CheckForNeighbors(inData.GridPosition, m_TargetTilemap)
             && !Physics2D.OverlapBox(TTilemapManager.SharedInstance.CellToWorldCenter(inData.GridPosition), TTilemapManager.SharedInstance.CellSize / 2, 0))
         {
             // Set tile and unsubscribe
-            TTilemapManager.SharedInstance.SetTile(inData.GridPosition, m_CurrentTile, TMap.Foreground);
-            TInputManager.SharedInstance.OnLeftClickDown -= PlaceTile;
+            TTilemapManager.SharedInstance.SetTile(inData.GridPosition, m_CurrentTile, m_TargetTilemap);
+
+            m_ReferencedSlot.DepleteAmount(1);
+           
+            if (m_ReferencedSlot.ItemInSlot.Item == null)
+                TInputManager.SharedInstance.OnLeftClickDown -= PlaceTile;
         }
     }
 
@@ -168,9 +176,19 @@ public class TItemPlacer : MonoBehaviour
         // Reenable collider
         m_CurrentWorldItem.ColliderComponent.enabled = true;
 
-        // Unsubscribe from input events
-        TInputManager.SharedInstance.OnLeftClickDown -= PlaceWorldItem;
-        TInputManager.SharedInstance.OnPointerMovedOnGrid -= FollowPointer;
+        m_ReferencedSlot.DepleteAmount(1);
+
+        if (m_ReferencedSlot.ItemInSlot.Item == null)
+        {
+            // Unsubscribe from input events
+            TInputManager.SharedInstance.OnLeftClickDown -= PlaceWorldItem;
+            TInputManager.SharedInstance.OnPointerMovedOnGrid -= FollowPointer;
+        }
+        else
+        {
+            InstantiateWorldItem(((TItemWorldObject)m_ReferencedSlot.ItemInSlot.Item).Prefab);
+        }
+
     }
 
     /// <summary>
@@ -214,6 +232,21 @@ public class TItemPlacer : MonoBehaviour
     {
         // In range if: | [cell to check] - [placer cell] | <= MaxDistance (rounded)
         return Mathf.CeilToInt(Vector3Int.Distance(TTilemapManager.SharedInstance.WorldToGridPosition(TransformComponent.position), inCell)) <= m_MaxDistance;
+    }
+
+    private void InstantiateWorldItem(TWorldItem inWorldItem)
+    {
+        // Instantiate copy
+        m_CurrentWorldItem = Instantiate(inWorldItem, TTilemapManager.SharedInstance.TransformComponent);
+
+        // Set Renderer's color as half-transparent
+        Color col = m_CurrentWorldItem.RendererComponent.material.color;
+        col.a = 0.5f;
+        m_CurrentWorldItem.RendererComponent.material.color = col;
+
+        // Save bounds extents before disabling the collider
+        m_CurrentBoundsExtents = m_CurrentWorldItem.ColliderComponent.bounds.extents;
+        m_CurrentWorldItem.ColliderComponent.enabled = false;
     }
 
     #endregion

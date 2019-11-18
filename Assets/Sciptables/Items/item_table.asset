@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 626f480969f831a41ae87d21fb8ee93f, type: 3}
-  m_Name: Stone_Stats
+  m_Script: {fileID: 11500000, guid: fb5b4938d702cb74e9dc8f717ce70165, type: 3}
+  m_Name: item_table
   m_EditorClassIdentifier: 
-  ItemName: Pietra
-  AmountGivenOnCollect: 1
-  ItemSprite: {fileID: 21300000, guid: 45db59ce8354d6d40acd925b498fd3fe, type: 3}
+  ItemName: Table
+  ItemSprite: {fileID: 21300000, guid: a1d1d5fdb9bb6ec4b862723ef9da6185, type: 3}
+  m_Prefab: {fileID: 8051295990738567597, guid: f437401df5da079418bb58f8bd462274,
+    type: 3}

@@ -28,7 +28,7 @@ public class TWorldItem : MonoBehaviour
     
     [SerializeField] private int m_HitPoints;
 
-    [SerializeField] private TItem m_ReferenceItem;
+    [SerializeField] private TItemQuantity m_ReferenceItem;
 
     #endregion
 

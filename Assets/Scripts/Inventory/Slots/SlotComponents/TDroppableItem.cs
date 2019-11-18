@@ -26,7 +26,7 @@ public class TDroppableItem : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 
     public void OnDrop(PointerEventData eventData)
     {
-        if(m_slot.ItemInSlot != null)
+        if(m_slot.ItemInSlot.Item != null)
         {
             TInventorySlot originarySlot = eventData.pointerDrag.GetComponent<TInventorySlot>();
 

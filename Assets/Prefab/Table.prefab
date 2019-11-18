@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8606439366861538037}
   - component: {fileID: 9024731016638439800}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 7834204137284810386}
   - component: {fileID: 1500590553076034054}
   - component: {fileID: 8051295990738567597}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,4 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HitPoints: 0
-  m_ReferenceItem: {fileID: 0}
+  m_ReferenceItem:
+    Item: {fileID: 0}
+    Amount: 0

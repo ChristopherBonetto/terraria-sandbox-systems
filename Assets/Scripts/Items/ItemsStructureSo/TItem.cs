@@ -6,9 +6,6 @@ using UnityEngine;
 public class TItem : ScriptableObject
 {
     public new string ItemName = "";
-
-    public int AmountGivenOnCollect = 1;
-
         
     [Space]
     public Sprite ItemSprite;

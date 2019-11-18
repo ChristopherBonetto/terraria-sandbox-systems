@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TItemQuantity
+[System.Serializable]
+public struct TItemQuantity
 {
-    public TItem Item = null;
-    public int Amount = 0;
+    public static TItemQuantity Empty = new TItemQuantity(null, 0);
+
+    public TItem Item;
+    public int Amount;
 
     public TItemQuantity(TItem inItem, int inAmount = 1)
     {

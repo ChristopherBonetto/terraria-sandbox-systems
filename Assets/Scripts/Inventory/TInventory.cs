@@ -19,7 +19,7 @@ public class TInventory : MonoBehaviour
         DebugInventory();
     }
 
-    public void CollectItem(TItem addThisItem)
+    public void CollectItem(TItemQuantity addThisItem)
     {
         if (!CheckSimilarItems(addThisItem))
         {
@@ -27,15 +27,15 @@ public class TInventory : MonoBehaviour
         }
     }
 
-    public bool CheckSimilarItems(TItem addThisItem)
+    public bool CheckSimilarItems(TItemQuantity addThisItem)
     {
         for (int i = 0; i < InventorySlots.Count; i++)
         {
-            if(InventorySlots[i].ItemInSlot != null)
+            if(InventorySlots[i].ItemInSlot.Item != null)
             {
-                if (InventorySlots[i].ItemInSlot.Item == addThisItem)
+                if (InventorySlots[i].ItemInSlot.Item == addThisItem.Item)
                 {
-                    InventorySlots[i].ItemInSlot.Amount += addThisItem.AmountGivenOnCollect;
+                    InventorySlots[i].ItemInSlot.Amount += addThisItem.Amount;
 
                     Debug.Log("now you have " + InventorySlots[i].ItemInSlot.Item.ItemName + " : " + InventorySlots[i].ItemInSlot.Amount);
 
@@ -47,15 +47,13 @@ public class TInventory : MonoBehaviour
         return false;
     }
 
-    public void CheckFreeSlotAndCollect(TItem addThisItem)
+    public void CheckFreeSlotAndCollect(TItemQuantity addThisItem)
     {
         for (int i = 0; i < InventorySlots.Count; i++)
         {
-            if(InventorySlots[i].ItemInSlot == null)
+            if(InventorySlots[i].ItemInSlot.Item == null)
             {
                 InventorySlots[i].InsertItemToSlot(addThisItem);
-
-                UIManager.Instance.ChangeSpriteFromImage(InventorySlots[i].m_slotImage, addThisItem.ItemSprite);
 
                 return;
             }
@@ -81,7 +79,7 @@ public class TInventory : MonoBehaviour
         {
             for (int i = 0; i < InventorySlots.Count; i++)
             {
-                if (InventorySlots[i].ItemInSlot == null)
+                if (InventorySlots[i].ItemInSlot.Item == null)
                 {
                     Debug.Log("Slot: " + i + " is empty!!!");
                 }

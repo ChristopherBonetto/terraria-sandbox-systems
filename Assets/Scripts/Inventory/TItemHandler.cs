@@ -20,7 +20,7 @@ public class TItemHandler : MonoBehaviour
     {
         if(tempSlottedItem != null)
         {            
-            if (tempSlottedItem.ItemInSlot != null)
+            if (tempSlottedItem.ItemInSlot.Item != null)
             {
                 ItemDraggedInHand = tempSlottedItem.ItemInSlot;
                 OnDragEvent();
@@ -129,7 +129,7 @@ public class TItemHandler : MonoBehaviour
     {
         slotToEquipItem.ItemInSlot = ItemDraggedInHand;
         UIManager.Instance.ChangeSpriteFromImage(slotToEquipItem.m_slotImage, ItemDraggedInHand.Item.ItemSprite);
-        ItemDraggedInHand = null;
+        ItemDraggedInHand = TItemQuantity.Empty;
     }
 
     public void DeselectCurrentSelectedItem()
