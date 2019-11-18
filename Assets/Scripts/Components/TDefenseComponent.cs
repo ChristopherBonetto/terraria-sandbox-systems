@@ -36,7 +36,7 @@ public class TDefenseComponent : MonoBehaviour, IDefend
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.RightControl))
             DamageEntity();
     }
 
