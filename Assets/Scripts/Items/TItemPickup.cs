@@ -70,7 +70,7 @@ public class TItemPickup : MonoBehaviour
         // Set contained Item
         m_ContainedItem = inItemQuantity;
         // Set Sprite
-        m_SpriteRendererComponent.sprite = inItemQuantity.StatsOfThisItem.Item.ItemSprite;
+        m_SpriteRendererComponent.sprite = inItemQuantity.ItemSprite;
     }
 
     #endregion

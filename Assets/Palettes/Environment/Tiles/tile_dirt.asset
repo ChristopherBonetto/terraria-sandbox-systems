@@ -263,4 +263,4 @@ MonoBehaviour:
     m_RandomTransform: 0
   m_HitPoints: 2
   m_ContainedItems:
-  - {fileID: 6560335172291171013, guid: 32181f90b7ce28c4e8ec47d0068b998f, type: 3}
+  - {fileID: 11400000, guid: fe73e03c22a877349af2d56d1ed22aa2, type: 2}

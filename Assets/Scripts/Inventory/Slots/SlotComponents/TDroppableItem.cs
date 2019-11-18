@@ -33,7 +33,7 @@ public class TDroppableItem : MonoBehaviour, IDropHandler, IPointerEnterHandler,
             if (originarySlot != null)
             {
                 originarySlot.ItemInSlot = m_slot.ItemInSlot;
-                UIManager.Instance.ChangeSpriteFromImage(originarySlot.m_slotImage, m_slot.ItemInSlot.StatsOfThisItem.Item.ItemSprite);
+                UIManager.Instance.ChangeSpriteFromImage(originarySlot.m_slotImage, m_slot.ItemInSlot.Item.ItemSprite);
             }
             TItemHandler.Instance.DropItemAction(m_slot);
         }

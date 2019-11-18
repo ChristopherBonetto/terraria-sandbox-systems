@@ -155,7 +155,7 @@ public class UIManager : MonoBehaviour
     public void ChangeImageItemInHand()
     {
         m_itemInHandUI.gameObject.SetActive(true);
-        ChangeSpriteFromImage(m_itemInHandUI, TItemHandler.Instance.ItemDraggedInHand.StatsOfThisItem.Item.ItemSprite);
+        ChangeSpriteFromImage(m_itemInHandUI, TItemHandler.Instance.ItemDraggedInHand.Item.ItemSprite);
         //m_itemInHandUI.sprite = TItemHandler.Instance.ItemDraggedInHand.Item.ItemSprite;
     }
 

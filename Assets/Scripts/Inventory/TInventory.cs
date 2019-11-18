@@ -16,7 +16,7 @@ public class TInventory : MonoBehaviour
 
     private void Update()
     {
-                
+        DebugInventory();
     }
 
     public void CollectItem(TItem addThisItem)
@@ -33,11 +33,11 @@ public class TInventory : MonoBehaviour
         {
             if(InventorySlots[i].ItemInSlot != null)
             {
-                if (InventorySlots[i].ItemInSlot.StatsOfThisItem.Item == addThisItem.StatsOfThisItem.Item)
+                if (InventorySlots[i].ItemInSlot.Item == addThisItem)
                 {
-                    InventorySlots[i].ItemInSlot.StatsOfThisItem.Amount += addThisItem.StatsOfThisItem.Amount;
+                    InventorySlots[i].ItemInSlot.Amount += addThisItem.AmountGivenOnCollect;
 
-                    Debug.Log("now you have " + InventorySlots[i].ItemInSlot.StatsOfThisItem.Item.ItemName + " : " + InventorySlots[i].ItemInSlot.StatsOfThisItem.Amount);
+                    Debug.Log("now you have " + InventorySlots[i].ItemInSlot.Item.ItemName + " : " + InventorySlots[i].ItemInSlot.Amount);
 
                     return true;
                 }
@@ -53,8 +53,9 @@ public class TInventory : MonoBehaviour
         {
             if(InventorySlots[i].ItemInSlot == null)
             {
-                InventorySlots[i].ItemInSlot = addThisItem;
-                UIManager.Instance.ChangeSpriteFromImage(InventorySlots[i].m_slotImage, addThisItem.StatsOfThisItem.Item.ItemSprite);
+                InventorySlots[i].InsertItemToSlot(addThisItem);
+
+                UIManager.Instance.ChangeSpriteFromImage(InventorySlots[i].m_slotImage, addThisItem.ItemSprite);
 
                 return;
             }
@@ -74,5 +75,22 @@ public class TInventory : MonoBehaviour
     }
 
 
+    public void DebugInventory()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            for (int i = 0; i < InventorySlots.Count; i++)
+            {
+                if (InventorySlots[i].ItemInSlot == null)
+                {
+                    Debug.Log("Slot: " + i + " is empty!!!");
+                }
+                else
+                {
+                    Debug.Log("Slot: " + i + " have " + InventorySlots[i].ItemInSlot.Amount + " of " + InventorySlots[i].ItemInSlot.Item.ItemName);
+                }
+            }
+        }
+    }
     
 }

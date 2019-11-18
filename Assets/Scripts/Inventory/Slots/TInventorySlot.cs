@@ -7,11 +7,16 @@ using UnityEngine.UI;
 [RequireComponent(typeof(TDroppableItem), typeof(TDraggableItem))]
 public class TInventorySlot : MonoBehaviour
 {
-    public TItem ItemInSlot = null;
+    public TItemQuantity ItemInSlot = null;
     
     public Image m_slotImage;
-
     
+
+    private void Update()
+    {
+        
+    }
+
 
     private void OnEnable()
     {
@@ -39,7 +44,7 @@ public class TInventorySlot : MonoBehaviour
     {
         if(ItemInSlot != null)
         {
-            UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.StatsOfThisItem.Item.ItemSprite);
+            UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.Item.ItemSprite);
             
         }
     }
@@ -52,7 +57,7 @@ public class TInventorySlot : MonoBehaviour
     {
         if(ItemInSlot != null)
         {
-            if (ItemInSlot.StatsOfThisItem.Item != null && TItemHandler.Instance.CurrentSelectedItem != this)
+            if (ItemInSlot.Item != null && TItemHandler.Instance.CurrentSelectedItem != this)
             {
                 TItemHandler.Instance.SelectedSlotAction(this);
             }
@@ -75,7 +80,7 @@ public class TInventorySlot : MonoBehaviour
     {
         if(ItemInSlot != null)
         {
-            if (ItemInSlot.StatsOfThisItem.Item != null)
+            if (ItemInSlot.Item != null)
             {
                 TItemHandler.Instance.StartDragItemEvent(this);
                 ItemInSlot = null;
@@ -92,7 +97,7 @@ public class TInventorySlot : MonoBehaviour
     public void RestoreImageAndItemInSlot()
     {
         ItemInSlot = TItemHandler.Instance.ItemDraggedInHand;
-        UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.StatsOfThisItem.Item.ItemSprite);
+        UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.Item.ItemSprite);
     }
 
     //Take the item in hand and equip it in this slot.
@@ -103,5 +108,9 @@ public class TInventorySlot : MonoBehaviour
             TItemHandler.Instance.TakeSlotFromHand(this);
         }
     }
-
+    
+    public void InsertItemToSlot(TItem addThisItem)
+    {
+        ItemInSlot = new TItemQuantity(addThisItem, addThisItem.AmountGivenOnCollect);
+    }
 }

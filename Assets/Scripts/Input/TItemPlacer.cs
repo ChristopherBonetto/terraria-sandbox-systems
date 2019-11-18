@@ -65,7 +65,7 @@ public class TItemPlacer : MonoBehaviour
     /// Loads an Items on the placer, activating it.
     /// </summary>
     /// <param name="inItem"></param>
-    public void LoadItem(TItemScriptable inItem)
+    public void LoadItem(TItem inItem)
     {
         throw new System.NotImplementedException();
     }

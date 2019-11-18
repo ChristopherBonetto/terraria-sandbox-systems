@@ -189,14 +189,14 @@ public class TPlayerController : MonoBehaviour
 
     #region Generic event manager methods
 
-    private void OnItemEquipped(TItemWeapon item)
-    {
-        //WeaponInHand = item;
+    //private void OnItemEquipped(TItemWeapon item)
+    //{
+    //    //WeaponInHand = item;
 
-        //// set stats as default + item
-        //DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense + item.Defence);
-        //AttackComponent.Init(DataAssigned.Damage + item.Attack);
-    }
+    //    //// set stats as default + item
+    //    //DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense + item.Defence);
+    //    //AttackComponent.Init(DataAssigned.Damage + item.Attack);
+    //}
 
     #endregion
 }
