@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-[RequireComponent(typeof(TDroppableItem), typeof(TDraggableItem))]
+//[RequireComponent(typeof(TDroppableItem), typeof(TDraggableItem))]
 public class TInventorySlot : MonoBehaviour
 {  
     public TItemQuantity ItemInSlot;
@@ -14,15 +14,13 @@ public class TInventorySlot : MonoBehaviour
 
     private void OnEnable()
     {
-        TItemHandler.Instance.OnDropEventAction += ChangeSlottedItemWithDraggedHandItem;
-
-        TItemHandler.Instance.OnSelectedSlotEventAction += StartSelectedSlotEvent;
+        TItemHandler.OnSelectEvent += TakeItemFromThisSlot;
+        TItemHandler.OnDeselectEvent += FillThisSlot;
     }
     private void OnDisable()
     {
-        TItemHandler.Instance.OnDropEventAction -= ChangeSlottedItemWithDraggedHandItem;
-
-        TItemHandler.Instance.OnSelectedSlotEventAction -= StartSelectedSlotEvent;
+        TItemHandler.OnSelectEvent -= TakeItemFromThisSlot;
+        TItemHandler.OnDeselectEvent -= FillThisSlot;
     }
 
     private void Awake()
@@ -35,89 +33,72 @@ public class TInventorySlot : MonoBehaviour
     {
         if(ItemInSlot.Item != null)
         {
-            UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.Item.ItemSprite);
+            m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
         }
     }
     
+    
 
-
-
-    //Used from button click.
-    public void SelectThisSlotForEvent()
+    public void SelectSlot()
     {
-        if(ItemInSlot.Item != null)
+        TItemHandler.Instance.SelectSlot(this);
+    }
+
+    public void TakeItemFromThisSlot(TInventorySlot slot)
+    {
+        if(slot == this)
         {
-            if (ItemInSlot.Item != null && TItemHandler.Instance.CurrentSelectedItem != this)
+            if(ItemInSlot.Item != null)
             {
-                TItemHandler.Instance.SelectedSlotAction(this);
+                TItemHandler.Instance.CurrentSelectedItem = this;            
+            }
+        }
+    }
+
+    public void FillThisSlot(TInventorySlot slot)
+    {
+        if(slot == this)
+        {
+            if (TInventory.Instance.InventoryIsOpen)
+            {
+                if (slot.ItemInSlot.Item == null)
+                {
+                    InsertItemToSlot(TItemHandler.Instance.CurrentSelectedItem.ItemInSlot);
+                    TItemHandler.Instance.CurrentSelectedItem.ItemInSlot.Item = null;
+                    TItemHandler.Instance.CurrentSelectedItem = null;
+                    Debug.Log("inserisci");
+                }
+                else
+                {
+                    if (TItemHandler.Instance.CurrentSelectedItem == this)
+                    {
+                        m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
+                        TItemHandler.Instance.CurrentSelectedItem = null;
+                        Debug.Log("riposa");
+                    }
+                    else
+                    {
+                        TItemQuantity tempSlot = this.ItemInSlot;
+
+                        InsertItemToSlot(TItemHandler.Instance.CurrentSelectedItem.ItemInSlot);
+
+                        TItemHandler.Instance.CurrentSelectedItem.InsertItemToSlot(tempSlot);
+
+                        TItemHandler.Instance.CurrentSelectedItem = null;
+                    }
+                }
+            }
+            else
+            {
+                TItemHandler.Instance.CurrentSelectedItem = null;
             }
         }
         
     }
 
-    public void StartSelectedSlotEvent(TInventorySlot slot)
+    public void InsertItemToSlot(TItemQuantity itemToAdd)
     {
-        if(slot == this)
-        {
-            TItemHandler.Instance.CurrentSelectedItem = this;
-            UIManager.Instance.ChangeColorFromImage(m_slotImage, Color.green);
-        }
-                
-    }
-
-    //Used to change the ItemHandler's variable itemInHand and subscribe the class of this item to another event.
-    public void ChangeDraggedItemWithThisSlot()
-    {
-        if(ItemInSlot.Item != null)
-        {
-            if (ItemInSlot.Item != null)
-            {
-                TItemHandler.Instance.StartDragItemEvent(this);
-                ItemInSlot = TItemQuantity.Empty;
-                UIManager.Instance.ChangeSpriteFromImage(m_slotImage, null);
-
-                TItemHandler.OnStopDragEvent += RestoreImageAndItemInSlot;
-            }
-        }
-    }
-
-    //Used to restore the state of this class before being dragged.
-    public void RestoreImageAndItemInSlot()
-    {
-        ItemInSlot = TItemHandler.Instance.ItemDraggedInHand;
-        UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.Item.ItemSprite);
-    }
-
-    //Take the item in hand and equip it in this slot.
-    public void ChangeSlottedItemWithDraggedHandItem(TInventorySlot slot)
-    {
-        if(slot == this)
-        {
-            TItemHandler.Instance.TakeSlotFromHand(this);
-        }
-    }
-    
-    public void InsertItemToSlot(TItemQuantity addThisItem)
-    {
-        ItemInSlot = addThisItem;
-        m_slotImage.sprite = addThisItem.Item.ItemSprite;
-    }
-
-    public void DepleteAmount(int inAmount)
-    {
-        ItemInSlot.Amount -= inAmount;
-
-        if (ItemInSlot.Amount <= 0)
-            Clear();
-    }
-
-    private void Clear()
-    {
-        ItemInSlot = TItemQuantity.Empty;
-        m_slotImage.sprite = null;
-        m_slotImage.color = Color.white;
-
-        if (TItemHandler.Instance.CurrentSelectedItem == this)
-            TItemHandler.Instance.CurrentSelectedItem = null;
+        ItemInSlot = itemToAdd;
+        m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
     }
 }

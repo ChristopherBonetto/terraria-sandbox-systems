@@ -310,9 +310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9312689a82924dc409e1bcb07157aa52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemDraggedInHand:
-    Item: {fileID: 0}
-    Amount: 0
   CurrentSelectedItem: {fileID: 0}
 --- !u!4 &247751180
 Transform:
@@ -37476,6 +37473,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventorySlots: []
+  m_slotsNumber: 39
+  InventoryIsOpen: 1
 --- !u!114 &1444712115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37547,10 +37546,8 @@ MonoBehaviour:
   m_slotPrefab: {fileID: 4277470830733030595, guid: 48930ee297715b443b02e67c6513cc53,
     type: 3}
   m_inventoryUI: {fileID: 1444712113}
-  m_slotsNumber: 39
   m_itemInHandUI: {fileID: 885823568}
   m_InventorySlotsUI: []
-  InventoryIsOpen: 1
 --- !u!4 &1474534075
 Transform:
   m_ObjectHideFlags: 0

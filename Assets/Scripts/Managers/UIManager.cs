@@ -12,108 +12,89 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private RectTransform m_inventoryUI;
     private Vector2 m_startingInventorySize;
-
-    [SerializeField] private int m_slotsNumber;
-    private int m_slotCounter = 0;
-
+    
     [SerializeField] private Image m_itemInHandUI;
 
     public List<GameObject> m_InventorySlotsUI = new List<GameObject>();
 
-    public bool InventoryIsOpen = false;
+    private bool m_inventoryInUiIsOpen = false;
 
     private void OnEnable()
     {
-        TItemHandler.OnDragEvent += ChangeImageItemInHand;
-        TItemHandler.OnDragEvent += StartHoldingItem;
-        //TItemHandler.OnDragEvent += RestoreColorToSelectedSlotWhenDragged;
+        TItemHandler.OnSelectEvent += DragSlotInHandUI;
 
-        TItemHandler.OnStopDragEvent += DisableImageItemInHand;
-
-        TItemHandler.OnDropEvent += DisableImageItemInHand;
-
+        TItemHandler.OnDeselectEvent += DropSlotInHandUI;
     }
     private void OnDisable()
     {
-        TItemHandler.OnDragEvent -= ChangeImageItemInHand;
-        TItemHandler.OnDragEvent -= StartHoldingItem;
-        //TItemHandler.OnDragEvent -= RestoreColorToSelectedSlotWhenDragged;
+        TItemHandler.OnSelectEvent -= DragSlotInHandUI;
 
-        TItemHandler.OnStopDragEvent -= DisableImageItemInHand;
-
-        TItemHandler.OnDropEvent -= DisableImageItemInHand;
+        TItemHandler.OnDeselectEvent -= DropSlotInHandUI;
     }
 
 
     private void Awake()
     {
         Instance = this;
-    }
 
-    public void RestoreColorToSelectedSlotWhenDragged()
+        m_startingInventorySize = m_inventoryUI.sizeDelta;
+    }
+        
+    void Start()
     {
-        if (TItemHandler.Instance.CurrentSelectedItem != null)
-        {
-            UIManager.Instance.ChangeColorFromImage(TItemHandler.Instance.CurrentSelectedItem.m_slotImage, Color.white);
-        }
+        m_itemInHandUI.gameObject.SetActive(false);
     }
 
     
-
-    void Start()
+    #region Starting Instantiate Buttons
+    //Instantiate button and return his Tinventory slot
+    public TInventorySlot InstantiateSlotInInventory()
     {
-        m_startingInventorySize = m_inventoryUI.sizeDelta;
+        GameObject slot = Instantiate(m_slotPrefab) as GameObject;
 
-        InstantiateSlotsInInventory();
-        DisableImageItemInHand();
+        slot.transform.SetParent(m_inventoryItemsHolder.transform);
+        slot.transform.localScale = new Vector3(1, 1, 1);
 
-        OpenCloseInventory(InventoryIsOpen);        
+        AddSlotToInventoryUI(slot);
+
+        TInventorySlot tempSlotRef = slot.GetComponentInChildren<TInventorySlot>();
+
+        return tempSlotRef;
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            InventoryIsOpen = !InventoryIsOpen;
-            OpenCloseInventory(InventoryIsOpen);
-        }
-    }
-
-    public void InstantiateSlotsInInventory()
-    {
-        if(m_slotCounter <= m_slotsNumber)
-        {
-            GameObject slot = Instantiate(m_slotPrefab) as GameObject;
-
-            slot.transform.SetParent(m_inventoryItemsHolder.transform);
-            slot.transform.localScale = new Vector3(1,1,1);
-
-            AddSlotToInventoryUI(slot);
-            TInventory.Instance.AddSlotToInventory(slot.GetComponentInChildren<TInventorySlot>());
-
-            m_slotCounter++;
-            InstantiateSlotsInInventory();
-        }
-        else
-        {
-            m_slotCounter = 0;
-            return;
-        }
-    }
-
-    public void DisableButtons()
-    {
-        for(int i = 10; i < m_InventorySlotsUI.Count; i++)
-        {
-            DisableEnableItemUI(m_InventorySlotsUI[i]);
-        }
-    }
-
+    
     public void AddSlotToInventoryUI(GameObject slotToAdd)
     {
         if (!m_InventorySlotsUI.Contains(slotToAdd))
         {
             m_InventorySlotsUI.Add(slotToAdd);
+        }
+    }
+    #endregion
+
+
+    #region OpenClose Inventory
+    
+    //What happens to the ui when the inventory is open or close
+    public void OpenCloseInventory(bool isOpen)
+    {
+        m_inventoryInUiIsOpen = isOpen;
+
+        if (!isOpen)
+        {
+            m_inventoryUI.sizeDelta = new Vector2(m_inventoryUI.sizeDelta.x, 85);
+        }
+        else
+        {
+            m_inventoryUI.sizeDelta = m_startingInventorySize;
+        }
+        DisableButtons();
+    }
+
+    public void DisableButtons()
+    {
+        for (int i = 10; i < m_InventorySlotsUI.Count; i++)
+        {
+            DisableEnableItemUI(m_InventorySlotsUI[i]);
         }
     }
 
@@ -128,35 +109,13 @@ public class UIManager : MonoBehaviour
             item.SetActive(true);
         }
     }
+    #endregion
+           
 
-    public void ChangeSpriteFromImage(Image imageToChange, Sprite spriteToView)
+    #region Refresh ItemInHandPosition
+    public void StartHoldingItem()
     {
-        imageToChange.sprite = spriteToView;
-    }
-    public void ChangeColorFromImage(Image imageToChange, Color newColor)
-    {
-        imageToChange.color = newColor;
-    }
-
-    public void OpenCloseInventory(bool isClose)
-    {
-        if (isClose)
-        {
-            m_inventoryUI.sizeDelta = new Vector2(m_inventoryUI.sizeDelta.x, 85);
-            DisableButtons();
-        }
-        else
-        {
-            m_inventoryUI.sizeDelta = m_startingInventorySize;
-            DisableButtons();
-        }
-    }
-
-    public void ChangeImageItemInHand()
-    {
-        m_itemInHandUI.gameObject.SetActive(true);
-        ChangeSpriteFromImage(m_itemInHandUI, TItemHandler.Instance.ItemDraggedInHand.Item.ItemSprite);
-        //m_itemInHandUI.sprite = TItemHandler.Instance.ItemDraggedInHand.Item.ItemSprite;
+        StartCoroutine(ItemInHand());
     }
 
     public void ItemFollowMousePosition()
@@ -164,25 +123,44 @@ public class UIManager : MonoBehaviour
         m_itemInHandUI.transform.position = Input.mousePosition;
     }
 
-    public void DisableImageItemInHand()
-    {
-        m_itemInHandUI.gameObject.SetActive(false);
-        m_itemInHandUI.sprite = null;
-    }
-
-
-    public void StartHoldingItem()
-    {
-        StartCoroutine(ItemInHand());
-    }
-
     IEnumerator ItemInHand()
     {
-        while (TItemHandler.Instance.ItemDraggedInHand.Item != null)
+        while (m_itemInHandUI.gameObject.active)
         {
             ItemFollowMousePosition();
             yield return null;
         }
         yield return new WaitForSeconds(1f);
     }
+    #endregion
+
+   
+    #region Drag and Drop event for UI
+    //Method used with event to start drag a slot
+    public void DragSlotInHandUI(TInventorySlot slot)
+    {
+        if(slot.ItemInSlot.Item != null)
+        {
+            if (m_inventoryInUiIsOpen)
+            {
+                m_itemInHandUI.gameObject.SetActive(true);
+                m_itemInHandUI.sprite = slot.m_slotImage.sprite;
+                
+                slot.m_slotImage.sprite = null;
+
+                StartHoldingItem();
+            }
+        }
+    }
+
+    //Method used with event to drop a slot
+    public void DropSlotInHandUI(TInventorySlot slot)
+    {
+        if (m_inventoryInUiIsOpen)
+        {            
+            slot.m_slotImage.sprite = m_itemInHandUI.sprite;
+            m_itemInHandUI.gameObject.SetActive(false);
+        }
+    }
+    #endregion
 }

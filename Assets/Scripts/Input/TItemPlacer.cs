@@ -54,12 +54,12 @@ public class TItemPlacer : MonoBehaviour
 
     private void Start()
     {
-        TItemHandler.Instance.OnSelectedSlotEventAction += LoadItem;
+        //TItemHandler.Instance.OnSelectedSlotEventAction += LoadItem;
     }
 
     private void OnDestroy()
     {
-        TItemHandler.Instance.OnSelectedSlotEventAction -= LoadItem;
+        //TItemHandler.Instance.OnSelectedSlotEventAction -= LoadItem;
     }
 
     #endregion
@@ -137,7 +137,7 @@ public class TItemPlacer : MonoBehaviour
             // Set tile and unsubscribe
             TTilemapManager.SharedInstance.SetTile(inData.GridPosition, m_CurrentTile, m_TargetTilemap);
 
-            m_ReferencedSlot.DepleteAmount(1);
+            //m_ReferencedSlot.DepleteAmount(1);
            
             if (m_ReferencedSlot.ItemInSlot.Item == null)
                 TEventManager.UnsubscribeFrom<TPointerData>(TEventID.OnLeftClickUp, PlaceTile);
@@ -181,7 +181,7 @@ public class TItemPlacer : MonoBehaviour
         // Reenable collider
         m_CurrentWorldItem.ColliderComponent.enabled = true;
 
-        m_ReferencedSlot.DepleteAmount(1);
+        //m_ReferencedSlot.DepleteAmount(1);
 
         if (m_ReferencedSlot.ItemInSlot.Item == null)
         {

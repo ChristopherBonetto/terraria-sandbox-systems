@@ -91,8 +91,6 @@ GameObject:
   - component: {fileID: 2401622769573948474}
   - component: {fileID: 2401622769573948475}
   - component: {fileID: 2401622769573948472}
-  - component: {fileID: 6553325833643196061}
-  - component: {fileID: 1448641037879471624}
   - component: {fileID: 521143849575262180}
   - component: {fileID: 3639225300502098365}
   m_Layer: 5
@@ -204,7 +202,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 521143849575262180}
-        m_MethodName: SelectThisSlotForEvent
+        m_MethodName: SelectSlot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -216,30 +214,6 @@ MonoBehaviour:
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &6553325833643196061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2401622769573948470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2421dc7c7d299e4db2cd0957ab80339, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1448641037879471624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2401622769573948470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd2be64bdfcd3dd4abedec84aa76d0c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &521143849575262180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,9 +226,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb453457ee2799e41a2f7f89210aeda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemInSlot: {fileID: 0}
+  ItemInSlot:
+    Item: {fileID: 0}
+    Amount: 0
   m_slotImage: {fileID: 0}
-  ciao: {fileID: 11400000, guid: 785147c22cb57ea479d01641ce58b9fa, type: 2}
 --- !u!225 &3639225300502098365
 CanvasGroup:
   m_ObjectHideFlags: 0
