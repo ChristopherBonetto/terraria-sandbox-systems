@@ -37,6 +37,11 @@ public class TInventorySlot : MonoBehaviour
         }
     }
     
+    public void InsertItemToSlot(TItemQuantity itemToAdd)
+    {
+        ItemInSlot = itemToAdd;
+        m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
+    }
     
 
     public void SelectSlot()
@@ -44,6 +49,7 @@ public class TInventorySlot : MonoBehaviour
         TItemHandler.Instance.SelectSlot(this);
     }
 
+    #region Drag and Drop event
     public void TakeItemFromThisSlot(TInventorySlot slot)
     {
         if(slot == this)
@@ -64,7 +70,7 @@ public class TInventorySlot : MonoBehaviour
                 if (slot.ItemInSlot.Item == null)
                 {
                     InsertItemToSlot(TItemHandler.Instance.CurrentSelectedItem.ItemInSlot);
-                    TItemHandler.Instance.CurrentSelectedItem.ItemInSlot.Item = null;
+                    TItemHandler.Instance.CurrentSelectedItem.ItemInSlot = TItemQuantity.Empty;
                     TItemHandler.Instance.CurrentSelectedItem = null;
                     Debug.Log("inserisci");
                 }
@@ -95,10 +101,6 @@ public class TInventorySlot : MonoBehaviour
         }
         
     }
+    #endregion
 
-    public void InsertItemToSlot(TItemQuantity itemToAdd)
-    {
-        ItemInSlot = itemToAdd;
-        m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
-    }
 }
