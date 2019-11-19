@@ -12,8 +12,8 @@ public class TItemQuantity
 
     public TItemQuantity(TItem inItem, int inAmount = 1)
     {
-        Item = inItem;
-        Amount = inAmount;
+        this.Item = inItem;
+        this.Amount = inAmount;
     }
 
     public override string ToString()

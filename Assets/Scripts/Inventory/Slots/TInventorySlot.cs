@@ -56,4 +56,10 @@ public class TInventorySlot : MonoBehaviour
     {
         TItemHandler.Instance.CurrentSelectedItem = null;
     }
+
+    public void InsertItemToSlot(TItemQuantity itemToAdd)
+    {
+        ItemInSlot = itemToAdd;
+        m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
+    }
 }

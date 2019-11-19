@@ -35,7 +35,8 @@ public class TInventory : MonoBehaviour
             {
                 if (InventorySlots[i].ItemInSlot.Item == addThisItem.Item)
                 {
-                    InventorySlots[i].ItemInSlot.Amount += addThisItem.Amount;
+                    
+                    InventorySlots[i].InsertItemToSlot(addThisItem);
 
                     Debug.Log("now you have " + InventorySlots[i].ItemInSlot.Item.ItemName + " : " + InventorySlots[i].ItemInSlot.Amount);
 
@@ -53,7 +54,7 @@ public class TInventory : MonoBehaviour
         {
             if(InventorySlots[i].ItemInSlot.Item == null)
             {
-                //InventorySlots[i].InsertItemToSlot(addThisItem);
+                InventorySlots[i].InsertItemToSlot(addThisItem);
 
                 return;
             }

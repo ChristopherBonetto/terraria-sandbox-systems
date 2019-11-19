@@ -144,7 +144,7 @@ public class UIManager : MonoBehaviour
 
     IEnumerator ItemInHand()
     {
-        while (TItemHandler.Instance.CurrentSelectedItem != null)
+        while (m_itemInHandUI.gameObject.active)
         {
             ItemFollowMousePosition();
             yield return null;

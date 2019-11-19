@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemInSlot:
-    Item: {fileID: 11400000, guid: 70f6448725b6a08478a1e71675af1bb7, type: 2}
+    Item: {fileID: 0}
     Amount: 0
   m_slotImage: {fileID: 0}
 --- !u!225 &3639225300502098365
