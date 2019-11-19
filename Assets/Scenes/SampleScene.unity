@@ -310,9 +310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9312689a82924dc409e1bcb07157aa52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemDraggedInHand:
-    Item: {fileID: 0}
-    Amount: 0
   CurrentSelectedItem: {fileID: 0}
 --- !u!4 &247751180
 Transform:
@@ -37550,7 +37547,6 @@ MonoBehaviour:
   m_slotsNumber: 39
   m_itemInHandUI: {fileID: 885823568}
   m_InventorySlotsUI: []
-  InventoryIsOpen: 1
 --- !u!4 &1474534075
 Transform:
   m_ObjectHideFlags: 0
