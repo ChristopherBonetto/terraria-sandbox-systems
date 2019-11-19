@@ -29,12 +29,12 @@ public class TPlayerView : MonoBehaviour
 
     private void OnEnable()
     {
-        TInputManager.SharedInstance.OnLeftClickDown += PlayerAttackAnimation;
+        TEventManager.SubscribeTo<TPointerData>(TEventID.OnLeftClickDown, PlayerAttackAnimation);
     }
 
     private void OnDisable()
     {
-        TInputManager.SharedInstance.OnLeftClickDown -= PlayerAttackAnimation;
+        TEventManager.UnsubscribeFrom<TPointerData>(TEventID.OnLeftClickDown, PlayerAttackAnimation);
     }
 
     private void Awake()

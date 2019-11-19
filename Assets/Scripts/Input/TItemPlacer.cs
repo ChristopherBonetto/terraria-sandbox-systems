@@ -40,6 +40,8 @@ public class TItemPlacer : MonoBehaviour
 
     private TInventorySlot m_ReferencedSlot;
 
+    private bool m_CanPlace;
+
     #endregion
 
     #region MonoBehaviour cycle
@@ -96,7 +98,7 @@ public class TItemPlacer : MonoBehaviour
         m_TargetTilemap = inItem.TargetTilemap;
 
         // Subscribe to click event
-        TInputManager.SharedInstance.OnLeftClickDown += PlaceTile;
+        TEventManager.SubscribeTo<TPointerData>(TEventID.OnLeftClickUp, PlaceTile);
     }
 
     /// <summary>
@@ -108,8 +110,8 @@ public class TItemPlacer : MonoBehaviour
         InstantiateWorldItem(inItem.Prefab);
 
         // Subscribe to input events
-        TInputManager.SharedInstance.OnLeftClickDown += PlaceWorldItem;
-        TInputManager.SharedInstance.OnPointerMovedOnGrid += FollowPointer;
+        TEventManager.SubscribeTo<TPointerData>(TEventID.OnLeftClickUp, PlaceWorldItem);
+        TEventManager.SubscribeTo<TPointerData>(TEventID.OnPointerMovedOnGrid, FollowPointer);
     }
 
     #endregion
@@ -138,7 +140,7 @@ public class TItemPlacer : MonoBehaviour
             m_ReferencedSlot.DepleteAmount(1);
            
             if (m_ReferencedSlot.ItemInSlot.Item == null)
-                TInputManager.SharedInstance.OnLeftClickDown -= PlaceTile;
+                TEventManager.UnsubscribeFrom<TPointerData>(TEventID.OnLeftClickUp, PlaceTile);
         }
     }
 
@@ -148,6 +150,9 @@ public class TItemPlacer : MonoBehaviour
     /// <param name="inData"></param>
     private void PlaceWorldItem(TPointerData inData)
     {
+        if (!m_CanPlace)
+            return;
+
         // If there is any object in the space occupied by the Item, return
         if (Physics2D.OverlapBox(m_CurrentWorldItem.TransformComponent.position, m_CurrentBoundsExtents, 0))
             return;
@@ -181,8 +186,8 @@ public class TItemPlacer : MonoBehaviour
         if (m_ReferencedSlot.ItemInSlot.Item == null)
         {
             // Unsubscribe from input events
-            TInputManager.SharedInstance.OnLeftClickDown -= PlaceWorldItem;
-            TInputManager.SharedInstance.OnPointerMovedOnGrid -= FollowPointer;
+            TEventManager.UnsubscribeFrom<TPointerData>(TEventID.OnLeftClickUp, PlaceWorldItem);
+            TEventManager.UnsubscribeFrom<TPointerData>(TEventID.OnPointerMovedOnGrid, FollowPointer);
         }
         else
         {
@@ -208,7 +213,7 @@ public class TItemPlacer : MonoBehaviour
             // If the Item was hidden, show it again
             if (!m_CurrentWorldItem.gameObject.activeInHierarchy)
             {
-                TInputManager.SharedInstance.OnLeftClickDown += PlaceWorldItem;
+                m_CanPlace = true;
                 m_CurrentWorldItem.gameObject.SetActive(true);
             }
         }
@@ -217,7 +222,7 @@ public class TItemPlacer : MonoBehaviour
             // If the Item isn't hidden, hide it
             if (m_CurrentWorldItem.gameObject.activeInHierarchy)
             {
-                TInputManager.SharedInstance.OnLeftClickDown -= PlaceWorldItem;
+                m_CanPlace = false;
                 m_CurrentWorldItem.gameObject.SetActive(false);
             }
         }
@@ -236,6 +241,8 @@ public class TItemPlacer : MonoBehaviour
 
     private void InstantiateWorldItem(TWorldItem inWorldItem)
     {
+        TPointerData pointerData = new TPointerData(Input.mousePosition);
+
         // Instantiate copy
         m_CurrentWorldItem = Instantiate(inWorldItem, TTilemapManager.SharedInstance.TransformComponent);
 
@@ -247,6 +254,10 @@ public class TItemPlacer : MonoBehaviour
         // Save bounds extents before disabling the collider
         m_CurrentBoundsExtents = m_CurrentWorldItem.ColliderComponent.bounds.extents;
         m_CurrentWorldItem.ColliderComponent.enabled = false;
+
+        m_CurrentWorldItem.TransformComponent.position = TTilemapManager.SharedInstance.CellToWorld(pointerData.GridPosition) + m_CurrentBoundsExtents;
+
+        m_CanPlace = IsInRange(pointerData.GridPosition);
     }
 
     #endregion

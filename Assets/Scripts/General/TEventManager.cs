@@ -1,67 +1,85 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TEventManager
 {
-    #region Static singleton reference
+    public delegate void Callback();
+    public delegate void Callback<T>(T arg);
 
-    /// <summary>
-    /// Singleton instance reference.
-    /// </summary>
-    public static TEventManager SharedInstance
+    private static Dictionary<TEventID, Delegate> m_Events = new Dictionary<TEventID, Delegate>();
+
+    public static void SubscribeTo(TEventID inEvent, Callback inHandler)
     {
-        get
-        {
-            if (m_SharedInstance == null)
-                m_SharedInstance = new TEventManager();
+        if (!m_Events.ContainsKey(inEvent)) m_Events.Add(inEvent, null);
 
-            return m_SharedInstance;
+        if (m_Events[inEvent] != null)
+        {
+            Delegate[] invocationList = ((Callback)m_Events[inEvent]).GetInvocationList();
+
+            for (int i = 0; i < invocationList.Length; i++)
+            {
+                if ((Delegate)inHandler == invocationList[i])
+                    return;
+            }
+        }
+
+        m_Events[inEvent] = (Callback)m_Events[inEvent] + inHandler;
+    }
+
+    public static void SubscribeTo<T>(TEventID inEvent, Callback<T> inHandler)
+    {
+        if (!m_Events.ContainsKey(inEvent)) m_Events.Add(inEvent, null);
+
+        if (m_Events[inEvent] != null)
+        {
+            Delegate[] invocationList = ((Callback<T>)m_Events[inEvent]).GetInvocationList();
+
+            for (int i = 0; i < invocationList.Length; i++)
+            {
+                if ((Delegate)inHandler == invocationList[i])
+                    return;
+            }
+        }
+
+        m_Events[inEvent] = (Callback<T>)m_Events[inEvent] + inHandler;
+    }
+
+
+    public static void UnsubscribeFrom(TEventID inEvent, Callback inHandler)
+    {
+        if (m_Events.ContainsKey(inEvent))
+        {
+            m_Events[inEvent] = (Callback)m_Events[inEvent] - inHandler;
+
+            if (m_Events[inEvent] == null) m_Events.Remove(inEvent);
         }
     }
 
-    private static TEventManager m_SharedInstance;
-
-    #endregion
-
-    #region Delegates definition
-
-    // Item
-    public delegate void TItemEvent(TItemQuantity inItem);
-    
-    // Timing
-    public delegate void TDayPhaseEvent(bool isNight);
-
-    #endregion
-
-    #region Events
-
-    // Items
-    public event TItemEvent OnItemEquipped;
-    public event TItemEvent OnItemUnequip;
-
-    // Day-night cycle
-    public event TDayPhaseEvent OnDayPhaseChanged;
-
-    #endregion
-
-
-    #region Public methods
-
-    public void InvokeOnItemEquipped(TItemQuantity inItem)
+    public static void UnsubscribeFrom<T>(TEventID inEvent, Callback<T> inHandler)
     {
-        OnItemEquipped?.Invoke(inItem);
+        if (m_Events.ContainsKey(inEvent))
+        {
+            m_Events[inEvent] = (Callback<T>)m_Events[inEvent] - inHandler;
+
+            if (m_Events[inEvent] == null) m_Events.Remove(inEvent);
+        }
     }
 
-    public void InvokeOnItemUnequip(TItemQuantity inItem)
+
+    public static void TriggerEvent(TEventID inEvent)
     {
-        OnItemUnequip?.Invoke(inItem);
+        if (m_Events.ContainsKey(inEvent)) (m_Events[inEvent] as Callback)?.Invoke();
     }
 
-    public void InvokeOnDayPhaseChanged(bool isNight)
+    public static void TriggerEvent<T>(TEventID inEvent, T arg)
     {
-        OnDayPhaseChanged?.Invoke(isNight);
+        if (m_Events.ContainsKey(inEvent)) (m_Events[inEvent] as Callback<T>)?.Invoke(arg);
     }
 
-    #endregion
+    public static bool Exists(TEventID inEvent)
+    {
+        return m_Events.ContainsKey(inEvent);
+    }
 }

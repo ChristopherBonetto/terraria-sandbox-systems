@@ -21,36 +21,6 @@ public class TInputManager : MonoBehaviour
 
     #endregion
 
-    #region Input delegates definition
-
-    public delegate void TPointerEvent(TPointerData inData);
-    public delegate void TAxisEvent(float inAxis);
-    public delegate void TButtonEvent();
-
-    #endregion
-
-    #region Input events
-    
-    // Left click
-    public event TPointerEvent OnLeftClickDown;
-    public event TPointerEvent OnLeftClickUp;
-
-    // Right click
-    public event TPointerEvent OnRightClickDown;
-    public event TPointerEvent OnRightClickUp;
-
-    // Pointer movement
-    public event TPointerEvent OnPointerMovedOnGrid;
-
-    // Movement
-    public event TAxisEvent OnMovementAxis;
-
-    // Jump
-    public event TButtonEvent OnJumpDown;
-    public event TButtonEvent OnJumpUp;
-
-    #endregion
-
     #region MonoBehaviour cycle
 
     private void Awake()
@@ -86,21 +56,23 @@ public class TInputManager : MonoBehaviour
     {
         #region Left click
 
-            if (Input.GetMouseButtonDown(0))
-            OnLeftClickDown?.Invoke(new TPointerData(Input.mousePosition));
+
+        if (Input.GetMouseButtonDown(0))
+            TEventManager.TriggerEvent(TEventID.OnLeftClickDown, new TPointerData(Input.mousePosition));
 
         else if (Input.GetMouseButtonUp(0))
-            OnLeftClickUp?.Invoke(new TPointerData(Input.mousePosition));
+            TEventManager.TriggerEvent(TEventID.OnLeftClickUp, new TPointerData(Input.mousePosition));
 
         #endregion
 
         #region Right click
 
-        if (Input.GetMouseButtonDown(1))
-            OnRightClickDown?.Invoke(new TPointerData(Input.mousePosition));
 
-        else if (Input.GetMouseButtonUp(1))
-            OnRightClickUp?.Invoke(new TPointerData(Input.mousePosition));
+        if (Input.GetMouseButtonDown(1))
+            TEventManager.TriggerEvent(TEventID.OnRightClickDown, new TPointerData(Input.mousePosition));
+
+        if (Input.GetMouseButtonUp(1))
+            TEventManager.TriggerEvent(TEventID.OnRightClickUp, new TPointerData(Input.mousePosition));
 
         #endregion
     }
@@ -115,17 +87,17 @@ public class TInputManager : MonoBehaviour
         float moveAxis = Input.GetAxisRaw(TControls.MovementAxis);
 
         if (moveAxis != 0)
-            OnMovementAxis?.Invoke(moveAxis);
+            TEventManager.TriggerEvent(TEventID.OnMovementAxis, moveAxis);
 
         #endregion
 
         #region Jump
 
         if (Input.GetButtonDown(TControls.Jump))
-            OnJumpDown?.Invoke();
+            TEventManager.TriggerEvent(TEventID.OnJumpDOWN);
 
         else if (Input.GetButtonUp(TControls.Jump))
-            OnJumpUp?.Invoke();
+            TEventManager.TriggerEvent(TEventID.OnJumpUP);
 
         #endregion
     }
@@ -216,11 +188,7 @@ public class TInputManager : MonoBehaviour
         while (Application.isPlaying)
         {
             // If there no subscribers, wait for new subscribers
-            if (OnPointerMovedOnGrid == null)
-            {
-                yield return new WaitUntil(IsPointerTrackingBeingRequested);
-            }
-            else
+            if (IsPointerTrackingBeingRequested())
             {
                 // Get current cell the pointer is hovering on
                 newPointerCell = TTilemapManager.SharedInstance.WorldToGridPosition(CameraFollow.MainCamera.ScreenToWorldPoint(Input.mousePosition));
@@ -229,10 +197,14 @@ public class TInputManager : MonoBehaviour
                 if (newPointerCell != oldPointerCell)
                 {
                     oldPointerCell = newPointerCell;
-                    OnPointerMovedOnGrid?.Invoke(new TPointerData(Input.mousePosition));
+                    TEventManager.TriggerEvent(TEventID.OnPointerMovedOnGrid, new TPointerData(Input.mousePosition));
                 }
                 
                 yield return null;
+            }
+            else
+            {
+                yield return new WaitUntil(IsPointerTrackingBeingRequested);
             }
         }
     }
@@ -243,7 +215,7 @@ public class TInputManager : MonoBehaviour
     /// <returns>True if pointer tracking is requested.</returns>
     private bool IsPointerTrackingBeingRequested()
     {
-        return OnPointerMovedOnGrid != null;
+        return TEventManager.Exists(TEventID.OnPointerMovedOnGrid);
     }
 
     #endregion

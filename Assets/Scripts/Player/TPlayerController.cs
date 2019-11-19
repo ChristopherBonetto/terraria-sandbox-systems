@@ -115,9 +115,9 @@ public class TPlayerController : MonoBehaviour
         // subscribe
 
         // Input
-        TInputManager.SharedInstance.OnMovementAxis += OnPlayerMovement;
-        TInputManager.SharedInstance.OnJumpDown += OnPlayerJumpDown;
-        TInputManager.SharedInstance.OnJumpUp += OnPlayerJumpUp;
+        TEventManager.SubscribeTo<float>(TEventID.OnMovementAxis, OnPlayerMovement);
+        TEventManager.SubscribeTo(TEventID.OnJumpDOWN, OnPlayerJumpDown);
+        TEventManager.SubscribeTo(TEventID.OnJumpUP, OnPlayerJumpUp);
 
         // view
         MovementComponent.OnMoveEvent += View.Flip;
@@ -129,9 +129,9 @@ public class TPlayerController : MonoBehaviour
         // unsubscripted
 
         // Input
-        TInputManager.SharedInstance.OnMovementAxis -= OnPlayerMovement;
-        TInputManager.SharedInstance.OnJumpDown -= OnPlayerJumpDown;
-        TInputManager.SharedInstance.OnJumpUp -= OnPlayerJumpUp;
+        TEventManager.SubscribeTo<float>(TEventID.OnMovementAxis, OnPlayerMovement);
+        TEventManager.SubscribeTo(TEventID.OnJumpDOWN, OnPlayerJumpDown);
+        TEventManager.SubscribeTo(TEventID.OnJumpUP, OnPlayerJumpUp);
 
         // view
         MovementComponent.OnMoveEvent -= View.Flip;
