@@ -53,7 +53,7 @@ public class TInventory : MonoBehaviour
         {
             if(InventorySlots[i].ItemInSlot.Item == null)
             {
-                InventorySlots[i].InsertItemToSlot(addThisItem);
+                //InventorySlots[i].InsertItemToSlot(addThisItem);
 
                 return;
             }

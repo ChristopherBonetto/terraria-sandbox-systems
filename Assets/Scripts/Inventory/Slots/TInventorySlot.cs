@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-[RequireComponent(typeof(TDroppableItem), typeof(TDraggableItem))]
+//[RequireComponent(typeof(TDroppableItem), typeof(TDraggableItem))]
 public class TInventorySlot : MonoBehaviour
 {  
     public TItemQuantity ItemInSlot;
@@ -14,15 +14,13 @@ public class TInventorySlot : MonoBehaviour
 
     private void OnEnable()
     {
-        TItemHandler.Instance.OnDropEventAction += ChangeSlottedItemWithDraggedHandItem;
-
-        TItemHandler.Instance.OnSelectedSlotEventAction += StartSelectedSlotEvent;
+        TItemHandler.OnSelectEvent += TakeItemFromThisSlot;
+        TItemHandler.OnDeselectEvent += FillThisSlot;
     }
     private void OnDisable()
     {
-        TItemHandler.Instance.OnDropEventAction -= ChangeSlottedItemWithDraggedHandItem;
-
-        TItemHandler.Instance.OnSelectedSlotEventAction -= StartSelectedSlotEvent;
+        TItemHandler.OnSelectEvent -= TakeItemFromThisSlot;
+        TItemHandler.OnDeselectEvent -= FillThisSlot;
     }
 
     private void Awake()
@@ -35,89 +33,27 @@ public class TInventorySlot : MonoBehaviour
     {
         if(ItemInSlot.Item != null)
         {
-            UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.Item.ItemSprite);
+            m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
         }
     }
     
-
-
-
-    //Used from button click.
-    public void SelectThisSlotForEvent()
-    {
-        if(ItemInSlot.Item != null)
-        {
-            if (ItemInSlot.Item != null && TItemHandler.Instance.CurrentSelectedItem != this)
-            {
-                TItemHandler.Instance.SelectedSlotAction(this);
-            }
-        }
-        
-    }
-
-    public void StartSelectedSlotEvent(TInventorySlot slot)
-    {
-        if(slot == this)
-        {
-            TItemHandler.Instance.CurrentSelectedItem = this;
-            UIManager.Instance.ChangeColorFromImage(m_slotImage, Color.green);
-        }
-                
-    }
-
-    //Used to change the ItemHandler's variable itemInHand and subscribe the class of this item to another event.
-    public void ChangeDraggedItemWithThisSlot()
-    {
-        if(ItemInSlot.Item != null)
-        {
-            if (ItemInSlot.Item != null)
-            {
-                TItemHandler.Instance.StartDragItemEvent(this);
-                ItemInSlot = TItemQuantity.Empty;
-                UIManager.Instance.ChangeSpriteFromImage(m_slotImage, null);
-
-                TItemHandler.OnStopDragEvent += RestoreImageAndItemInSlot;
-            }
-        }
-    }
-
-    //Used to restore the state of this class before being dragged.
-    public void RestoreImageAndItemInSlot()
-    {
-        ItemInSlot = TItemHandler.Instance.ItemDraggedInHand;
-        UIManager.Instance.ChangeSpriteFromImage(m_slotImage, ItemInSlot.Item.ItemSprite);
-    }
-
-    //Take the item in hand and equip it in this slot.
-    public void ChangeSlottedItemWithDraggedHandItem(TInventorySlot slot)
-    {
-        if(slot == this)
-        {
-            TItemHandler.Instance.TakeSlotFromHand(this);
-        }
-    }
     
-    public void InsertItemToSlot(TItemQuantity addThisItem)
+
+    public void SelectSlot()
     {
-        ItemInSlot = addThisItem;
-        m_slotImage.sprite = addThisItem.Item.ItemSprite;
+        TItemHandler.Instance.SelectSlot(this);
     }
 
-    public void DepleteAmount(int inAmount)
+    public void TakeItemFromThisSlot(TInventorySlot slot)
     {
-        ItemInSlot.Amount -= inAmount;
-
-        if (ItemInSlot.Amount <= 0)
-            Clear();
+        if(slot == this)
+        {            
+            TItemHandler.Instance.CurrentSelectedItem = this;            
+        }
     }
 
-    private void Clear()
+    public void FillThisSlot(TInventorySlot slot)
     {
-        ItemInSlot = TItemQuantity.Empty;
-        m_slotImage.sprite = null;
-        m_slotImage.color = Color.white;
-
-        if (TItemHandler.Instance.CurrentSelectedItem == this)
-            TItemHandler.Instance.CurrentSelectedItem = null;
+        TItemHandler.Instance.CurrentSelectedItem = null;
     }
 }
