@@ -47,14 +47,53 @@ public class TInventorySlot : MonoBehaviour
     public void TakeItemFromThisSlot(TInventorySlot slot)
     {
         if(slot == this)
-        {            
-            TItemHandler.Instance.CurrentSelectedItem = this;            
+        {
+            if(ItemInSlot.Item != null)
+            {
+                TItemHandler.Instance.CurrentSelectedItem = this;            
+            }
         }
     }
 
     public void FillThisSlot(TInventorySlot slot)
     {
-        TItemHandler.Instance.CurrentSelectedItem = null;
+        if(slot == this)
+        {
+            if (UIManager.Instance.InventoryIsOpen)
+            {
+                if (slot.ItemInSlot.Item == null)
+                {
+                    InsertItemToSlot(TItemHandler.Instance.CurrentSelectedItem.ItemInSlot);
+                    TItemHandler.Instance.CurrentSelectedItem.ItemInSlot.Item = null;
+                    TItemHandler.Instance.CurrentSelectedItem = null;
+                    Debug.Log("inserisci");
+                }
+                else
+                {
+                    if (TItemHandler.Instance.CurrentSelectedItem == this)
+                    {
+                        m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
+                        TItemHandler.Instance.CurrentSelectedItem = null;
+                        Debug.Log("riposa");
+                    }
+                    else
+                    {
+                        TItemQuantity tempSlot = this.ItemInSlot;
+
+                        InsertItemToSlot(TItemHandler.Instance.CurrentSelectedItem.ItemInSlot);
+
+                        TItemHandler.Instance.CurrentSelectedItem.InsertItemToSlot(tempSlot);
+
+                        TItemHandler.Instance.CurrentSelectedItem = null;
+                    }
+                }
+            }
+            else
+            {
+                TItemHandler.Instance.CurrentSelectedItem = null;
+            }
+        }
+        
     }
 
     public void InsertItemToSlot(TItemQuantity itemToAdd)

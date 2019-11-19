@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class TItemQuantity
+public struct TItemQuantity
 {
-    //public static TItemQuantity Empty = new TItemQuantity(null, 0);
+    public static TItemQuantity Empty = new TItemQuantity(null, 0);
 
     public TItem Item;
     public int Amount;

@@ -12,27 +12,24 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private RectTransform m_inventoryUI;
     private Vector2 m_startingInventorySize;
-
-    [SerializeField] private int m_slotsNumber;
-    private int m_slotCounter = 0;
-
+    
     [SerializeField] private Image m_itemInHandUI;
 
     public List<GameObject> m_InventorySlotsUI = new List<GameObject>();
 
-    private bool InventoryIsOpen = false;
+    public bool InventoryIsOpen = false;
 
     private void OnEnable()
     {
-        TItemHandler.OnSelectEvent += ShowSlotInHand;
+        TItemHandler.OnSelectEvent += DragSlotInHandUI;
 
-        TItemHandler.OnDeselectEvent += HideSlotInHand;
+        TItemHandler.OnDeselectEvent += DropSlotInHandUI;
     }
     private void OnDisable()
     {
-        TItemHandler.OnSelectEvent -= ShowSlotInHand;
+        TItemHandler.OnSelectEvent -= DragSlotInHandUI;
 
-        TItemHandler.OnDeselectEvent -= HideSlotInHand;
+        TItemHandler.OnDeselectEvent -= DropSlotInHandUI;
     }
 
 
@@ -46,8 +43,6 @@ public class UIManager : MonoBehaviour
         m_startingInventorySize = m_inventoryUI.sizeDelta;
 
         DisableImageItemInHand();
-
-        InstantiateSlotsInInventory();
         
         OpenCloseInventory(InventoryIsOpen);        
     }
@@ -61,26 +56,18 @@ public class UIManager : MonoBehaviour
     }
 
     #region Starting Instantiate Buttons
-    public void InstantiateSlotsInInventory()
+    public TInventorySlot InstantiateSlotInInventory()
     {
-        if(m_slotCounter <= m_slotsNumber)
-        {
-            GameObject slot = Instantiate(m_slotPrefab) as GameObject;
+        GameObject slot = Instantiate(m_slotPrefab) as GameObject;
 
-            slot.transform.SetParent(m_inventoryItemsHolder.transform);
-            slot.transform.localScale = new Vector3(1,1,1);
+        slot.transform.SetParent(m_inventoryItemsHolder.transform);
+        slot.transform.localScale = new Vector3(1, 1, 1);
 
-            AddSlotToInventoryUI(slot);
-            TInventory.Instance.AddSlotToInventory(slot.GetComponentInChildren<TInventorySlot>());
+        AddSlotToInventoryUI(slot);
 
-            m_slotCounter++;
-            InstantiateSlotsInInventory();
-        }
-        else
-        {
-            m_slotCounter = 0;
-            return;
-        }
+        TInventorySlot tempSlotRef = slot.GetComponentInChildren<TInventorySlot>();
+
+        return tempSlotRef;
     }
     
     public void AddSlotToInventoryUI(GameObject slotToAdd)
@@ -97,6 +84,7 @@ public class UIManager : MonoBehaviour
     public void ChangeOpenCloseInventoryBool()
     {
         InventoryIsOpen = !InventoryIsOpen;
+        TItemHandler.Instance.CurrentSelectedItem = null;
         OpenCloseInventory(InventoryIsOpen);
     }
 
@@ -153,9 +141,9 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
-    public void ShowSlotInHand(TInventorySlot slot)
+    public void DragSlotInHandUI(TInventorySlot slot)
     {
-        if(slot.ItemInSlot != null)
+        if(slot.ItemInSlot.Item != null)
         {
             if (InventoryIsOpen)
             {
@@ -169,10 +157,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void HideSlotInHand(TInventorySlot slot)
+    public void DropSlotInHandUI(TInventorySlot slot)
     {
         if (InventoryIsOpen)
-        {
+        {            
             slot.m_slotImage.sprite = m_itemInHandUI.sprite;
             m_itemInHandUI.gameObject.SetActive(false);
         }
