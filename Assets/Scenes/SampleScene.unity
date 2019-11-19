@@ -37474,6 +37474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventorySlots: []
   m_slotsNumber: 39
+  InventoryIsOpen: 1
 --- !u!114 &1444712115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37547,7 +37548,6 @@ MonoBehaviour:
   m_inventoryUI: {fileID: 1444712113}
   m_itemInHandUI: {fileID: 885823568}
   m_InventorySlotsUI: []
-  InventoryIsOpen: 0
 --- !u!4 &1474534075
 Transform:
   m_ObjectHideFlags: 0

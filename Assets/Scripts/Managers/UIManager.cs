@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
 
     public List<GameObject> m_InventorySlotsUI = new List<GameObject>();
 
-    public bool InventoryIsOpen = false;
+    private bool m_inventoryInUiIsOpen = false;
 
     private void OnEnable()
     {
@@ -36,26 +36,18 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        m_startingInventorySize = m_inventoryUI.sizeDelta;
     }
         
     void Start()
     {
-        m_startingInventorySize = m_inventoryUI.sizeDelta;
-
-        DisableImageItemInHand();
-        
-        OpenCloseInventory(InventoryIsOpen);        
+        m_itemInHandUI.gameObject.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            ChangeOpenCloseInventoryBool();
-        }
-    }
-
+    
     #region Starting Instantiate Buttons
+    //Instantiate button and return his Tinventory slot
     public TInventorySlot InstantiateSlotInInventory()
     {
         GameObject slot = Instantiate(m_slotPrefab) as GameObject;
@@ -81,25 +73,21 @@ public class UIManager : MonoBehaviour
 
 
     #region OpenClose Inventory
-    public void ChangeOpenCloseInventoryBool()
-    {
-        InventoryIsOpen = !InventoryIsOpen;
-        TItemHandler.Instance.CurrentSelectedItem = null;
-        OpenCloseInventory(InventoryIsOpen);
-    }
-
+    
+    //What happens to the ui when the inventory is open or close
     public void OpenCloseInventory(bool isOpen)
     {
+        m_inventoryInUiIsOpen = isOpen;
+
         if (!isOpen)
         {
             m_inventoryUI.sizeDelta = new Vector2(m_inventoryUI.sizeDelta.x, 85);
-            DisableButtons();
         }
         else
         {
             m_inventoryUI.sizeDelta = m_startingInventorySize;
-            DisableButtons();
         }
+        DisableButtons();
     }
 
     public void DisableButtons()
@@ -109,15 +97,20 @@ public class UIManager : MonoBehaviour
             DisableEnableItemUI(m_InventorySlotsUI[i]);
         }
     }
-    #endregion
 
-
-
-    public void DisableImageItemInHand()
+    public void DisableEnableItemUI(GameObject item)
     {
-        m_itemInHandUI.gameObject.SetActive(false);
-        m_itemInHandUI.sprite = null;
+        if (item.activeInHierarchy)
+        {
+            item.SetActive(false);
+        }
+        else
+        {
+            item.SetActive(true);
+        }
     }
+    #endregion
+           
 
     #region Refresh ItemInHandPosition
     public void StartHoldingItem()
@@ -141,11 +134,14 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+   
+    #region Drag and Drop event for UI
+    //Method used with event to start drag a slot
     public void DragSlotInHandUI(TInventorySlot slot)
     {
         if(slot.ItemInSlot.Item != null)
         {
-            if (InventoryIsOpen)
+            if (m_inventoryInUiIsOpen)
             {
                 m_itemInHandUI.gameObject.SetActive(true);
                 m_itemInHandUI.sprite = slot.m_slotImage.sprite;
@@ -157,26 +153,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    //Method used with event to drop a slot
     public void DropSlotInHandUI(TInventorySlot slot)
     {
-        if (InventoryIsOpen)
+        if (m_inventoryInUiIsOpen)
         {            
             slot.m_slotImage.sprite = m_itemInHandUI.sprite;
             m_itemInHandUI.gameObject.SetActive(false);
         }
     }
-
-
-    public void DisableEnableItemUI(GameObject item)
-    {
-        if (item.activeInHierarchy)
-        {
-            item.SetActive(false);
-        }
-        else
-        {
-            item.SetActive(true);
-        }
-    }
-
+    #endregion
 }

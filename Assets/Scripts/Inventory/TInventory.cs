@@ -11,6 +11,8 @@ public class TInventory : MonoBehaviour
     [SerializeField] private int m_slotsNumber;
     private int m_slotCounter = 0;
 
+    public bool InventoryIsOpen = false;
+
     private void Awake()
     {
         Instance = this;
@@ -19,8 +21,28 @@ public class TInventory : MonoBehaviour
     private void Start()
     {
         InstantiateSlotsInInventory();
+
+        ChangeOpenCloseInventoryBool(InventoryIsOpen);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            InventoryIsOpen = !InventoryIsOpen;
+            ChangeOpenCloseInventoryBool(InventoryIsOpen);
+        }
+    }
+
+    //Used to open and close Inventory
+    public void ChangeOpenCloseInventoryBool(bool isOpen)
+    {
+        TItemHandler.Instance.CurrentSelectedItem = null;
+        UIManager.Instance.OpenCloseInventory(isOpen);
+    }
+
+    
+    #region Start Create Inventory
     public void InstantiateSlotsInInventory()
     {
         if (m_slotCounter <= m_slotsNumber)
@@ -35,6 +57,9 @@ public class TInventory : MonoBehaviour
         else
         {
             m_slotCounter = 0;
+
+            InventoryIsOpen = false;
+            
             return;
         }
     }
@@ -49,6 +74,7 @@ public class TInventory : MonoBehaviour
             Debug.Log("the list contains this element");
         }
     }
+    #endregion
 
     #region Collet New Item
     public void CollectItem(TItemQuantity addThisItem)
@@ -93,6 +119,5 @@ public class TInventory : MonoBehaviour
         }
     }
     #endregion
-
     
 }

@@ -59,7 +59,7 @@ public class TInventorySlot : MonoBehaviour
     {
         if(slot == this)
         {
-            if (UIManager.Instance.InventoryIsOpen)
+            if (TInventory.Instance.InventoryIsOpen)
             {
                 if (slot.ItemInSlot.Item == null)
                 {
