@@ -3,17 +3,33 @@ using System.Collections;
 
 public class TDefenseComponent : MonoBehaviour, IDefend
 {
-    public event DamageEvent OnDamageEvent;
-
     private float m_MaxHealth;
     public float MaxHealth => m_MaxHealth;
-
-    private float m_CurrentHealth;
-    public float CurrentHealth => m_CurrentHealth;
 
     private float m_Defense;
     public float Defense => m_Defense;
 
+    private float m_CurrentHealth;
+    public float CurrentHealth
+    {
+        get { return m_CurrentHealth; }
+        private set
+        {
+            m_CurrentHealth = Mathf.Clamp(value, 0, MaxHealth);
+
+            // Call UI event.
+            TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, (IDefend)this);
+
+            // call KB effect.
+
+            if (m_CurrentHealth <= 0)
+            {
+                // Call some event if we want, for example total number of enemy killed.
+
+                DisposeToDead();
+            }
+        }
+    }
 
     /// <summary>
     /// Editor testing.
@@ -21,17 +37,7 @@ public class TDefenseComponent : MonoBehaviour, IDefend
     [ContextMenu("Take Damage")]
     public void DamageEntity()
     {
-        OnDamageTaken(1);
-    }
-
-    private void OnEnable()
-    {
-        OnDamageEvent += TakeDamage;
-    }
-
-    private void OnDisable()
-    {
-        OnDamageEvent -= TakeDamage;
+        TakeDamage(1);
     }
 
     private void Update()
@@ -55,15 +61,11 @@ public class TDefenseComponent : MonoBehaviour, IDefend
 
     public void TakeDamage(float inAmount)
     {
-        m_CurrentHealth -= Mathf.Max(1, inAmount - Defense);
-
-        // Call dead functions...
-        if (m_CurrentHealth <= 0)
-            gameObject.SetActive(false);
+        CurrentHealth -= Mathf.Max(1, inAmount - Defense);
     }
 
-    public void OnDamageTaken(float inAmount)
+    private void DisposeToDead()
     {
-        OnDamageEvent(inAmount);
+        // do something.
     }
 }

@@ -121,7 +121,6 @@ public class TPlayerController : MonoBehaviour
 
         // view
         MovementComponent.OnMoveEvent += View.Flip;
-        DefenseComponent.OnDamageEvent += View.UpdateHealthBar;
     }
 
     private void OnDisable()
@@ -135,7 +134,6 @@ public class TPlayerController : MonoBehaviour
 
         // view
         MovementComponent.OnMoveEvent -= View.Flip;
-        DefenseComponent.OnDamageEvent -= View.UpdateHealthBar;
     }
 
     private void Start()
@@ -144,9 +142,8 @@ public class TPlayerController : MonoBehaviour
         MovementComponent.Init(DataAssigned.Speed);
         JumpComponent.Init(Rb, DataAssigned.JumpForce);
 
-        m_View.HealthBar.minValue = 0;
-        m_View.HealthBar.maxValue = DataAssigned.MaxHealth;
-        m_View.HealthBar.value = DataAssigned.MaxHealth;
+        // Update visual
+        TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, DefenseComponent);
     }
 
     #region Input manager event methods

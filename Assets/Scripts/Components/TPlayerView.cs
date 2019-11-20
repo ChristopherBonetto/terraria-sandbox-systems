@@ -5,14 +5,6 @@ using UnityEngine.UI;
 
 public class TPlayerView : MonoBehaviour
 {
-    [Header("Health")]
-    [SerializeField]
-    private Slider m_HealthBar;
-    /// <summary>
-    /// Player's slider health.
-    /// </summary>
-    public Slider HealthBar{ get { return m_HealthBar; } }
-
     [Header("Animator")]
     [SerializeField]
     private Animator m_Anim;
@@ -40,14 +32,6 @@ public class TPlayerView : MonoBehaviour
     private void Awake()
     {
         m_Scale = transform.localScale;
-    }
-
-    /// <summary>
-    /// Update health bar when some damage is taken.
-    /// </summary>
-    public void UpdateHealthBar(float inValue)
-    {
-        m_HealthBar.value -= inValue;
     }
 
     private void PlayerAttackAnimation(TPointerData pointerData)

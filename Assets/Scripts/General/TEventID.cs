@@ -11,5 +11,6 @@ public enum TEventID
     OnMovementAxis,
     OnJumpDOWN,
     OnJumpUP,
-    OnPointerMovedOnGrid
+    OnPointerMovedOnGrid,
+    OnHealthUpdate,
 }
