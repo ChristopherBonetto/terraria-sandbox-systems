@@ -20,14 +20,13 @@ public class TDefenseComponent : MonoBehaviour, IDefend
             // Call UI event.
             TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, (IDefend)this);
 
-            // call KB effect.
-
-            if (m_CurrentHealth <= 0)
+            if (m_CurrentHealth > 0)
             {
-                // Call some event if we want, for example total number of enemy killed.
-
-                DisposeToDead();
+                // call KB effect.
+                
             }
+            else if (m_CurrentHealth <= 0)
+                DisposeToDead();
         }
     }
 

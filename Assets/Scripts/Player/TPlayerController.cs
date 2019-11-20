@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 /// <summary>
 /// Player controller => It works as connection between model and view.
 /// </summary>
@@ -108,7 +109,27 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
+    private Collider2D m_Collider;
+    /// <summary>
+    /// Player's rigid body.
+    /// </summary>
+    public Collider2D Collider
+    {
+        get
+        {
+            if (m_Collider == null)
+                m_Collider = GetComponent<Collider2D>();
+            return m_Collider;
+        }
+    }
+
     #endregion
+
+    // @TEMP
+    private bool m_ImFreeze;
+    private float m_FreezeTime = 0.5f;
+
+    private Collider2D m_NcpColliderHit;
 
     private void OnEnable()
     {
@@ -146,16 +167,51 @@ public class TPlayerController : MonoBehaviour
         TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, DefenseComponent);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("NPC"))
+        {
+            Vector2 collidingPos = collision.transform.position;
+            Vector2 myPos = transform.position;
+
+            float sign = Mathf.Sign(myPos.x - collidingPos.x);
+
+            Vector2 knockEffect = (Vector2.right * sign * GeneralEffects.KbEffect(DataAssigned.KbResist)) + Vector2.up * GeneralEffects.KbGlobalEffect * 0.5f;
+
+            Rb.AddForce(knockEffect);
+
+            if (m_NcpColliderHit != collision.collider || m_NcpColliderHit == null)
+                m_NcpColliderHit = collision.collider;
+
+            Physics2D.IgnoreCollision(Collider, m_NcpColliderHit, false);
+            StartCoroutine("Stun", m_FreezeTime);
+        }
+    }
+
+    public IEnumerator Stun(float stunTime)
+    {
+        m_ImFreeze = true;
+        yield return new WaitForSeconds(stunTime);
+
+        m_ImFreeze = false;
+        Physics2D.IgnoreCollision(Collider, m_NcpColliderHit, false);
+    }
+
+
     #region Input manager event methods
 
     private void OnPlayerMovement(float inDirection)
     {
-        // Movement
-        inDirection = Input.GetAxisRaw("Horizontal");
-
-        if (inDirection != 0)
+        if (!m_ImFreeze)
         {
-            MovementComponent.OnMovement(Vector2.right * inDirection);
+
+            // Movement
+            inDirection = Input.GetAxisRaw("Horizontal");
+
+            if (inDirection != 0)
+            {
+                MovementComponent.OnMovement(Vector2.right * inDirection);
+            }
         }
     }
 
@@ -181,19 +237,6 @@ public class TPlayerController : MonoBehaviour
             yield return null;
         }
     }
-
-    #endregion
-
-    #region Generic event manager methods
-
-    //private void OnItemEquipped(TItemWeapon item)
-    //{
-    //    //WeaponInHand = item;
-
-    //    //// set stats as default + item
-    //    //DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense + item.Defence);
-    //    //AttackComponent.Init(DataAssigned.Damage + item.Attack);
-    //}
 
     #endregion
 }

@@ -23,6 +23,7 @@ public class TPlayerData : ScriptableObject
     public int Damage { get { return m_Damage; } }
 
     [SerializeField]
+    [Range(0, 100)]
     private float m_KbResist;
     public float KbResist { get { return m_KbResist; } }
 
