@@ -9,7 +9,7 @@ using System.Collections;
                   typeof(TDefenseComponent), 
                   typeof(TLinearMovement))]
 
-public class TPlayerController : MonoBehaviour
+public class TPlayerController : MonoBehaviour, IKnockBackable
 {
     #region Data
 
@@ -38,10 +38,14 @@ public class TPlayerController : MonoBehaviour
 
     #region Components
 
+    // Player's component (must be assigned)
     private IMovable m_MovementComponent;
-    /// <summary>
-    /// Player's movement component
-    /// </summary>
+    private IDefend m_DefenseComponent;
+    private IJump m_JumpComponent;
+    [SerializeField] private Rigidbody2D m_Rb;
+    [SerializeField] private Collider2D m_Collider;
+
+    // Player's component (get only)
     public IMovable MovementComponent
     {
         get
@@ -51,11 +55,6 @@ public class TPlayerController : MonoBehaviour
             return m_MovementComponent;
         }
     }
-
-    private IDefend m_DefenseComponent;
-    /// <summary>
-    /// Player's defense component
-    /// </summary>
     public IDefend DefenseComponent
     {
         get
@@ -65,11 +64,6 @@ public class TPlayerController : MonoBehaviour
             return m_DefenseComponent;
         }
     }
-
-    private IJump m_JumpComponent;
-    /// <summary>
-    /// Player's jump component
-    /// </summary>
     public IJump JumpComponent
     {
         get
@@ -79,6 +73,8 @@ public class TPlayerController : MonoBehaviour
             return m_JumpComponent;
         }
     }
+    public Rigidbody2D Rb => m_Rb;
+    public Collider2D Collider => m_Collider;
 
     private TPlayerView m_View;
     /// <summary>
@@ -95,67 +91,13 @@ public class TPlayerController : MonoBehaviour
         }
     }
 
-    private Rigidbody2D m_Rb;
-    /// <summary>
-    /// Player's rigid body.
-    /// </summary>
-    public Rigidbody2D Rb
-    {
-        get
-        {
-            if (m_Rb == null)
-                m_Rb = GetComponent<Rigidbody2D>();
-            return m_Rb;
-        }
-    }
-
-    private Collider2D m_Collider;
-    /// <summary>
-    /// Player's rigid body.
-    /// </summary>
-    public Collider2D Collider
-    {
-        get
-        {
-            if (m_Collider == null)
-                m_Collider = GetComponent<Collider2D>();
-            return m_Collider;
-        }
-    }
-
     #endregion
 
     // @TEMP
     private bool m_ImFreeze;
-    private float m_FreezeTime = 0.5f;
+    private float m_FreezeTime;
 
     private Collider2D m_NcpColliderHit;
-
-    private void OnEnable()
-    {
-        // subscribe
-
-        // Input
-        TEventManager.SubscribeTo<float>(TEventID.OnMovementAxis, OnPlayerMovement);
-        TEventManager.SubscribeTo(TEventID.OnJumpDOWN, OnPlayerJumpDown);
-        TEventManager.SubscribeTo(TEventID.OnJumpUP, OnPlayerJumpUp);
-
-        // view
-        MovementComponent.OnMoveEvent += View.Flip;
-    }
-
-    private void OnDisable()
-    {
-        // unsubscripted
-
-        // Input
-        TEventManager.SubscribeTo<float>(TEventID.OnMovementAxis, OnPlayerMovement);
-        TEventManager.SubscribeTo(TEventID.OnJumpDOWN, OnPlayerJumpDown);
-        TEventManager.SubscribeTo(TEventID.OnJumpUP, OnPlayerJumpUp);
-
-        // view
-        MovementComponent.OnMoveEvent -= View.Flip;
-    }
 
     private void Start()
     {
@@ -167,76 +109,75 @@ public class TPlayerController : MonoBehaviour
         TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, DefenseComponent);
     }
 
+    private void Update()
+    {
+        PlayerMovement();
+        PlayerJump();
+
+        if (m_ImFreeze)
+        {
+            m_FreezeTime -= Time.deltaTime;
+
+            if (m_FreezeTime <= 0)
+                m_ImFreeze = false;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("NPC"))
         {
+            m_NcpColliderHit = collision.collider;
+
             Vector2 collidingPos = collision.transform.position;
             Vector2 myPos = transform.position;
 
             float sign = Mathf.Sign(myPos.x - collidingPos.x);
 
-            Vector2 knockEffect = (Vector2.right * sign * GeneralEffects.KbEffect(DataAssigned.KbResist)) + Vector2.up * GeneralEffects.KbGlobalEffect * 0.5f;
+            Vector2 knockEffect = (Vector2.right * sign * GeneralEffects.KbEffect(DataAssigned.KbResist)) +
+                                    Vector2.up * GeneralEffects.KbGlobalEffect * 0.5f;
 
+            // Execute knockback
             Rb.AddForce(knockEffect);
-
-            if (m_NcpColliderHit != collision.collider || m_NcpColliderHit == null)
-                m_NcpColliderHit = collision.collider;
-
+            // Start freeze
+            Freeze(0.5f);
+            // ignore collision
             Physics2D.IgnoreCollision(Collider, m_NcpColliderHit, false);
-            StartCoroutine("Stun", m_FreezeTime);
         }
     }
 
-    public IEnumerator Stun(float stunTime)
-    {
-        m_ImFreeze = true;
-        yield return new WaitForSeconds(stunTime);
-
-        m_ImFreeze = false;
-        Physics2D.IgnoreCollision(Collider, m_NcpColliderHit, false);
-    }
-
-
-    #region Input manager event methods
-
-    private void OnPlayerMovement(float inDirection)
+    private void PlayerMovement()
     {
         if (!m_ImFreeze)
         {
-
-            // Movement
-            inDirection = Input.GetAxisRaw("Horizontal");
+            var inDirection = Input.GetAxisRaw("Horizontal");
 
             if (inDirection != 0)
             {
-                MovementComponent.OnMovement(Vector2.right * inDirection);
+                MovementComponent.Move(Vector2.right * inDirection);
             }
         }
     }
 
-    private void OnPlayerJumpDown()
+    private void PlayerJump()
     {
         // Jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            JumpComponent.OnJumpDecision(Vector2.up);
+            JumpComponent.Jump(Vector2.up);
         }
-    }
 
-    private void OnPlayerJumpUp()
-    {
-        StartCoroutine("JumpUp");
-    }
-
-    IEnumerator JumpUp()
-    {
-        while (Rb.velocity.y > 0)
+        else if (!Input.GetKey(KeyCode.Space))
         {
-            Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.0f);
-            yield return null;
+            if ((Rb.velocity.y > 0))
+                Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.0f);
         }
     }
 
-    #endregion
+    public void Freeze(float inTime)
+    {
+        m_ImFreeze = true;
+        m_FreezeTime = inTime;
+        Physics2D.IgnoreCollision(Collider, m_NcpColliderHit, false);
+    }
 }

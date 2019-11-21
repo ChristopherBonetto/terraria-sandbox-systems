@@ -17,18 +17,15 @@ namespace Terrria.AI
     {
         public SlimeState CurrentState { get; private set; }
 
-        #region Private
-        private IJump m_JumpComponent;
-        private Rigidbody2D m_Rb;
 
         [SerializeField] private float m_JumpDelay;      // @TEMP
 
         private float m_LastJumpTime;   // @TEMP
-        private Transform m_Target;
-        private Vector2[] m_PossibleDirections;
-        #endregion
+        private Transform m_TargetToChase;
+        private Vector2 m_Direction;
 
-        #region Properties
+        // Components
+        private IJump m_JumpComponent;
         public IJump JumpComponent
         {
             get
@@ -38,67 +35,39 @@ namespace Terrria.AI
                 return m_JumpComponent;
             }
         }
-        public Rigidbody2D Rb
-        {
-            get
-            {
-                if (m_Rb == null)
-                    m_Rb = GetComponent<Rigidbody2D>();
-                return m_Rb;
-            }
-        }
-        #endregion
 
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-
-            // subscrive method on change day/night event.
-        }
 
         protected override void Start()
         {
             base.Start();
 
-            // if someday the model must contains other value like "jump force"
-            // Init the "jump force here"
+            JumpComponent.Init(Rb, 80f);
 
-            m_PossibleDirections = new Vector2[CreateJumpVectors().Length];
-            m_PossibleDirections = CreateJumpVectors();
-        }
-
-        protected override void OnDisable()
-        {
-            base.OnDisable();
-
-            // unsubscrive method on change day/night event.
+            m_Direction = new Vector2(1, 0.8f);
         }
 
         private void Update()
         {
             if (Time.time > m_LastJumpTime + m_JumpDelay)
             {
-                // Pick a vector
-                Vector2 direction = m_PossibleDirections[Random.Range(0, m_PossibleDirections.Length)];
-
-
                 switch (CurrentState)
                 {
                     case SlimeState.Idle:
                         bool isPositive = Random.Range(0, 2) == 1;
 
                         if (!isPositive)
-                            direction.x = -direction.x;
+                            m_Direction.x = -m_Direction.x;
 
                         // Execute jump
-                        JumpComponent.OnJumpDecision(direction);
+                        JumpComponent.OnJumpDecision(m_Direction);
                         break;
 
                     case SlimeState.Chasing:
-                        float sign = Mathf.Sign(-10);
+                        float sign = Mathf.Sign(m_Player.transform.position.x - transform.position.x);
+                        Vector2 fixDirection = new Vector2(m_Direction.x * sign, m_Direction.y);
 
                         // Execute jump
-                        JumpComponent.OnJumpDecision(direction * sign);
+                        JumpComponent.OnJumpDecision(fixDirection);
                         break;
                 }
 
@@ -109,23 +78,16 @@ namespace Terrria.AI
         public void SetState(SlimeState state)
         {
             CurrentState = state;
-
-            //if (state == SlimeState.Chasing)
-                // m_Target = GameManager.Insatce.Player;
-            // else
-                // m_Target = null
         }
 
-        private Vector2[] CreateJumpVectors()
+        protected override void OnCollisionEnter2D(Collision2D collision)
         {
-            Vector2[] directions = {
-                    new Vector2(1, 1),
-                    new Vector2(0.6f, 1),
-                    new Vector2(0.8f, 1),
-                    new Vector2(0.5f, 1)
-                };
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                base.OnCollisionEnter2D(collision);
 
-            return directions;
+                SetState(SlimeState.Chasing);
+            }
         }
     }
 }

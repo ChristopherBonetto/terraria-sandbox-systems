@@ -14,6 +14,9 @@ namespace Terrria.AI
 
         // Component
         private IDefend m_DefenseComponent;
+        [SerializeField] private Rigidbody2D m_Rb;
+        [SerializeField] private Collider2D m_Collider;
+
         public IDefend DefenseComponent
         {
             get
@@ -23,22 +26,27 @@ namespace Terrria.AI
                 return m_DefenseComponent;
             }
         }
+        public Rigidbody2D Rb => m_Rb;
+        public Collider2D Collider => m_Collider;
 
-        protected virtual void OnEnable()
-        {
-            // KB resist
-            // Subscribe.
-        }
+        //Player reference 
+        protected TPlayerController m_Player;
+
 
         protected virtual void Start()
         {
             DefenseComponent.Init(/*inMaxHealth:*/ Data.MaxHealth, /*inDefense:*/ Data.Defense);
         }
 
-        protected virtual void OnDisable()
+        protected virtual void OnCollisionEnter2D(Collision2D collision)
         {
-            // KB resist
-            // Unsuscribe.
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                if (m_Player == null)
+                    m_Player = collision.gameObject.GetComponent<TPlayerController>();
+
+                m_Player.DefenseComponent.TakeDamage(1);
+            }
         }
     }
 }

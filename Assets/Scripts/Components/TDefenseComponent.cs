@@ -20,12 +20,7 @@ public class TDefenseComponent : MonoBehaviour, IDefend
             // Call UI event.
             TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, (IDefend)this);
 
-            if (m_CurrentHealth > 0)
-            {
-                // call KB effect.
-                
-            }
-            else if (m_CurrentHealth <= 0)
+            if (m_CurrentHealth <= 0)
                 DisposeToDead();
         }
     }
@@ -65,6 +60,6 @@ public class TDefenseComponent : MonoBehaviour, IDefend
 
     private void DisposeToDead()
     {
-        // do something.
+        gameObject.SetActive(false);
     }
 }
