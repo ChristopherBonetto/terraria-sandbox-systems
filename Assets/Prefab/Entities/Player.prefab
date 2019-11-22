@@ -348,7 +348,7 @@ Rigidbody2D:
   m_Mass: 0.2
   m_LinearDrag: 0.3
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -378,10 +378,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b861e336ecec845813721236052181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DataToAssign: {fileID: 11400000, guid: 038574074c1361b43b343d5d3f0a1e6f, type: 2}
-  m_Rb: {fileID: 7593420807902170187}
-  m_Collider: {fileID: 2417661982654324450}
   m_Transform: {fileID: 7593420807902170181}
+  m_Collider: {fileID: 2417661982654324450}
+  m_Rb: {fileID: 7593420807902170187}
+  m_DataToAssign: {fileID: 11400000, guid: 038574074c1361b43b343d5d3f0a1e6f, type: 2}
   m_JumpableLayers:
     serializedVersion: 2
     m_Bits: 3328
