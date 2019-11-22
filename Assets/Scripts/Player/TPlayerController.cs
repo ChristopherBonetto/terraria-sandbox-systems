@@ -8,9 +8,22 @@ using System.Collections;
 [RequireComponent(typeof(TDefenseComponent))]
 public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
 {
-    #region Data
+    private TItemInHandComponent m_PlayerItem;
+    public TItemInHandComponent PlayerItem
+    {
+        get
+        {
+            if (m_PlayerItem == null)
+            {
+                m_PlayerItem = GetComponent<TItemInHandComponent>();
+            }                
+            return m_PlayerItem;
+        }            
+    }
 
-    [SerializeField]
+#region Data
+
+[SerializeField]
     private TPlayerData m_DataToAssign;
     /// <summary>
     /// Default player's stats
@@ -110,6 +123,11 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
             if (m_FreezeTime <= 0)
                 m_ImFreeze = false;
         }
+
+        if(PlayerItem.m_myItemInHand.Item != null)
+        {
+            Debug.Log(PlayerItem.m_myItemInHand.Item.ItemName);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -182,8 +200,13 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
         {
             bool successful = TItemHandler.Instance.CurrentSelectedItem.ItemInSlot.Item.Use(this, data);
 
-            if (successful && TItemHandler.Instance.CurrentSelectedItem.ItemInSlot.Item.DepleteOnUse)
-                TItemHandler.Instance.CurrentSelectedItem.DepleteAmount(1);
+            //if (successful && TItemHandler.Instance.CurrentSelectedItem.ItemInSlot.Item.DepleteOnUse)
+                //TItemHandler.Instance.CurrentSelectedItem.DepleteAmount(1);
         }
+    }
+
+    public void Move()
+    {
+        throw new System.NotImplementedException();
     }
 }

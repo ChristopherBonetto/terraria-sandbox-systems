@@ -97,6 +97,7 @@ public class TInventorySlot : MonoBehaviour
             else
             {
                 TItemHandler.Instance.CurrentSelectedItem = null;
+                SelectSlot();
             }
         }
         
