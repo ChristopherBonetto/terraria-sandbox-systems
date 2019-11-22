@@ -58,7 +58,7 @@ public class TItemPickup : MonoBehaviour
 
         if (pc)
         {
-            TInventory.Instance.CollectItem(m_ContainedItem);
+            pc.PlayerInventory.CollectItem(m_ContainedItem);
             gameObject.SetActive(false);
         }
     }

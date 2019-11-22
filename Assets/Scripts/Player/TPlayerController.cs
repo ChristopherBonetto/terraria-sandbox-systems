@@ -21,9 +21,22 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
         }            
     }
 
-#region Data
+    private TInventory m_PlayerInventory;
+    public TInventory PlayerInventory
+    {
+        get
+        {
+            if (m_PlayerInventory == null)
+            {
+                m_PlayerInventory = GetComponent<TInventory>();
+            }
+            return m_PlayerInventory;
+        }
+    }
 
-[SerializeField]
+    #region Data
+
+    [SerializeField]
     private TPlayerData m_DataToAssign;
     /// <summary>
     /// Default player's stats

@@ -13,6 +13,7 @@ public class TInventorySlot : MonoBehaviour
     }
 
     public TItemQuantity ItemInSlot;
+    public TInventory InventoryRef;
 
     [SerializeField] Image m_slotImage;
 
@@ -75,7 +76,7 @@ public class TInventorySlot : MonoBehaviour
     {
         if(slot == this)
         {
-            if (TInventory.Instance.InventoryIsOpen)
+            if (InventoryRef.InventoryIsOpen)
             {
                 if (slot.ItemInSlot.Item == null)
                 {
@@ -101,12 +102,23 @@ public class TInventorySlot : MonoBehaviour
                         TItemHandler.SharedInstance.SelectedItem.InsertItemToSlot(tempSlot);
 
                         TItemHandler.SharedInstance.SelectedItem = null;
+                        Debug.Log("scambia");
                     }
                 }
             }
             else
             {
-                TItemHandler.SharedInstance.SelectedItem = this;
+                if (TItemHandler.SharedInstance.SelectedItem == this)
+                {
+                    TItemHandler.SharedInstance.SelectedItem = null;
+                    Debug.Log("deseleziona corrente");
+                }
+                else
+                {
+                    TItemHandler.SharedInstance.SelectedItem = null;
+                    SelectSlot();
+                    Debug.Log("selezionato nuovo slot");
+                }
             }
         }
         
