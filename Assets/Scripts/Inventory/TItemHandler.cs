@@ -18,7 +18,7 @@ public class TItemHandler : MonoBehaviour
             if (value)
                 TEventManager.TriggerEvent(TEventID.OnItemSelected, value);
             else
-                TEventManager.TriggerEvent(TEventID.OnSelectedItemCleared);
+                TEventManager.TriggerEvent(TEventID.OnItemDeselected);
         }
     }
 

@@ -18,13 +18,13 @@ namespace UnityEngine.UI
         private void OnEnable()
         {
             TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, StartFollowing);
-            TEventManager.SubscribeTo(TEventID.OnSelectedItemCleared, StopFollowing);
+            TEventManager.SubscribeTo(TEventID.OnItemDeselected, StopFollowing);
         }
 
         private void OnDisable()
         {
             TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemSelected, StartFollowing);
-            TEventManager.UnsubscribeFrom(TEventID.OnSelectedItemCleared, StopFollowing);
+            TEventManager.UnsubscribeFrom(TEventID.OnItemDeselected, StopFollowing);
         }
 
         private void StartFollowing(TInventorySlot inSlot)
