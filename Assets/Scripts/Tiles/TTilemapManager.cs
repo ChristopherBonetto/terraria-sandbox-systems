@@ -105,17 +105,12 @@ public class TTilemapManager : MonoBehaviour
     /// <summary>
     /// Returns the Tile at the specified cell on the target Tilemap.
     /// </summary>
-    /// <param name="inPosition">Cell position.</param>
+    /// <param name="inCell">Cell position.</param>
     /// <param name="inMap">Target Tilemap.</param>
     /// <returns></returns>
-    public TDestructibleTile GetTile(Vector3Int inPosition, TMap inMap = TMap.Foreground)
+    public TDestructibleTile GetTile(Vector3Int inCell, TMap inMap = TMap.Foreground)
     {
-        if (inMap == TMap.Foreground)
-            return m_ForegroundMap.GetTile<TDestructibleTile>(inPosition);
-        else if (inMap == TMap.Background)
-            return m_BackgroundMap.GetTile<TDestructibleTile>(inPosition);
-
-        return null;
+        return GetTilemap(inMap)?.GetTile<TDestructibleTile>(inCell);
     }
 
     /// <summary>
@@ -135,10 +130,10 @@ public class TTilemapManager : MonoBehaviour
     /// <summary>
     /// Damages the Tile at the specified cell on target Tilemap.
     /// </summary>
-    /// <param name="inPosition">Cell position.</param>
+    /// <param name="inCell">Cell position.</param>
     /// <param name="inMap">Target Tilemap.</param>
     /// <param name="inDamage">Damage dealt.</param>
-    public void DamageTile(Vector3Int inPosition, TMap inMap = TMap.Foreground, int inDamage = 1)
+    public void DamageTile(Vector3Int inCell, TMap inMap = TMap.Foreground, int inDamage = 1)
     {
 
         // Get affected Tilemap
@@ -153,38 +148,40 @@ public class TTilemapManager : MonoBehaviour
 
 
         // Get affected Tile
-        TDestructibleTile affectedTile = affectedMap.GetTile<TDestructibleTile>(inPosition);
+        TDestructibleTile affectedTile = affectedMap.GetTile<TDestructibleTile>(inCell);
 
         // If the position is empty, return
         if (!affectedTile)
             return;
         
         // If the Tile has been damaged already, update current HP value
-        if (m_DamagedTiles.ContainsKey(inPosition))
+        if (m_DamagedTiles.ContainsKey(inCell))
         {
-            int hitPoints = m_DamagedTiles[inPosition];
+            int hitPoints = m_DamagedTiles[inCell];
             hitPoints -= inDamage;
 
             if (hitPoints <= 0)
             {
                 // Call OnDestruction method
-                affectedTile.DropContainedItems(m_ForegroundMap.GetCellCenterWorld(inPosition));
+                affectedTile.DropContainedItems(m_ForegroundMap.GetCellCenterWorld(inCell));
+
+                DestroyObjectsAt(inCell + Vector3Int.up);
 
                 // Remove Tile from Tilemap and Damage dictionary
-                m_ForegroundMap.SetTile(inPosition, null);
-                m_DamagedTiles.Remove(inPosition);
+                m_ForegroundMap.SetTile(inCell, null);
+                m_DamagedTiles.Remove(inCell);
             }
             else
             {
                 // Update HP
-                m_DamagedTiles[inPosition] = hitPoints;
-                Debug.Log("Damaged tile at pos: " + inPosition);
+                m_DamagedTiles[inCell] = hitPoints;
+                Debug.Log("Damaged tile at pos: " + inCell);
             }
         }
         else
         {
             // Get the Tile
-            TDestructibleTile tile = m_ForegroundMap.GetTile<TDestructibleTile>(inPosition);
+            TDestructibleTile tile = m_ForegroundMap.GetTile<TDestructibleTile>(inCell);
 
             // Init its HP to be stored by taking the damage into account
             int hitPoints = tile.HitPoints - inDamage;
@@ -192,16 +189,16 @@ public class TTilemapManager : MonoBehaviour
             if (hitPoints <= 0)
             {
                 // Call OnDestruction method
-                affectedTile.DropContainedItems(m_ForegroundMap.CellToWorld(inPosition));
+                affectedTile.DropContainedItems(m_ForegroundMap.CellToWorld(inCell));
 
                 // Remove Tile from Tilemap
-                m_ForegroundMap.SetTile(inPosition, null);
+                m_ForegroundMap.SetTile(inCell, null);
             }
             else
             {
                 // Add the Tile to the Damage dictionary
-                m_DamagedTiles.Add(inPosition, hitPoints);
-                Debug.Log("Damaged tile at pos: " + inPosition);
+                m_DamagedTiles.Add(inCell, hitPoints);
+                Debug.Log("Damaged tile at pos: " + inCell);
             }
         }
     }
@@ -219,10 +216,10 @@ public class TTilemapManager : MonoBehaviour
     /// <summary>
     /// Checks if the cell has any neighboring Tile on the target Tilemap (four directions + same cell on other Tilemap). 
     /// </summary>
-    /// <param name="inPosition">Cell position.</param>
+    /// <param name="inCell">Cell position.</param>
     /// <param name="inMap">Target Tilemap.</param>
     /// <returns>True if at least one neighbor has been found.</returns>
-    public bool CheckForNeighbors(Vector3Int inPosition, TMap inMap)
+    public bool CheckForNeighbors(Vector3Int inCell, TMap inMap)
     {
         // Determine target and other Tilemap
         Tilemap targetMap;
@@ -244,25 +241,51 @@ public class TTilemapManager : MonoBehaviour
         // Check all four direction on target Tilemap
         for (int i = 0; i < GridUtility.Directions.Length; i++)
         {
-            if (targetMap.HasTile(inPosition + GridUtility.Directions[i]))
+            if (targetMap.HasTile(inCell + GridUtility.Directions[i]))
                 return true;
         }
 
         // If a neighbor wasn't found on target Tilemap, check on other Tilemap.
-        return otherMap.HasTile(inPosition);
+        return otherMap.HasTile(inCell);
     }
 
     /// <summary>
     /// Check if the specified cell may be considered grounded (meaning the cell below is occupied by a Tile).
     /// </summary>
-    /// <param name="inPosition">Cell position.</param>
+    /// <param name="inCell">Cell position.</param>
     /// <returns></returns>
-    public bool CheckForGrounding(Vector3Int inPosition)
+    public bool IsGrounded(Vector3Int inCell)
     {
-        return m_ForegroundMap.HasTile(inPosition + GridUtility.Directions[(int)Direction.Down]);
+        return m_ForegroundMap.HasTile(inCell + Vector3Int.down);
     }
 
+    public bool IsOccupied(Vector3Int inCell, TMap inMap)
+    {
+        return GetTilemap(inMap).HasTile(inCell);
+    }
+
+
     #endregion
+
+    private Tilemap GetTilemap(TMap inMap)
+    {
+        if (inMap == TMap.Foreground)
+            return m_ForegroundMap;
+        else if (inMap == TMap.Background)
+            return m_BackgroundMap;
+
+        else return null;
+    }
+
+    private void DestroyObjectsAt(Vector3Int inCell)
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(m_ForegroundMap.GetCellCenterWorld(inCell), CellSize / 2, 0);
+
+        for(int i = 0; i < hitColliders.Length; i++)
+        {
+            hitColliders[i].GetComponentInParent<TWorldItem>()?.Destroy();
+        }
+    }
 }
 
 
