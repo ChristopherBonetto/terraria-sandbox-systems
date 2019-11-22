@@ -23,14 +23,14 @@ namespace Terrria.AI
 
         private float m_LastJumpTime;   // @TEMP
         private Transform m_TargetToChase;
-        private Vector2 m_Direction;
+        private Vector2 m_JumpVector;
 
         protected override void Start()
         {
             base.Start();
 
             m_ActualDelay = m_DelayBetweenJump;
-            m_Direction = new Vector2(1, 0.8f);
+            m_JumpVector = new Vector2(1, 0.8f);
         }
 
         private void Update()
@@ -71,16 +71,16 @@ namespace Terrria.AI
                     bool isPositive = Random.Range(0, 2) == 1;
 
                     if (!isPositive)
-                        m_Direction.x = -m_Direction.x;
+                        m_JumpVector.x = -m_JumpVector.x;
 
-                    Rb.AddForce(m_Direction * Data.JumpForce);
+                    m_Rb.AddForce(m_JumpVector * Data.JumpForce);
                     break;
 
                 case SlimeState.Chasing:
-                    float sign = Mathf.Sign(m_Player.transform.position.x - transform.position.x);
-                    var fixDir = new Vector2(m_Direction.x * sign, m_Direction.y);
+                    var direction = (m_Player.transform.position - transform.position).normalized;
+                    var fixDir = new Vector2(m_JumpVector.x * Mathf.Sign(direction.x), m_JumpVector.y);
 
-                    Rb.AddForce(fixDir * Data.JumpForce);
+                    m_Rb.AddForce(fixDir * Data.JumpForce);
                     break;
             }
         }

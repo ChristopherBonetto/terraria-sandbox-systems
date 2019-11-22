@@ -7,15 +7,13 @@ namespace Terrria.AI
     /// doesn't move or react.
     /// </summary>
     [RequireComponent(typeof(TDefenseComponent))]
-    public class BaseAI : MonoBehaviour
+    public class BaseAI : BaseEntity
     {
         [SerializeField] private AIBaseData m_Data;
         public AIBaseData Data => m_Data;
 
         // Component
         private IDefend m_DefenseComponent;
-        [SerializeField] private Rigidbody2D m_Rb;
-        [SerializeField] private Collider2D m_Collider;
 
         public IDefend DefenseComponent
         {
@@ -26,15 +24,15 @@ namespace Terrria.AI
                 return m_DefenseComponent;
             }
         }
-        public Rigidbody2D Rb => m_Rb;
-        public Collider2D Collider => m_Collider;
 
         //Player reference 
         protected TPlayerController m_Player;
 
 
-        protected virtual void Start()
+        protected override void Start()
         {
+            base.Start();
+
             DefenseComponent.Init(/*inMaxHealth:*/ Data.MaxHealth, /*inDefense:*/ Data.Defense);
         }
 
