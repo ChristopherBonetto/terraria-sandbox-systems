@@ -98,7 +98,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &486078349784539313
 Transform:
   m_ObjectHideFlags: 0
@@ -179,7 +179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5488445117431247762
 Transform:
   m_ObjectHideFlags: 0
@@ -287,11 +287,9 @@ GameObject:
   - component: {fileID: 7593420807902170181}
   - component: {fileID: 2417661982654324450}
   - component: {fileID: 7593420807902170187}
+  - component: {fileID: 1321226293937296316}
   - component: {fileID: 7593420807902170185}
   - component: {fileID: 7593420807902170188}
-  - component: {fileID: 2069652337104169511}
-  - component: {fileID: 2553473442219013681}
-  - component: {fileID: 1321226293937296316}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -354,6 +352,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &1321226293937296316
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7593420807902170189}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ccc9a0a0f7cf9b54db50a2ac813134c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7593420807902170185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,57 +401,11 @@ MonoBehaviour:
   m_DataToAssign: {fileID: 11400000, guid: 038574074c1361b43b343d5d3f0a1e6f, type: 2}
   m_JumpableLayers:
     serializedVersion: 2
-    m_Bits: 3328
+    m_Bits: 2304
   m_Legs: {fileID: 3718000970134068218}
---- !u!114 &2069652337104169511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7593420807902170189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5e503c37604a1e428f1aa6c1197421a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_ItemRootAnimation: {fileID: 4658975731296363733}
+  m_ItemInHandIcon: {fileID: 2428030140455528639}
   m_Anim: {fileID: 1321226293937296316}
-  m_ItemRootAnimation: {fileID: 4900469027785965991}
---- !u!114 &2553473442219013681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7593420807902170189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0137266c89d906e4c9ff8252b0619fa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MaxDistance: 5
-  m_TestTile: {fileID: 11400000, guid: 873a6f26962de8c489373fa060728be2, type: 2}
-  m_TestWorldItem: {fileID: 8051295990738567597, guid: f437401df5da079418bb58f8bd462274,
-    type: 3}
---- !u!95 &1321226293937296316
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7593420807902170189}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ccc9a0a0f7cf9b54db50a2ac813134c1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8079630172293760256
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +475,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a6d7e9984488a7047936a18eca586b38, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -512,7 +483,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 1.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8241897150657624130

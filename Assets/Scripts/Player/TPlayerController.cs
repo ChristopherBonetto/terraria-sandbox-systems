@@ -6,7 +6,7 @@ using System.Collections;
 /// Player controller => It works as connection between model and view.
 /// </summary>
 [RequireComponent(typeof(TDefenseComponent))]
-public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
+public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 {
     private TItemInHandComponent m_PlayerItem;
     public TItemInHandComponent PlayerItem
@@ -61,22 +61,24 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
 
     #region Components
 
-    // Player's component (must be assigned)
     private IDefend m_DefenseComponent;
 
-    [Header("Components")]
-
-    [SerializeField] private Rigidbody2D m_Rb;
-    [SerializeField] private Collider2D m_Collider;
-    [SerializeField] private Transform m_Transform;
-    private Vector3 m_LocalScale;
 
     [Header("Jump variables")]
 
     [SerializeField] private LayerMask m_JumpableLayers;
     [SerializeField] private Transform m_Legs;
 
-    // Player's component (get only)
+    [Header("Weapon variables")]
+
+    [SerializeField] private GameObject m_ItemRootAnimation;
+    [SerializeField] private SpriteRenderer m_ItemInHandIcon;
+
+    [Header("Animator")]
+
+    [SerializeField] private Animator m_Anim;
+
+
     public IDefend DefenseComponent
     {
         get
@@ -86,27 +88,9 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
             return m_DefenseComponent;
         }
     }
-    public Rigidbody2D Rb => m_Rb;
-    public Collider2D Collider => m_Collider;
-    public Transform Transform => m_Transform;
-
-    public LayerMask JumpableLayers => m_JumpableLayers;
     public Transform Legs => m_Legs;
-
-    private TPlayerView m_View;
-    /// <summary>
-    /// Player view.
-    /// It's used to show armor sprites and other visual.
-    /// </summary>
-    public TPlayerView View
-    {
-        get
-        {
-            if (m_View == null)
-                m_View = GetComponent<TPlayerView>();
-            return m_View;
-        }
-    }
+    public SpriteRenderer ItemInHandIcon => m_ItemInHandIcon;
+    public Animator Anim => m_Anim;
 
     #endregion
 
@@ -116,10 +100,10 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
     private Collider2D m_NcpColliderHit;
 
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
-        m_LocalScale = Transform.localScale;
 
         // Update visual
         TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, DefenseComponent);
@@ -153,30 +137,35 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
                                     Vector2.up * GeneralEffects.KbGlobalEffect * 0.5f;
 
             // Execute knock back
-            Rb.AddForce(knockEffect);
+            m_Rb.AddForce(knockEffect);
             // Start freeze
             Freeze(0.5f);
             // ignore collision
-            Physics2D.IgnoreCollision(Collider, m_NcpColliderHit, false);
+            Physics2D.IgnoreCollision(m_Collider, m_NcpColliderHit, false);
         }
     }
+
+    #region Movement
 
     public void Freeze(float inTime)
     {
         m_ImFreeze = true;
         m_FreezeTime = inTime;
-        Physics2D.IgnoreCollision(Collider, m_NcpColliderHit, false);
+        Physics2D.IgnoreCollision(m_Collider, m_NcpColliderHit, false);
     }
 
     public void Move(float inDirection)
     {
         if (!m_ImFreeze && inDirection != 0)
         {
+            if (!Physics2D.Raycast(m_Legs.position, Vector2.right * inDirection, 0.5f, m_JumpableLayers))
+            {
                 transform.position += (Vector3.right * inDirection) * DataAssigned.Speed * Time.deltaTime;
 
                 // View
                 Vector2 scale = new Vector2(m_LocalScale.x * inDirection, m_LocalScale.y);
-                Transform.localScale = scale; 
+                m_Transform.localScale = scale; 
+            }
         }
     }
 
@@ -184,22 +173,24 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Physics2D.Raycast(Legs.position, Vector2.down + Vector2.right * Collider.bounds.extents.x, 0.3f, JumpableLayers) ||
-                Physics2D.Raycast(Legs.position, Vector2.down + Vector2.right * -Collider.bounds.extents.x, 0.3f, JumpableLayers))
-                    Rb.AddForce(Vector2.up * DataAssigned.JumpForce);
+            if (Physics2D.Raycast(Legs.position, Vector2.down + Vector2.right * m_Collider.bounds.extents.x, 0.3f, m_JumpableLayers) ||
+                Physics2D.Raycast(Legs.position, Vector2.down + Vector2.right * -m_Collider.bounds.extents.x, 0.3f, m_JumpableLayers))
+                    m_Rb.AddForce(Vector2.up * DataAssigned.JumpForce);
         }
 
         else if (!Input.GetKey(KeyCode.Space))
         {
-            if ((Rb.velocity.y > 0))
-                Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.0f);
+            if ((m_Rb.velocity.y > 0))
+                m_Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.0f);
         }
 
     }
 
+    #endregion
+
     public bool IsInActionRange(Vector3Int inCell)
     {
-        return Mathf.CeilToInt(Vector3Int.Distance(inCell, TTilemapManager.SharedInstance.WorldToGridPosition(Transform.position))) <= DataAssigned.MaxActionDistance;
+        return Mathf.CeilToInt(Vector3Int.Distance(inCell, TTilemapManager.SharedInstance.WorldToGridPosition(m_Transform.position))) <= DataAssigned.MaxActionDistance;
     }
 
     public void UseEquippedItem(TPointerData data)
@@ -212,4 +203,24 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
                 PlayerItem.ItemInHand.DepleteAmount(1);
         }
     }
+
+    #region Weapon
+
+    public bool CanAttack()
+    {
+        if (!m_ItemRootAnimation.activeSelf)
+        {
+            m_ItemRootAnimation.SetActive(true);
+            Anim.SetTrigger("Attack");
+            return true;
+        }
+        return false;
+    }
+
+    public void TurnOffItemRoot()
+    {
+        m_ItemRootAnimation.SetActive(false);
+    }
+
+    #endregion
 }
