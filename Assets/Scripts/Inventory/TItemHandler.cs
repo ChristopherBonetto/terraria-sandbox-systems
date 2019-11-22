@@ -22,9 +22,6 @@ public class TItemHandler : MonoBehaviour
         }
     }
 
-    public delegate void OnSelect(TInventorySlot tempSlottedItem);
-    public static OnSelect OnDeselectEvent;
-
     private TInventorySlot m_SelectedItem;
 
     private void Awake()

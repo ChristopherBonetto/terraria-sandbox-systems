@@ -17,15 +17,6 @@ public class TInventorySlot : MonoBehaviour
 
     [SerializeField] Image m_slotImage;
 
-    private void OnEnable()
-    {
-        TItemHandler.OnDeselectEvent += FillThisSlot;
-    }
-    private void OnDisable()
-    {
-        TItemHandler.OnDeselectEvent -= FillThisSlot;
-    }
-
     private void Start()
     {
         if(ItemInSlot.Item != null)
@@ -41,10 +32,12 @@ public class TInventorySlot : MonoBehaviour
         ShowImage(true);
     }
     
-
     public void SelectSlot()
     {
-        if (ItemInSlot != TItemQuantity.Empty)
+        if (TItemHandler.SharedInstance.SelectedItem)
+            FillThisSlot(TItemHandler.SharedInstance.SelectedItem);
+
+        else if (ItemInSlot != TItemQuantity.Empty)
             TItemHandler.SharedInstance.SelectedItem = this;
     }
 
@@ -74,54 +67,51 @@ public class TInventorySlot : MonoBehaviour
 
     public void FillThisSlot(TInventorySlot slot)
     {
-        if(slot == this)
+        if (InventoryRef.InventoryIsOpen)
         {
-            if (InventoryRef.InventoryIsOpen)
+            if (ItemInSlot.Item == null)
             {
-                if (slot.ItemInSlot.Item == null)
-                {
-                    InsertItemToSlot(TItemHandler.SharedInstance.SelectedItem.ItemInSlot);
-                    TItemHandler.SharedInstance.SelectedItem.ItemInSlot = TItemQuantity.Empty;
-                    TItemHandler.SharedInstance.SelectedItem = null;
-                    Debug.Log("inserisci");
-                }
-                else
-                {
-                    if (TItemHandler.SharedInstance.SelectedItem == this)
-                    {
-                        m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
-                        TItemHandler.SharedInstance.SelectedItem = null;
-                        Debug.Log("riposa");
-                    }
-                    else
-                    {
-                        TItemQuantity tempSlot = this.ItemInSlot;
-
-                        InsertItemToSlot(TItemHandler.SharedInstance.SelectedItem.ItemInSlot);
-
-                        TItemHandler.SharedInstance.SelectedItem.InsertItemToSlot(tempSlot);
-
-                        TItemHandler.SharedInstance.SelectedItem = null;
-                        Debug.Log("scambia");
-                    }
-                }
+                InsertItemToSlot(TItemHandler.SharedInstance.SelectedItem.ItemInSlot);
+                TItemHandler.SharedInstance.SelectedItem.ShowImage(false);
+                TItemHandler.SharedInstance.SelectedItem.ItemInSlot = TItemQuantity.Empty;
+                TItemHandler.SharedInstance.SelectedItem = null;
+                Debug.Log("inserisci");
             }
             else
             {
                 if (TItemHandler.SharedInstance.SelectedItem == this)
                 {
+                    ShowImage(true);
                     TItemHandler.SharedInstance.SelectedItem = null;
-                    Debug.Log("deseleziona corrente");
+                    Debug.Log("riposa");
                 }
                 else
                 {
+                    TItemQuantity tempSlot = this.ItemInSlot;
+
+                    InsertItemToSlot(TItemHandler.SharedInstance.SelectedItem.ItemInSlot);
+
+                    TItemHandler.SharedInstance.SelectedItem.InsertItemToSlot(tempSlot);
+
                     TItemHandler.SharedInstance.SelectedItem = null;
-                    SelectSlot();
-                    Debug.Log("selezionato nuovo slot");
+                    Debug.Log("scambia");
                 }
             }
         }
-        
+        else
+        {
+            if (TItemHandler.SharedInstance.SelectedItem == this)
+            {
+                TItemHandler.SharedInstance.SelectedItem = null;
+                Debug.Log("deseleziona corrente");
+            }
+            else
+            {
+                TItemHandler.SharedInstance.SelectedItem = null;
+                SelectSlot();
+                Debug.Log("selezionato nuovo slot");
+            }
+        }
     }
     #endregion
 
