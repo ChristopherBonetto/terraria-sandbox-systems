@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,5 +20,15 @@ public struct TItemQuantity
     public override string ToString()
     {
         return Item.ItemName + " (" + Amount + ")";
+    }
+
+    public static bool operator ==(TItemQuantity q1, TItemQuantity q2)
+    {
+        return q1.Item == q2.Item && q1.Amount == q2.Amount;
+    }
+
+    public static bool operator !=(TItemQuantity q1, TItemQuantity q2)
+    {
+        return q1.Item != q2.Item && q1.Amount != q2.Amount;
     }
 }

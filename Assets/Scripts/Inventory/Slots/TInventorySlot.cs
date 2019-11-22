@@ -43,7 +43,8 @@ public class TInventorySlot : MonoBehaviour
 
     public void SelectSlot()
     {
-        TItemHandler.SharedInstance.SelectedItem = this;
+        if (ItemInSlot != TItemQuantity.Empty)
+            TItemHandler.SharedInstance.SelectedItem = this;
     }
 
     public void DepleteAmount(int inDepletedAmount)
@@ -105,7 +106,7 @@ public class TInventorySlot : MonoBehaviour
             }
             else
             {
-                TItemHandler.SharedInstance.SelectedItem = null;
+                TItemHandler.SharedInstance.SelectedItem = this;
             }
         }
         

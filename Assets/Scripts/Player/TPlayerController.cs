@@ -8,9 +8,22 @@ using System.Collections;
 [RequireComponent(typeof(TDefenseComponent))]
 public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
 {
-    #region Data
+    private TItemInHandComponent m_PlayerItem;
+    public TItemInHandComponent PlayerItem
+    {
+        get
+        {
+            if (m_PlayerItem == null)
+            {
+                m_PlayerItem = GetComponent<TItemInHandComponent>();
+            }                
+            return m_PlayerItem;
+        }            
+    }
 
-    [SerializeField]
+#region Data
+
+[SerializeField]
     private TPlayerData m_DataToAssign;
     /// <summary>
     /// Default player's stats
@@ -178,12 +191,12 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
 
     public void UseEquippedItem(TPointerData data)
     {
-        if (TItemHandler.SharedInstance.SelectedItem)
+        if (PlayerItem.ItemInHand)
         {
-            bool successful = TItemHandler.SharedInstance.SelectedItem.ItemInSlot.Item.Use(this, data);
+            bool successful = PlayerItem.ItemInHand.ItemInSlot.Item.Use(this, data);
 
             if (successful && TItemHandler.SharedInstance.SelectedItem.ItemInSlot.Item.DepleteOnUse)
-                TItemHandler.SharedInstance.SelectedItem.DepleteAmount(1);
+                PlayerItem.ItemInHand.DepleteAmount(1);
         }
     }
 }

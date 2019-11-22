@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Dirt Block
   ItemSprite: {fileID: 21300000, guid: 136268cbef574ca46a084156ed2a8737, type: 3}
+  m_DepleteOnUse: 1
   m_Tile: {fileID: 11400000, guid: 209fab49c5b624b48b18b11259942b4b, type: 2}
   m_TargetTilemap: 1

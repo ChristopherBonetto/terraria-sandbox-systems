@@ -93,8 +93,8 @@ public class TInventory : MonoBehaviour
             {
                 if (InventorySlots[i].ItemInSlot.Item == addThisItem.Item)
                 {
-                    
-                    InventorySlots[i].InsertItemToSlot(addThisItem);
+
+                    InventorySlots[i].ItemInSlot.Amount += addThisItem.Amount;
 
                     Debug.Log("now you have " + InventorySlots[i].ItemInSlot.Item.ItemName + " : " + InventorySlots[i].ItemInSlot.Amount);
 
