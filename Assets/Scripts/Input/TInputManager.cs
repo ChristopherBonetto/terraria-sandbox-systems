@@ -21,6 +21,8 @@ public class TInputManager : MonoBehaviour
 
     #endregion
 
+    [SerializeField] private TPlayerController m_UserPlayer;
+
     #region MonoBehaviour cycle
 
     private void Awake()
@@ -56,23 +58,8 @@ public class TInputManager : MonoBehaviour
     {
         #region Left click
 
-
-        if (Input.GetMouseButtonDown(0))
-            TEventManager.TriggerEvent(TEventID.OnLeftClickDown, new TPointerData(Input.mousePosition));
-
-        else if (Input.GetMouseButtonUp(0))
-            TEventManager.TriggerEvent(TEventID.OnLeftClickUp, new TPointerData(Input.mousePosition));
-
-        #endregion
-
-        #region Right click
-
-
-        if (Input.GetMouseButtonDown(1))
-            TEventManager.TriggerEvent(TEventID.OnRightClickDown, new TPointerData(Input.mousePosition));
-
-        if (Input.GetMouseButtonUp(1))
-            TEventManager.TriggerEvent(TEventID.OnRightClickUp, new TPointerData(Input.mousePosition));
+        if (Input.GetMouseButtonUp(0))
+            m_UserPlayer.UseEquippedItem(new TPointerData(Input.mousePosition));
 
         #endregion
     }
@@ -84,20 +71,12 @@ public class TInputManager : MonoBehaviour
     {
         #region Horizontal movement
 
-        float moveAxis = Input.GetAxisRaw(TControls.MovementAxis);
-
-        if (moveAxis != 0)
-            TEventManager.TriggerEvent(TEventID.OnMovementAxis, moveAxis);
-
+        m_UserPlayer.Move(Input.GetAxisRaw(TControls.MovementAxis));
+        
         #endregion
 
         #region Jump
 
-        if (Input.GetButtonDown(TControls.Jump))
-            TEventManager.TriggerEvent(TEventID.OnJumpDOWN);
-
-        else if (Input.GetButtonUp(TControls.Jump))
-            TEventManager.TriggerEvent(TEventID.OnJumpUP);
 
         #endregion
     }

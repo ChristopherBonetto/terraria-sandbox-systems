@@ -101,7 +101,6 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
 
     private void Update()
     {
-        Move();
         Jump();
 
         if (m_ImFreeze)
@@ -143,20 +142,15 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
         Physics2D.IgnoreCollision(Collider, m_NcpColliderHit, false);
     }
 
-    public void Move()
+    public void Move(float inDirection)
     {
-        if (!m_ImFreeze)
+        if (!m_ImFreeze && inDirection != 0)
         {
-            var inDirection = Input.GetAxisRaw("Horizontal");
-
-            if (inDirection != 0)
-            {
                 transform.position += (Vector3.right * inDirection) * DataAssigned.Speed * Time.deltaTime;
 
                 // View
                 Vector2 scale = new Vector2(m_LocalScale.x * inDirection, m_LocalScale.y);
                 Transform.localScale = scale; 
-            }
         }
     }
 
@@ -175,5 +169,21 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
                 Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.0f);
         }
 
+    }
+
+    public bool IsInActionRange(Vector3Int inCell)
+    {
+        return Mathf.CeilToInt(Vector3Int.Distance(inCell, TTilemapManager.SharedInstance.WorldToGridPosition(Transform.position))) <= DataAssigned.MaxActionDistance;
+    }
+
+    public void UseEquippedItem(TPointerData data)
+    {
+        if (TItemHandler.Instance.CurrentSelectedItem)
+        {
+            bool successful = TItemHandler.Instance.CurrentSelectedItem.ItemInSlot.Item.Use(this, data);
+
+            if (successful && TItemHandler.Instance.CurrentSelectedItem.ItemInSlot.Item.DepleteOnUse)
+                TItemHandler.Instance.CurrentSelectedItem.DepleteAmount(1);
+        }
     }
 }

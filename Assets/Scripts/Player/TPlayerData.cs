@@ -35,4 +35,10 @@ public class TPlayerData : ScriptableObject
     [SerializeField]
     private float m_JumpForce;
     public float JumpForce { get { return m_JumpForce; } }
+
+
+    [Header("Action variables")]
+    [SerializeField]
+    private int m_MaxActionDistance;
+    public float MaxActionDistance { get { return m_MaxActionDistance; } }
 }

@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Item", menuName = "Item/GenericItem")]
-public class TItem : ScriptableObject
+public abstract class TItem : ScriptableObject
 {
+
+    public bool DepleteOnUse { get { return m_DepleteOnUse; } }
+
     public new string ItemName = "";
         
     [Space]
     public Sprite ItemSprite;
+
+    [SerializeField] private bool m_DepleteOnUse;
+
+    public abstract bool Use(TPlayerController inUser, TPointerData inData);
     
 }
 

@@ -22,13 +22,13 @@ public class TWorldItem : MonoBehaviour
     /// </summary>
     public Renderer RendererComponent { get; private set; }
 
+    public TItem ReferenceItem { get; set; }
+
     #endregion
 
     #region Serialize variables
     
     [SerializeField] private int m_HitPoints;
-
-    [SerializeField] private TItemQuantity m_ReferenceItem;
 
     #endregion
 
@@ -46,9 +46,20 @@ public class TWorldItem : MonoBehaviour
 
     #region Private methods
 
-    private void OnDestruction()
+    public void Destroy()
     {
-        throw new System.NotImplementedException();
+        if (ReferenceItem)
+        {
+            TItemPickup pickup = ObjectPooler.SharedInstance.GetPooledObject("Pickup").GetComponent<TItemPickup>();
+
+            pickup.LoadItem(new TItemQuantity(ReferenceItem));
+
+            pickup.TransformComponent.position = TransformComponent.position;
+
+            pickup.gameObject.SetActive(true);
+        }
+
+        Destroy(gameObject);
     }
 
     #endregion
