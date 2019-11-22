@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TInventory : MonoBehaviour
 {
-    public static TInventory Instance;
-
     public List<TInventorySlot> InventorySlots = new List<TInventorySlot>();
 
     [SerializeField] private int m_slotsNumber;
@@ -13,11 +11,7 @@ public class TInventory : MonoBehaviour
 
     public bool InventoryIsOpen = false;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
-
+    
     private void Start()
     {
         InstantiateSlotsInInventory();
@@ -48,6 +42,7 @@ public class TInventory : MonoBehaviour
         if (m_slotCounter <= m_slotsNumber)
         {
             TInventorySlot tempSlotRef = UIManager.Instance.InstantiateSlotInInventory();
+            tempSlotRef.InventoryRef = this;
 
             AddSlotToInventory(tempSlotRef);
             
@@ -119,5 +114,4 @@ public class TInventory : MonoBehaviour
         }
     }
     #endregion
-    
 }

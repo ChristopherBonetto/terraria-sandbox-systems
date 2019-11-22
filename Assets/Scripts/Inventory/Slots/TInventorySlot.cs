@@ -11,6 +11,7 @@ public class TInventorySlot : MonoBehaviour
 
     public Image m_slotImage;
 
+    public TInventory InventoryRef;
 
     private void OnEnable()
     {
@@ -65,7 +66,7 @@ public class TInventorySlot : MonoBehaviour
     {
         if(slot == this)
         {
-            if (TInventory.Instance.InventoryIsOpen)
+            if (InventoryRef.InventoryIsOpen)
             {
                 if (slot.ItemInSlot.Item == null)
                 {
@@ -91,13 +92,23 @@ public class TInventorySlot : MonoBehaviour
                         TItemHandler.Instance.CurrentSelectedItem.InsertItemToSlot(tempSlot);
 
                         TItemHandler.Instance.CurrentSelectedItem = null;
+                        Debug.Log("scambia");
                     }
                 }
             }
             else
             {
-                TItemHandler.Instance.CurrentSelectedItem = null;
-                SelectSlot();
+                if (TItemHandler.Instance.CurrentSelectedItem == this)
+                {
+                    TItemHandler.Instance.CurrentSelectedItem = null;
+                    Debug.Log("deseleziona corrente");
+                }
+                else
+                {
+                    TItemHandler.Instance.CurrentSelectedItem = null;
+                    SelectSlot();
+                    Debug.Log("selezionato nuovo slot");
+                }
             }
         }
         

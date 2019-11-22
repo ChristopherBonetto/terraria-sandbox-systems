@@ -91,7 +91,7 @@ public class TInputManager : MonoBehaviour
             {
                 int effectiveNumber = (int)tempNumber - 1;
 
-                TInventory.Instance.InventorySlots[effectiveNumber].SelectSlot();
+                m_UserPlayer.PlayerInventory.InventorySlots[effectiveNumber].SelectSlot();
 
             }
         }
