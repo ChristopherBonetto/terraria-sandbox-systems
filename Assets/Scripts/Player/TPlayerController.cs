@@ -5,11 +5,8 @@ using System.Collections;
 /// <summary>
 /// Player controller => It works as connection between model and view.
 /// </summary>
-[RequireComponent(typeof(TJumpComponent), 
-                  typeof(TDefenseComponent), 
-                  typeof(TLinearMovement))]
-
-public class TPlayerController : MonoBehaviour, IKnockBackable
+[RequireComponent(typeof(TDefenseComponent))]
+public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
 {
     #region Data
 
@@ -39,22 +36,21 @@ public class TPlayerController : MonoBehaviour, IKnockBackable
     #region Components
 
     // Player's component (must be assigned)
-    private IMovable m_MovementComponent;
     private IDefend m_DefenseComponent;
-    private IJump m_JumpComponent;
+
+    [Header("Components")]
+
     [SerializeField] private Rigidbody2D m_Rb;
     [SerializeField] private Collider2D m_Collider;
+    [SerializeField] private Transform m_Transform;
+    private Vector3 m_LocalScale;
+
+    [Header("Jump variables")]
+
+    [SerializeField] private LayerMask m_JumpableLayers;
+    [SerializeField] private Transform m_Legs;
 
     // Player's component (get only)
-    public IMovable MovementComponent
-    {
-        get
-        {
-            if (m_MovementComponent == null)
-                m_MovementComponent = GetComponent<IMovable>();
-            return m_MovementComponent;
-        }
-    }
     public IDefend DefenseComponent
     {
         get
@@ -64,17 +60,12 @@ public class TPlayerController : MonoBehaviour, IKnockBackable
             return m_DefenseComponent;
         }
     }
-    public IJump JumpComponent
-    {
-        get
-        {
-            if (m_JumpComponent == null)
-                m_JumpComponent = GetComponent<IJump>();
-            return m_JumpComponent;
-        }
-    }
     public Rigidbody2D Rb => m_Rb;
     public Collider2D Collider => m_Collider;
+    public Transform Transform => m_Transform;
+
+    public LayerMask JumpableLayers => m_JumpableLayers;
+    public Transform Legs => m_Legs;
 
     private TPlayerView m_View;
     /// <summary>
@@ -96,14 +87,13 @@ public class TPlayerController : MonoBehaviour, IKnockBackable
     // @TEMP
     private bool m_ImFreeze;
     private float m_FreezeTime;
-
     private Collider2D m_NcpColliderHit;
+
 
     private void Start()
     {
         DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
-        MovementComponent.Init(DataAssigned.Speed);
-        JumpComponent.Init(Rb, DataAssigned.JumpForce);
+        m_LocalScale = Transform.localScale;
 
         // Update visual
         TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, DefenseComponent);
@@ -111,8 +101,8 @@ public class TPlayerController : MonoBehaviour, IKnockBackable
 
     private void Update()
     {
-        PlayerMovement();
-        PlayerJump();
+        Move();
+        Jump();
 
         if (m_ImFreeze)
         {
@@ -137,7 +127,7 @@ public class TPlayerController : MonoBehaviour, IKnockBackable
             Vector2 knockEffect = (Vector2.right * sign * GeneralEffects.KbEffect(DataAssigned.KbResist)) +
                                     Vector2.up * GeneralEffects.KbGlobalEffect * 0.5f;
 
-            // Execute knockback
+            // Execute knock back
             Rb.AddForce(knockEffect);
             // Start freeze
             Freeze(0.5f);
@@ -146,7 +136,14 @@ public class TPlayerController : MonoBehaviour, IKnockBackable
         }
     }
 
-    private void PlayerMovement()
+    public void Freeze(float inTime)
+    {
+        m_ImFreeze = true;
+        m_FreezeTime = inTime;
+        Physics2D.IgnoreCollision(Collider, m_NcpColliderHit, false);
+    }
+
+    public void Move()
     {
         if (!m_ImFreeze)
         {
@@ -154,17 +151,22 @@ public class TPlayerController : MonoBehaviour, IKnockBackable
 
             if (inDirection != 0)
             {
-                MovementComponent.Move(Vector2.right * inDirection);
+                transform.position += (Vector3.right * inDirection) * DataAssigned.Speed * Time.deltaTime;
+
+                // View
+                Vector2 scale = new Vector2(m_LocalScale.x * inDirection, m_LocalScale.y);
+                Transform.localScale = scale; 
             }
         }
     }
 
-    private void PlayerJump()
+    public void Jump()
     {
-        // Jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            JumpComponent.Jump(Vector2.up);
+            if (Physics2D.Raycast(Legs.position, Vector2.down + Vector2.right * Collider.bounds.extents.x, 0.3f, JumpableLayers) ||
+                Physics2D.Raycast(Legs.position, Vector2.down + Vector2.right * -Collider.bounds.extents.x, 0.3f, JumpableLayers))
+                    Rb.AddForce(Vector2.up * DataAssigned.JumpForce);
         }
 
         else if (!Input.GetKey(KeyCode.Space))
@@ -172,12 +174,6 @@ public class TPlayerController : MonoBehaviour, IKnockBackable
             if ((Rb.velocity.y > 0))
                 Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.0f);
         }
-    }
 
-    public void Freeze(float inTime)
-    {
-        m_ImFreeze = true;
-        m_FreezeTime = inTime;
-        Physics2D.IgnoreCollision(Collider, m_NcpColliderHit, false);
     }
 }

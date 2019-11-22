@@ -18,4 +18,6 @@ MonoBehaviour:
   m_MaxHealth: 50
   m_Defense: 5
   m_Damage: 1
+  m_Speed: 0
+  m_JumpForce: 120
   m_KbResist: 20

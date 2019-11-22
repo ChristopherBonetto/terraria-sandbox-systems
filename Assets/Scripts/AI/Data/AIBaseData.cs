@@ -23,6 +23,8 @@ namespace Terrria.AI
         [SerializeField] private float m_MaxHealth;
         [SerializeField] private float m_Defense;
         [SerializeField] private float m_Damage;
+        [SerializeField] private float m_Speed;
+        [SerializeField] private float m_JumpForce;
         [SerializeField] private float m_KbResist;
 
         //[Header("Drops")]
@@ -38,6 +40,8 @@ namespace Terrria.AI
         public float MaxHealth => m_MaxHealth;
         public float Defense => m_Defense;
         public float Damage => m_Damage;
+        public float Speed => m_Speed;
+        public float JumpForce => m_JumpForce;
         public float KbResist => m_KbResist;
     }
 }

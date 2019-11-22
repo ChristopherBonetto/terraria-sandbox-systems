@@ -287,9 +287,7 @@ GameObject:
   - component: {fileID: 7593420807902170181}
   - component: {fileID: 2417661982654324450}
   - component: {fileID: 7593420807902170187}
-  - component: {fileID: 7593420807902170184}
   - component: {fileID: 7593420807902170185}
-  - component: {fileID: 7593420807902170190}
   - component: {fileID: 7593420807902170188}
   - component: {fileID: 2069652337104169511}
   - component: {fileID: 2553473442219013681}
@@ -356,24 +354,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7593420807902170184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7593420807902170189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f0cae45217b3544f95ef20101f1276d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Force: 80
-  m_JumpableMask:
-    serializedVersion: 2
-    m_Bits: 768
-  m_Legs: {fileID: 3718000970134068218}
-  m_DistanceToDetection: 0.5
 --- !u!114 &7593420807902170185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,23 +366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052558fe205835b498664deef9ddbb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7593420807902170190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7593420807902170189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe981a8fc870e6545a6ed5950dc51f8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MovementSpeed: 3
-  m_ObstacleMask:
-    serializedVersion: 2
-    m_Bits: 256
-  m_DistanceToDetection: 0.6
 --- !u!114 &7593420807902170188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +381,11 @@ MonoBehaviour:
   m_DataToAssign: {fileID: 11400000, guid: 038574074c1361b43b343d5d3f0a1e6f, type: 2}
   m_Rb: {fileID: 7593420807902170187}
   m_Collider: {fileID: 2417661982654324450}
+  m_Transform: {fileID: 7593420807902170181}
+  m_JumpableLayers:
+    serializedVersion: 2
+    m_Bits: 3328
+  m_Legs: {fileID: 3718000970134068218}
 --- !u!114 &2069652337104169511
 MonoBehaviour:
   m_ObjectHideFlags: 0
