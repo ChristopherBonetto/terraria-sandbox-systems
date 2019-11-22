@@ -4,30 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-//[RequireComponent(typeof(TDroppableItem), typeof(TDraggableItem))]
 public class TInventorySlot : MonoBehaviour
 {  
+    public Sprite ItemSprite
+    {
+        get { return m_slotImage.sprite; }
+        set { m_slotImage.sprite = value; }
+    }
+
     public TItemQuantity ItemInSlot;
 
-    public Image m_slotImage;
-
+    [SerializeField] Image m_slotImage;
 
     private void OnEnable()
     {
-        TItemHandler.OnSelectEvent += TakeItemFromThisSlot;
         TItemHandler.OnDeselectEvent += FillThisSlot;
     }
     private void OnDisable()
     {
-        TItemHandler.OnSelectEvent -= TakeItemFromThisSlot;
         TItemHandler.OnDeselectEvent -= FillThisSlot;
     }
-
-    private void Awake()
-    {
-        m_slotImage = gameObject.GetComponent<Image>();
-    }
-
 
     private void Start()
     {
@@ -41,25 +37,38 @@ public class TInventorySlot : MonoBehaviour
     {
         ItemInSlot = itemToAdd;
         m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
+        ShowImage(true);
     }
     
 
     public void SelectSlot()
     {
-        TItemHandler.Instance.SelectSlot(this);
+        TItemHandler.SharedInstance.SelectedItem = this;
+    }
+
+    public void DepleteAmount(int inDepletedAmount)
+    {
+        ItemInSlot.Amount -= inDepletedAmount;
+
+        if (ItemInSlot.Amount <= 0)
+            Clear();
+    }
+
+    public void Clear()
+    {
+        ItemInSlot = TItemQuantity.Empty;
+        
+        ShowImage(false);
+
+        TItemHandler.SharedInstance.SelectedItem = null;
+    }
+
+    public void ShowImage(bool value)
+    {
+        m_slotImage.color = value ? Color.white : Color.clear;
     }
 
     #region Drag and Drop event
-    public void TakeItemFromThisSlot(TInventorySlot slot)
-    {
-        if(slot == this)
-        {
-            if(ItemInSlot.Item != null)
-            {
-                TItemHandler.Instance.CurrentSelectedItem = this;            
-            }
-        }
-    }
 
     public void FillThisSlot(TInventorySlot slot)
     {
@@ -69,34 +78,34 @@ public class TInventorySlot : MonoBehaviour
             {
                 if (slot.ItemInSlot.Item == null)
                 {
-                    InsertItemToSlot(TItemHandler.Instance.CurrentSelectedItem.ItemInSlot);
-                    TItemHandler.Instance.CurrentSelectedItem.ItemInSlot = TItemQuantity.Empty;
-                    TItemHandler.Instance.CurrentSelectedItem = null;
+                    InsertItemToSlot(TItemHandler.SharedInstance.SelectedItem.ItemInSlot);
+                    TItemHandler.SharedInstance.SelectedItem.ItemInSlot = TItemQuantity.Empty;
+                    TItemHandler.SharedInstance.SelectedItem = null;
                     Debug.Log("inserisci");
                 }
                 else
                 {
-                    if (TItemHandler.Instance.CurrentSelectedItem == this)
+                    if (TItemHandler.SharedInstance.SelectedItem == this)
                     {
                         m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
-                        TItemHandler.Instance.CurrentSelectedItem = null;
+                        TItemHandler.SharedInstance.SelectedItem = null;
                         Debug.Log("riposa");
                     }
                     else
                     {
                         TItemQuantity tempSlot = this.ItemInSlot;
 
-                        InsertItemToSlot(TItemHandler.Instance.CurrentSelectedItem.ItemInSlot);
+                        InsertItemToSlot(TItemHandler.SharedInstance.SelectedItem.ItemInSlot);
 
-                        TItemHandler.Instance.CurrentSelectedItem.InsertItemToSlot(tempSlot);
+                        TItemHandler.SharedInstance.SelectedItem.InsertItemToSlot(tempSlot);
 
-                        TItemHandler.Instance.CurrentSelectedItem = null;
+                        TItemHandler.SharedInstance.SelectedItem = null;
                     }
                 }
             }
             else
             {
-                TItemHandler.Instance.CurrentSelectedItem = null;
+                TItemHandler.SharedInstance.SelectedItem = null;
             }
         }
         

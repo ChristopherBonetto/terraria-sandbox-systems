@@ -6,35 +6,30 @@ using UnityEngine.EventSystems;
 
 public class TItemHandler : MonoBehaviour
 {
-    public static TItemHandler Instance;
-    
-    public TInventorySlot CurrentSelectedItem = null;
+    public static TItemHandler SharedInstance;
 
-    public delegate void OnSelect(TInventorySlot tempSlottedItem);
-    public static OnSelect OnSelectEvent;
-    public static OnSelect OnDeselectEvent;
-
-    public void SelectSlot(TInventorySlot tempSlottedItem)
+    public TInventorySlot SelectedItem
     {
-        if(CurrentSelectedItem == null)
+        get { return m_SelectedItem; }
+        set
         {
-            if (OnSelectEvent != null)
-            {
-                OnSelectEvent(tempSlottedItem);
-            }
-        }
-        else
-        {
-            if (OnDeselectEvent != null)
-            {
-                OnDeselectEvent(tempSlottedItem);
-            }
+            m_SelectedItem = value;
+
+            if (value)
+                TEventManager.TriggerEvent(TEventID.OnItemSelected, value);
+            else
+                TEventManager.TriggerEvent(TEventID.OnSelectedItemCleared);
         }
     }
 
+    public delegate void OnSelect(TInventorySlot tempSlottedItem);
+    public static OnSelect OnDeselectEvent;
+
+    private TInventorySlot m_SelectedItem;
+
     private void Awake()
     {
-        Instance = this;
+        SharedInstance = this;
     }
 
    

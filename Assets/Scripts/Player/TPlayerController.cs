@@ -178,12 +178,12 @@ public class TPlayerController : MonoBehaviour, IKnockBackable, IJump, IMovable
 
     public void UseEquippedItem(TPointerData data)
     {
-        if (TItemHandler.Instance.CurrentSelectedItem)
+        if (TItemHandler.SharedInstance.SelectedItem)
         {
-            bool successful = TItemHandler.Instance.CurrentSelectedItem.ItemInSlot.Item.Use(this, data);
+            bool successful = TItemHandler.SharedInstance.SelectedItem.ItemInSlot.Item.Use(this, data);
 
-            if (successful && TItemHandler.Instance.CurrentSelectedItem.ItemInSlot.Item.DepleteOnUse)
-                TItemHandler.Instance.CurrentSelectedItem.DepleteAmount(1);
+            if (successful && TItemHandler.SharedInstance.SelectedItem.ItemInSlot.Item.DepleteOnUse)
+                TItemHandler.SharedInstance.SelectedItem.DepleteAmount(1);
         }
     }
 }

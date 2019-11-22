@@ -37,8 +37,8 @@ public class TInventory : MonoBehaviour
     //Used to open and close Inventory
     public void ChangeOpenCloseInventoryBool(bool isOpen)
     {
-        TItemHandler.Instance.CurrentSelectedItem = null;
-        UIManager.Instance.OpenCloseInventory(isOpen);
+        TItemHandler.SharedInstance.SelectedItem = null;
+        UIManager.SharedInstance.OpenCloseInventory(isOpen);
     }
 
     
@@ -47,7 +47,7 @@ public class TInventory : MonoBehaviour
     {
         if (m_slotCounter <= m_slotsNumber)
         {
-            TInventorySlot tempSlotRef = UIManager.Instance.InstantiateSlotInInventory();
+            TInventorySlot tempSlotRef = UIManager.SharedInstance.InstantiateSlotInInventory();
 
             AddSlotToInventory(tempSlotRef);
             

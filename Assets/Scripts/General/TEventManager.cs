@@ -75,7 +75,17 @@ public class TEventManager
 
     public static void TriggerEvent<T>(TEventID inEvent, T arg)
     {
-        if (m_Events.ContainsKey(inEvent)) (m_Events[inEvent] as Callback<T>)?.Invoke(arg);
+        if (m_Events.ContainsKey(inEvent))
+        {
+            if (m_Events[inEvent] is Callback<T>)
+            {
+                (m_Events[inEvent] as Callback<T>)?.Invoke(arg);
+            }
+            else
+            {
+                Debug.Log("ONO");
+            }
+        }
     }
 
     public static bool Exists(TEventID inEvent)

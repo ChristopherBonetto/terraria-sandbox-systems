@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance;
-    
+    public static UIManager SharedInstance { get; private set; }
+
+    public bool IsInventoryOpen { get; private set; }
+
     [SerializeField] private GameObject m_inventoryItemsHolder;
     [SerializeField] private GameObject m_slotPrefab;
 
@@ -17,25 +19,9 @@ public class UIManager : MonoBehaviour
 
     public List<GameObject> m_InventorySlotsUI = new List<GameObject>();
 
-    private bool m_inventoryInUiIsOpen = false;
-
-    private void OnEnable()
-    {
-        TItemHandler.OnSelectEvent += DragSlotInHandUI;
-
-        TItemHandler.OnDeselectEvent += DropSlotInHandUI;
-    }
-    private void OnDisable()
-    {
-        TItemHandler.OnSelectEvent -= DragSlotInHandUI;
-
-        TItemHandler.OnDeselectEvent -= DropSlotInHandUI;
-    }
-
-
     private void Awake()
     {
-        Instance = this;
+        SharedInstance = this;
 
         m_startingInventorySize = m_inventoryUI.sizeDelta;
     }
@@ -77,7 +63,7 @@ public class UIManager : MonoBehaviour
     //What happens to the ui when the inventory is open or close
     public void OpenCloseInventory(bool isOpen)
     {
-        m_inventoryInUiIsOpen = isOpen;
+        IsInventoryOpen = isOpen;
 
         if (!isOpen)
         {
@@ -107,59 +93,6 @@ public class UIManager : MonoBehaviour
         else
         {
             item.SetActive(true);
-        }
-    }
-    #endregion
-           
-
-    #region Refresh ItemInHandPosition
-    public void StartHoldingItem()
-    {
-        StartCoroutine(ItemInHand());
-    }
-
-    public void ItemFollowMousePosition()
-    {
-        m_itemInHandUI.transform.position = Input.mousePosition;
-    }
-
-    IEnumerator ItemInHand()
-    {
-        while (m_itemInHandUI.gameObject.active)
-        {
-            ItemFollowMousePosition();
-            yield return null;
-        }
-        yield return new WaitForSeconds(1f);
-    }
-    #endregion
-
-   
-    #region Drag and Drop event for UI
-    //Method used with event to start drag a slot
-    public void DragSlotInHandUI(TInventorySlot slot)
-    {
-        if(slot.ItemInSlot.Item != null)
-        {
-            if (m_inventoryInUiIsOpen)
-            {
-                m_itemInHandUI.gameObject.SetActive(true);
-                m_itemInHandUI.sprite = slot.m_slotImage.sprite;
-                
-                slot.m_slotImage.sprite = null;
-
-                StartHoldingItem();
-            }
-        }
-    }
-
-    //Method used with event to drop a slot
-    public void DropSlotInHandUI(TInventorySlot slot)
-    {
-        if (m_inventoryInUiIsOpen)
-        {            
-            slot.m_slotImage.sprite = m_itemInHandUI.sprite;
-            m_itemInHandUI.gameObject.SetActive(false);
         }
     }
     #endregion

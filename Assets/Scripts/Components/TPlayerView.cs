@@ -16,16 +16,6 @@ public class TPlayerView : MonoBehaviour
     [SerializeField]
     private GameObject m_ItemRootAnimation;
 
-    private void OnEnable()
-    {
-        TEventManager.SubscribeTo<TPointerData>(TEventID.OnLeftClickDown, PlayerAttackAnimation);
-    }
-
-    private void OnDisable()
-    {
-        TEventManager.UnsubscribeFrom<TPointerData>(TEventID.OnLeftClickDown, PlayerAttackAnimation);
-    }
-
     private void PlayerAttackAnimation(TPointerData pointerData)
     {
         if (!m_ItemRootAnimation.activeSelf)

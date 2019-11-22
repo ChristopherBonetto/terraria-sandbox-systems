@@ -4,13 +4,8 @@ using UnityEngine;
 
 public enum TEventID
 {
-    OnLeftClickDown,
-    OnLeftClickUp,
-    OnRightClickDown,
-    OnRightClickUp,
-    OnMovementAxis,
-    OnJumpDOWN,
-    OnJumpUP,
     OnPointerMovedOnGrid,
     OnHealthUpdate,
+    OnItemSelected,
+    OnSelectedItemCleared
 }
