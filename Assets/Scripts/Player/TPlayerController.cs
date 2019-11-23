@@ -8,6 +8,8 @@ using System.Collections;
 [RequireComponent(typeof(TDefenseComponent))]
 public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 {
+    public static TPlayerController SharedInstance { get; private set; }
+
     private TItemInHandComponent m_PlayerItem;
     public TItemInHandComponent PlayerItem
     {
@@ -100,6 +102,11 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     private Collider2D m_NcpColliderHit;
 
 
+    private void Awake()
+    {
+        SharedInstance = this;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -190,7 +197,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
     public bool IsInActionRange(Vector3Int inCell)
     {
-        return Mathf.CeilToInt(Vector3Int.Distance(inCell, TTilemapManager.SharedInstance.WorldToGridPosition(m_Transform.position))) <= DataAssigned.MaxActionDistance;
+        return Mathf.FloorToInt(Vector3Int.Distance(inCell, TTilemapManager.SharedInstance.WorldToGridPosition(m_Transform.position))) <= DataAssigned.MaxActionDistance;
     }
 
     public void UseEquippedItem(TPointerData data)

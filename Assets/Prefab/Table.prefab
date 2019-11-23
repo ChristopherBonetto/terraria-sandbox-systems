@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88515eadb8281ed4ba43493a9f280ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Size: {x: 2, y: 1}
   m_HitPoints: 0
 --- !u!251 &4483667912577704684
 PlatformEffector2D:

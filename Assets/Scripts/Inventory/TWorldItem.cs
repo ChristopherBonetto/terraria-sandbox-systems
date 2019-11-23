@@ -7,6 +7,15 @@ using UnityEngine.EventSystems;
 public class TWorldItem : MonoBehaviour 
 {
     #region Public properties
+
+    public Sprite ItemSprite
+    {
+        get
+        {
+            return SpriteRendererComponent.sprite;
+        }
+    }
+
     /// <summary>
     /// Cached reference to the attached Transform component.
     /// </summary>
@@ -20,14 +29,18 @@ public class TWorldItem : MonoBehaviour
     /// <summary>
     /// Cached reference to the Renderer component attached to the GameObject or one of its children.
     /// </summary>
-    public Renderer RendererComponent { get; private set; }
+    public SpriteRenderer SpriteRendererComponent { get; private set; }
 
     public TItem ReferenceItem { get; set; }
+
+    public Vector2Int Size { get { return m_Size; } }
 
     #endregion
 
     #region Serialize variables
-    
+
+    [SerializeField] private Vector2Int m_Size;
+
     [SerializeField] private int m_HitPoints;
 
     #endregion
@@ -39,7 +52,7 @@ public class TWorldItem : MonoBehaviour
         // Cache components references
         TransformComponent = transform;
         ColliderComponent = GetComponent<Collider2D>();
-        RendererComponent = GetComponentInChildren<Renderer>();
+        SpriteRendererComponent = GetComponentInChildren<SpriteRenderer>();
     }
 
     #endregion

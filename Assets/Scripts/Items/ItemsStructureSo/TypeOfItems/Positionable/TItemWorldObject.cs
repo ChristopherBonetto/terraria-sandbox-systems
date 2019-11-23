@@ -17,7 +17,12 @@ public class TItemWorldObject : TItemPositionable
         TWorldItem item = Instantiate(Prefab);
 
         Vector3 boundsExtents = item.ColliderComponent.bounds.extents;
+
+        item.gameObject.SetActive(false);
+
         Vector3 itemPosition = TTilemapManager.SharedInstance.CellToWorld(inData.GridPosition) + boundsExtents;
+
+        Collider2D cool = Physics2D.OverlapBox(itemPosition, boundsExtents, 0);
 
         // If there is any object in the space occupied by the Item, return
         if (Physics2D.OverlapBox(itemPosition, boundsExtents, 0))
@@ -48,6 +53,7 @@ public class TItemWorldObject : TItemPositionable
 
         item.TransformComponent.position = itemPosition;
         item.ReferenceItem = this;
+        item.gameObject.SetActive(true);
         return true;
     }
 }
