@@ -28,6 +28,4 @@ public class TItemHandler : MonoBehaviour
     {
         SharedInstance = this;
     }
-
-   
 }

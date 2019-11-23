@@ -38,7 +38,10 @@ public class TInventorySlot : MonoBehaviour
             FillThisSlot(TItemHandler.SharedInstance.SelectedItem);
 
         else if (ItemInSlot != TItemQuantity.Empty)
+        {
             TItemHandler.SharedInstance.SelectedItem = this;
+            if (UIManager.SharedInstance.IsInventoryOpen) ShowImage(false);
+        }
     }
 
     public void DepleteAmount(int inDepletedAmount)
@@ -55,12 +58,12 @@ public class TInventorySlot : MonoBehaviour
         
         ShowImage(false);
 
-        TItemHandler.SharedInstance.SelectedItem = null;
+        if (TItemHandler.SharedInstance.SelectedItem == this) TItemHandler.SharedInstance.SelectedItem = null;
     }
 
     public void ShowImage(bool value)
     {
-        m_slotImage.color = value ? Color.white : Color.clear;
+        m_slotImage.gameObject.SetActive(value);
     }
 
     #region Drag and Drop event
