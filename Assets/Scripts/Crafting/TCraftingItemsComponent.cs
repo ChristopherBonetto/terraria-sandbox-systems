@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TCraftingItemsComponent : MonoBehaviour
 {
-    public List<TItem> CraftableItem;
+    public List<TItemQuantity> CraftableItem;
 
     private TPlayerController m_myPlayer;
 
@@ -20,25 +20,22 @@ public class TCraftingItemsComponent : MonoBehaviour
     {
         if (m_myPlayer.PlayerInventory.InventoryIsOpen)
         {
-            FindAvaibleItems();
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                FindAvaibleItems();
+            }
+            
         }
 
 
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            FindCraftableItems();
-        }
+        
     }
 
     public void FindAvaibleItems()
     {
-        CraftableItem = new List<TItem>();
+        CraftableItem = new List<TItemQuantity>();
         CraftableItem = m_myPlayer.PlayerInventory.ItemsInInventory();
+        TRecipeContainer.SharedIstance.CheckCraftableItem(CraftableItem);
     }
-
-    public void FindCraftableItems()
-    {
-        TRecipeContainer.SharedIstance.CheckCraftableItem(CraftableItem[0]);
-    }
-
+    
 }

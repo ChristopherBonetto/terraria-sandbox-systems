@@ -117,16 +117,15 @@ public class TInventory : MonoBehaviour
     #endregion
 
 
-    public List<TItem> ItemsInInventory()
+    public List<TItemQuantity> ItemsInInventory()
     {
-        List<TItem> tempItemsList = new List<TItem>();
+        List<TItemQuantity> tempItemsList = new List<TItemQuantity>();
 
         for(int i = 0; i < InventorySlots.Count; i++)
         {
             if (InventorySlots[i].ItemInSlot != TItemQuantity.Empty)
             {
-                Debug.Log(InventorySlots[i].ItemInSlot.Item.ItemName);
-                tempItemsList.Add(InventorySlots[i].ItemInSlot.Item);
+                tempItemsList.Add(InventorySlots[i].ItemInSlot);
             }
         }
         return tempItemsList;

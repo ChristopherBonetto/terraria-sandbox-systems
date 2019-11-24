@@ -479,9 +479,9 @@ MonoBehaviour:
   m_recipes:
   - itemsNecessary:
     - item: {fileID: 11400000, guid: 70f6448725b6a08478a1e71675af1bb7, type: 2}
-      amount: 0
+      amount: 5
     - item: {fileID: 11400000, guid: df4614357b5b07a449f70f9f65fd7a30, type: 2}
-      amount: 0
+      amount: 5
     itemToObtain:
       item: {fileID: 11400000, guid: 24e6e0c96177d9b4aa8e5e433f9c26b5, type: 2}
       amount: 0

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 [System.Serializable]
@@ -45,18 +46,43 @@ public class TRecipeContainer : MonoBehaviour
     }
     
 
-    public void CheckCraftableItem(TItem inItemOne)
+    public void CheckCraftableItem(List<TItemQuantity> inListOfItems)
     {
         foreach (TItem item in RecipeDictionary.Keys)
         {
-            for (int i = 0; i < RecipeDictionary[item].itemsNecessary.Length; i++)
+            int itemNecessary = 0;
+
+            if(itemNecessary < RecipeDictionary[item].itemsNecessary.Length)
             {
-                if (inItemOne == RecipeDictionary[item].itemsNecessary[i].item)
+                for (int i = 0; i < RecipeDictionary[item].itemsNecessary.Length; i++)
                 {
-                    Debug.Log(RecipeDictionary[item].itemsNecessary[i].item.ItemName);
+                    TItemQuantity tempItemQuantity = new TItemQuantity(RecipeDictionary[item].itemsNecessary[i].item, RecipeDictionary[item].itemsNecessary[i].amount);
+
+                    if (inListOfItems.Exists(x => x.Item.ItemName.Contains(tempItemQuantity.Item.ItemName)))
+                    {
+                        TItemQuantity tempItem = inListOfItems.Find(x => x.Item.ItemName.Contains(tempItemQuantity.Item.ItemName));
+
+                        if (tempItem.Amount >= tempItemQuantity.Amount)
+                        {
+                            itemNecessary++;
+                        }
+                        else
+                        {
+                            Debug.Log("u need materials");
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("you need : " + RecipeDictionary[item].itemsNecessary[i].item.ItemName);
+                        break;
+                    }
+                }
+                if(itemNecessary == RecipeDictionary[item].itemsNecessary.Length)
+                {
+                    Debug.Log("u can craft : " + item.ItemName);
                 }
             }
         }
-        
     }
 }
