@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
 
     public List<GameObject> m_InventorySlotsUI = new List<GameObject>();
 
+    public List<GameObject> CraftableSlots = new List<GameObject>();
+
     private void Awake()
     {
         SharedInstance = this;
@@ -31,6 +33,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         m_itemInHandUI.gameObject.SetActive(false);
+
+        CraftingButtonsReference();
     }
 
     
@@ -100,4 +104,10 @@ public class UIManager : MonoBehaviour
         }
     }
     #endregion
+
+
+    public void CraftingButtonsReference()
+    {
+        CraftableSlots = ObjectPooler.SharedInstance.ReturnListFromDictionary("CraftingButton");
+    }
 }

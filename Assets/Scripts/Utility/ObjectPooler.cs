@@ -29,6 +29,8 @@ public class ObjectPooler : MonoBehaviour
         /// </summary>
         [Tooltip("If ticked, when there aren't enough available pooled objects of this type, the ObjectPooler will instantiate new ones, expanding the pool.")]
         public bool ShouldExpand;
+
+        public GameObject FatherGameObject;
     }
 
     #endregion
@@ -166,6 +168,24 @@ public class ObjectPooler : MonoBehaviour
         obj.SetActive(false);
         pooledList.Add(obj);
 
+        if(item.FatherGameObject != null)
+        {
+            obj.transform.SetParent(item.FatherGameObject.transform);
+            obj.transform.localScale = new Vector3(1, 1, 1);
+        }
+
         return obj;
+    }
+
+    public List<GameObject> ReturnListFromDictionary(string tag)
+    {
+        if (m_PooledObjects.ContainsKey(tag))
+        {
+            return m_PooledObjects[tag];
+        }
+        else
+        {
+            return null;
+        }
     }
 }

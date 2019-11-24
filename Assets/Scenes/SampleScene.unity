@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &15352324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 706343874274071258, guid: 433b3e4035594cb40a301a560b60185a,
+    type: 3}
+  m_PrefabInstance: {fileID: 706343874042638655}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &121416271
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +697,12 @@ MonoBehaviour:
       type: 3}
     AmountToPool: 5
     ShouldExpand: 1
+    FatherGameObject: {fileID: 0}
+  - ObjectToPool: {fileID: 1788837192451426165, guid: 3c082df87a05c3f4ab695e2737d9ade1,
+      type: 3}
+    AmountToPool: 40
+    ShouldExpand: 1
+    FatherGameObject: {fileID: 15352324}
 --- !u!4 &935259094
 Transform:
   m_ObjectHideFlags: 0
@@ -34123,6 +34135,7 @@ MonoBehaviour:
   m_inventoryUI: {fileID: 1444712113}
   m_itemInHandUI: {fileID: 885823568}
   m_InventorySlotsUI: []
+  CraftableSlots: []
 --- !u!4 &1474534075
 Transform:
   m_ObjectHideFlags: 0

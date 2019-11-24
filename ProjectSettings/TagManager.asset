@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pickup
   - NPC
+  - CraftingButton
   layers:
   - Default
   - TransparentFX
