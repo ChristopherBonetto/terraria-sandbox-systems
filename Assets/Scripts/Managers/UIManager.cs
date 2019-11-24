@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
 
     public bool IsInventoryOpen { get; private set; }
 
+    [SerializeField] private GameObject m_craftingBar;
+
     [SerializeField] private GameObject m_inventoryItemsHolder;
     [SerializeField] private GameObject m_slotPrefab;
 
@@ -72,7 +74,9 @@ public class UIManager : MonoBehaviour
         else
         {
             m_inventoryUI.sizeDelta = m_startingInventorySize;
+            
         }
+        DisableEnableItemUI(m_craftingBar);
         DisableButtons();
     }
 

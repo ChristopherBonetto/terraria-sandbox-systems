@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TCraftingBar : MonoBehaviour
 {
+    public List<GameObject> CraftableItem = new List<GameObject>();
+    
+
     // Start is called before the first frame update
     void Start()
     {
