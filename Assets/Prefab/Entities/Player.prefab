@@ -177,13 +177,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0cc5a994fb44cb47aa25f253baab372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackType: 0
-  WeaponIcon: {fileID: 2428030140455528639}
   InteractableLayer:
     serializedVersion: 2
     m_Bits: 512
-  MeleeRange: 2
-  MeleeAngle: 80
+  MeleeRange: 1
+  MeleeAngle: 90
   Range: 2
 --- !u!1 &4900469027785965991
 GameObject:
@@ -404,7 +402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052558fe205835b498664deef9ddbb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Rb: {fileID: 0}
 --- !u!114 &7593420807902170188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +423,7 @@ MonoBehaviour:
     m_Bits: 2304
   m_Legs: {fileID: 3718000970134068218}
   m_HandToAttack: {fileID: 7853118608564259667}
+  m_DefaultAnim: {fileID: 9100000, guid: ccc9a0a0f7cf9b54db50a2ac813134c1, type: 2}
   m_Anim: {fileID: 1321226293937296316}
 --- !u!1 &8079630172293760256
 GameObject:

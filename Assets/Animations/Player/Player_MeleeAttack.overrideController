@@ -6,8 +6,8 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_PlungeAttack
+  m_Name: Player_MeleeAttack
   m_Controller: {fileID: 9100000, guid: ccc9a0a0f7cf9b54db50a2ac813134c1, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: ef7272ccc5ab97e4a82c1d98aec1d86a, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 2f0b71a04ff192742adcbe4598845105, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ef7272ccc5ab97e4a82c1d98aec1d86a, type: 2}

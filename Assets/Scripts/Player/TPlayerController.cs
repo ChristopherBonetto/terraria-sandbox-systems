@@ -97,6 +97,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     // Animator
 
     [Header("Animator")]
+    [SerializeField] private RuntimeAnimatorController m_DefaultAnim;
     [SerializeField] private Animator m_Anim;
 
     // Property, "get" only
@@ -320,7 +321,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             m_HandToAttack.InteractableLayer = weapon.VisualAndInteraction.InteractableLayer;
             m_HandToAttack.WeaponIcon.sprite = weapon.ItemSprite;
 
-            m_Anim = weapon.VisualAndInteraction.PlayerOverrideController;
+            m_Anim.runtimeAnimatorController = weapon.VisualAndInteraction.PlayerOverrideController;
         }
         else if (item.ItemInSlot.Item is TItemArmor)
         {
@@ -347,7 +348,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             m_HandToAttack.InteractableLayer = LayerMask.NameToLayer("Default");
             m_HandToAttack.WeaponIcon.sprite = null;
 
-            m_Anim = weapon.VisualAndInteraction.PlayerOverrideController;
+            m_Anim.runtimeAnimatorController = m_DefaultAnim;
         }
         else if (item.ItemInSlot.Item is TItemArmor)
         {

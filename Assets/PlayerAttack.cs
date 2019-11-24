@@ -15,13 +15,13 @@ public class PlayerAttack : MonoBehaviour
     /// Choose player attack type
     /// </summary>
 
-    public PlayerAttackType AttackType = PlayerAttackType.Melee;
+    public PlayerAttackType AttackType { get; set; } = PlayerAttackType.Melee;
 
     /// <summary>
     /// Weapon sprite reference.
     /// </summary>
 
-    public SpriteRenderer WeaponIcon;
+    public SpriteRenderer WeaponIcon { get; set; }
 
 
     // Attack variables

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // [Flags] ?
+/// <summary>
+/// Type of environment that weapon can interact.
+/// </summary>
 public enum WeaponInteractWithTile
 {
     None = 0,
@@ -14,20 +17,33 @@ public enum WeaponInteractWithTile
 [CreateAssetMenu(fileName = "WeaponItem", menuName = "Item/OtherItems/NoPositionable/Weapon")]
 public class TItemWeapon : TItem
 {
-    [SerializeField]
+    [System.Serializable]
     public struct PlayerAndEnvInteraction
     {
+        [Tooltip("Type of environment that weapon can interact")]
         public WeaponInteractWithTile interactWithEnv;
+
+        [Tooltip("Describe player attack type: Melee, Plunge, Range")]
         public PlayerAttackType AttackType;
-        public Animator PlayerOverrideController;
+
+        [Tooltip("This controller going to update the player's one, change the attack animation")]
+        public AnimatorOverrideController PlayerOverrideController;
+
+        [Tooltip("This one it's used to detect enemy, but it can be extended")]
         public LayerMask InteractableLayer;
     }
 
+    /// <summary>
+    /// Describe all type of interaction between weapon-player and weapon-environment
+    /// </summary>
+    /// 
     public PlayerAndEnvInteraction VisualAndInteraction;
 
     [Header("Stats")]
 
     public int Attack = 1;
+
+    [Tooltip("This value change the animation speed")]
     public float AttackSpeed = 1;
 
 
