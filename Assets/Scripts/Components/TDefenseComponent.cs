@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class TDefenseComponent : MonoBehaviour, IDefend
-{
+{ 
     private float m_MaxHealth;
     public float MaxHealth => m_MaxHealth;
 
@@ -15,6 +15,7 @@ public class TDefenseComponent : MonoBehaviour, IDefend
         get { return m_CurrentHealth; }
         private set
         {
+            var lastHealth = m_CurrentHealth;
             m_CurrentHealth = Mathf.Clamp(value, 0, MaxHealth);
 
             // Call UI event.
@@ -22,6 +23,7 @@ public class TDefenseComponent : MonoBehaviour, IDefend
 
             if (m_CurrentHealth <= 0)
                 DisposeToDead();
+
         }
     }
 

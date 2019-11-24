@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 486078349784539313}
   - component: {fileID: 850957693183744867}
+  - component: {fileID: 7853118608564259667}
   m_Layer: 0
   m_Name: Arms
   m_TagString: Untagged
@@ -164,6 +165,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7853118608564259667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4658975731296363733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0cc5a994fb44cb47aa25f253baab372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackType: 0
+  WeaponIcon: {fileID: 2428030140455528639}
+  InteractableLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  MeleeRange: 2
+  MeleeAngle: 80
+  Range: 2
 --- !u!1 &4900469027785965991
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052558fe205835b498664deef9ddbb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Rb: {fileID: 0}
 --- !u!114 &7593420807902170188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,8 +425,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2304
   m_Legs: {fileID: 3718000970134068218}
-  m_ItemRootAnimation: {fileID: 4658975731296363733}
-  m_ItemInHandIcon: {fileID: 2428030140455528639}
+  m_HandToAttack: {fileID: 7853118608564259667}
   m_Anim: {fileID: 1321226293937296316}
 --- !u!1 &8079630172293760256
 GameObject:
@@ -475,15 +496,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f6e93963fa59268469027bd845e1247d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 1.125}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8241897150657624130

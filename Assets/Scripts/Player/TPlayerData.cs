@@ -9,36 +9,20 @@ using UnityEngine;
 public class TPlayerData : ScriptableObject
 {
     [Header("Defense variables")]
-    [SerializeField]
-    private int m_MaxHealth;
-    public int MaxHealth { get { return m_MaxHealth; } }
+    public int MaxHealth;
+    public float Defense; 
 
-    [SerializeField]
-    private float m_Defense;
-    public float Defense { get { return m_Defense; } }
 
     [Header("Fight variables")]
-    [SerializeField]
-    private int m_Damage;
-    public int Damage { get { return m_Damage; } }
-
-    [SerializeField]
-    [Range(0, 100)]
-    private float m_KbResist;
-    public float KbResist { get { return m_KbResist; } }
+    public int Damage;
+    public float AttackSpeed;
+    [Range(0, 100)] public float KbResist;
 
     [Header("Movement variables")]
-    [SerializeField]
-    private float m_Speed;
-    public float Speed { get { return m_Speed; } }
-
-    [SerializeField]
-    private float m_JumpForce;
-    public float JumpForce { get { return m_JumpForce; } }
+    public float Speed;
+    public float JumpForce;
 
 
     [Header("Action variables")]
-    [SerializeField]
-    private int m_MaxActionDistance;
-    public float MaxActionDistance { get { return m_MaxActionDistance; } }
+    public float MaxActionDistance;
 }

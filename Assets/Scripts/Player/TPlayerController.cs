@@ -10,6 +10,11 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 {
     public static TPlayerController SharedInstance { get; private set; }
 
+
+    /// <summary>
+    /// Contain reference to item in player's hand.
+    /// </summary>
+
     private TItemInHandComponent m_PlayerItem;
     public TItemInHandComponent PlayerItem
     {
@@ -22,6 +27,10 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             return m_PlayerItem;
         }            
     }
+
+    /// <summary>
+    /// Inventory component
+    /// </summary>
 
     private TInventory m_PlayerInventory;
     public TInventory PlayerInventory
@@ -36,51 +45,11 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         }
     }
 
-    #region Data
-
-    [SerializeField]
-    private TPlayerData m_DataToAssign;
     /// <summary>
-    /// Default player's stats
+    /// health component
     /// </summary>
-    public TPlayerData DataToAssign { get { return m_DataToAssign; } }
-
-    private TPlayerData m_DataAssigned;
-    /// <summary>
-    /// Return a copy of the data.
-    /// </summary>
-    public TPlayerData DataAssigned
-    {
-        get
-        {
-            if (m_DataAssigned == null)
-                m_DataAssigned = Instantiate(DataToAssign);
-            return m_DataAssigned;
-        }
-    }
-
-    #endregion
-
-    #region Components
 
     private IDefend m_DefenseComponent;
-
-
-    [Header("Jump variables")]
-
-    [SerializeField] private LayerMask m_JumpableLayers;
-    [SerializeField] private Transform m_Legs;
-
-    [Header("Weapon variables")]
-
-    [SerializeField] private GameObject m_ItemRootAnimation;
-    [SerializeField] private SpriteRenderer m_ItemInHandIcon;
-
-    [Header("Animator")]
-
-    [SerializeField] private Animator m_Anim;
-
-
     public IDefend DefenseComponent
     {
         get
@@ -90,9 +59,52 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             return m_DefenseComponent;
         }
     }
+
+    #region Data
+
+    /// <summary>
+    /// Return a copy of the data.
+    /// </summary>
+
+    [SerializeField] private TPlayerData m_DataToAssign;
+
+    private TPlayerData m_DataAssigned;
+    public TPlayerData DataAssigned
+    {
+        get
+        {
+            if (m_DataAssigned == null)
+                m_DataAssigned = Instantiate(m_DataToAssign);
+            return m_DataAssigned;
+        }
+    }
+
+    #endregion
+
+    #region SerializeField
+
+    /// Jump value / components
+
+    [Header("Jump variables")]
+    [SerializeField] private LayerMask m_JumpableLayers;
+    [SerializeField] private Transform m_Legs;
+
+    /// Weapon value / components
+
+    [Header("Weapon variables")]
+    [SerializeField] private PlayerAttack m_HandToAttack;
+
+    // Animator
+
+    [Header("Animator")]
+    [SerializeField] private Animator m_Anim;
+
+    // Property, "get" only
+
     public Transform Legs => m_Legs;
-    public SpriteRenderer ItemInHandIcon => m_ItemInHandIcon;
     public Animator Anim => m_Anim;
+    public float KbResist => DataAssigned.KbResist;
+
 
     #endregion
 
@@ -101,6 +113,21 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     private float m_FreezeTime;
     private Collider2D m_NcpColliderHit;
 
+    #region MonoBehaviour cycle
+
+    private void OnEnable()
+    {
+        // subscribe to equip event
+        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, OnItemEquipped);
+        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, OnItemUnequipped);
+    }
+
+    private void OnDisable()
+    {
+        // unsubscibe to equip event.
+        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemDeselected, OnItemEquipped);
+        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemDeselected, OnItemUnequipped);
+    }
 
     private void Awake()
     {
@@ -109,7 +136,9 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
     protected override void Start()
     {
+        // Init components
         base.Start();
+        m_HandToAttack.gameObject.SetActive(false);
         DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
 
         // Update visual
@@ -120,12 +149,18 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     {
         Jump();
 
+        if (Input.GetKeyDown(KeyCode.L))
+            CanAttack();
+
         if (m_ImFreeze)
         {
             m_FreezeTime -= Time.deltaTime;
 
             if (m_FreezeTime <= 0)
+            {
                 m_ImFreeze = false;
+                Physics2D.IgnoreCollision(m_Collider, m_NcpColliderHit, false);
+            }
         }
     }
 
@@ -144,38 +179,58 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
                                     Vector2.up * GeneralEffects.KbGlobalEffect * 0.5f;
 
             // Execute knock back
-            m_Rb.AddForce(knockEffect);
+            KnockBack(knockEffect);
+
             // Start freeze
             Freeze(0.5f);
-            // ignore collision
-            Physics2D.IgnoreCollision(m_Collider, m_NcpColliderHit, false);
         }
     }
 
+    #endregion
+
     #region Movement
 
+    /// <summary>
+    /// Freeze player movement.
+    /// Turn off collision with last enemy hit for an amount of time.
+    /// </summary>
     public void Freeze(float inTime)
     {
         m_ImFreeze = true;
         m_FreezeTime = inTime;
-        Physics2D.IgnoreCollision(m_Collider, m_NcpColliderHit, false);
+        Physics2D.IgnoreCollision(m_Collider, m_NcpColliderHit, true);
+    }
+    
+    /// <summary>
+    /// Knock back effect, it's applied with gravity.
+    /// </summary>
+    /// <param name="direction"></param>
+    public void KnockBack(Vector2 direction)
+    {
+        m_Rb.AddForce(direction);
     }
 
+    /// <summary>
+    /// Move the player if no walls are detected.
+    /// It's called by INputManager.
+    /// </summary>
     public void Move(float inDirection)
     {
         if (!m_ImFreeze && inDirection != 0)
         {
             if (!Physics2D.Raycast(m_Legs.position, Vector2.right * inDirection, 0.5f, m_JumpableLayers))
             {
-                transform.position += (Vector3.right * inDirection) * DataAssigned.Speed * Time.deltaTime;
-
-                // View
                 Vector2 scale = new Vector2(m_LocalScale.x * inDirection, m_LocalScale.y);
+
                 m_Transform.localScale = scale; 
+                transform.position += (Vector3.right * inDirection) * DataAssigned.Speed * Time.deltaTime;
             }
         }
     }
 
+    /// <summary>
+    /// Player jump, apply more gravity when falling.
+    /// </summary>
     public void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -213,21 +268,91 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
     #region Weapon
 
+    /// <summary>
+    /// Turn on weapon in hand,
+    /// It start to rotate or plunge.
+    /// </summary>
+    /// <returns></returns>
     public bool CanAttack()
     {
-        if (!m_ItemRootAnimation.activeSelf)
+        if (!m_HandToAttack.gameObject.activeSelf)
         {
-            m_ItemRootAnimation.SetActive(true);
+            m_HandToAttack.gameObject.SetActive(true);
+            Anim.SetFloat("AttackMultiplier", DataAssigned.AttackSpeed);
             Anim.SetTrigger("Attack");
             return true;
         }
         return false;
     }
 
+    /// <summary>
+    /// Turn off item in hand. It's called in animation event.
+    /// </summary>
     public void TurnOffItemRoot()
     {
-        m_ItemRootAnimation.SetActive(false);
+        m_HandToAttack.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Able to choose player attack type in animation event.
+    /// </summary>
+    public void SetAttackType(PlayerAttackType type)
+    {
+        m_HandToAttack.AttackType = type;
     }
 
     #endregion
+
+    /// <summary>
+    /// Set stats when an item is equipped.
+    /// </summary>
+    public void OnItemEquipped(TInventorySlot item)
+    {
+        if (item.ItemInSlot.Item is TItemWeapon)
+        {
+            TItemWeapon weapon = item.ItemInSlot.Item as TItemWeapon;
+
+            DataAssigned.Damage = m_DataToAssign.Damage + weapon.Attack;
+            DataAssigned.AttackSpeed = m_DataToAssign.AttackSpeed + weapon.AttackSpeed;
+
+            m_HandToAttack.Damage = m_DataToAssign.Damage + weapon.Attack;
+            m_HandToAttack.AttackType = weapon.VisualAndInteraction.AttackType;
+            m_HandToAttack.InteractableLayer = weapon.VisualAndInteraction.InteractableLayer;
+            m_HandToAttack.WeaponIcon.sprite = weapon.ItemSprite;
+
+            m_Anim = weapon.VisualAndInteraction.PlayerOverrideController;
+        }
+        else if (item.ItemInSlot.Item is TItemArmor)
+        {
+            TItemArmor armor = item.ItemInSlot.Item as TItemArmor;
+
+            DataAssigned.Defense = m_DataToAssign.Defense + armor.Defence;
+        }
+    }
+
+    /// <summary>
+    /// Set stats when an item is unequipped.
+    /// </summary>
+    public void OnItemUnequipped(TInventorySlot item)
+    {
+        if (item.ItemInSlot.Item is TItemWeapon)
+        {
+            TItemWeapon weapon = item.ItemInSlot.Item as TItemWeapon;
+
+            DataAssigned.Damage = m_DataToAssign.Damage - weapon.Attack;
+            DataAssigned.AttackSpeed = m_DataToAssign.AttackSpeed - weapon.AttackSpeed;
+
+            m_HandToAttack.Damage = m_DataToAssign.Damage + weapon.Attack;
+            m_HandToAttack.AttackType = PlayerAttackType.Melee;
+            m_HandToAttack.InteractableLayer = LayerMask.NameToLayer("Default");
+            m_HandToAttack.WeaponIcon.sprite = null;
+
+            m_Anim = weapon.VisualAndInteraction.PlayerOverrideController;
+        }
+        else if (item.ItemInSlot.Item is TItemArmor)
+        {
+            TItemArmor armor = item.ItemInSlot.Item as TItemArmor;
+            DataAssigned.Defense = m_DataToAssign.Defense - armor.Defence;
+        }
+    }
 }

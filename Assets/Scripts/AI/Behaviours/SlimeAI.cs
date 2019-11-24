@@ -12,18 +12,21 @@ namespace Terrria.AI
     /// <summary>
     /// Hops in one direction, slides on slopes, floats in water, follows player if damaged or it's nighttime.
     /// </summary>
-    public class SlimeAI : BaseAI, IJump
+    public class SlimeAI : BaseAI, IJump, IKnockBackable
     {
+        [SerializeField] private float m_DelayBetweenJump; 
+
+        public float KbResist => Data.KbResist;
         public SlimeState CurrentState { get; private set; }
 
-
-        [SerializeField] private float m_DelayBetweenJump;      // @TEMP
-
+        // Jump variables
         private float m_ActualDelay;
-
-        private float m_LastJumpTime;   // @TEMP
-        private Transform m_TargetToChase;
+        private float m_LastJumpTime; 
         private Vector2 m_JumpVector;
+
+        // Player ref.
+        private Transform m_TargetToChase;
+
 
         protected override void Start()
         {
@@ -65,6 +68,9 @@ namespace Terrria.AI
 
         public void Jump()
         {
+            // Jump right or left if is not angry.
+            // Follow the player once collide with him.
+
             switch (CurrentState)
             {
                 case SlimeState.Idle:
@@ -78,11 +84,21 @@ namespace Terrria.AI
 
                 case SlimeState.Chasing:
                     var direction = (m_Player.transform.position - transform.position).normalized;
-                    var fixDir = new Vector2(m_JumpVector.x * Mathf.Sign(direction.x), m_JumpVector.y);
+                    var fixDir = new Vector2(Mathf.Abs(m_JumpVector.x) * Mathf.Sign(direction.x), m_JumpVector.y);
 
                     m_Rb.AddForce(fixDir * Data.JumpForce);
                     break;
             }
+        }
+
+        public void Freeze(float inTime)
+        {
+            // for now... do nothing.
+        }
+
+        public void KnockBack(Vector2 direction)
+        {
+            m_Rb.AddForce(direction);
         }
     }
 }
