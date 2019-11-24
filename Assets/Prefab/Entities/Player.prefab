@@ -183,6 +183,7 @@ MonoBehaviour:
   MeleeRange: 1
   MeleeAngle: 90
   Range: 2
+  m_WeaponIcon: {fileID: 2428030140455528639}
 --- !u!1 &4900469027785965991
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
     /// Weapon sprite reference.
     /// </summary>
 
-    public SpriteRenderer WeaponIcon { get; set; }
+    public SpriteRenderer WeaponIcon { get { return m_WeaponIcon; } }
 
 
     // Attack variables
@@ -39,8 +39,10 @@ public class PlayerAttack : MonoBehaviour
     [Header("Plunge Attack")]
     public float Range;
 
-    private Collider2D m_DetectedCollider;
+    [Header("Visual")]
+    [SerializeField] private SpriteRenderer m_WeaponIcon;
 
+    private Collider2D m_DetectedCollider;
 
     private void Update()
     {

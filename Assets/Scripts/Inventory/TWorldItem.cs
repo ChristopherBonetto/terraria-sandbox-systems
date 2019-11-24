@@ -12,6 +12,8 @@ public class TWorldItem : MonoBehaviour
     {
         get
         {
+            if (!SpriteRendererComponent) SpriteRendererComponent = GetComponentInChildren<SpriteRenderer>();
+
             return SpriteRendererComponent.sprite;
         }
     }
