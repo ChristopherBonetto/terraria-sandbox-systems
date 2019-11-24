@@ -17,17 +17,17 @@ public class TPlacementDummy : MonoBehaviour
 
     private void OnEnable()
     {
-        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, StartFollowing);
-        TEventManager.SubscribeTo(TEventID.OnItemDeselected, Hide);
+        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, OnItemSelected);
+        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemDeselected, OnItemDeselected);
     }
 
     private void OnDisable()
     {
-        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemSelected, StartFollowing);
-        TEventManager.UnsubscribeFrom(TEventID.OnItemDeselected, Hide);
+        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemSelected, OnItemSelected);
+        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemDeselected, OnItemDeselected);
     }
 
-    private void StartFollowing(TInventorySlot inSlot)
+    private void OnItemSelected(TInventorySlot inSlot)
     {
         if (inSlot.ItemInSlot.Item is TItemWorldObject itemWorldObject)
         {
@@ -42,10 +42,13 @@ public class TPlacementDummy : MonoBehaviour
         }
     }
 
-    private void Hide()
+    private void OnItemDeselected(TInventorySlot inSlot)
     {
-        StopCoroutine("PointerTrackerCoroutine");
-        m_SpriteRendererComponent.gameObject.SetActive(false);
+        if (m_SpriteRendererComponent.gameObject.activeInHierarchy)
+        {
+            StopCoroutine("PointerTrackerCoroutine");
+            m_SpriteRendererComponent.gameObject.SetActive(false);
+        }
     }
 
     /// <summary>

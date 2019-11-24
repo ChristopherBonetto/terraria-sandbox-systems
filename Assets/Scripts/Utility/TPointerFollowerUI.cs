@@ -18,13 +18,13 @@ namespace UnityEngine.UI
         private void OnEnable()
         {
             TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, StartFollowing);
-            TEventManager.SubscribeTo(TEventID.OnItemDeselected, StopFollowing);
+            TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemDeselected, StopFollowing);
         }
 
         private void OnDisable()
         {
             TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemSelected, StartFollowing);
-            TEventManager.UnsubscribeFrom(TEventID.OnItemDeselected, StopFollowing);
+            TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemDeselected, StopFollowing);
         }
 
         private void StartFollowing(TInventorySlot inSlot)
@@ -34,7 +34,7 @@ namespace UnityEngine.UI
             StartCoroutine("FollowPointer");
         }
 
-        private void StopFollowing()
+        private void StopFollowing(TInventorySlot inSlot)
         {
             m_ItemImage.gameObject.SetActive(false);
             StopCoroutine("FollowPointer");

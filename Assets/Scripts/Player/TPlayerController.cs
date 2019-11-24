@@ -133,13 +133,13 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     {
         // subscribe to equip event
         TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, OnItemEquipped);
-        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, OnItemUnequipped);
+        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemDeselected, OnItemUnequipped);
     }
 
     private void OnDisable()
     {
         // unsubscibe to equip event.
-        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemDeselected, OnItemEquipped);
+        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemSelected, OnItemEquipped);
         TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemDeselected, OnItemUnequipped);
     }
 
