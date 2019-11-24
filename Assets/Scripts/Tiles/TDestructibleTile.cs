@@ -37,7 +37,7 @@ namespace UnityEngine.Tilemaps
         /// <param name="inWorldPosition"></param>
         public void DropContainedItems(Vector3 inWorldPosition)
         {
-            Debug.Log("Destroyed tile at world pos: " + inWorldPosition);
+            //Debug.Log("Destroyed tile at world pos: " + inWorldPosition);
 
             foreach(TItemQuantity containedItem in m_ContainedItems)
             {

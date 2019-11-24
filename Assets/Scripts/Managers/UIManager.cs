@@ -54,11 +54,11 @@ public class UIManager : MonoBehaviour
         return tempSlotRef;
     }
     
-    public void AddSlotToInventoryUI(GameObject slotToAdd)
+    public void AddSlotToInventoryUI(GameObject inSlotToAdd)
     {
-        if (!m_InventorySlotsUI.Contains(slotToAdd))
+        if (!m_InventorySlotsUI.Contains(inSlotToAdd))
         {
-            m_InventorySlotsUI.Add(slotToAdd);
+            m_InventorySlotsUI.Add(inSlotToAdd);
         }
     }
     #endregion
@@ -67,11 +67,11 @@ public class UIManager : MonoBehaviour
     #region OpenClose Inventory
     
     //What happens to the ui when the inventory is open or close
-    public void OpenCloseInventory(bool isOpen)
+    public void OpenCloseInventory(bool inIsOpen)
     {
-        IsInventoryOpen = isOpen;
+        IsInventoryOpen = inIsOpen;
 
-        if (!isOpen)
+        if (!inIsOpen)
         {
             m_inventoryUI.sizeDelta = new Vector2(m_inventoryUI.sizeDelta.x, 85);
         }

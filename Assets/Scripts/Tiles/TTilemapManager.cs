@@ -198,7 +198,7 @@ public class TTilemapManager : MonoBehaviour
             {
                 // Add the Tile to the Damage dictionary
                 m_DamagedTiles.Add(inCell, hitPoints);
-                Debug.Log("Damaged tile at pos: " + inCell);
+                //Debug.Log("Damaged tile at pos: " + inCell);
             }
         }
     }

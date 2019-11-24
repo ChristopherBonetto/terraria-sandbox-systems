@@ -12,6 +12,7 @@ public class TInventory : MonoBehaviour
     public bool InventoryIsOpen = false;
 
     
+
     private void Start()
     {
         InstantiateSlotsInInventory();
@@ -29,10 +30,10 @@ public class TInventory : MonoBehaviour
     }
 
     //Used to open and close Inventory
-    public void ChangeOpenCloseInventoryBool(bool isOpen)
+    public void ChangeOpenCloseInventoryBool(bool inIsOpen)
     {
         TItemHandler.SharedInstance.SelectedItem = null;
-        UIManager.SharedInstance.OpenCloseInventory(isOpen);
+        UIManager.SharedInstance.OpenCloseInventory(inIsOpen);
     }
 
     
@@ -72,24 +73,24 @@ public class TInventory : MonoBehaviour
     #endregion
 
     #region Collet New Item
-    public void CollectItem(TItemQuantity addThisItem)
+    public void CollectItem(TItemQuantity inAddThisItem)
     {
-        if (!CheckSimilarItems(addThisItem))
+        if (!CheckSimilarItems(inAddThisItem))
         {
-            CheckFreeSlotAndCollect(addThisItem);
+            CheckFreeSlotAndCollect(inAddThisItem);
         }
     }
 
-    public bool CheckSimilarItems(TItemQuantity addThisItem)
+    public bool CheckSimilarItems(TItemQuantity inAddThisItem)
     {
         for (int i = 0; i < InventorySlots.Count; i++)
         {
             if(InventorySlots[i].ItemInSlot.Item != null)
             {
-                if (InventorySlots[i].ItemInSlot.Item == addThisItem.Item)
+                if (InventorySlots[i].ItemInSlot.Item == inAddThisItem.Item)
                 {
 
-                    InventorySlots[i].ItemInSlot.Amount += addThisItem.Amount;
+                    InventorySlots[i].ItemInSlot.Amount += inAddThisItem.Amount;
 
                     Debug.Log("now you have " + InventorySlots[i].ItemInSlot.Item.ItemName + " : " + InventorySlots[i].ItemInSlot.Amount);
 
@@ -101,17 +102,33 @@ public class TInventory : MonoBehaviour
         return false;
     }
 
-    public void CheckFreeSlotAndCollect(TItemQuantity addThisItem)
+    public void CheckFreeSlotAndCollect(TItemQuantity inAddThisItem)
     {
         for (int i = 0; i < InventorySlots.Count; i++)
         {
             if(InventorySlots[i].ItemInSlot.Item == null)
             {
-                InventorySlots[i].InsertItemToSlot(addThisItem);
-
+                InventorySlots[i].InsertItemToSlot(inAddThisItem);
+                
                 return;
             }
         }
     }
     #endregion
+
+
+    public List<TItem> ItemsInInventory()
+    {
+        List<TItem> tempItemsList = new List<TItem>();
+
+        for(int i = 0; i < InventorySlots.Count; i++)
+        {
+            if (InventorySlots[i].ItemInSlot != TItemQuantity.Empty)
+            {
+                Debug.Log(InventorySlots[i].ItemInSlot.Item.ItemName);
+                tempItemsList.Add(InventorySlots[i].ItemInSlot.Item);
+            }
+        }
+        return tempItemsList;
+    }
 }

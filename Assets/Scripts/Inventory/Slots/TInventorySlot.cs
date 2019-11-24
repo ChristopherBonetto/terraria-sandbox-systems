@@ -25,9 +25,9 @@ public class TInventorySlot : MonoBehaviour
         }
     }
     
-    public void InsertItemToSlot(TItemQuantity itemToAdd)
+    public void InsertItemToSlot(TItemQuantity inItemToAdd)
     {
-        ItemInSlot = itemToAdd;
+        ItemInSlot = inItemToAdd;
         m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
         ShowImage(true);
     }
@@ -61,14 +61,14 @@ public class TInventorySlot : MonoBehaviour
         if (TItemHandler.SharedInstance.SelectedItem == this) TItemHandler.SharedInstance.SelectedItem = null;
     }
 
-    public void ShowImage(bool value)
+    public void ShowImage(bool inValue)
     {
-        m_slotImage.gameObject.SetActive(value);
+        m_slotImage.gameObject.SetActive(inValue);
     }
 
     #region Drag and Drop event
 
-    public void FillThisSlot(TInventorySlot slot)
+    public void FillThisSlot(TInventorySlot inSlot)
     {
         if (InventoryRef.InventoryIsOpen)
         {
