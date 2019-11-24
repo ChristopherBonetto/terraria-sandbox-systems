@@ -39,11 +39,7 @@ public class TInventory : MonoBehaviour
     {
         TItemHandler.SharedInstance.SelectedItem = null;
         UIManager.SharedInstance.OpenCloseInventory(inIsOpen);
-
-        if(inIsOpen == true)
-        {
-            m_myPlayer.PlayerCraftComponent.FindAvaibleItems();
-        }
+        
     }
 
     
