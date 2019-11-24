@@ -479,17 +479,15 @@ MonoBehaviour:
   m_recipes:
   - itemsNecessary:
     - Item: {fileID: 11400000, guid: 70f6448725b6a08478a1e71675af1bb7, type: 2}
-      Amount: 5
+      Amount: 2
     - Item: {fileID: 11400000, guid: df4614357b5b07a449f70f9f65fd7a30, type: 2}
-      Amount: 5
+      Amount: 2
     itemToObtain:
       Item: {fileID: 11400000, guid: 24e6e0c96177d9b4aa8e5e433f9c26b5, type: 2}
       Amount: 10
   - itemsNecessary:
-    - Item: {fileID: 11400000, guid: 70f6448725b6a08478a1e71675af1bb7, type: 2}
-      Amount: 5
     - Item: {fileID: 11400000, guid: df4614357b5b07a449f70f9f65fd7a30, type: 2}
-      Amount: 5
+      Amount: 2
     itemToObtain:
       Item: {fileID: 11400000, guid: df4614357b5b07a449f70f9f65fd7a30, type: 2}
       Amount: 10
@@ -41815,6 +41813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413a0f9cff906124b8c6e5b18e4e7a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllPlayerItems: []
   CraftableItems: []
 --- !u!114 &1883271528
 MonoBehaviour:

@@ -2,29 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 [System.Serializable]
-public struct RecipeInfo
+public struct TRecipeInfo
 {
+    public static TRecipeInfo Empty = new TRecipeInfo(null, TItemQuantity.Empty);
+
     public TItemQuantity[] itemsNecessary;
     [Space]
     public TItemQuantity itemToObtain;
+
+    public TRecipeInfo(TItemQuantity[] inItemsNecessary, TItemQuantity inItemObtained)
+    {
+        this.itemsNecessary = inItemsNecessary;
+        this.itemToObtain = inItemObtained;
+    }
 }
 
 public class TRecipeContainer : MonoBehaviour
 {
     public static TRecipeContainer SharedIstance;
 
-    [SerializeField] private RecipeInfo[] m_recipes;
+    [SerializeField] private TRecipeInfo[] m_recipes;
 
-    public Dictionary<TItemQuantity, RecipeInfo> RecipeDictionary { get; private set; }
+    public Dictionary<TItemQuantity, TRecipeInfo> RecipeDictionary { get; private set; }
 
     private void Awake()
     {
         SharedIstance = this;
 
-        RecipeDictionary = new Dictionary<TItemQuantity, RecipeInfo>();
+        RecipeDictionary = new Dictionary<TItemQuantity, TRecipeInfo>();
 
         for (int i = 0; i < m_recipes.Length; i++)
         {
@@ -38,15 +44,10 @@ public class TRecipeContainer : MonoBehaviour
             }
         }
     }
+    
 
-    private void Start()
-    {
-        Debug.Log(RecipeDictionary.Count);
-    }
-
-
-    public void CheckCraftableItem(List<TItemQuantity> inListOfItems, List<TItemQuantity> inListToFill)
-    {        
+    public void CheckCraftableItem(List<TItemQuantity> inListOfItems, List<TRecipeInfo> inListToFill)
+    {    
         foreach (TItemQuantity item in RecipeDictionary.Keys)
         {
             int itemNecessary = 0;
@@ -74,9 +75,10 @@ public class TRecipeContainer : MonoBehaviour
                 }
                 if (itemNecessary == RecipeDictionary[item].itemsNecessary.Length)
                 {
-                    inListToFill.Add(item);
+                    inListToFill.Add(RecipeDictionary[item]);
                 }
             }
         }
     }
+    
 }

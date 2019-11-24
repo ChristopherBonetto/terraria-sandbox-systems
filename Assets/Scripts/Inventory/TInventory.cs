@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TInventory : MonoBehaviour
 {
+    private TPlayerController m_myPlayer;
+
     public List<TInventorySlot> InventorySlots = new List<TInventorySlot>();
 
     [SerializeField] private int m_slotsNumber;
@@ -11,7 +13,10 @@ public class TInventory : MonoBehaviour
 
     public bool InventoryIsOpen = false;
 
-    
+    private void Awake()
+    {
+        m_myPlayer = gameObject.GetComponent<TPlayerController>();
+    }
 
     private void Start()
     {
@@ -34,6 +39,11 @@ public class TInventory : MonoBehaviour
     {
         TItemHandler.SharedInstance.SelectedItem = null;
         UIManager.SharedInstance.OpenCloseInventory(inIsOpen);
+
+        if(inIsOpen == true)
+        {
+            m_myPlayer.PlayerCraftComponent.FindAvaibleItems();
+        }
     }
 
     
@@ -75,13 +85,14 @@ public class TInventory : MonoBehaviour
     #region Collet New Item
     public void CollectItem(TItemQuantity inAddThisItem)
     {
-        if (!CheckSimilarItems(inAddThisItem))
+        if (!CheckSimilarItemsAndAddValue(inAddThisItem))
         {
             CheckFreeSlotAndCollect(inAddThisItem);
         }
+        m_myPlayer.PlayerCraftComponent.FindAvaibleItems();
     }
 
-    public bool CheckSimilarItems(TItemQuantity inAddThisItem)
+    public bool CheckSimilarItemsAndAddValue(TItemQuantity inAddThisItem)
     {
         for (int i = 0; i < InventorySlots.Count; i++)
         {
@@ -89,8 +100,7 @@ public class TInventory : MonoBehaviour
             {
                 if (InventorySlots[i].ItemInSlot.Item == inAddThisItem.Item)
                 {
-
-                    InventorySlots[i].ItemInSlot.Amount += inAddThisItem.Amount;
+                    InventorySlots[i].ItemInSlot = ChangeSlotValue(InventorySlots[i].ItemInSlot, inAddThisItem.Amount);
 
                     Debug.Log("now you have " + InventorySlots[i].ItemInSlot.Item.ItemName + " : " + InventorySlots[i].ItemInSlot.Amount);
 
@@ -116,6 +126,13 @@ public class TInventory : MonoBehaviour
     }
     #endregion
 
+    public TItemQuantity ChangeSlotValue(TItemQuantity inSlot, int inValue)
+    {
+        TItemQuantity tempItem = new TItemQuantity(inSlot.Item, inSlot.Amount);
+        tempItem.Amount += inValue;
+        return tempItem;
+    }
+    
 
     public List<TItemQuantity> ItemsInInventory()
     {
@@ -129,5 +146,27 @@ public class TInventory : MonoBehaviour
             }
         }
         return tempItemsList;
+    }
+
+
+    public bool CheckSimilarItemsAndRemoveValue(TItemQuantity inAddThisItem)
+    {
+        for (int i = 0; i < InventorySlots.Count; i++)
+        {
+            if (InventorySlots[i].ItemInSlot.Item != null)
+            {
+                if (InventorySlots[i].ItemInSlot.Item == inAddThisItem.Item)
+                {
+                    InventorySlots[i].ItemInSlot = ChangeSlotValue(InventorySlots[i].ItemInSlot, -inAddThisItem.Amount);
+
+                    if(InventorySlots[i].ItemInSlot.Amount <= 0)
+                    {
+                        InventorySlots[i].Clear();
+                    }
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

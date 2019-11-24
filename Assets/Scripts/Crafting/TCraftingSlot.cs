@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class TCraftingSlot : MonoBehaviour
 {
-    public TPlayerController m_myPlayer;
-
-    public TItemQuantity m_itemInSlot;
-
+    private TPlayerController m_myPlayer;
     private Image m_myImage;
+
+    public TRecipeInfo m_itemInSlot;
+
 
     private void Awake()
     {
@@ -18,26 +18,32 @@ public class TCraftingSlot : MonoBehaviour
 
     private void Start()
     {
-        if(m_itemInSlot != null)
+        if (m_itemInSlot.itemToObtain != null)
         {
-            m_myImage.sprite = m_itemInSlot.Item.ItemSprite;
+            m_myImage.sprite = m_itemInSlot.itemToObtain.Item.ItemSprite;
         }
     }
 
-    public void FillSlot(TItemQuantity inItem)
+    public void FillSlot(TRecipeInfo inCraftableItem)
     {
-        if(inItem == null)
-        {
-            gameObject.SetActive(false);
-            m_myImage.sprite = null;
-            m_itemInSlot = TItemQuantity.Empty;
-        }
-        else
-        {
-            gameObject.SetActive(true);
-            m_myImage.sprite = inItem.Item.ItemSprite;
-            m_itemInSlot = inItem;
-        }
-        
+        gameObject.SetActive(true);
+        m_myImage.sprite = inCraftableItem.itemToObtain.Item.ItemSprite;
+        m_itemInSlot = inCraftableItem;
+    }
+
+    public void CraftItem()
+    {
+        m_myPlayer.PlayerCraftComponent.CraftRecipe(m_itemInSlot);
+    }
+
+    public void CancelItem()
+    {
+        m_itemInSlot = TRecipeInfo.Empty;
+        gameObject.SetActive(false);
+    }
+
+    public void FillPlayerController(TPlayerController inPlayer)
+    {
+        m_myPlayer = inPlayer;
     }
 }

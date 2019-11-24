@@ -6,30 +6,19 @@ public class TCraftingItemsComponent : MonoBehaviour
 {
     private TPlayerController m_myPlayer;
 
-    private List<TItemQuantity> AllPlayerItems;
-    public List<TItemQuantity> CraftableItems;
+    public List<TItemQuantity> AllPlayerItems = new List<TItemQuantity>();
+    public List<TRecipeInfo> CraftableItems = new List<TRecipeInfo>();
 
-    public List<TCraftingSlot> CraftingSlots = new List<TCraftingSlot>();
+    public List<TCraftingSlot> CraftingSlots { get; private set; } = new List<TCraftingSlot>();
 
 
     private void Awake()
     {
         m_myPlayer = GetComponent<TPlayerController>();
     }
-
-    private void Start()
-    {
-        
-    }
-
     private void Update()
     {
-        if (m_myPlayer.PlayerInventory.InventoryIsOpen)
-        {
-            FindAvaibleItems();
-
-            FillSlots();
-        }
+        Debug.Log(CraftableItems.Count);
     }
 
     public void CraftingButtonsReference()
@@ -45,7 +34,7 @@ public class TCraftingItemsComponent : MonoBehaviour
             {
                 if (!CraftingSlots.Contains(tempSlot))
                 {
-                    tempSlot.m_myPlayer = m_myPlayer;
+                    tempSlot.FillPlayerController(m_myPlayer);
                     CraftingSlots.Add(tempSlot);
                 }
             }
@@ -54,23 +43,42 @@ public class TCraftingItemsComponent : MonoBehaviour
     }
 
 
-
-
     public void FindAvaibleItems()
     {
-        CraftableItems = new List<TItemQuantity>();
-        AllPlayerItems = new List<TItemQuantity>();
+        AllPlayerItems.Clear();
+        CraftableItems.Clear();
 
         AllPlayerItems = m_myPlayer.PlayerInventory.ItemsInInventory();
         TRecipeContainer.SharedIstance.CheckCraftableItem(AllPlayerItems, CraftableItems);
+
+        FillRecipeInSlots();
     }
 
-    public void FillSlots()
+    public void FillRecipeInSlots()
     {
-        for(int i = 0; i < CraftableItems.Count; i++)
+        for (int i = 0; i < CraftingSlots.Count; i++)
         {
-            CraftingSlots[i].FillSlot(CraftableItems[i]);
+            if(i > CraftableItems.Count - 1)
+            {
+                CraftingSlots[i].CancelItem();
+            }
+            else
+            {
+                CraftingSlots[i].FillSlot(CraftableItems[i]);
+            }
         }
     }
-    
+
+
+    public void CraftRecipe(TRecipeInfo inRecipeItem)
+    {
+        for (int i = 0; i < inRecipeItem.itemsNecessary.Length; i++)
+        {
+            TItemQuantity tempItemQuantity = new TItemQuantity(inRecipeItem.itemsNecessary[i].Item, inRecipeItem.itemsNecessary[i].Amount);
+            m_myPlayer.PlayerInventory.CheckSimilarItemsAndRemoveValue(tempItemQuantity);
+        }
+        m_myPlayer.PlayerInventory.CollectItem(inRecipeItem.itemToObtain);
+        FindAvaibleItems();
+    }
+
 }
