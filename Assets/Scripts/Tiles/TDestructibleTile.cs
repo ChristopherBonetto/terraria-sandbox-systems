@@ -13,6 +13,11 @@ namespace UnityEngine.Tilemaps
         /// </summary>
         public int HitPoints { get { return m_HitPoints; } }
 
+        /// <summary>
+        /// Group of which this tile is part of.
+        /// </summary>
+        public TWorldGroupID GroupID { get { return m_GroupID; } }
+
         #endregion
 
         #region Serialized variables
@@ -28,18 +33,57 @@ namespace UnityEngine.Tilemaps
         [Tooltip("Items contained inside the Tile.")]
         [SerializeField] private TItemQuantity[] m_ContainedItems;
 
+        /// <summary>
+        /// Group of which this tile is part of.
+        /// </summary>
+        [Tooltip("Group of which this tile is part of.")]
+        [SerializeField] private TWorldGroupID m_GroupID;
+
         #endregion
 
         #region Public methods
         /// <summary>
-        /// Places a Pickup for each contained Item at the center of the Tile.
+        /// Executes the Tile's destruction.
         /// </summary>
-        /// <param name="inWorldPosition"></param>
-        public void DropContainedItems(Vector3 inWorldPosition)
+        /// <param name="inTilemap">Tilemap in which this type of Tile is placed.</param>
+        /// <param name="inTileCell">Tile coordinates.</param>
+        public void DestroySelf(Tilemap inTilemap, Vector3Int inTileCell)
         {
-            //Debug.Log("Destroyed tile at world pos: " + inWorldPosition);
+            // Get cell center's World coordinates
+            Vector3 cellCenter = inTilemap.GetCellCenterWorld(inTileCell);
 
-            foreach(TItemQuantity containedItem in m_ContainedItems)
+            // Destroy any WorldItem on top of the Tile.
+            DestroyItemsOnTop(cellCenter, inTilemap.cellSize);
+
+            // Remove Tile from Tilemap
+            inTilemap.SetTile(inTileCell, null);
+
+            // Drop Pickups containing the Items contained inside the Tile
+            DropPickups(cellCenter);
+        }
+
+        /// <summary>
+        /// Checks for World Items ontop of the Tile and destroys them.
+        /// </summary>
+        /// <param name="inCellCenter">Center of the Tile's cell.</param>
+        /// <param name="inCellSize">Size of the cell.</param>
+        protected void DestroyItemsOnTop(Vector3 inCellCenter, Vector3 inCellSize)
+        {
+            // Search for World Items
+            Collider2D[] hitColliders = Physics2D.OverlapBoxAll(inCellCenter + Vector3.up * inCellSize.y, inCellSize / 2, 0);
+
+            // If found, destroy them
+            for (int i = 0; i < hitColliders.Length; i++)
+                hitColliders[i].GetComponentInParent<TWorldItem>()?.Destroy();
+        }
+
+        /// <summary>
+        /// Spawns a Pickup for each contained Item at the specified World position.
+        /// </summary>
+        /// <param name="inDropPosition"></param>
+        protected void DropPickups(Vector3 inDropPosition)
+        {
+            foreach (TItemQuantity containedItem in m_ContainedItems)
             {
                 // Get Pickup object from the pool
                 GameObject pickupObj = ObjectPooler.SharedInstance.GetPooledObject("Pickup");
@@ -51,11 +95,10 @@ namespace UnityEngine.Tilemaps
                     pickup.LoadItem(containedItem);
 
                     // Set Pickup position
-                    pickup.TransformComponent.position = inWorldPosition;
+                    pickup.TransformComponent.position = inDropPosition;
 
                     // Show Pickup
                     pickupObj.SetActive(true);
-                    
                 }
                 else
                 {

@@ -21,7 +21,9 @@ public class TItemWeapon : TItem
     public struct PlayerAndEnvInteraction
     {
         [Tooltip("Type of environment that weapon can interact")]
-        public WeaponInteractWithTile interactWithEnv;
+        public List<TWorldGroupID> DamageableTileGroups;
+
+        [Space]
 
         [Tooltip("Describe player attack type: Melee, Plunge, Range")]
         public PlayerAttackType AttackType;
@@ -51,6 +53,9 @@ public class TItemWeapon : TItem
     {
         if (user.CanAttack())
         {
+            if (VisualAndInteraction.DamageableTileGroups.Count > 0 && user.IsInActionRange(inData.GridPosition))
+                TTilemapManager.SharedInstance.TryDamageTile(inData.GridPosition, VisualAndInteraction.DamageableTileGroups);
+
             return true;
         }
         return false;

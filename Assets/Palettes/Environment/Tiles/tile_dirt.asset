@@ -265,3 +265,4 @@ MonoBehaviour:
   m_ContainedItems:
   - Item: {fileID: 11400000, guid: 70f6448725b6a08478a1e71675af1bb7, type: 2}
     Amount: 1
+  m_GroupID: 1
