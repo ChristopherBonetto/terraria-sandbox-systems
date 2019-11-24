@@ -45,6 +45,19 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         }
     }
 
+    private TCraftingItemsComponent m_PlayerCraftComponent;
+    public TCraftingItemsComponent PlayerCraftComponent
+    {
+        get
+        {
+            if(m_PlayerCraftComponent == null)
+            {
+                m_PlayerCraftComponent = GetComponent<TCraftingItemsComponent>();
+            }
+            return m_PlayerCraftComponent;
+        }
+    }
+
     /// <summary>
     /// health component
     /// </summary>
@@ -144,6 +157,8 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
         // Update visual
         TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, DefenseComponent);
+
+        PlayerCraftComponent.CraftingButtonsReference();
     }
 
     private void Update()
