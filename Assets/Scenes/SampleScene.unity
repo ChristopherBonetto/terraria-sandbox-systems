@@ -478,13 +478,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_recipes:
   - itemsNecessary:
-    - Item: {fileID: 11400000, guid: 70f6448725b6a08478a1e71675af1bb7, type: 2}
-      Amount: 2
-    - Item: {fileID: 11400000, guid: df4614357b5b07a449f70f9f65fd7a30, type: 2}
-      Amount: 2
+    - Item: {fileID: 11400000, guid: 69d1916538b66244dad02b043644c3fe, type: 2}
+      Amount: 5
     itemToObtain:
       Item: {fileID: 11400000, guid: 24e6e0c96177d9b4aa8e5e433f9c26b5, type: 2}
-      Amount: 10
+      Amount: 1
   - itemsNecessary:
     - Item: {fileID: 11400000, guid: df4614357b5b07a449f70f9f65fd7a30, type: 2}
       Amount: 2
@@ -1091,6 +1089,16 @@ PrefabInstance:
       propertyPath: m_HealthBar
       value: 
       objectReference: {fileID: 2055235160}
+    - target: {fileID: 4896165062055620829, guid: 27d74ee8cfa35a44294aa5cacf90038c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896165062055620829, guid: 27d74ee8cfa35a44294aa5cacf90038c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2553473442219013681, guid: 27d74ee8cfa35a44294aa5cacf90038c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 27d74ee8cfa35a44294aa5cacf90038c, type: 3}
@@ -38366,12 +38374,12 @@ PrefabInstance:
     - target: {fileID: 9120076300848290763, guid: d3607189e60a4654aaf6cfd50dee54d0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.26
+      value: 2.35
       objectReference: {fileID: 0}
     - target: {fileID: 9120076300848290763, guid: d3607189e60a4654aaf6cfd50dee54d0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.26
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 9120076300848290763, guid: d3607189e60a4654aaf6cfd50dee54d0,
         type: 3}
