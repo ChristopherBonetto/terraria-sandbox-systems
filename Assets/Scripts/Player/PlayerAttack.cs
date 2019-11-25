@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("variable for every attack type")]
     public LayerMask InteractableLayer;
-    public float Damage { get; set; } = 1;
+    public float Damage { get; set; }
 
 
     [Header("Melee Attack")]

@@ -6,7 +6,7 @@ namespace Terrria.AI
     /// Base AI,
     /// doesn't move or react.
     /// </summary>
-    [RequireComponent(typeof(TDefenseComponent))]
+    [RequireComponent(typeof(TEnemyDefenseComponent))]
     public class BaseAI : BaseEntity
     {
         [SerializeField] private AIBaseData m_Data;

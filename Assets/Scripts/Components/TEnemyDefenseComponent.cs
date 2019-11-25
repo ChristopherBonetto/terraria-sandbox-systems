@@ -1,0 +1,103 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Terrria.AI
+{
+    public class TEnemyDefenseComponent : MonoBehaviour, IDefend
+    {
+        /// <summary>
+        /// SerializeField
+        /// </summary>
+
+        [SerializeField] private Slider m_HealthSlider; // Take it from the pool
+
+        /// <summary>
+        /// Properties
+        /// </summary>
+
+        public float MaxHealth => m_MaxHealth;
+        public float Defense => m_Defense;
+        public float LastHealth => m_LastHealth;
+        public float CurrentHealth
+        {
+            get { return m_CurrentHealth; }
+            private set
+            {
+                var lastHealth = m_CurrentHealth;
+                m_CurrentHealth = Mathf.Clamp(value, 0, MaxHealth);
+
+                // Call UI event.
+                TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, (IDefend)this);
+
+                m_LastHealth = m_CurrentHealth;
+
+                if (m_CurrentHealth <= 0)
+                    DisposeToDead();
+
+            }
+        }
+
+        /// <summary>
+        /// Private
+        /// </summary>
+
+        private float m_MaxHealth;
+        private float m_Defense;
+        private float m_CurrentHealth;
+        private float m_LastHealth;
+
+
+
+        /// <summary>
+        /// Editor testing.
+        /// </summary>
+        [ContextMenu("Take Damage")]
+        public void DamageEntity()
+        {
+            TakeDamage(1);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.RightControl))
+                DamageEntity();
+        }
+
+        public void Init(float inMaxHealth)
+        {
+            m_MaxHealth = inMaxHealth;
+            m_CurrentHealth = m_MaxHealth;
+        }
+
+        public void Init(float inMaxHealth, float inDefense)
+        {
+            m_MaxHealth = inMaxHealth;
+            m_CurrentHealth = m_MaxHealth;
+            m_Defense = inDefense;
+        }
+
+        public void TakeDamage(float inAmount)
+        {
+            // Pool UI slider health.
+            // Set the defenseComponent of UI slider.
+            // Pool text where display the damage taken
+
+            if (!m_HealthSlider.gameObject.activeSelf)
+                m_HealthSlider.gameObject.SetActive(true);
+
+            m_LastHealth = CurrentHealth;
+            CurrentHealth -= Mathf.Max(1, inAmount - Defense);
+        }
+
+        private void DisposeToDead()
+        {
+            // Particle
+           
+            m_HealthSlider.gameObject.SetActive(false);
+
+            gameObject.SetActive(false);
+        }
+    }
+}

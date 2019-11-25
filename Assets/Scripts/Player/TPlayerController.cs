@@ -5,7 +5,7 @@ using System.Collections;
 /// <summary>
 /// Player controller => It works as connection between model and view.
 /// </summary>
-[RequireComponent(typeof(TDefenseComponent))]
+[RequireComponent(typeof(TPlayerDefenseComponent))]
 public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 {
     public static TPlayerController SharedInstance { get; private set; }

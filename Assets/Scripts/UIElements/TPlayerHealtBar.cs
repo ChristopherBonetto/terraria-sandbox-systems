@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealtBar : MonoBehaviour
+public class TPlayerHealtBar : MonoBehaviour
 {
     [SerializeField]
-    private TDefenseComponent m_TargetHealth;
-    public TDefenseComponent Targethealth => m_TargetHealth;
+    protected TPlayerDefenseComponent m_TargetHealth;
+    public TPlayerDefenseComponent Targethealth => m_TargetHealth;
 
     [SerializeField]
-    private Slider m_Slider;
+    protected Slider m_Slider;
 
 
     private void OnEnable()
@@ -26,7 +26,7 @@ public class HealtBar : MonoBehaviour
     /// <summary>
     /// Update health bar when some damage is taken.
     /// </summary>
-    public void UpdateHealthBar(IDefend defendComponent)
+    public virtual void UpdateHealthBar(IDefend defendComponent)
     {
         if (defendComponent == (IDefend)Targethealth)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TItemInHandComponent : MonoBehaviour
 {
-    public TInventorySlot ItemInHand { get; private set; }
+    public TInventorySlot ItemInHand;
 
     private void OnEnable()
     {

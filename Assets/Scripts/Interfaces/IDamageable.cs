@@ -14,6 +14,11 @@ public interface IDamageable
     /// </summary>
     float CurrentHealth { get; }
 
+    /// <summary>
+    /// Last current health. Used for display damage taken.
+    /// </summary>
+    float LastHealth { get; }
+
 
     /// <summary>
     /// Initialize max health taken as the model one,

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 namespace Terrria.AI
@@ -16,8 +17,16 @@ namespace Terrria.AI
     {
         [SerializeField] private float m_DelayBetweenJump; 
 
+        /// <summary>
+        /// Properties
+        /// </summary>
+
         public float KbResist => Data.KbResist;
         public SlimeState CurrentState { get; private set; }
+
+        /// <summary>
+        /// Private 
+        /// </summary>
 
         // Jump variables
         private float m_ActualDelay;

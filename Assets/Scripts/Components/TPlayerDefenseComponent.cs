@@ -1,15 +1,15 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class TDefenseComponent : MonoBehaviour, IDefend
-{ 
-    private float m_MaxHealth;
+public class TPlayerDefenseComponent : MonoBehaviour, IDefend
+{
+    /// <summary>
+    /// Property
+    /// </summary>
     public float MaxHealth => m_MaxHealth;
-
-    private float m_Defense;
     public float Defense => m_Defense;
-
-    private float m_CurrentHealth;
+    public float LastHealth => CurrentHealth;
     public float CurrentHealth
     {
         get { return m_CurrentHealth; }
@@ -26,6 +26,16 @@ public class TDefenseComponent : MonoBehaviour, IDefend
 
         }
     }
+
+    /// <summary>
+    /// Private
+    /// </summary>
+    private float m_MaxHealth;
+    private float m_Defense;
+    private float m_CurrentHealth;
+
+
+
 
     /// <summary>
     /// Editor testing.

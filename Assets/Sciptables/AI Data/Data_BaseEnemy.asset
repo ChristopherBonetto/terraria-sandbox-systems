@@ -15,7 +15,7 @@ MonoBehaviour:
   m_MonsterName: Molly
   m_ID: 0
   m_Type: 1
-  m_MaxHealth: 2
+  m_MaxHealth: 10
   m_Defense: 0
   m_Damage: 1
   m_Speed: 0
