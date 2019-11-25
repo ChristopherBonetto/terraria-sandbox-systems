@@ -8,6 +8,8 @@ public class TPlacementDummy : MonoBehaviour
     private SpriteRenderer m_SpriteRendererComponent;
     private Vector3 m_Offset;
 
+    private bool m_IsActive;
+
     private void Awake()
     {
         m_TransformComponent = transform;
@@ -36,16 +38,20 @@ public class TPlacementDummy : MonoBehaviour
 
             m_SpriteRendererComponent.sprite = itemWorldObject.Prefab.ItemSprite;
 
-            StartCoroutine("PointerTrackerCoroutine");
-
-            m_SpriteRendererComponent.gameObject.SetActive(true);
+            if (!m_IsActive)
+            {
+                m_IsActive = true;
+                StartCoroutine("PointerTrackerCoroutine");
+                m_SpriteRendererComponent.gameObject.SetActive(true);
+            }
         }
     }
 
     private void OnItemDeselected(TInventorySlot inSlot)
     {
-        if (m_SpriteRendererComponent.gameObject.activeInHierarchy)
+        if (m_IsActive)
         {
+            m_IsActive = false;
             StopCoroutine("PointerTrackerCoroutine");
             m_SpriteRendererComponent.gameObject.SetActive(false);
         }

@@ -277,7 +277,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         {
             bool successful = PlayerItem.ItemInHand.ItemInSlot.Item.Use(this, data);
 
-            if (successful && TItemHandler.SharedInstance.SelectedItem.ItemInSlot.Item.DepleteOnUse)
+            if (successful && PlayerItem.ItemInHand.ItemInSlot.Item.DepleteOnUse)
                 PlayerItem.ItemInHand.DepleteAmount(1);
         }
     }
@@ -351,6 +351,8 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     /// </summary>
     public void OnItemUnequipped(TInventorySlot item)
     {
+        if (!item) return;
+
         if (item.ItemInSlot.Item is TItemWeapon)
         {
             TItemWeapon weapon = item.ItemInSlot.Item as TItemWeapon;

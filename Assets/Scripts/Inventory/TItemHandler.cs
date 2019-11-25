@@ -13,12 +13,13 @@ public class TItemHandler : MonoBehaviour
         get { return m_SelectedItem; }
         set
         {
-            m_SelectedItem = value;
-
             if (value)
                 TEventManager.TriggerEvent(TEventID.OnItemSelected, value);
             else
-                TEventManager.TriggerEvent(TEventID.OnItemDeselected);
+                TEventManager.TriggerEvent(TEventID.OnItemDeselected, m_SelectedItem);
+
+            m_SelectedItem = value;
+
         }
     }
 
