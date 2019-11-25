@@ -28965,8 +28965,7 @@ MonoBehaviour:
     type: 3}
   m_inventoryUI: {fileID: 1444712113}
   m_itemInHandUI: {fileID: 885823568}
-  m_InventorySlotsUI: []
-  CraftableSlots: []
+  m_craftingScrollBar: {fileID: 0}
 --- !u!4 &1474534075
 Transform:
   m_ObjectHideFlags: 0
@@ -39235,6 +39234,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 706343873425124140, guid: 433b3e4035594cb40a301a560b60185a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 433b3e4035594cb40a301a560b60185a, type: 3}
