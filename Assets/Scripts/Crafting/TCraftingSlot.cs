@@ -5,29 +5,24 @@ using UnityEngine.UI;
 
 public class TCraftingSlot : MonoBehaviour
 {
+    [SerializeField] private Image m_ItemImage;
+
     private TPlayerController m_myPlayer;
-    private Image m_myImage;
 
     public TRecipeInfo m_itemInSlot;
-
-
-    private void Awake()
-    {
-        m_myImage = gameObject.GetComponent<Image>();
-    }
 
     private void Start()
     {
         if (m_itemInSlot.itemToObtain != null)
         {
-            m_myImage.sprite = m_itemInSlot.itemToObtain.Item.ItemSprite;
+            m_ItemImage.sprite = m_itemInSlot.itemToObtain.Item.ItemSprite;
         }
     }
 
     public void FillSlot(TRecipeInfo inCraftableItem)
     {
         gameObject.SetActive(true);
-        m_myImage.sprite = inCraftableItem.itemToObtain.Item.ItemSprite;
+        m_ItemImage.sprite = inCraftableItem.itemToObtain.Item.ItemSprite;
         m_itemInSlot = inCraftableItem;
     }
 
