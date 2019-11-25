@@ -9,20 +9,20 @@ public class TItemInHandComponent : MonoBehaviour
     private void OnEnable()
     {
         TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, ChangeItem);
-        TEventManager.SubscribeTo(TEventID.OnItemDeselected, ClearItem);
+        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemDeselected, ClearItem);
     }
     private void OnDisable()
     {
         TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemSelected, ChangeItem);
-        TEventManager.UnsubscribeFrom(TEventID.OnItemDeselected, ClearItem);
+        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemDeselected, ClearItem);
     }
         
-    public void ChangeItem(TInventorySlot newItem)
+    public void ChangeItem(TInventorySlot inItem)
     {
-        ItemInHand = newItem;
+        ItemInHand = inItem;
     }
 
-    public void ClearItem()
+    public void ClearItem(TInventorySlot inItem)
     {
         ItemInHand = null;
     } 

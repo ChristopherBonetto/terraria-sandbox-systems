@@ -16,10 +16,6 @@ public class TCraftingItemsComponent : MonoBehaviour
     {
         m_myPlayer = GetComponent<TPlayerController>();
     }
-    private void Update()
-    {
-        Debug.Log(CraftableItems.Count);
-    }
 
     public void CraftingButtonsReference()
     {

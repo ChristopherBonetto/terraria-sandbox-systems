@@ -58,7 +58,7 @@ public class TInputManager : MonoBehaviour
     {
         #region Left click
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject())
             m_UserPlayer.UseEquippedItem(new TPointerData(Input.mousePosition));
 
         #endregion
