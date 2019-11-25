@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public enum MouseIndex
 {
@@ -35,6 +36,7 @@ public class TInputManager : MonoBehaviour
         CheckMouseInput();
         CheckMovementInput();
         CheckKeyboardNumber();
+        CheckScroll();
     }
 
     private void OnEnable()
@@ -145,7 +147,15 @@ public class TInputManager : MonoBehaviour
         }
         
     }
-
+    public void CheckScroll()
+    {
+        float scrollValue = Input.GetAxis("Mouse ScrollWheel");
+        
+        if(scrollValue != 0)
+        {            
+            UIManager.SharedInstance.ScrollCraftingBar(scrollValue);
+        }
+    }
 
     /// <summary>
     /// Checks if the pointer moved from a grid cell to another and raises an event when it happens. The coroutine runs only if there is at least one subscriber to the event.
@@ -232,3 +242,7 @@ public static class TControls
     public static readonly string Jump = "Jump";
     public static readonly string MovementAxis = "Horizontal";
 }
+
+
+
+

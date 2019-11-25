@@ -19,9 +19,16 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private Image m_itemInHandUI;
 
-    public List<GameObject> m_InventorySlotsUI = new List<GameObject>();
+    public List<GameObject> m_InventorySlotsUI { get; private set; } = new List<GameObject>();
 
-    public List<Button> CraftableSlots = new List<Button>();
+    public List<Button> CraftableSlots { get; private set; } = new List<Button>();
+
+    #region Crafting scrollbar
+
+    [SerializeField] private Scrollbar m_craftingScrollBar;
+    
+
+    #endregion
 
     private void Awake()
     {
@@ -29,11 +36,10 @@ public class UIManager : MonoBehaviour
 
         m_startingInventorySize = m_inventoryUI.sizeDelta;
     }
-        
-    void Start()
+
+    private void Start()
     {
         m_itemInHandUI.gameObject.SetActive(false);
-
         
     }
 
@@ -116,6 +122,11 @@ public class UIManager : MonoBehaviour
                 CraftableSlots.Add(tempButton);
             }
         }
+    }
+
+    public void ScrollCraftingBar(float inScrollSpeed)
+    {
+        m_craftingScrollBar.value += inScrollSpeed;
     }
     
 }
