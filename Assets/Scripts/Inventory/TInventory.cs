@@ -39,7 +39,6 @@ public class TInventory : MonoBehaviour
     {
         TItemHandler.SharedInstance.SelectedItem = null;
         UIManager.SharedInstance.OpenCloseInventory(inIsOpen);
-        
     }
 
     

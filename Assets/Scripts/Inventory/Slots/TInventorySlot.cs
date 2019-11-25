@@ -17,14 +17,7 @@ public class TInventorySlot : MonoBehaviour
 
     [SerializeField] Image m_slotImage;
 
-    private void Start()
-    {
-        if(ItemInSlot.Item != null)
-        {
-            m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
-        }
-    }
-    
+        
     public void InsertItemToSlot(TItemQuantity inItemToAdd)
     {
         ItemInSlot = inItemToAdd;
@@ -70,51 +63,45 @@ public class TInventorySlot : MonoBehaviour
 
     public void FillThisSlot(TInventorySlot inSlot)
     {
-        if (InventoryRef.InventoryIsOpen)
+        TInventorySlot tempSlot = TItemHandler.SharedInstance.SelectedItem;
+
+        if(tempSlot != null)
         {
-            if (ItemInSlot.Item == null)
+            if (InventoryRef.InventoryIsOpen)
             {
-                InsertItemToSlot(TItemHandler.SharedInstance.SelectedItem.ItemInSlot);
-                TItemHandler.SharedInstance.SelectedItem.ShowImage(false);
-                TItemHandler.SharedInstance.SelectedItem.ItemInSlot = TItemQuantity.Empty;
-                TItemHandler.SharedInstance.SelectedItem = null;
-                Debug.Log("inserisci");
-            }
-            else
-            {
-                if (TItemHandler.SharedInstance.SelectedItem == this)
+                if (ItemInSlot.Item == null)
                 {
-                    ShowImage(true);
-                    TItemHandler.SharedInstance.SelectedItem = null;
-                    Debug.Log("riposa");
+                    InsertItemToSlot(tempSlot.ItemInSlot);
+                    tempSlot.ShowImage(false);
+                    tempSlot.ItemInSlot = TItemQuantity.Empty;
                 }
                 else
                 {
-                    TItemQuantity tempSlot = this.ItemInSlot;
-
-                    InsertItemToSlot(TItemHandler.SharedInstance.SelectedItem.ItemInSlot);
-
-                    TItemHandler.SharedInstance.SelectedItem.InsertItemToSlot(tempSlot);
-
-                    TItemHandler.SharedInstance.SelectedItem = null;
-                    Debug.Log("scambia");
+                    if (tempSlot == this)
+                    {
+                        ShowImage(true);
+                    }
+                    else
+                    {
+                        TItemQuantity tempItem = this.ItemInSlot;
+                        InsertItemToSlot(tempSlot.ItemInSlot);
+                        tempSlot.InsertItemToSlot(tempItem);
+                    }
                 }
-            }
-        }
-        else
-        {
-            if (TItemHandler.SharedInstance.SelectedItem == this)
-            {
-                TItemHandler.SharedInstance.SelectedItem = null;
-                Debug.Log("deseleziona corrente");
             }
             else
             {
-                TItemHandler.SharedInstance.SelectedItem = null;
-                SelectSlot();
-                Debug.Log("selezionato nuovo slot");
+                if (tempSlot != this)
+                {
+                    TItemHandler.SharedInstance.SelectedItem = null;
+                    SelectSlot();
+                    
+                }
+                return;
             }
         }
+        tempSlot = null;
+        TItemHandler.SharedInstance.SelectedItem = tempSlot;
     }
     #endregion
 
