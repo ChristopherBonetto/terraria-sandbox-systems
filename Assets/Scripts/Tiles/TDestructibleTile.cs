@@ -25,19 +25,19 @@ namespace UnityEngine.Tilemaps
         /// How many times the Tile should be hit to be destroyed.
         /// </summary>
         [Tooltip("How many times the Tile should be hit to be destroyed.")]
-        [SerializeField] private int m_HitPoints;
+        [SerializeField] protected int m_HitPoints;
 
         /// <summary>
         /// Items contained inside the Tile.
         /// </summary>
         [Tooltip("Items contained inside the Tile.")]
-        [SerializeField] private TItemQuantity[] m_ContainedItems;
+        [SerializeField] protected TItemQuantity[] m_ContainedItems;
 
         /// <summary>
         /// Group of which this tile is part of.
         /// </summary>
         [Tooltip("Group of which this tile is part of.")]
-        [SerializeField] private TWorldGroupID m_GroupID;
+        [SerializeField] protected TWorldGroupID m_GroupID;
 
         #endregion
 
@@ -47,7 +47,7 @@ namespace UnityEngine.Tilemaps
         /// </summary>
         /// <param name="inTilemap">Tilemap in which this type of Tile is placed.</param>
         /// <param name="inTileCell">Tile coordinates.</param>
-        public void DestroySelf(Tilemap inTilemap, Vector3Int inTileCell)
+        public virtual void DestroySelf(Tilemap inTilemap, Vector3Int inTileCell)
         {
             // Get cell center's World coordinates
             Vector3 cellCenter = inTilemap.GetCellCenterWorld(inTileCell);
@@ -58,8 +58,11 @@ namespace UnityEngine.Tilemaps
             // Remove Tile from Tilemap
             inTilemap.SetTile(inTileCell, null);
 
+            int itemsCount = m_ContainedItems.Length;
+
             // Drop Pickups containing the Items contained inside the Tile
-            DropPickups(cellCenter);
+            for (int i = 0; i < itemsCount; i++)
+                SpawnPickup(m_ContainedItems[i], cellCenter);
         }
 
         /// <summary>
@@ -67,7 +70,7 @@ namespace UnityEngine.Tilemaps
         /// </summary>
         /// <param name="inCellCenter">Center of the Tile's cell.</param>
         /// <param name="inCellSize">Size of the cell.</param>
-        protected void DestroyItemsOnTop(Vector3 inCellCenter, Vector3 inCellSize)
+        protected virtual void DestroyItemsOnTop(Vector3 inCellCenter, Vector3 inCellSize)
         {
             // Search for World Items
             Collider2D[] hitColliders = Physics2D.OverlapBoxAll(inCellCenter + Vector3.up * inCellSize.y, inCellSize / 2, 0);
@@ -77,37 +80,25 @@ namespace UnityEngine.Tilemaps
                 hitColliders[i].GetComponentInParent<TWorldItem>()?.Destroy();
         }
 
-        /// <summary>
-        /// Spawns a Pickup for each contained Item at the specified World position.
-        /// </summary>
-        /// <param name="inDropPosition"></param>
-        protected void DropPickups(Vector3 inDropPosition)
+
+        protected virtual void SpawnPickup(TItemQuantity inItem, Vector3 inSpawnPosition)
         {
-            foreach (TItemQuantity containedItem in m_ContainedItems)
+            // Get Pickup object from the pool
+            GameObject pickupObj = ObjectPooler.SharedInstance.GetPooledObject("Pickup");
+
+            if (pickupObj)
             {
-                // Get Pickup object from the pool
-                GameObject pickupObj = ObjectPooler.SharedInstance.GetPooledObject("Pickup");
+                // Load Item
+                TItemPickup pickup = pickupObj.GetComponent<TItemPickup>();
+                pickup.LoadItem(inItem);
 
-                if (pickupObj)
-                {
-                    // Load Item
-                    TItemPickup pickup = pickupObj.GetComponent<TItemPickup>();
-                    pickup.LoadItem(containedItem);
+                // Set Pickup position
+                pickup.TransformComponent.position = inSpawnPosition;
 
-                    // Set Pickup position
-                    pickup.TransformComponent.position = inDropPosition;
-
-                    // Show Pickup
-                    pickupObj.SetActive(true);
-                }
-                else
-                {
-                    Debug.LogWarning("Pool doesn't contain any available Pickup object.");
-                    break;
-                }
+                // Show Pickup
+                pickupObj.SetActive(true);
             }
         }
     }
-
     #endregion
 }

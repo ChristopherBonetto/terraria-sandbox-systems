@@ -274,26 +274,24 @@ public class TTilemapManager : MonoBehaviour
     }
 }
 
-
-
-public enum Direction
-{
-    Right = 0,
-    Up = 1,
-    Left = 2,
-    Down = 3
-}
-
 /// <summary>
 /// Utility class for Grid navigation.
 /// </summary>
 public class GridUtility
 {
+    public enum Direction
+    {
+        Right = 0,
+        Up = 1,
+        Left = 2,
+        Down = 3
+    }
+
     public static readonly Vector3Int[] Directions =
     {
-        new Vector3Int(1,0,0),
-        new Vector3Int(0,1,0),
-        new Vector3Int(-1, 0, 0),
-        new Vector3Int(0, -1, 0)
+        Vector3Int.right,
+        Vector3Int.up,
+        Vector3Int.left,
+        Vector3Int.down
     };
 }
