@@ -126,6 +126,7 @@ public class UIManager : MonoBehaviour
 
     public void ScrollCraftingBar(float inScrollSpeed)
     {
+        if(IsInventoryOpen)
         m_craftingScrollBar.value += inScrollSpeed;
     }
     
