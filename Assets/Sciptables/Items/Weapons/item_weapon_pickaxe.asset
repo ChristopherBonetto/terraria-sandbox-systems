@@ -16,7 +16,7 @@ MonoBehaviour:
   ItemSprite: {fileID: 21300000, guid: a6d7e9984488a7047936a18eca586b38, type: 3}
   m_DepleteOnUse: 0
   VisualAndInteraction:
-    DamageableTileGroups: 01000000feffffff
+    DamageableWorldGroups: feffffff01000000
     AttackType: 0
     PlayerOverrideController: {fileID: 22100000, guid: d359808aa5dc34f45bbcd5128b1f2765,
       type: 2}

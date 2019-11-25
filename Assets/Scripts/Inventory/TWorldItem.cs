@@ -13,7 +13,6 @@ public class TWorldItem : MonoBehaviour
         get
         {
             if (!SpriteRendererComponent) SpriteRendererComponent = GetComponentInChildren<SpriteRenderer>();
-
             return SpriteRendererComponent.sprite;
         }
     }
@@ -24,11 +23,6 @@ public class TWorldItem : MonoBehaviour
     public Transform TransformComponent { get; private set; }
 
     /// <summary>
-    /// Cached reference to the attached Collider2D component.
-    /// </summary>
-    public Collider2D ColliderComponent { get; private set; }
-
-    /// <summary>
     /// Cached reference to the Renderer component attached to the GameObject or one of its children.
     /// </summary>
     public SpriteRenderer SpriteRendererComponent { get; private set; }
@@ -37,13 +31,19 @@ public class TWorldItem : MonoBehaviour
 
     public Vector2Int Size { get { return m_Size; } }
 
+    public TWorldGroupID GroupID { get { return m_GroupID; } }
+
     #endregion
 
     #region Serialize variables
 
     [SerializeField] private Vector2Int m_Size;
 
-    [SerializeField] private int m_HitPoints;
+    [SerializeField] private int m_MaxHitPoints;
+
+    [SerializeField] private TWorldGroupID m_GroupID;
+
+    private int m_HitPoints;
 
     #endregion
 
@@ -53,8 +53,24 @@ public class TWorldItem : MonoBehaviour
     {
         // Cache components references
         TransformComponent = transform;
-        ColliderComponent = GetComponent<Collider2D>();
-        SpriteRendererComponent = GetComponentInChildren<SpriteRenderer>();
+        if(!SpriteRendererComponent) SpriteRendererComponent = GetComponentInChildren<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        m_HitPoints = m_MaxHitPoints;
+    }
+
+    #endregion
+
+    #region Public methods
+
+    public void TakeDamage(int inDamageDealt = 1)
+    {
+        m_HitPoints -= inDamageDealt;
+
+        if (m_HitPoints <= 0)
+            Destroy();
     }
 
     #endregion

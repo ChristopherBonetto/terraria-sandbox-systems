@@ -21,7 +21,7 @@ public class TItemWeapon : TItem
     public struct PlayerAndEnvInteraction
     {
         [Tooltip("Type of environment that weapon can interact")]
-        public List<TWorldGroupID> DamageableTileGroups;
+        public List<TWorldGroupID> DamageableWorldGroups;
 
         [Space]
 
@@ -53,10 +53,24 @@ public class TItemWeapon : TItem
     {
         if (user.CanAttack())
         {
-            if (VisualAndInteraction.DamageableTileGroups.Count > 0 && user.IsInActionRange(inData.GridPosition))
-                TTilemapManager.SharedInstance.TryDamageTile(inData.GridPosition, VisualAndInteraction.DamageableTileGroups);
+            if (VisualAndInteraction.DamageableWorldGroups.Count > 0 && user.IsInActionRange(inData.GridPosition))
+            {
+                RaycastHit2D hit = Physics2D.GetRayIntersection(CameraFollow.MainCamera.ScreenPointToRay(inData.ScreenPosition));
 
-            return true;
+                if (hit.collider)
+                {
+                    TWorldItem hitItem = hit.collider.GetComponentInParent<TWorldItem>();
+
+                    if (hitItem && VisualAndInteraction.DamageableWorldGroups.Contains(hitItem.GroupID))
+                    {
+                        hitItem.TakeDamage(Attack);
+                        return true;
+                    }
+                }
+
+                TTilemapManager.SharedInstance.TryDamageTile(inData.GridPosition, VisualAndInteraction.DamageableWorldGroups);
+                return true;
+            }
         }
         return false;
     }

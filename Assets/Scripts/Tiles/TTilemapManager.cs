@@ -6,8 +6,8 @@ using UnityEngine.Tilemaps;
 
 public enum TMap
 {
-    Background = 0,
-    Foreground = 1
+    Foreground = 0,
+    Background = 1
 }
 
 public class TTilemapManager : MonoBehaviour
