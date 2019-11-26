@@ -198,7 +198,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             KnockBack(knockEffect);
 
             // Start freeze
-            Freeze(0.5f);
+            Freeze(0.6f);
         }
     }
 

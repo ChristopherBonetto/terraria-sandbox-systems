@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Terrria.AI
+namespace Terraria.AI
 {
     /// <summary>
     /// Base AI,
@@ -9,12 +9,24 @@ namespace Terrria.AI
     [RequireComponent(typeof(TEnemyDefenseComponent))]
     public class BaseAI : BaseEntity
     {
+        /// <summary>
+        /// serializeField
+        /// </summary>
+
         [SerializeField] private AIBaseData m_Data;
-        public AIBaseData Data => m_Data;
 
-        // Component
+        /// <summary>
+        /// Private
+        /// </summary>
+
         private IDefend m_DefenseComponent;
+        protected TPlayerController m_Player;   //Player reference
 
+        /// <summary>
+        /// Properties
+        /// </summary>
+
+        public AIBaseData Data => m_Data;
         public IDefend DefenseComponent
         {
             get
@@ -25,8 +37,6 @@ namespace Terrria.AI
             }
         }
 
-        //Player reference 
-        protected TPlayerController m_Player;
 
 
         protected override void Start()

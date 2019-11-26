@@ -95,6 +95,7 @@ public class PlayerAttack : MonoBehaviour
 
                 entity?.TakeDamage(Damage);
                 ent?.KnockBack(knockEffect);
+                ent?.Freeze(0.5f);
 
                 // 5)
                 m_DetectedCollider = detectedEntity;
@@ -118,6 +119,7 @@ public class PlayerAttack : MonoBehaviour
 
             entity?.TakeDamage(Damage);
             ent?.KnockBack(knockEffect);
+            ent?.Freeze(0.5f);
 
             m_DetectedCollider = hit.collider;
         }

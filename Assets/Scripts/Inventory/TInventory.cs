@@ -6,6 +6,7 @@ public class TInventory : MonoBehaviour
 {
     private TPlayerController m_myPlayer;
 
+    public List<TItem> StartingItems = new List<TItem>();
     public List<TInventorySlot> InventorySlots = new List<TInventorySlot>();
 
     [SerializeField] private int m_slotsNumber;

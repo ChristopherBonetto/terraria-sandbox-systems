@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Terrria.AI;
+using Terraria.AI;
 
 public class TDisplayDamageTaken : MonoBehaviour
 {

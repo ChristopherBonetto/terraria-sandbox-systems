@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Terrria.AI
+namespace Terraria.AI
 {
     public enum EnemyType
     {

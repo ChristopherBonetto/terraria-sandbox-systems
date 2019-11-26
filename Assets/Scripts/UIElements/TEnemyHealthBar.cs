@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Terrria.AI
+namespace Terraria.AI
 {
     public class TEnemyHealthBar : MonoBehaviour
     {

@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 5080476297448879707}
   m_Layer: 5
   m_Name: Enemy Health Bar
-  m_TagString: Untagged
+  m_TagString: HealthBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

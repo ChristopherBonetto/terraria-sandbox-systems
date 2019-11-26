@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Terrria.AI
+namespace Terraria.AI
 {
     public class TEnemyDefenseComponent : MonoBehaviour, IDefend
     {
@@ -11,7 +11,7 @@ namespace Terrria.AI
         /// SerializeField
         /// </summary>
 
-        [SerializeField] private Slider m_HealthSlider; // Take it from the pool
+        private TEnemyHealthBar m_HealthSlider; // Take it from the pool
 
         /// <summary>
         /// Properties
@@ -80,9 +80,20 @@ namespace Terrria.AI
 
         public void TakeDamage(float inAmount)
         {
-            // Pool UI slider health.
-            // Set the defenseComponent of UI slider.
+            if (m_HealthSlider == null)
+            {
+                // Pool UI slider health.
+                m_HealthSlider = ObjectPooler.SharedInstance.GetPooledObject("HealthBar").GetComponent<TEnemyHealthBar>();
+
+                // Set the defenseComponent of UI slider.
+                m_HealthSlider.SetHealthReference(this);
+                m_HealthSlider.gameObject.SetActive(true);
+            }
+
             // Pool text where display the damage taken
+            GameObject text = ObjectPooler.SharedInstance.GetPooledObject("DamageText");
+            text.SetActive(true);
+            text.transform.position = Camera.main.WorldToScreenPoint(transform.position);
 
             if (!m_HealthSlider.gameObject.activeSelf)
                 m_HealthSlider.gameObject.SetActive(true);

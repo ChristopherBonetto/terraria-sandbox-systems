@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-namespace Terrria.AI
+namespace Terraria.AI
 {
     public enum SlimeState
     {
