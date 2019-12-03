@@ -33,7 +33,7 @@ public class TCraftingSlot : MonoBehaviour
 
     public void CancelItem()
     {
-        m_itemInSlot = TRecipeInfo.Empty;
+        //m_itemInSlot = TRecipeInfo.Empty;
         gameObject.SetActive(false);
     }
 
