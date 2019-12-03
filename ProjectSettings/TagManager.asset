@@ -9,6 +9,7 @@ TagManager:
   - CraftingButton
   - DamageText
   - HealthBar
+  - InventorySlot
   layers:
   - Default
   - TransparentFX

@@ -3,32 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class TUIManager : MonoBehaviour
 {
-    public static UIManager SharedInstance { get; private set; }
+    public static TUIManager SharedInstance { get; private set; }
 
-    public bool IsInventoryOpen { get; private set; }
+    [SerializeField] private Image m_itemInHandUI;
 
-    [SerializeField] private GameObject m_craftingBar;
+    #region Inventory
 
     [SerializeField] private GameObject m_inventoryItemsHolder;
     [SerializeField] private GameObject m_slotPrefab;
 
+    public bool m_isInventoryUIOpen { get; private set; }
+
     [SerializeField] private RectTransform m_inventoryUI;
     private Vector2 m_startingInventorySize;
-    
-    [SerializeField] private Image m_itemInHandUI;
 
     public List<GameObject> m_InventorySlotsUI { get; private set; } = new List<GameObject>();
+    
+    #endregion
 
+    #region Crafting
+
+    [SerializeField] private GameObject m_craftingBar;
     public List<Button> CraftableSlots { get; private set; } = new List<Button>();
 
-    #region Crafting scrollbar
-
     [SerializeField] private Scrollbar m_craftingScrollBar;
-    
 
     #endregion
+
+
+    private void OnEnable()
+    {
+        TEventManager.SubscribeTo<bool>(TEventID.OnInventoryOpen, OpenCloseInventory);
+    }
+    private void OnDisable()
+    {
+        TEventManager.UnsubscribeFrom<bool>(TEventID.OnInventoryOpen, OpenCloseInventory);
+    }
+
 
     private void Awake()
     {
@@ -40,34 +53,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         m_itemInHandUI.gameObject.SetActive(false);
-        
     }
-
-    
-    #region Starting Instantiate Buttons
-    //Instantiate button and return his Tinventory slot
-    public TInventorySlot InstantiateSlotInInventory()
-    {
-        GameObject slot = Instantiate(m_slotPrefab) as GameObject;
-
-        slot.transform.SetParent(m_inventoryItemsHolder.transform);
-        slot.transform.localScale = new Vector3(1, 1, 1);
-
-        AddSlotToInventoryUI(slot);
-
-        TInventorySlot tempSlotRef = slot.GetComponentInChildren<TInventorySlot>();
-
-        return tempSlotRef;
-    }
-    
-    public void AddSlotToInventoryUI(GameObject inSlotToAdd)
-    {
-        if (!m_InventorySlotsUI.Contains(inSlotToAdd))
-        {
-            m_InventorySlotsUI.Add(inSlotToAdd);
-        }
-    }
-    #endregion
 
 
     #region OpenClose Inventory
@@ -75,9 +61,9 @@ public class UIManager : MonoBehaviour
     //What happens to the ui when the inventory is open or close
     public void OpenCloseInventory(bool inIsOpen)
     {
-        IsInventoryOpen = inIsOpen;
+        m_isInventoryUIOpen = inIsOpen;
 
-        if (!inIsOpen)
+        if (m_isInventoryUIOpen == false)
         {
             m_inventoryUI.sizeDelta = new Vector2(m_inventoryUI.sizeDelta.x, 85);
         }
@@ -111,6 +97,15 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+    #region List of Buttons (Inventory / Crafting)
+    public void AddInventorySlotUI(GameObject inSlotToAdd)
+    {
+        if (!m_InventorySlotsUI.Contains(inSlotToAdd))
+        {
+            m_InventorySlotsUI.Add(inSlotToAdd);
+        }
+    }
+
     public void AddCraftingButton(GameObject inObj)
     {
         Button tempButton = inObj.GetComponent<Button>();
@@ -123,10 +118,11 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    #endregion
 
     public void ScrollCraftingBar(float inScrollSpeed)
     {
-        if(IsInventoryOpen)
+        if(m_isInventoryUIOpen)
         m_craftingScrollBar.value += inScrollSpeed;
     }
     

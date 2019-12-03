@@ -6,77 +6,70 @@ public class TInventory : MonoBehaviour
 {
     private TPlayerController m_myPlayer;
 
-    public List<TItem> StartingItems = new List<TItem>();
-    public List<TInventorySlot> InventorySlots = new List<TInventorySlot>();
+    [SerializeField] private List<TItem> StartingItems = new List<TItem>();
+    public List<TInventorySlot> InventorySlots { get; private set; } = new List<TInventorySlot>();
 
-    [SerializeField] private int m_slotsNumber;
-    private int m_slotCounter = 0;
+    public bool m_isInventoryOpen { get; private set; }
 
-    public bool InventoryIsOpen = false;
+
+
+
+    private void OnEnable()
+    {
+        TEventManager.SubscribeTo<bool>(TEventID.OnInventoryOpen, ChangeOpenCloseInventoryBool);
+    }
+    private void OnDisable()
+    {
+        TEventManager.UnsubscribeFrom<bool>(TEventID.OnInventoryOpen, ChangeOpenCloseInventoryBool);
+    }
+
+
+
+
 
     private void Awake()
     {
         m_myPlayer = gameObject.GetComponent<TPlayerController>();
     }
-
-    private void Start()
-    {
-        InstantiateSlotsInInventory();
-
-        ChangeOpenCloseInventoryBool(InventoryIsOpen);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            InventoryIsOpen = !InventoryIsOpen;
-            ChangeOpenCloseInventoryBool(InventoryIsOpen);
-        }
-    }
-
-    //Used to open and close Inventory
-    public void ChangeOpenCloseInventoryBool(bool inIsOpen)
-    {
-        TItemHandler.SharedInstance.SelectedItem = null;
-        UIManager.SharedInstance.OpenCloseInventory(inIsOpen);
-    }
-
     
-    #region Start Create Inventory
-    public void InstantiateSlotsInInventory()
+
+    public void InventorySlotsReference()
     {
-        if (m_slotCounter <= m_slotsNumber)
-        {
-            TInventorySlot tempSlotRef = UIManager.SharedInstance.InstantiateSlotInInventory();
-            tempSlotRef.InventoryRef = this;
+        List<GameObject> tempInventorySlotsList = new List<GameObject>();
+        tempInventorySlotsList = ObjectPooler.SharedInstance.ReturnListFromDictionary("InventorySlot");
 
-            AddSlotToInventory(tempSlotRef);
-            
-            m_slotCounter++;
-            InstantiateSlotsInInventory();
-        }
-        else
+        foreach (GameObject item in tempInventorySlotsList)
         {
-            m_slotCounter = 0;
+            item.SetActive(true);
+            TInventorySlot tempSlot = item.GetComponentInChildren<TInventorySlot>();
 
-            InventoryIsOpen = false;
-            
-            return;
+            if (tempSlot != null)
+            {
+                AddSlotToInventory(tempSlot);
+            }
+            TUIManager.SharedInstance.AddInventorySlotUI(item);
         }
     }
+
     public void AddSlotToInventory(TInventorySlot inSlotToAdd)
     {
         if (!InventorySlots.Contains(inSlotToAdd))
         {
             InventorySlots.Add(inSlotToAdd);
+            inSlotToAdd.TakeInventoryRef(this);
         }
         else
         {
             Debug.Log("the list contains this element");
         }
     }
-    #endregion
+
+    //Used to open and close Inventory
+    public void ChangeOpenCloseInventoryBool(bool inIsOpen)
+    {
+        m_isInventoryOpen = inIsOpen;
+    }
+
 
     #region Collet New Item
     public void CollectItem(TItemQuantity inAddThisItem)

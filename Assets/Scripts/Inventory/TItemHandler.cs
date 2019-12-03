@@ -25,8 +25,25 @@ public class TItemHandler : MonoBehaviour
 
     private TInventorySlot m_SelectedItem;
 
+
+    private void OnEnable()
+    {
+        TEventManager.SubscribeTo<bool>(TEventID.OnInventoryOpen, ResetSelectedItemWithEvent);
+    }
+    private void OnDisable()
+    {
+        TEventManager.UnsubscribeFrom<bool>(TEventID.OnInventoryOpen, ResetSelectedItemWithEvent);
+    }
+
+
+
     private void Awake()
     {
         SharedInstance = this;
+    }
+
+    public void ResetSelectedItemWithEvent(bool inValue)
+    {
+        TItemHandler.SharedInstance.SelectedItem = null;
     }
 }

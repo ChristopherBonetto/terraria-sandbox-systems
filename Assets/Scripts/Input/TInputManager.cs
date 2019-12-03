@@ -24,6 +24,11 @@ public class TInputManager : MonoBehaviour
 
     [SerializeField] private TPlayerController m_UserPlayer;
 
+    [SerializeField] private KeyCode m_keyToOpenInventory;
+    private bool inventoryBool = false;
+
+    
+
     #region MonoBehaviour cycle
 
     private void Awake()
@@ -37,11 +42,13 @@ public class TInputManager : MonoBehaviour
         CheckMovementInput();
         CheckKeyboardNumber();
         CheckScroll();
+        OpenCloseInventory();
     }
 
     private void OnEnable()
     {
         StartCoroutine(PointerTrackerCoroutine());
+        StartCoroutine(WaitToStart());
     }
 
     private void OnDisable()
@@ -83,6 +90,29 @@ public class TInputManager : MonoBehaviour
         #endregion
     }
 
+    #region Inventory System
+    private IEnumerator WaitToStart()
+    {
+        yield return new WaitForFixedUpdate();
+        TriggerInventoryEvent();
+    }
+
+    public void OpenCloseInventory()
+    {
+        if (Input.GetKeyDown(m_keyToOpenInventory))
+        {
+            TriggerInventoryEvent();
+        }
+    }
+
+    private void TriggerInventoryEvent()
+    {
+        TEventManager.TriggerEvent(TEventID.OnInventoryOpen, inventoryBool);
+        inventoryBool = !inventoryBool;
+    }
+    #endregion
+
+    #region Keyboard Input System
     private void CheckKeyboardNumber()
     {
         if (Input.anyKeyDown)
@@ -93,8 +123,7 @@ public class TInputManager : MonoBehaviour
             {
                 int effectiveNumber = (int)tempNumber - 1;
 
-                m_UserPlayer.PlayerInventory.InventorySlots[effectiveNumber].SelectSlot();
-
+                m_UserPlayer.PlayerInventoryComponent.InventorySlots[effectiveNumber].SelectSlot();
             }
         }
     }
@@ -147,15 +176,19 @@ public class TInputManager : MonoBehaviour
         }
         
     }
+    #endregion
+
+    #region Crafting Scrollbar System
     public void CheckScroll()
     {
         float scrollValue = Input.GetAxis("Mouse ScrollWheel");
         
         if(scrollValue != 0)
         {            
-            UIManager.SharedInstance.ScrollCraftingBar(scrollValue);
+            TUIManager.SharedInstance.ScrollCraftingBar(scrollValue);
         }
     }
+    #endregion
 
     /// <summary>
     /// Checks if the pointer moved from a grid cell to another and raises an event when it happens. The coroutine runs only if there is at least one subscriber to the event.

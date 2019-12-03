@@ -6,8 +6,8 @@ public class TCraftingItemsComponent : MonoBehaviour
 {
     private TPlayerController m_myPlayer;
 
-    public List<TItemQuantity> AllPlayerItems = new List<TItemQuantity>();
-    public List<TRecipeInfo> CraftableItems = new List<TRecipeInfo>();
+    public List<TItemQuantity> AllPlayerItems { get; private set; } = new List<TItemQuantity>();
+    public List<TRecipeInfo> CraftableRecipes { get; private set; } = new List<TRecipeInfo>();
 
     public List<TCraftingSlot> CraftingSlots { get; private set; } = new List<TCraftingSlot>();
 
@@ -34,7 +34,7 @@ public class TCraftingItemsComponent : MonoBehaviour
                     CraftingSlots.Add(tempSlot);
                 }
             }
-            UIManager.SharedInstance.AddCraftingButton(item);
+            TUIManager.SharedInstance.AddCraftingButton(item);
         }
     }
 
@@ -42,10 +42,10 @@ public class TCraftingItemsComponent : MonoBehaviour
     public void FindAvaibleItems()
     {
         AllPlayerItems.Clear();
-        CraftableItems.Clear();
+        CraftableRecipes.Clear();
 
-        AllPlayerItems = m_myPlayer.PlayerInventory.ItemsInInventory();
-        TRecipeContainer.SharedIstance.CheckCraftableItem(AllPlayerItems, CraftableItems);
+        AllPlayerItems = m_myPlayer.PlayerInventoryComponent.ItemsInInventory();
+        TRecipeContainer.SharedIstance.CheckCraftableItem(AllPlayerItems, CraftableRecipes);
 
         FillRecipeInSlots();
     }
@@ -54,13 +54,13 @@ public class TCraftingItemsComponent : MonoBehaviour
     {
         for (int i = 0; i < CraftingSlots.Count; i++)
         {
-            if(i > CraftableItems.Count - 1)
+            if(i > CraftableRecipes.Count - 1)
             {
                 CraftingSlots[i].CancelItem();
             }
             else
             {
-                CraftingSlots[i].FillSlot(CraftableItems[i]);
+                CraftingSlots[i].FillSlot(CraftableRecipes[i]);
             }
         }
     }
@@ -71,9 +71,9 @@ public class TCraftingItemsComponent : MonoBehaviour
         for (int i = 0; i < inRecipeItem.itemsNecessary.Length; i++)
         {
             TItemQuantity tempItemQuantity = new TItemQuantity(inRecipeItem.itemsNecessary[i].Item, inRecipeItem.itemsNecessary[i].Amount);
-            m_myPlayer.PlayerInventory.CheckSimilarItemsAndRemoveValue(tempItemQuantity);
+            m_myPlayer.PlayerInventoryComponent.CheckSimilarItemsAndRemoveValue(tempItemQuantity);
         }
-        m_myPlayer.PlayerInventory.CollectItem(inRecipeItem.itemToObtain);
+        m_myPlayer.PlayerInventoryComponent.CollectItem(inRecipeItem.itemToObtain);
         FindAvaibleItems();
     }
 

@@ -13,7 +13,7 @@ public class TInventorySlot : MonoBehaviour
     }
 
     public TItemQuantity ItemInSlot;
-    public TInventory InventoryRef;
+    public TInventory InventoryRef { get; private set; }
 
     [SerializeField] Image m_slotImage;
 
@@ -33,7 +33,7 @@ public class TInventorySlot : MonoBehaviour
         else if (ItemInSlot != TItemQuantity.Empty)
         {
             TItemHandler.SharedInstance.SelectedItem = this;
-            if (UIManager.SharedInstance.IsInventoryOpen) ShowImage(false);
+            if (TUIManager.SharedInstance.m_isInventoryUIOpen) ShowImage(false);
         }
     }
 
@@ -67,7 +67,7 @@ public class TInventorySlot : MonoBehaviour
 
         if(tempSlot != null)
         {
-            if (InventoryRef.InventoryIsOpen)
+            if (InventoryRef.m_isInventoryOpen)
             {
                 if (ItemInSlot.Item == null)
                 {
@@ -105,4 +105,8 @@ public class TInventorySlot : MonoBehaviour
     }
     #endregion
 
+    public void TakeInventoryRef(TInventory inInventory)
+    {
+        InventoryRef = inInventory;
+    }
 }

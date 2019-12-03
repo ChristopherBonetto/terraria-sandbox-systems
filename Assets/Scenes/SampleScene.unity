@@ -782,6 +782,11 @@ MonoBehaviour:
     AmountToPool: 5
     ShouldExpand: 1
     FatherGameObject: {fileID: 209941452}
+  - ObjectToPool: {fileID: 4277470830733030595, guid: 48930ee297715b443b02e67c6513cc53,
+      type: 3}
+    AmountToPool: 40
+    ShouldExpand: 1
+    FatherGameObject: {fileID: 753199491}
 --- !u!4 &935259094
 Transform:
   m_ObjectHideFlags: 0
@@ -1187,6 +1192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UserPlayer: {fileID: 1883271525}
+  m_keyToOpenInventory: 27
 --- !u!4 &1126208127
 Transform:
   m_ObjectHideFlags: 0
@@ -29195,12 +29201,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd886b54d77bc24ab367ac0e383f3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_craftingBar: {fileID: 1699912206}
+  m_itemInHandUI: {fileID: 885823568}
   m_inventoryItemsHolder: {fileID: 753199491}
   m_slotPrefab: {fileID: 4277470830733030595, guid: 48930ee297715b443b02e67c6513cc53,
     type: 3}
   m_inventoryUI: {fileID: 1444712113}
-  m_itemInHandUI: {fileID: 885823568}
+  m_craftingBar: {fileID: 1699912206}
   m_craftingScrollBar: {fileID: 0}
 --- !u!4 &1474534075
 Transform:
@@ -38811,8 +38817,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413a0f9cff906124b8c6e5b18e4e7a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllPlayerItems: []
-  CraftableItems: []
 --- !u!114 &1883271527 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5790670836256860931, guid: 27d74ee8cfa35a44294aa5cacf90038c,
@@ -38850,9 +38854,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff20b70aa837e5e43b7fc0ccde82c261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventorySlots: []
-  m_slotsNumber: 39
-  InventoryIsOpen: 0
+  StartingItems:
+  - {fileID: 11400000, guid: b9ee97883f208b042b2c14caea040688, type: 2}
+  - {fileID: 11400000, guid: f9b10e319b0a95346b5e63a630df5792, type: 2}
+  - {fileID: 11400000, guid: 7b58208c933cea14788b8d8eba5c368f, type: 2}
 --- !u!1001 &2055235158
 PrefabInstance:
   m_ObjectHideFlags: 0

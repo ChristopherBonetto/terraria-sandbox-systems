@@ -7,5 +7,7 @@ public enum TEventID
     OnPointerMovedOnGrid,
     OnHealthUpdate,
     OnItemSelected,
-    OnItemDeselected
+    OnItemDeselected,
+    OnInventoryOpen,
+    OnSelectSlotWithNumber
 }

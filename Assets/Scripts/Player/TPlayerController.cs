@@ -32,16 +32,16 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     /// Inventory component
     /// </summary>
 
-    private TInventory m_PlayerInventory;
-    public TInventory PlayerInventory
+    private TInventory m_PlayerInventoryComponent;
+    public TInventory PlayerInventoryComponent
     {
         get
         {
-            if (m_PlayerInventory == null)
+            if (m_PlayerInventoryComponent == null)
             {
-                m_PlayerInventory = GetComponent<TInventory>();
+                m_PlayerInventoryComponent = GetComponent<TInventory>();
             }
-            return m_PlayerInventory;
+            return m_PlayerInventoryComponent;
         }
     }
 
@@ -158,6 +158,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         // Update visual
         TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, DefenseComponent);
 
+        PlayerInventoryComponent.InventorySlotsReference();
         PlayerCraftComponent.CraftingButtonsReference();
     }
 
