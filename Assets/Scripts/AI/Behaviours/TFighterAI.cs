@@ -25,6 +25,7 @@ namespace Terraria.AI
         private bool m_ImFreeze;
         private float m_CurrentFreezeTime;
         private Collider2D m_PlayerCollider;
+        private bool m_ImMoving;
 
         /// <summary>
         /// Properties
@@ -37,7 +38,6 @@ namespace Terraria.AI
         {
             if (!m_ImFreeze)
             {
-
                 m_PlayerCollider = Physics2D.OverlapCircle(m_Transform.position, m_Radius, m_PlayerMask);
 
                 if (m_PlayerCollider)
@@ -60,11 +60,20 @@ namespace Terraria.AI
 
         public void Jump()
         {
-            if (Physics2D.Raycast(m_Transform.position, m_Player.transform.position - m_Transform.position, 2, m_JumpableLayers))
+            if (!m_ImMoving)
             {
-                if (Physics2D.Raycast(m_Legs.position, Vector2.down + Vector2.right * m_Collider.bounds.extents.x, 0.3f, m_JumpableLayers) ||
-                    Physics2D.Raycast(m_Legs.position, Vector2.down + Vector2.right * -m_Collider.bounds.extents.x, 0.3f, m_JumpableLayers))
-                    m_Rb.AddForce(Vector2.up * Data.JumpForce);
+                // if there are something between enemy and player
+                if (Physics2D.Raycast(m_Transform.position, m_Player.transform.position - m_Transform.position, m_Radius, m_JumpableLayers))
+                {
+                    Vector2 checkLeft = Vector2.down + (Vector2.right * m_Collider.bounds.extents.x);
+                    Vector2 checkRight = Vector2.down + (Vector2.right * -m_Collider.bounds.extents.x);
+
+                    // if it's touching the ground
+                    // Jumps
+                    if (Physics2D.Raycast(m_Legs.position, checkLeft, 0.1f, m_JumpableLayers) ||
+                        Physics2D.Raycast(m_Legs.position, checkRight, 0.1f, m_JumpableLayers))
+                        m_Rb.AddForce(Vector2.up * Data.JumpForce);
+                }
             }
         }
 
@@ -81,7 +90,11 @@ namespace Terraria.AI
 
                 m_Transform.localScale = scale;
                 transform.position += (Vector3.right * inDirection) * Data.Speed * Time.deltaTime;
+
+                m_ImMoving = true;
             }
+            else
+                m_ImMoving = false;
         }
     }
 }

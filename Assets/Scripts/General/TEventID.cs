@@ -8,6 +8,8 @@ public enum TEventID
     OnHealthUpdate,
     OnItemSelected,
     OnItemDeselected,
+    OnItemEquipped,
+    OnItemUnequipped,
     OnInventoryOpen,
     OnSelectSlotWithNumber
 }

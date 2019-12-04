@@ -132,15 +132,21 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     private void OnEnable()
     {
         // subscribe to equip event
-        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, OnItemEquipped);
-        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemDeselected, OnItemUnequipped);
+        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, OnItemSelected);
+        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemDeselected, OnItemDeselect);
+
+        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemEquipped, OnItemEquipped);
+        TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemUnequipped, OnItemUnequipped);
     }
 
     private void OnDisable()
     {
         // unsubscibe to equip event.
-        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemSelected, OnItemEquipped);
-        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemDeselected, OnItemUnequipped);
+        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemSelected, OnItemSelected);
+        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemDeselected, OnItemDeselect);
+
+        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemEquipped, OnItemEquipped);
+        TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemUnequipped, OnItemUnequipped);
     }
 
     private void Awake()
@@ -165,9 +171,6 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     private void Update()
     {
         Jump();
-
-        if (Input.GetKeyDown(KeyCode.L))
-            CanAttack();
 
         if (m_ImFreeze)
         {
@@ -339,11 +342,16 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
     #endregion
 
+    #region Select / Equip
+
     /// <summary>
-    /// Set stats when an item is equipped.
+    /// Set stats when an item is selected.
     /// </summary>
-    public void OnItemEquipped(TInventorySlot item)
+    public void OnItemSelected(TInventorySlot item)
     {
+        // Is it a weapon?
+        // Update: stats, layerMask, sprite, animator controller.s
+
         if (item.ItemInSlot.Item is TItemWeapon)
         {
             TItemWeapon weapon = item.ItemInSlot.Item as TItemWeapon;
@@ -360,19 +368,17 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             m_Anim.runtimeAnimatorController = weapon.VisualAndInteraction.PlayerOverrideController;
 
         }
-        else if (item.ItemInSlot.Item is TItemArmor)
-        {
-            TItemArmor armor = item.ItemInSlot.Item as TItemArmor;
-            DataAssigned.Defense = m_DataToAssign.Defense + armor.Defence;
-        }
     }
 
     /// <summary>
-    /// Set stats when an item is unequipped.
+    /// Set stats when an item is deselected.
     /// </summary>
-    public void OnItemUnequipped(TInventorySlot item)
+    public void OnItemDeselect(TInventorySlot item)
     {
         if (!item) return;
+
+        // Is it a weapon?
+        // Update: stats, layerMask, sprite, animator controller.s
 
         if (item.ItemInSlot.Item is TItemWeapon)
         {
@@ -388,10 +394,47 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
             m_Anim.runtimeAnimatorController = m_DefaultAnim;
         }
-        else if (item.ItemInSlot.Item is TItemArmor)
+    }
+
+    /// <summary>
+    /// Set stats when an item is equipped
+    /// </summary>
+    public void OnItemEquipped(TInventorySlot item)
+    {
+        // Update stats
+        // Update sprites.
+
+        if (item.ItemInSlot.Item is TItemArmor)
         {
             TItemArmor armor = item.ItemInSlot.Item as TItemArmor;
-            DataAssigned.Defense = m_DataToAssign.Defense - armor.Defence;
+
+            // Init health and defense.
+
+            DataAssigned.Defense = m_DataToAssign.Defense + armor.Defence;
+            DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
         }
     }
+
+    /// <summary>
+    /// Set stats when an item is unequipped
+    /// </summary>
+    public void OnItemUnequipped(TInventorySlot item)
+    {
+        if (!item) return;
+
+        // Update stats
+        // Update sprites.
+
+        if (item.ItemInSlot.Item is TItemArmor)
+        {
+            TItemArmor armor = item.ItemInSlot.Item as TItemArmor;
+
+            // Init health and defense.
+
+            DataAssigned.Defense = m_DataToAssign.Defense;
+            DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
+        }
+    }
+
+    #endregion
 }

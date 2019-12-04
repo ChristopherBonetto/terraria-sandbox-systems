@@ -18,6 +18,7 @@ public class TItemArmor : TItem
 
     public override bool Use(TPlayerController user, TPointerData inData)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Equip armor");
+        return true;
     }
 }
