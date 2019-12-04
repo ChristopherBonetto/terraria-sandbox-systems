@@ -63,9 +63,9 @@ public class TRecipeContainer : MonoBehaviour
                 {
                     TItemQuantity tempItemQuantity = new TItemQuantity(RecipeDictionary[item].itemsNecessary[i].Item, RecipeDictionary[item].itemsNecessary[i].Amount);
 
-                    if (inListOfItems.Exists(x => x.Item.ItemName.Contains(tempItemQuantity.Item.ItemName)))
+                    if (inListOfItems.Exists(x => x.Item == tempItemQuantity.Item))
                     {
-                        TItemQuantity tempItem = inListOfItems.Find(x => x.Item.ItemName.Contains(tempItemQuantity.Item.ItemName));
+                        TItemQuantity tempItem = inListOfItems.Find(x => x.Item == tempItemQuantity.Item);
 
                         if (tempItem.Amount >= tempItemQuantity.Amount)
                         {
