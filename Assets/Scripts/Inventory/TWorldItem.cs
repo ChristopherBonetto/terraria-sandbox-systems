@@ -29,6 +29,8 @@ public class TWorldItem : MonoBehaviour
 
     public TItem ReferenceItem { get; set; }
 
+    public TMap PlacingLayer { get; set; }
+
     public Vector2Int Size { get { return m_Size; } }
 
     public TWorldGroupID GroupID { get { return m_GroupID; } }

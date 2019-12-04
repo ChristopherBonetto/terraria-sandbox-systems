@@ -7,7 +7,8 @@ using UnityEngine.Tilemaps;
 public enum TMap
 {
     Foreground = 0,
-    Background = 1
+    Midground = 1,
+    Background = 2
 }
 
 public class TTilemapManager : MonoBehaviour
@@ -26,7 +27,7 @@ public class TTilemapManager : MonoBehaviour
     /// <summary>
     /// Grid cell size.
     /// </summary>
-    public Vector3 CellSize { get { return m_ForegroundMap.cellSize; } }
+    public Vector3 CellSize { get; private set; }
 
     /// <summary>
     /// Cached reference to the attached Transform component.
@@ -37,8 +38,7 @@ public class TTilemapManager : MonoBehaviour
 
     #region Serialized variables
 
-    [SerializeField] private Tilemap m_ForegroundMap;
-    [SerializeField] private Tilemap m_BackgroundMap;
+    [SerializeField] private Tilemap[] m_Tilemaps;
 
     #endregion
 
@@ -50,6 +50,8 @@ public class TTilemapManager : MonoBehaviour
     /// </summary>
     private Dictionary<Vector3Int, int>[] m_TileDamage;
 
+    private int m_TilemapsCount;
+
     #endregion
 
     #region MonoBehaviour cycle
@@ -60,11 +62,13 @@ public class TTilemapManager : MonoBehaviour
 
         TransformComponent = transform;
 
-        m_TileDamage = new Dictionary<Vector3Int, int>[2]
-        {
-            new Dictionary<Vector3Int, int>(),
-            new Dictionary<Vector3Int, int>()
-        };
+        m_TilemapsCount = m_Tilemaps.Length;
+
+        CellSize = m_Tilemaps[0].cellSize;
+
+        m_TileDamage = new Dictionary<Vector3Int, int>[m_TilemapsCount];
+
+        for (int i = 0; i < m_TilemapsCount; i++) m_TileDamage[i] = new Dictionary<Vector3Int, int>();
     }
 
     #endregion
@@ -78,7 +82,7 @@ public class TTilemapManager : MonoBehaviour
     /// <returns></returns>
     public Vector3 CellToWorld(Vector3Int inPosition)
     {
-        return m_ForegroundMap.CellToWorld(inPosition);
+        return m_Tilemaps[0].CellToWorld(inPosition);
     }
 
     /// <summary>
@@ -88,7 +92,7 @@ public class TTilemapManager : MonoBehaviour
     /// <returns></returns>
     public Vector3 CellToWorldCenter(Vector3Int inPosition)
     {
-        return m_ForegroundMap.GetCellCenterWorld(inPosition);
+        return m_Tilemaps[0].GetCellCenterWorld(inPosition);
     }
 
     /// <summary>
@@ -110,10 +114,7 @@ public class TTilemapManager : MonoBehaviour
     /// <param name="inMap">Target Tilemap.</param>
     public void SetTile(Vector3Int inPosition, TDestructibleTile inTile, TMap inMap)
     {
-        if (inMap == TMap.Foreground)
-            m_ForegroundMap.SetTile(inPosition, inTile);
-        else if (inMap == TMap.Background)
-            m_BackgroundMap.SetTile(inPosition, inTile);
+        GetTilemap(inMap)?.SetTile(inPosition, inTile);
     }
 
 
@@ -127,11 +128,11 @@ public class TTilemapManager : MonoBehaviour
     {
         TDestructibleTile affectedTile;
 
-        // Cycle over Background and Foreground
-        for (int i = 0; i < 2; i++)
+        // Cycle over Tilemaps
+        for (int i = 0; i < m_TilemapsCount; i++)
         {
             // Get affected Tile
-            affectedTile = GetTilemap((TMap)i).GetTile<TDestructibleTile>(inCell);
+            affectedTile = m_Tilemaps[i].GetTile<TDestructibleTile>(inCell);
 
             if (affectedTile)
             {
@@ -152,7 +153,7 @@ public class TTilemapManager : MonoBehaviour
     /// <returns></returns>
     public Vector3Int WorldToGridPosition(Vector3 inWorldPosition)
     {
-        return m_ForegroundMap.WorldToCell(inWorldPosition);
+        return m_Tilemaps[0].WorldToCell(inWorldPosition);
     }
 
     /// <summary>
@@ -163,42 +164,21 @@ public class TTilemapManager : MonoBehaviour
     /// <returns>True if at least one neighbor has been found.</returns>
     public bool CheckForNeighbors(Vector3Int inCell, TMap inMap)
     {
-        // Determine target and other Tilemap
-        Tilemap targetMap;
-        Tilemap otherMap;
-        
-        if (inMap == TMap.Background)
-        {
-            targetMap = m_BackgroundMap;
-            otherMap = m_ForegroundMap;
-        }
-        else if (inMap == TMap.Foreground)
-        {
-            targetMap = m_ForegroundMap;
-            otherMap = m_BackgroundMap;
-        }
-        else
-            return false;
+        int mapIndex = (int)inMap;
 
         // Check all four direction on target Tilemap
-        for (int i = 0; i < GridUtility.Directions.Length; i++)
+        for (int i = Mathf.Max(0, mapIndex-1); i < Mathf.Min(m_TilemapsCount, mapIndex+1); i++)
         {
-            if (targetMap.HasTile(inCell + GridUtility.Directions[i]))
-                return true;
+            if (i != mapIndex && m_Tilemaps[i].HasTile(inCell)) return true;
+
+            for (int j = 0; j < GridUtility.Directions.Length; j++)
+            {
+                if (m_Tilemaps[i].HasTile(inCell + GridUtility.Directions[j]))
+                    return true;
+            }
         }
 
-        // If a neighbor wasn't found on target Tilemap, check on other Tilemap.
-        return otherMap.HasTile(inCell);
-    }
-
-    /// <summary>
-    /// Checks if the cell may be considered grounded (meaning the cell below is occupied by a Tile).
-    /// </summary>
-    /// <param name="inCell">Cell position.</param>
-    /// <returns></returns>
-    public bool IsGrounded(Vector3Int inCell)
-    {
-        return m_ForegroundMap.HasTile(inCell + Vector3Int.down);
+        return false;
     }
 
     /// <summary>
@@ -209,7 +189,29 @@ public class TTilemapManager : MonoBehaviour
     /// <returns>True if it's occupied.</returns>
     public bool IsOccupied(Vector3Int inCell, TMap inMap)
     {
-        return GetTilemap(inMap).HasTile(inCell);
+        Tilemap targetMap = GetTilemap(inMap);
+
+        if (targetMap)
+            return GetTilemap(inMap).HasTile(inCell);
+
+        else
+        {
+            Debug.LogError("Required Tilemap " + inMap + " doesn't exist.");
+            return false;
+        }
+    }
+
+    public bool IsGrounded(Vector3Int inCell, TMap inMap)
+    {
+        int index = (int)inMap;
+
+        for (int i = index; i > -1; i--)
+        {
+            if (m_Tilemaps[i].HasTile(inCell + Vector3Int.down))
+                return true;
+        }
+
+        return false;
     }
 
 
@@ -223,10 +225,7 @@ public class TTilemapManager : MonoBehaviour
     /// <param name="inDamageDealt">Damage dealt.</param>
     private void DamageTile(int mapIndex, Vector3Int inCell, int inDamageDealt = 1)
     {
-        Tilemap map = GetTilemap((TMap)mapIndex);
-        if (!map) return;
-
-        TDestructibleTile tile = map.GetTile<TDestructibleTile>(inCell);
+        TDestructibleTile tile = m_Tilemaps[mapIndex].GetTile<TDestructibleTile>(inCell);
         if (!tile) return;
         
         // CASE 1: The Tile was damaged before
@@ -239,7 +238,7 @@ public class TTilemapManager : MonoBehaviour
             if (m_TileDamage[mapIndex][inCell] >= tile.HitPoints)
             {
                 // Destroy Tile and remove it from damage tracking dictionary
-                tile.DestroySelf(map, inCell);
+                tile.DestroySelf(m_Tilemaps[mapIndex], inCell);
                 m_TileDamage[mapIndex].Remove(inCell);
             }
         }
@@ -247,7 +246,7 @@ public class TTilemapManager : MonoBehaviour
         // CASE 2: the Tile hasn't been damaged yet, but the damage is enough to destroy it directly
         else if (inDamageDealt >= tile.HitPoints)
         {
-            tile.DestroySelf(map, inCell);
+            tile.DestroySelf(m_Tilemaps[mapIndex], inCell);
         }
 
         // CASE 3: the Tile hasn't been damaged yet, but the damage is NOT enough to destroy it
@@ -265,12 +264,15 @@ public class TTilemapManager : MonoBehaviour
     /// <returns></returns>
     private Tilemap GetTilemap(TMap inMap)
     {
-        if (inMap == TMap.Foreground)
-            return m_ForegroundMap;
-        else if (inMap == TMap.Background)
-            return m_BackgroundMap;
+        int index = (int)inMap;
 
-        else return null;
+        if (index < 0 || index >= m_Tilemaps.Length)
+        {
+            Debug.LogError("The required Tilemap " + inMap + " does not exist.");
+            return null;
+        }
+
+        return m_Tilemaps[index];
     }
 }
 

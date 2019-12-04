@@ -20,9 +20,24 @@ public class TItemTileObject : TItemPositionable
         // 3. The corresponding cell should not be occupied by any object.
         if (inUser.IsInActionRange(inData.GridPosition)
             && !TTilemapManager.SharedInstance.IsOccupied(inData.GridPosition, m_TargetTilemap)
-            && TTilemapManager.SharedInstance.CheckForNeighbors(inData.GridPosition, m_TargetTilemap)
-            && !Physics2D.OverlapBox(TTilemapManager.SharedInstance.CellToWorldCenter(inData.GridPosition), TTilemapManager.SharedInstance.CellSize / 2, 0))
+            && TTilemapManager.SharedInstance.CheckForNeighbors(inData.GridPosition, m_TargetTilemap))
         {
+            Collider2D[] hitColliders = Physics2D.OverlapBoxAll(TTilemapManager.SharedInstance.CellToWorldCenter(inData.GridPosition), TTilemapManager.SharedInstance.CellSize / 2, 0);
+            int hitCount = hitColliders.Length;
+            TWorldItem hitItem;
+
+            for (int i = 0; i < hitCount; i++)
+            {
+                hitItem = hitColliders[i].GetComponentInParent<TWorldItem>();
+
+                if (hitItem)
+                {
+                    if (hitItem.PlacingLayer == m_TargetTilemap) return false;
+                }
+
+                else if (m_TargetTilemap == TMap.Foreground && hitColliders[i].GetComponentInParent<TPlayerController>()) return false;
+            }
+
             // Set tile
             TTilemapManager.SharedInstance.SetTile(inData.GridPosition, m_Tile, m_TargetTilemap);
             return true;

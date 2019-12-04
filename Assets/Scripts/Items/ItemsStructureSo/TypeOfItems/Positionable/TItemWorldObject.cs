@@ -9,6 +9,8 @@ public class TItemWorldObject : TItemPositionable
 
     [SerializeField] private TWorldItem m_Prefab;
 
+    [SerializeField] private TMap m_PlacingLayer;
+
     public override bool Use(TPlayerController inUser, TPointerData inData)
     {
         if (!inUser.IsInActionRange(inData.GridPosition)) return false;
@@ -18,8 +20,25 @@ public class TItemWorldObject : TItemPositionable
 
         Vector3 itemPosition = TTilemapManager.SharedInstance.CellToWorld(inData.GridPosition) + itemExtents;
 
+
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(itemPosition, itemExtents, 0);
+        int hitCount = hitColliders.Length;
+        TWorldItem hitItem;
+
         // If there is any object in the space occupied by the Item, return
-        if (Physics2D.OverlapBox(itemPosition, itemExtents, 0)) return false;
+        for (int i = 0; i < hitCount; i++)
+        {
+            hitItem = hitColliders[i].GetComponentInParent<TWorldItem>();
+
+            if (hitItem)
+            {
+                if (hitItem.PlacingLayer == m_PlacingLayer) return false;
+            }
+            else if (m_PlacingLayer == TMap.Foreground && hitColliders[i].GetComponentInParent<TPlayerController>())
+            {
+                return false;
+            }
+        }
 
         Vector3Int currentCell;
 
@@ -30,11 +49,12 @@ public class TItemWorldObject : TItemPositionable
 
             // starting from bottom left cell, increase by 1 on the right at each iteration
             // if any cell isn't grounded, return
-            if (TTilemapManager.SharedInstance.IsOccupied(currentCell, TMap.Foreground) || !TTilemapManager.SharedInstance.IsGrounded(currentCell)) return false;
+            if (TTilemapManager.SharedInstance.IsOccupied(currentCell, m_PlacingLayer) || !TTilemapManager.SharedInstance.IsGrounded(currentCell, m_PlacingLayer)) return false;
         }
 
         TWorldItem item = Instantiate(Prefab, itemPosition, Quaternion.identity);
         item.ReferenceItem = this;
+        item.PlacingLayer = m_PlacingLayer;
         item.gameObject.SetActive(true);
         return true;
     }
