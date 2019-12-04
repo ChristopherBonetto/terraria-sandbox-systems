@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class TItem : ScriptableObject
 {
-
     public bool DepleteOnUse { get { return m_DepleteOnUse; } }
 
+    [Space]
     public new string ItemName = "";
         
     [Space]

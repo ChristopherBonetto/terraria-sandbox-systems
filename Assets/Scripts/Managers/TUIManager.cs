@@ -9,10 +9,12 @@ public class TUIManager : MonoBehaviour
 
     [SerializeField] private Image m_itemInHandUI;
 
+    [Space, SerializeField] private GameObject m_equipmentPanel;
+
     #region Inventory
 
-    [SerializeField] private GameObject m_inventoryItemsHolder;
-    [SerializeField] private GameObject m_slotPrefab;
+    [Space,SerializeField] private GameObject m_inventoryItemsHolder;
+    [SerializeField] private GameObject m_inventorySlotPrefab;
 
     public bool m_isInventoryUIOpen { get; private set; }
 
@@ -25,7 +27,7 @@ public class TUIManager : MonoBehaviour
 
     #region Crafting
 
-    [SerializeField] private GameObject m_craftingBar;
+    [Space, SerializeField] private GameObject m_craftingBar;
     public List<Button> CraftableSlots { get; private set; } = new List<Button>();
 
     [SerializeField] private Scrollbar m_craftingScrollBar;
@@ -73,6 +75,7 @@ public class TUIManager : MonoBehaviour
             
         }
         DisableEnableItemUI(m_craftingBar);
+        DisableEnableItemUI(m_equipmentPanel);
         DisableButtons();
     }
 

@@ -2,35 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public struct TRecipeInfo
-{
-    public static TRecipeInfo Empty = new TRecipeInfo(null, TItemQuantity.Empty);
+//[System.Serializable]
+//public struct TRecipeInfo
+//{
+//    public static TRecipeInfo Empty = new TRecipeInfo(null, TItemQuantity.Empty);
 
-    public TItemQuantity[] itemsNecessary;
-    [Space]
-    public TItemQuantity itemToObtain;
+//    public TItemQuantity[] itemsNecessary;
+//    [Space]
+//    public TItemQuantity itemToObtain;
 
-    public TRecipeInfo(TItemQuantity[] inItemsNecessary, TItemQuantity inItemObtained)
-    {
-        this.itemsNecessary = inItemsNecessary;
-        this.itemToObtain = inItemObtained;
-    }
-}
+//    public TRecipeInfo(TItemQuantity[] inItemsNecessary, TItemQuantity inItemObtained)
+//    {
+//        this.itemsNecessary = inItemsNecessary;
+//        this.itemToObtain = inItemObtained;
+//    }
+//}
 
 public class TRecipeContainer : MonoBehaviour
 {
     public static TRecipeContainer SharedIstance;
 
-    [SerializeField] private TRecipeInfo[] m_recipes;
+    [SerializeField] private TRecipe[] m_recipes;
 
-    public Dictionary<TItemQuantity, TRecipeInfo> RecipeDictionary { get; private set; }
+    public Dictionary<TItemQuantity, TRecipe> RecipeDictionary { get; private set; }
 
     private void Awake()
     {
         SharedIstance = this;
 
-        RecipeDictionary = new Dictionary<TItemQuantity, TRecipeInfo>();
+        CreateDictionaryOfRecipe();
+    }
+
+    public void CreateDictionaryOfRecipe()
+    {
+        RecipeDictionary = new Dictionary<TItemQuantity, TRecipe>();
 
         for (int i = 0; i < m_recipes.Length; i++)
         {
@@ -46,7 +51,7 @@ public class TRecipeContainer : MonoBehaviour
     }
     
 
-    public void CheckCraftableItem(List<TItemQuantity> inListOfItems, List<TRecipeInfo> inListToFill)
+    public void CheckCraftableItem(List<TItemQuantity> inListOfItems, List<TRecipe> inListToFill)
     {    
         foreach (TItemQuantity item in RecipeDictionary.Keys)
         {

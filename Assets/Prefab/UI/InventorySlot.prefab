@@ -225,7 +225,6 @@ MonoBehaviour:
   ItemInSlot:
     Item: {fileID: 0}
     Amount: 0
-  InventoryRef: {fileID: 0}
   m_slotImage: {fileID: 5272494750365142031}
 --- !u!225 &3639225300502098365
 CanvasGroup:

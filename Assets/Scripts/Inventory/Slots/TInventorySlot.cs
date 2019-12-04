@@ -15,7 +15,7 @@ public class TInventorySlot : MonoBehaviour
     public TItemQuantity ItemInSlot;
     public TInventory InventoryRef { get; private set; }
 
-    [SerializeField] Image m_slotImage;
+    [SerializeField] protected Image m_slotImage;
 
         
     public void InsertItemToSlot(TItemQuantity inItemToAdd)
@@ -25,7 +25,7 @@ public class TInventorySlot : MonoBehaviour
         ShowImage(true);
     }
     
-    public void SelectSlot()
+    public virtual void SelectSlot()
     {
         if (TItemHandler.SharedInstance.SelectedItem)
             FillThisSlot(TItemHandler.SharedInstance.SelectedItem);
@@ -33,7 +33,7 @@ public class TInventorySlot : MonoBehaviour
         else if (ItemInSlot != TItemQuantity.Empty)
         {
             TItemHandler.SharedInstance.SelectedItem = this;
-            if (TUIManager.SharedInstance.m_isInventoryUIOpen) ShowImage(false);
+            if (InventoryRef.m_isInventoryOpen) ShowImage(false);
         }
     }
 
@@ -61,7 +61,7 @@ public class TInventorySlot : MonoBehaviour
 
     #region Drag and Drop event
 
-    public void FillThisSlot(TInventorySlot inSlot)
+    public virtual void FillThisSlot(TInventorySlot inSlot)
     {
         TInventorySlot tempSlot = TItemHandler.SharedInstance.SelectedItem;
 
@@ -95,7 +95,6 @@ public class TInventorySlot : MonoBehaviour
                 {
                     TItemHandler.SharedInstance.SelectedItem = null;
                     SelectSlot();
-                    
                 }
                 return;
             }

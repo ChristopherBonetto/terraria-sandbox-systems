@@ -44,6 +44,10 @@ public class TItemHandler : MonoBehaviour
 
     public void ResetSelectedItemWithEvent(bool inValue)
     {
-        TItemHandler.SharedInstance.SelectedItem = null;
+        if(SelectedItem != null)
+        {
+            SelectedItem.ShowImage(true);
+        }
+        SelectedItem = null;
     }
 }

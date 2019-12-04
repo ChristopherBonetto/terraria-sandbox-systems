@@ -7,7 +7,7 @@ public class TCraftingItemsComponent : MonoBehaviour
     private TPlayerController m_myPlayer;
 
     public List<TItemQuantity> AllPlayerItems { get; private set; } = new List<TItemQuantity>();
-    public List<TRecipeInfo> CraftableRecipes { get; private set; } = new List<TRecipeInfo>();
+    public List<TRecipe> CraftableRecipes { get; private set; } = new List<TRecipe>();
 
     public List<TCraftingSlot> CraftingSlots { get; private set; } = new List<TCraftingSlot>();
 
@@ -66,7 +66,7 @@ public class TCraftingItemsComponent : MonoBehaviour
     }
 
 
-    public void CraftRecipe(TRecipeInfo inRecipeItem)
+    public void CraftRecipe(TRecipe inRecipeItem)
     {
         for (int i = 0; i < inRecipeItem.itemsNecessary.Length; i++)
         {

@@ -363,7 +363,6 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         else if (item.ItemInSlot.Item is TItemArmor)
         {
             TItemArmor armor = item.ItemInSlot.Item as TItemArmor;
-
             DataAssigned.Defense = m_DataToAssign.Defense + armor.Defence;
         }
     }

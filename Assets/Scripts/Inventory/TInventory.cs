@@ -6,7 +6,7 @@ public class TInventory : MonoBehaviour
 {
     private TPlayerController m_myPlayer;
 
-    [SerializeField] private List<TItem> StartingItems = new List<TItem>();
+    [SerializeField] private List<TItemQuantity> StartingItems = new List<TItemQuantity>();
     public List<TInventorySlot> InventorySlots { get; private set; } = new List<TInventorySlot>();
 
     public bool m_isInventoryOpen { get; private set; }
@@ -31,7 +31,26 @@ public class TInventory : MonoBehaviour
     {
         m_myPlayer = gameObject.GetComponent<TPlayerController>();
     }
-    
+
+    private void Start()
+    {
+        StartCoroutine(CollectStartingItems());
+    }
+
+
+    public IEnumerator CollectStartingItems()
+    {
+        yield return new WaitForEndOfFrame();
+
+        int counter = 0;
+
+        while(counter < StartingItems.Count)
+        {
+            CollectItem(StartingItems[counter]);
+            counter++;
+        }
+    }
+
 
     public void InventorySlotsReference()
     {

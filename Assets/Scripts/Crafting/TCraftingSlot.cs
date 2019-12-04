@@ -9,7 +9,7 @@ public class TCraftingSlot : MonoBehaviour
 
     private TPlayerController m_myPlayer;
 
-    public TRecipeInfo m_itemInSlot;
+    public TRecipe m_itemInSlot;
 
     private void Start()
     {
@@ -19,7 +19,7 @@ public class TCraftingSlot : MonoBehaviour
         }
     }
 
-    public void FillSlot(TRecipeInfo inCraftableItem)
+    public void FillSlot(TRecipe inCraftableItem)
     {
         gameObject.SetActive(true);
         m_ItemImage.sprite = inCraftableItem.itemToObtain.Item.ItemSprite;
