@@ -51,14 +51,14 @@ public class TWorldItem : MonoBehaviour
 
     #region MonoBehaviour cycle
 
-    private void Awake()
+    protected virtual void Awake()
     {
         // Cache components references
         TransformComponent = transform;
         if(!SpriteRendererComponent) SpriteRendererComponent = GetComponentInChildren<SpriteRenderer>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         m_HitPoints = m_MaxHitPoints;
     }

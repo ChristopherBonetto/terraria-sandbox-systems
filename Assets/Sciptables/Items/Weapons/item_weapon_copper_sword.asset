@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c6a39269d135ad4690ab29893b0f382, type: 3}
-  m_Name: item_weapon_axe
+  m_Name: item_weapon_copper_sword
   m_EditorClassIdentifier: 
-  ItemName: Axe
-  ItemSprite: {fileID: 21300000, guid: 43ecbbceb91bba04d88aba03c60adc2f, type: 3}
+  ItemName: Copper Shortsword
+  ItemSprite: {fileID: 21300000, guid: 87138c6328b59364f856f3576b470b85, type: 3}
   m_DepleteOnUse: 0
   VisualAndInteraction:
-    DamageableWorldGroups: feffffff01000000
-    AttackType: 0
-    PlayerOverrideController: {fileID: 22100000, guid: d359808aa5dc34f45bbcd5128b1f2765,
+    DamageableWorldGroups: 
+    AttackType: 1
+    PlayerOverrideController: {fileID: 22100000, guid: 0298a8f632d94bc48bf92117db3415e9,
       type: 2}
     InteractableLayer:
       serializedVersion: 2
       m_Bits: 512
-  Attack: 1
-  AttackSpeed: 1.1
+  Attack: 5
+  AttackSpeed: 1.2

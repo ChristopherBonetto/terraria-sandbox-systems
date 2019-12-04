@@ -8,6 +8,8 @@ public enum TWorldGroupID
     BackgroundGeneric = -1,
     Tree = -2,
 
+    // Midground
+    MidgroundGeneric = 0,
 
     // Foreground
     ForegroundGeneric = 1

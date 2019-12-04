@@ -72,6 +72,7 @@ public class TItemWeapon : TItem
                 return true;
             }
         }
+
         return false;
     }
 }

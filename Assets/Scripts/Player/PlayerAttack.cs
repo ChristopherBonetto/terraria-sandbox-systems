@@ -108,7 +108,7 @@ public class PlayerAttack : MonoBehaviour
         // line cast from current position of the hand to -transform.up
         // The hand is animated and rotated, so -transform.up is the right coordinate.
 
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, -transform.up * Range, InteractableLayer);
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, transform.position-transform.up * Range, InteractableLayer);
 
         if (hit)
         {

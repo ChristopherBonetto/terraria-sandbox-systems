@@ -24,8 +24,8 @@ TagManager:
   - Pickup
   - Walkable
   - Player
-  - 
-  - 
+  - Foreground
+  - Background
   - 
   - 
   - 
