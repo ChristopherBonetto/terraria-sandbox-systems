@@ -37,8 +37,6 @@ namespace Terraria.AI
             }
         }
 
-
-
         protected override void Start()
         {
             base.Start();
@@ -53,7 +51,7 @@ namespace Terraria.AI
                 if (m_Player == null)
                     m_Player = collision.gameObject.GetComponent<TPlayerController>();
 
-                m_Player.DefenseComponent.TakeDamage(1);
+                m_Player.DefenseComponent.TakeDamage(Data.Damage);
             }
         }
     }
