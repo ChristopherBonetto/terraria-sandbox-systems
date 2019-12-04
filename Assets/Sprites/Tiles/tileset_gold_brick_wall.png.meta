@@ -1,0 +1,1555 @@
+fileFormatVersion: 2
+guid: efb0742b5e933e04183f4ae6ae2b673f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4447851391124236596
+    second: tileset_gold_brick_wall_0
+  - first:
+      213: 2751013724614714605
+    second: tileset_gold_brick_wall_1
+  - first:
+      213: -3906436986253788834
+    second: tileset_gold_brick_wall_2
+  - first:
+      213: 4377588240285268280
+    second: tileset_gold_brick_wall_3
+  - first:
+      213: 6101244190010676652
+    second: tileset_gold_brick_wall_4
+  - first:
+      213: 7768269104134908204
+    second: tileset_gold_brick_wall_5
+  - first:
+      213: -249885353205148860
+    second: tileset_gold_brick_wall_6
+  - first:
+      213: 2387015172302793241
+    second: tileset_gold_brick_wall_7
+  - first:
+      213: -1445168881320335294
+    second: tileset_gold_brick_wall_8
+  - first:
+      213: 1686659842409040174
+    second: tileset_gold_brick_wall_9
+  - first:
+      213: -3697459221302260431
+    second: tileset_gold_brick_wall_10
+  - first:
+      213: -1054078578289651483
+    second: tileset_gold_brick_wall_11
+  - first:
+      213: 8377029852170434387
+    second: tileset_gold_brick_wall_12
+  - first:
+      213: 8479923428453740741
+    second: tileset_gold_brick_wall_13
+  - first:
+      213: 4167998544766596541
+    second: tileset_gold_brick_wall_14
+  - first:
+      213: 8658729551673492604
+    second: tileset_gold_brick_wall_15
+  - first:
+      213: -253305119547841602
+    second: tileset_gold_brick_wall_16
+  - first:
+      213: -6702296564673114942
+    second: tileset_gold_brick_wall_17
+  - first:
+      213: -8539782649864885366
+    second: tileset_gold_brick_wall_18
+  - first:
+      213: -1977033887707902859
+    second: tileset_gold_brick_wall_19
+  - first:
+      213: 3075229226360248962
+    second: tileset_gold_brick_wall_20
+  - first:
+      213: -1380842136507419182
+    second: tileset_gold_brick_wall_21
+  - first:
+      213: -8687276238294026082
+    second: tileset_gold_brick_wall_22
+  - first:
+      213: -3902778626899685872
+    second: tileset_gold_brick_wall_23
+  - first:
+      213: -7154120126301090878
+    second: tileset_gold_brick_wall_24
+  - first:
+      213: -1086658260803933300
+    second: tileset_gold_brick_wall_25
+  - first:
+      213: 7982254495568090878
+    second: tileset_gold_brick_wall_26
+  - first:
+      213: -7088498305943633296
+    second: tileset_gold_brick_wall_27
+  - first:
+      213: -887289976365027468
+    second: tileset_gold_brick_wall_28
+  - first:
+      213: 6270094642087360305
+    second: tileset_gold_brick_wall_29
+  - first:
+      213: -4238116857076665018
+    second: tileset_gold_brick_wall_30
+  - first:
+      213: -8614559459840496051
+    second: tileset_gold_brick_wall_31
+  - first:
+      213: 4989458961719966253
+    second: tileset_gold_brick_wall_32
+  - first:
+      213: 4559137841019823236
+    second: tileset_gold_brick_wall_33
+  - first:
+      213: 8044966657150126953
+    second: tileset_gold_brick_wall_34
+  - first:
+      213: -1082634881001228537
+    second: tileset_gold_brick_wall_35
+  - first:
+      213: -28714242167436281
+    second: tileset_gold_brick_wall_36
+  - first:
+      213: -6149673931526473119
+    second: tileset_gold_brick_wall_37
+  - first:
+      213: -3128439104527283140
+    second: tileset_gold_brick_wall_38
+  - first:
+      213: 1473407809718903207
+    second: tileset_gold_brick_wall_39
+  - first:
+      213: -3409826455764498464
+    second: tileset_gold_brick_wall_40
+  - first:
+      213: -5545730501180000968
+    second: tileset_gold_brick_wall_41
+  - first:
+      213: 6376129909948267178
+    second: tileset_gold_brick_wall_42
+  - first:
+      213: -3867257407568889085
+    second: tileset_gold_brick_wall_43
+  - first:
+      213: -608058789222339418
+    second: tileset_gold_brick_wall_44
+  - first:
+      213: -8765072436865875349
+    second: tileset_gold_brick_wall_45
+  - first:
+      213: 9092344369286410541
+    second: tileset_gold_brick_wall_46
+  - first:
+      213: 2650886351802748720
+    second: tileset_gold_brick_wall_47
+  - first:
+      213: 6952921729843112396
+    second: tileset_gold_brick_wall_48
+  - first:
+      213: -4159589915209801499
+    second: tileset_gold_brick_wall_49
+  - first:
+      213: -8471061339437834214
+    second: tileset_gold_brick_wall_50
+  - first:
+      213: -5908815331603432615
+    second: tileset_gold_brick_wall_51
+  - first:
+      213: -7505083118764748676
+    second: tileset_gold_brick_wall_52
+  - first:
+      213: -4939640101838567859
+    second: tileset_gold_brick_wall_53
+  - first:
+      213: -6267936134109220555
+    second: tileset_gold_brick_wall_54
+  - first:
+      213: 3949411516755461967
+    second: tileset_gold_brick_wall_55
+  - first:
+      213: 4135420526918290911
+    second: tileset_gold_brick_wall_56
+  - first:
+      213: 940290417286237017
+    second: tileset_gold_brick_wall_57
+  - first:
+      213: -6317300846112981587
+    second: tileset_gold_brick_wall_58
+  - first:
+      213: -8589419366254728339
+    second: tileset_gold_brick_wall_59
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 15
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 156
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0292c2f491efcc64d8327b0dc2c19915
+      internalID: -4447851391124236596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_1
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 156
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59e717120dbc4404587474bb4691be8f
+      internalID: 2751013724614714605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 156
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96815bfdef7a92b428234ad5d48a75a4
+      internalID: -3906436986253788834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_3
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 156
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5808db04d7eb3245878a0d704d35640
+      internalID: 4377588240285268280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_4
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 156
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 400f23deee3b7a944bc49a1e2aad8087
+      internalID: 6101244190010676652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_5
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 156
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fdd477b407f4d94881c53a1726603f6
+      internalID: 7768269104134908204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_6
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 156
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4da717e0060875f4d9610405c2e46e9b
+      internalID: -249885353205148860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_7
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 156
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd0a5089b6da3bd428f9fe32255fe007
+      internalID: 2387015172302793241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_8
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 156
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fbd3fd39c27f074db13536a1027bc06
+      internalID: -1445168881320335294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_9
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 148
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62c28a26543bd184b9c212e08f92c8de
+      internalID: 1686659842409040174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_10
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 156
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0988ac9133248874886b35326b15c2ab
+      internalID: -3697459221302260431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_11
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 156
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e40a054df8bc4014ea2d4b4874a14884
+      internalID: -1054078578289651483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_12
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 148
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83e0c39a4d25855428ef765416808871
+      internalID: 8377029852170434387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7021609e51885a6439a9490221982d5e
+      internalID: 8479923428453740741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_14
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42e8d23f2c78b9043a4ef95a2499e9d7
+      internalID: 4167998544766596541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_15
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b021aad714414bc4384be27c6c26aae2
+      internalID: 8658729551673492604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_16
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84e25695170ede3478bc6c107089529a
+      internalID: -253305119547841602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_17
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 120
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edd537ffd9e97944c961b3912572362c
+      internalID: -6702296564673114942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_18
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 120
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 772f3b072efd32b4ca54dbc8ede728ab
+      internalID: -8539782649864885366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_19
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 154840dfcc0298448905b358e6cf2987
+      internalID: -1977033887707902859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_20
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d607e5461a89ae48952096957737661
+      internalID: 3075229226360248962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_21
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 293848d526d001f46b5cf620b946d277
+      internalID: -1380842136507419182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_22
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 112
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b65202daefcf1e24aa5f033ca869ffe5
+      internalID: -8687276238294026082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_23
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf55518843d963743a4c190224dbcf2b
+      internalID: -3902778626899685872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_24
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40671d60a62a96644bc7c1fbc9e9edae
+      internalID: -7154120126301090878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_25
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 112
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26eb8d678ab8d82459bc28a484b604d7
+      internalID: -1086658260803933300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 84
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a18798149522cb946a8c278cb65fb523
+      internalID: 7982254495568090878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_27
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 76
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f28ee04bc7de1d44ca7df742a99cf357
+      internalID: -7088498305943633296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_28
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 76
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dc5b31f7a2f0ca40b0b728431fdb488
+      internalID: -887289976365027468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_29
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 76
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bb99b06a6a803f41bdec478fa1d7dab
+      internalID: 6270094642087360305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_30
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 84
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b064723c72ee5447bc09af7d04efc0e
+      internalID: -4238116857076665018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_31
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 84
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b9202cfec21aed44a6f35acf1e43d37
+      internalID: -8614559459840496051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_32
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 84
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99d36fd88442acd4b8e1c7ee47d41ea5
+      internalID: 4989458961719966253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_33
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 84
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 175cd69f8db9d0e4a8f03278c8bd0a2b
+      internalID: 4559137841019823236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_34
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 84
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 002cf38f1df09224d9d66f3d5e5e8b1f
+      internalID: 8044966657150126953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_35
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 76
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91b00b2d1c28c1f4b8bfa76b2e27ac47
+      internalID: -1082634881001228537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_36
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 84
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d6474e5e5af74f49bbba3363caf7edf
+      internalID: -28714242167436281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_37
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 84
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eb41d6f70836164090ed937db0e9c39
+      internalID: -6149673931526473119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_38
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 76
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cb27dacc67ef99469afedf231766a8b
+      internalID: -3128439104527283140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b38dc7f652e9974a9fcaa154eb25440
+      internalID: 1473407809718903207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_40
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db45b18c9b2ace4f99976614fa5882e
+      internalID: -3409826455764498464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_41
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 56
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3509e7954ebda064f9c600a2b4291712
+      internalID: -5545730501180000968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_42
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 48
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0438fdc2629cee24bbd37be42c40d0fe
+      internalID: 6376129909948267178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_43
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 56
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1c56aa8316b38a45be8ea368d0705be
+      internalID: -3867257407568889085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_44
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 56
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de8b9a5f6beb4df4cbc0e94f88a3a85e
+      internalID: -608058789222339418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_45
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 40
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd5674925b315034696bed77791af388
+      internalID: -8765072436865875349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_46
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 40
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e78a25d447ac1604ba3ee0ff4a665100
+      internalID: 9092344369286410541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_47
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 40
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b06df45455d8c1f4e961a4fff0bca6c9
+      internalID: 2650886351802748720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_48
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 40
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 478d7483b7a390d4bb7eadf117b0e598
+      internalID: 6952921729843112396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_49
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 40
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e54402020b9d9ec4f91377957b97d6ec
+      internalID: -4159589915209801499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_50
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 40
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 906ef703eecef5d439c140f7104f5bc7
+      internalID: -8471061339437834214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_51
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 443990cb568476d4288680a272448424
+      internalID: -5908815331603432615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_52
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 4
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70f05e321cae8c34da51379ec8e6739d
+      internalID: -7505083118764748676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_53
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3d821430e1313e43be42555f0480aa8
+      internalID: -4939640101838567859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_54
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 4
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1159edd7c6332644b93737a801e8cfe
+      internalID: -6267936134109220555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_55
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 4
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fa75fbaa85567840b7c3e5a0ed5d5f2
+      internalID: 3949411516755461967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_56
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 4
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99ba926681c8d8047ad7cd87ed0e6e8f
+      internalID: 4135420526918290911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_57
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 4
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 160df6de085457740a92c37fb1c28456
+      internalID: 940290417286237017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_58
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 4
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebdd798f1b2e4a74ca9b0f004904a8aa
+      internalID: -6317300846112981587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_gold_brick_wall_59
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 4
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8646c1fc854802b4e8e8bca71af164e0
+      internalID: -8589419366254728339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5ac6ae6e079864040869aa468767a0f4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
