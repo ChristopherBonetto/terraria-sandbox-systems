@@ -58,6 +58,7 @@ public class TItemPickup : MonoBehaviour
 
         if (pc)
         {
+            TEventManager.TriggerEvent(TEventID.OnItemCollected, m_ContainedItem, TransformComponent.position);
             pc.PlayerInventoryComponent.CollectItem(m_ContainedItem);
             gameObject.SetActive(false);
         }

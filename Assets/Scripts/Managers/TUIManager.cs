@@ -7,29 +7,31 @@ public class TUIManager : MonoBehaviour
 {
     public static TUIManager SharedInstance { get; private set; }
 
-    [SerializeField] private Image m_itemInHandUI;
+    public bool m_isInventoryUIOpen { get; private set; }
 
-    [Space, SerializeField] private GameObject m_equipmentPanel;
+    public List<GameObject> m_InventorySlotsUI { get; private set; } = new List<GameObject>();
+
+    [Header("Equipment")]
+    [SerializeField] private GameObject m_equipmentPanel;
 
     #region Inventory
 
-    [Space,SerializeField] private GameObject m_inventoryItemsHolder;
+    [Header("Inventory")]
+    [SerializeField] private GameObject m_inventoryItemsHolder;
     [SerializeField] private GameObject m_inventorySlotPrefab;
-
-    public bool m_isInventoryUIOpen { get; private set; }
-
     [SerializeField] private RectTransform m_inventoryUI;
+
     private Vector2 m_startingInventorySize;
 
-    public List<GameObject> m_InventorySlotsUI { get; private set; } = new List<GameObject>();
     
     #endregion
 
     #region Crafting
 
-    [Space, SerializeField] private GameObject m_craftingBar;
     public List<Button> CraftableSlots { get; private set; } = new List<Button>();
 
+    [Header("Crafting")]
+    [SerializeField] private GameObject m_craftingBar;
     [SerializeField] private Scrollbar m_craftingScrollBar;
 
     #endregion
@@ -50,11 +52,6 @@ public class TUIManager : MonoBehaviour
         SharedInstance = this;
 
         m_startingInventorySize = m_inventoryUI.sizeDelta;
-    }
-
-    private void Start()
-    {
-        m_itemInHandUI.gameObject.SetActive(false);
     }
 
 
@@ -127,6 +124,5 @@ public class TUIManager : MonoBehaviour
     {
         if(m_isInventoryUIOpen)
         m_craftingScrollBar.value += inScrollSpeed;
-    }
-    
+    }    
 }

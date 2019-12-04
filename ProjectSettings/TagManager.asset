@@ -10,6 +10,7 @@ TagManager:
   - DamageText
   - HealthBar
   - InventorySlot
+  - FloatingText
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,7 @@ public enum TEventID
 {
     OnPointerMovedOnGrid,
     OnHealthUpdate,
+    OnItemCollected,
     OnItemSelected,
     OnItemDeselected,
     OnItemEquipped,

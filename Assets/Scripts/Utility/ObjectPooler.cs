@@ -31,6 +31,8 @@ public class ObjectPooler : MonoBehaviour
         public bool ShouldExpand;
 
         public GameObject FatherGameObject;
+
+        public bool ResetScale;
     }
 
     #endregion
@@ -171,7 +173,7 @@ public class ObjectPooler : MonoBehaviour
         if(item.FatherGameObject != null)
         {
             obj.transform.SetParent(item.FatherGameObject.transform);
-            obj.transform.localScale = new Vector3(1, 1, 1);
+            if (item.ResetScale) obj.transform.localScale = new Vector3(1, 1, 1);
         }
 
         return obj;
