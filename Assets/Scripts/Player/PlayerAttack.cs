@@ -110,7 +110,7 @@ public class PlayerAttack : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Linecast(transform.position, transform.position-transform.up * Range, InteractableLayer);
 
-        if (hit)
+        if (hit && m_DetectedCollider != hit)
         {
             IDefend entity = hit.collider.GetComponent<IDefend>();
             IKnockBackable ent = hit.collider.GetComponent<IKnockBackable>();
