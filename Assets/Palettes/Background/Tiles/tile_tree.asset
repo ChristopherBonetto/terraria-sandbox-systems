@@ -230,4 +230,4 @@ MonoBehaviour:
     Amount: 1
   m_GroupID: -2
   m_DestructionDirections: 000000000200000001000000
-  m_QuantityUnitsPerPickup: 6
+  m_QuantityUnitsPerPickup: 3
