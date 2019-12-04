@@ -6,7 +6,6 @@ public class TPlacementDummy : MonoBehaviour
 {
     private Transform m_TransformComponent;
     private SpriteRenderer m_SpriteRendererComponent;
-    private Vector3 m_Offset;
 
     private bool m_IsActive;
 
@@ -33,9 +32,6 @@ public class TPlacementDummy : MonoBehaviour
     {
         if (inSlot.ItemInSlot.Item is TItemWorldObject itemWorldObject)
         {
-            m_Offset.x = itemWorldObject.Prefab.Size.x * TTilemapManager.SharedInstance.CellSize.x / 2;
-            m_Offset.y = itemWorldObject.Prefab.Size.y * TTilemapManager.SharedInstance.CellSize.y / 2;
-
             m_SpriteRendererComponent.sprite = itemWorldObject.Prefab.ItemSprite;
 
             if (!m_IsActive)
@@ -83,7 +79,7 @@ public class TPlacementDummy : MonoBehaviour
 
                 if (TPlayerController.SharedInstance.IsInActionRange(newPointerCell))
                 {
-                    m_TransformComponent.position = TTilemapManager.SharedInstance.CellToWorld(newPointerCell) + m_Offset;
+                    m_TransformComponent.position = TTilemapManager.SharedInstance.CellToWorld(newPointerCell);
                     if (!m_SpriteRendererComponent.gameObject.activeInHierarchy) m_SpriteRendererComponent.gameObject.SetActive(true);
                 }
                 else

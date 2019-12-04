@@ -18,10 +18,10 @@ public class TItemWorldObject : TItemPositionable
         Vector3 itemExtents = Prefab.Size.x * TTilemapManager.SharedInstance.CellSize.x / 2 * Vector3.right
                                 + Prefab.Size.y * TTilemapManager.SharedInstance.CellSize.y / 2 * Vector3.up;
 
-        Vector3 itemPosition = TTilemapManager.SharedInstance.CellToWorld(inData.GridPosition) + itemExtents;
+        Vector3 itemPosition = TTilemapManager.SharedInstance.CellToWorld(inData.GridPosition);
 
 
-        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(itemPosition, itemExtents, 0);
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(itemPosition + itemExtents, itemExtents, 0);
         int hitCount = hitColliders.Length;
         TWorldItem hitItem;
 

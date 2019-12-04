@@ -12,18 +12,21 @@ public class TDoor : TWorldItem, IInteractable
         public Sprite VisualSprite;
         public Vector2 ColliderOffset;
         public Vector2 ColliderSize;
+        public Vector2 SpriteOffset;
     }
 
     [SerializeField] private TDoorState m_OpenState;
     [SerializeField] private TDoorState m_ClosedState;
 
     private BoxCollider2D m_ColliderComponent;
+    private Transform m_SpriteTransformComponent;
 
     protected override void Awake()
     {
         base.Awake();
 
         m_ColliderComponent = GetComponentInChildren<BoxCollider2D>();
+        m_SpriteTransformComponent = SpriteRendererComponent.transform; 
     }
 
     protected override void Start()
@@ -44,6 +47,6 @@ public class TDoor : TWorldItem, IInteractable
         m_ColliderComponent.size = inState.ColliderSize;
         gameObject.layer = LayerMask.NameToLayer(inState.Layer);
         SpriteRendererComponent.sprite = inState.VisualSprite;
-
+        m_SpriteTransformComponent.localPosition = inState.SpriteOffset;
     }
 }
