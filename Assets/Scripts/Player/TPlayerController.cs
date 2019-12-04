@@ -272,6 +272,8 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         return Mathf.FloorToInt(Vector3Int.Distance(inCell, TTilemapManager.SharedInstance.WorldToGridPosition(m_Transform.position))) <= DataAssigned.MaxActionDistance;
     }
 
+    #region Actions
+
     public void UseEquippedItem(TPointerData data)
     {
         if (PlayerItem.ItemInHand)
@@ -282,6 +284,23 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
                 PlayerItem.ItemInHand.DepleteAmount(1);
         }
     }
+
+    public void Act(TPointerData data)
+    {
+        if (IsInActionRange(data.GridPosition))
+        {
+            RaycastHit2D hit = Physics2D.GetRayIntersection(CameraFollow.MainCamera.ScreenPointToRay(data.ScreenPosition));
+
+            if (hit.collider)
+            {
+                IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+
+                if (interactable != null) interactable.Interact();
+            }
+        }
+    }
+
+    #endregion
 
     #region Weapon
 
@@ -336,8 +355,10 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             m_HandToAttack.AttackType = weapon.VisualAndInteraction.AttackType;
             m_HandToAttack.InteractableLayer = weapon.VisualAndInteraction.InteractableLayer;
             m_HandToAttack.WeaponIcon.sprite = weapon.ItemSprite;
+            m_HandToAttack.gameObject.SetActive(false);
 
             m_Anim.runtimeAnimatorController = weapon.VisualAndInteraction.PlayerOverrideController;
+
         }
         else if (item.ItemInSlot.Item is TItemArmor)
         {

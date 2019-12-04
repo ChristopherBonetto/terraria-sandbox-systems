@@ -70,6 +70,9 @@ public class TInputManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject())
             m_UserPlayer.UseEquippedItem(new TPointerData(Input.mousePosition));
 
+        else if (Input.GetMouseButtonUp(1) && !EventSystem.current.IsPointerOverGameObject())
+            m_UserPlayer.Act(new TPointerData(Input.mousePosition));
+
         #endregion
     }
 

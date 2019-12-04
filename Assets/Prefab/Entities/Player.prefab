@@ -409,7 +409,7 @@ MonoBehaviour:
   m_DataToAssign: {fileID: 11400000, guid: 038574074c1361b43b343d5d3f0a1e6f, type: 2}
   m_JumpableLayers:
     serializedVersion: 2
-    m_Bits: 2304
+    m_Bits: 10496
   m_Legs: {fileID: 3718000970134068218}
   m_HandToAttack: {fileID: 7853118608564259667}
   m_DefaultAnim: {fileID: 9100000, guid: ccc9a0a0f7cf9b54db50a2ac813134c1, type: 2}
@@ -494,7 +494,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: f6e93963fa59268469027bd845e1247d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
