@@ -1,0 +1,1555 @@
+fileFormatVersion: 2
+guid: 2fbb2f03df9a371499e51da24030fad4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4884336861717457793
+    second: tileset_stone_wall_0
+  - first:
+      213: 5747743433655276041
+    second: tileset_stone_wall_1
+  - first:
+      213: -531966946811556032
+    second: tileset_stone_wall_2
+  - first:
+      213: 3570451365883852520
+    second: tileset_stone_wall_3
+  - first:
+      213: 7514618693174433415
+    second: tileset_stone_wall_4
+  - first:
+      213: 2780098072199506112
+    second: tileset_stone_wall_5
+  - first:
+      213: -2809157675393204609
+    second: tileset_stone_wall_6
+  - first:
+      213: -1265193667654508991
+    second: tileset_stone_wall_7
+  - first:
+      213: 5297678367515249210
+    second: tileset_stone_wall_8
+  - first:
+      213: 4296172794536236769
+    second: tileset_stone_wall_9
+  - first:
+      213: 486104490239107000
+    second: tileset_stone_wall_10
+  - first:
+      213: -3022396810186492301
+    second: tileset_stone_wall_11
+  - first:
+      213: -2632696229268479135
+    second: tileset_stone_wall_12
+  - first:
+      213: -6655946001192402286
+    second: tileset_stone_wall_13
+  - first:
+      213: -7538991941603827961
+    second: tileset_stone_wall_14
+  - first:
+      213: -2222249391715750731
+    second: tileset_stone_wall_15
+  - first:
+      213: 6589387485807128858
+    second: tileset_stone_wall_16
+  - first:
+      213: -4461101404060011971
+    second: tileset_stone_wall_17
+  - first:
+      213: 5150501317955583444
+    second: tileset_stone_wall_18
+  - first:
+      213: -7477408480515193691
+    second: tileset_stone_wall_19
+  - first:
+      213: 1534811466721284383
+    second: tileset_stone_wall_20
+  - first:
+      213: -4456914116177259593
+    second: tileset_stone_wall_21
+  - first:
+      213: 671428857603055807
+    second: tileset_stone_wall_22
+  - first:
+      213: -5935408791504659728
+    second: tileset_stone_wall_23
+  - first:
+      213: 7592403253867267862
+    second: tileset_stone_wall_24
+  - first:
+      213: 619896422369121160
+    second: tileset_stone_wall_25
+  - first:
+      213: 7262434814417706523
+    second: tileset_stone_wall_26
+  - first:
+      213: 7540700687253439754
+    second: tileset_stone_wall_27
+  - first:
+      213: 7024984009802958153
+    second: tileset_stone_wall_28
+  - first:
+      213: 5525654301423468453
+    second: tileset_stone_wall_29
+  - first:
+      213: 2635325235623319967
+    second: tileset_stone_wall_30
+  - first:
+      213: 347617215563061935
+    second: tileset_stone_wall_31
+  - first:
+      213: -786045111440719310
+    second: tileset_stone_wall_32
+  - first:
+      213: -3060341547500893238
+    second: tileset_stone_wall_33
+  - first:
+      213: 1428026874916084296
+    second: tileset_stone_wall_34
+  - first:
+      213: 9043329304217614108
+    second: tileset_stone_wall_35
+  - first:
+      213: 4942850196129128819
+    second: tileset_stone_wall_36
+  - first:
+      213: 7354719538118595286
+    second: tileset_stone_wall_37
+  - first:
+      213: 8611040605747094598
+    second: tileset_stone_wall_38
+  - first:
+      213: 9045703203198769441
+    second: tileset_stone_wall_39
+  - first:
+      213: -3652634731608206454
+    second: tileset_stone_wall_40
+  - first:
+      213: 109378916349338955
+    second: tileset_stone_wall_41
+  - first:
+      213: 5416253240784163493
+    second: tileset_stone_wall_42
+  - first:
+      213: -2990767179583405828
+    second: tileset_stone_wall_43
+  - first:
+      213: 250739842604626223
+    second: tileset_stone_wall_44
+  - first:
+      213: 5155599787684774621
+    second: tileset_stone_wall_45
+  - first:
+      213: 3957908682494206569
+    second: tileset_stone_wall_46
+  - first:
+      213: -974230321290343400
+    second: tileset_stone_wall_47
+  - first:
+      213: -2689536133281022584
+    second: tileset_stone_wall_48
+  - first:
+      213: -5279196187027937569
+    second: tileset_stone_wall_49
+  - first:
+      213: -8855182722824533197
+    second: tileset_stone_wall_50
+  - first:
+      213: -3189031057413082424
+    second: tileset_stone_wall_51
+  - first:
+      213: 8018811104651377233
+    second: tileset_stone_wall_52
+  - first:
+      213: 2692727422421069784
+    second: tileset_stone_wall_53
+  - first:
+      213: -3134893963320974880
+    second: tileset_stone_wall_54
+  - first:
+      213: 5626804023598083819
+    second: tileset_stone_wall_55
+  - first:
+      213: 634608786609880798
+    second: tileset_stone_wall_56
+  - first:
+      213: -1234226370586918019
+    second: tileset_stone_wall_57
+  - first:
+      213: -7220367458049654398
+    second: tileset_stone_wall_58
+  - first:
+      213: 611376922036092427
+    second: tileset_stone_wall_59
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tileset_stone_wall_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 156
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40e3664ec39f76c4da670b1784303424
+      internalID: -4884336861717457793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_1
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 156
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf5dbe2ec9fdfec478f6176fc73444e6
+      internalID: 5747743433655276041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 156
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be64c35dafea6044290ddd37f204d238
+      internalID: -531966946811556032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_3
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 156
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00c86a1f5ca30e049a40dcc7f632629d
+      internalID: 3570451365883852520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_4
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 156
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91a5129bea0cca442afa0568d03def3c
+      internalID: 7514618693174433415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_5
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 156
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3199f10892d5e624fba86e92e635ae4b
+      internalID: 2780098072199506112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_6
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 156
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4748f12980c858948b516fbb03ebd9d9
+      internalID: -2809157675393204609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_7
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 156
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9a18eaa3831d5840ae0182311c206e1
+      internalID: -1265193667654508991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_8
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 156
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dacdff1f639b664ca2d78aa931982ae
+      internalID: 5297678367515249210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_9
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 148
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c415e1be3a810c40ab29f252091efae
+      internalID: 4296172794536236769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_10
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 156
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3e70ec56eba8fb4cae65b421cfec411
+      internalID: 486104490239107000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_11
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 156
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8963b1d595e7d848ae142389d4d5e43
+      internalID: -3022396810186492301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_12
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 148
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d55bfe0078ac424cbcd588fc10ed61f
+      internalID: -2632696229268479135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dfea494099a5b74ba59a3cf608a0dd1
+      internalID: -6655946001192402286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_14
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57b9fdc8f5e700a44972e03f3fba0275
+      internalID: -7538991941603827961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_15
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c182968b7ed6a439d8391ca99a3892
+      internalID: -2222249391715750731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_16
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7f45c1769383b942bd9910d70f21fa2
+      internalID: 6589387485807128858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_17
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 120
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11f30e18cbd24bd46b8bb1ccec38444b
+      internalID: -4461101404060011971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_18
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1770eaf7ac335cf4ba7ebc08457b525f
+      internalID: 5150501317955583444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_19
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 186a001f43081584ba334b06e6294c21
+      internalID: -7477408480515193691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_20
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c8b3cdf335d5a24b85c72057ae5f75d
+      internalID: 1534811466721284383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_21
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d55bb7b67defd71478a3ced97c8308a8
+      internalID: -4456914116177259593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_22
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 112
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efb805d8b1b382843801405f4cfb3648
+      internalID: 671428857603055807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_23
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 794170bbdfb0fb34982e93e63aeb3486
+      internalID: -5935408791504659728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_24
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 120
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4c40d2bfd082474c9de34eadbf22494
+      internalID: 7592403253867267862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_25
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 112
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b6c0a8949d24a047b6e43e73230cc0f
+      internalID: 619896422369121160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 84
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fad84276bf2d14a4ea94684de51d2f0c
+      internalID: 7262434814417706523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_27
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 76
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b221a88584486a74aa5ffc368b88a854
+      internalID: 7540700687253439754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_28
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 76
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 371bdd2602162b84abf08b3d889d2387
+      internalID: 7024984009802958153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_29
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 76
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58ed1f98c10f4d4438883a56d8658e08
+      internalID: 5525654301423468453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_30
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 84
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a893c32dfc8e3a744bf5c5888248b956
+      internalID: 2635325235623319967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_31
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 84
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fc036814f7e44942afaa8f2a0e5b13c
+      internalID: 347617215563061935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_32
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 84
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a342e7f9d1b8374295c40904b6af8b8
+      internalID: -786045111440719310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_33
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 84
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a176d94a5bb393445bfb3b0108fdba5a
+      internalID: -3060341547500893238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_34
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 84
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a50184ac79656ae4e81b2d5f93f07063
+      internalID: 1428026874916084296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_35
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 76
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3262c35594d78a4db67c0f14dd51fd1
+      internalID: 9043329304217614108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_36
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 84
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 963ff046c9e02cc4ea05a4ff39e19be2
+      internalID: 4942850196129128819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_37
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 84
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aa9d289d691b1d47ad9e617e4224aa8
+      internalID: 7354719538118595286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_38
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 76
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f0d284ba94cbd740a63b285b0c133c8
+      internalID: 8611040605747094598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fa95afc0af46ab4c993ea6320266f57
+      internalID: 9045703203198769441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_40
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 48
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c449bfa3885a0b742938495bbe6c77ed
+      internalID: -3652634731608206454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_41
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 52
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eb5a802bedb1084baba736524eb3967
+      internalID: 109378916349338955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_42
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 56
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc278cacffd3ab94088a963b211e99b1
+      internalID: 5416253240784163493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_43
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 56
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49020814bd79aaa4c986c1561502e9ae
+      internalID: -2990767179583405828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_44
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 56
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d378350ba2807f54b88329dca42480aa
+      internalID: 250739842604626223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_45
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 40
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64c6de4704399b84ea1c95e61506230d
+      internalID: 5155599787684774621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_46
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 40
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e553f00f00a2be546b2950f1b966349a
+      internalID: 3957908682494206569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_47
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 40
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9aebbfebdb0a994c817a544157f11cf
+      internalID: -974230321290343400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_48
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 40
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db58b77fa7078c04a959ed59a760ad0f
+      internalID: -2689536133281022584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_49
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 40
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a502366e4a6254ca92bb5190203219
+      internalID: -5279196187027937569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_50
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 40
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61febb38caff1814797f1750fd6e802a
+      internalID: -8855182722824533197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_51
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8542dff9f3387cb4fb5414ead6a02c58
+      internalID: -3189031057413082424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_52
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 4
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 822fb47d131b84b4888190d6abab9791
+      internalID: 8018811104651377233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_53
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 4
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed01001672ffeee4c8f4ae49ade6481c
+      internalID: 2692727422421069784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_54
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 6
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d795dd6274d7b7f4eb1b133e4c14503c
+      internalID: -3134893963320974880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_55
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 4
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee5d766ef1eda7b4bb3942617676d39c
+      internalID: 5626804023598083819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_56
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 4
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd7eaa2a33943504d924ee9bfbce55d1
+      internalID: 634608786609880798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_57
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 4
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cfc45b4f7a3ad49b1d16cd22e19684
+      internalID: -1234226370586918019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_58
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 4
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b08ce446b2729e4b9b1c57c8a1e2c3c
+      internalID: -7220367458049654398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_stone_wall_59
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 4
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cefe7cb4b98c37498840b740a2f27ad
+      internalID: 611376922036092427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 8897e965dc6f29a4fa84fd84d2c81639
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

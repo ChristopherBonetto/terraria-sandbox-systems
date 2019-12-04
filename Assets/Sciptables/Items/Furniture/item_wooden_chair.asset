@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb5b4938d702cb74e9dc8f717ce70165, type: 3}
+  m_Name: item_wooden_chair
+  m_EditorClassIdentifier: 
+  ItemName: Wooden Chair
+  ItemSprite: {fileID: 21300000, guid: 77c14e044d02b714d96e53386b7204ad, type: 3}
+  m_DepleteOnUse: 1
+  m_Prefab: {fileID: 4182113379686396503, guid: d69d91e34912c724f9efb764d49dc884,
+    type: 3}
+  m_PlacingLayer: 1
