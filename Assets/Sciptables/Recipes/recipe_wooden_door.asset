@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bb769bceb853f7468d7ef6dfab8f0c3, type: 3}
-  m_Name: StoneBlock
+  m_Name: recipe_wooden_door
   m_EditorClassIdentifier: 
-  itemsNecessary: []
+  itemsNecessary:
+  - Item: {fileID: 11400000, guid: 69d1916538b66244dad02b043644c3fe, type: 2}
+    Amount: 6
   itemToObtain:
-    Item: {fileID: 0}
-    Amount: 0
+    Item: {fileID: 11400000, guid: 01833cbdcb2f2d843856fa6bcfdc0d4d, type: 2}
+    Amount: 1

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bb769bceb853f7468d7ef6dfab8f0c3, type: 3}
-  m_Name: WoodenDoor
+  m_Name: recipe_gold_bar
   m_EditorClassIdentifier: 
   itemsNecessary:
-  - Item: {fileID: 11400000, guid: 69d1916538b66244dad02b043644c3fe, type: 2}
-    Amount: 6
+  - Item: {fileID: 11400000, guid: 7dae37751d255344183ff2d5b444f2ef, type: 2}
+    Amount: 4
   itemToObtain:
-    Item: {fileID: 11400000, guid: 01833cbdcb2f2d843856fa6bcfdc0d4d, type: 2}
+    Item: {fileID: 11400000, guid: dec344c8129795e4a812af57a34f4895, type: 2}
     Amount: 1

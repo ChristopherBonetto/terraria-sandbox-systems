@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bb769bceb853f7468d7ef6dfab8f0c3, type: 3}
-  m_Name: WoodenTable
+  m_Name: recipe_wood_from_wall
   m_EditorClassIdentifier: 
   itemsNecessary:
-  - Item: {fileID: 11400000, guid: 69d1916538b66244dad02b043644c3fe, type: 2}
-    Amount: 8
+  - Item: {fileID: 11400000, guid: c2f9aa82c5e51384eba4018d9f2d36b3, type: 2}
+    Amount: 4
   itemToObtain:
-    Item: {fileID: 11400000, guid: 24e6e0c96177d9b4aa8e5e433f9c26b5, type: 2}
+    Item: {fileID: 11400000, guid: 69d1916538b66244dad02b043644c3fe, type: 2}
     Amount: 1
