@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 8051295990738567597}
   - component: {fileID: 4483667912577704684}
   m_Layer: 11
-  m_Name: Table
+  m_Name: Workbench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Size: {x: 2, y: 1}
-  m_MaxHitPoints: 3
+  m_MaxHitPoints: 12
   m_GroupID: 1
 --- !u!251 &4483667912577704684
 PlatformEffector2D:

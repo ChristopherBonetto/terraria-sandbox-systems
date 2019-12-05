@@ -152,5 +152,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Size: {x: 1, y: 2}
-  m_MaxHitPoints: 2
+  m_MaxHitPoints: 12
   m_GroupID: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 2
   m_TilingRules: []
-  m_HitPoints: 4
+  m_HitPoints: 8
   m_ContainedItems:
   - Item: {fileID: 11400000, guid: 86b3c3b0c0b103246987be796dda9e4e, type: 2}
     Amount: 1

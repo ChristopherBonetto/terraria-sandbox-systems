@@ -68,7 +68,7 @@ public class TItemWeapon : TItem
                     }
                 }
 
-                TTilemapManager.SharedInstance.TryDamageTile(inData.GridPosition, VisualAndInteraction.DamageableWorldGroups);
+                TTilemapManager.SharedInstance.TryDamageTile(inData.GridPosition, VisualAndInteraction.DamageableWorldGroups, Attack);
                 return true;
             }
         }

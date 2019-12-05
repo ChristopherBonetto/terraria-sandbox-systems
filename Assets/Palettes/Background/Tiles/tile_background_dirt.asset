@@ -257,6 +257,6 @@ MonoBehaviour:
     m_Output: 0
     m_ColliderType: 2
     m_RandomTransform: 0
-  m_HitPoints: 2
+  m_HitPoints: 14
   m_ContainedItems: []
   m_GroupID: -1
