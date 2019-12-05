@@ -2,21 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[System.Serializable]
-//public struct TRecipeInfo
-//{
-//    public static TRecipeInfo Empty = new TRecipeInfo(null, TItemQuantity.Empty);
-
-//    public TItemQuantity[] itemsNecessary;
-//    [Space]
-//    public TItemQuantity itemToObtain;
-
-//    public TRecipeInfo(TItemQuantity[] inItemsNecessary, TItemQuantity inItemObtained)
-//    {
-//        this.itemsNecessary = inItemsNecessary;
-//        this.itemToObtain = inItemObtained;
-//    }
-//}
 
 public class TRecipeContainer : MonoBehaviour
 {
@@ -24,65 +9,32 @@ public class TRecipeContainer : MonoBehaviour
 
     [SerializeField] private TRecipe[] m_recipes;
 
-    public Dictionary<TItemQuantity, TRecipe> RecipeDictionary { get; private set; }
-
     private void Awake()
     {
         SharedIstance = this;
-
-        CreateDictionaryOfRecipe();
     }
-
-    public void CreateDictionaryOfRecipe()
-    {
-        RecipeDictionary = new Dictionary<TItemQuantity, TRecipe>();
-
-        for (int i = 0; i < m_recipes.Length; i++)
-        {
-            if (!RecipeDictionary.ContainsKey(m_recipes[i].itemToObtain))
-            {
-                RecipeDictionary.Add(m_recipes[i].itemToObtain, m_recipes[i]);
-            }
-            else
-            {
-                Debug.Log(m_recipes[i].itemToObtain + " can't be added because there is another key with same value");
-            }
-        }
-    }
-    
 
     public void CheckCraftableItem(List<TItemQuantity> inListOfItems, List<TRecipe> inListToFill)
-    {    
-        foreach (TItemQuantity item in RecipeDictionary.Keys)
+    {
+        bool canBeCrafted;
+        int requiredCount;
+
+        foreach (TRecipe recipe in m_recipes)
         {
-            int itemNecessary = 0;
+            canBeCrafted = true;
 
-            for (int i = 0; i < RecipeDictionary[item].itemsNecessary.Length; i++)
+            requiredCount = recipe.itemsNecessary.Length;
+
+            for (int i = 0; i < requiredCount; i++)
             {
-                if (itemNecessary < RecipeDictionary[item].itemsNecessary.Length)
+                if (!inListOfItems.Exists(x => x.Item == recipe.itemsNecessary[i].Item && x.Amount >= recipe.itemsNecessary[i].Amount))
                 {
-                    TItemQuantity tempItemQuantity = new TItemQuantity(RecipeDictionary[item].itemsNecessary[i].Item, RecipeDictionary[item].itemsNecessary[i].Amount);
-
-                    if (inListOfItems.Exists(x => x.Item == tempItemQuantity.Item))
-                    {
-                        TItemQuantity tempItem = inListOfItems.Find(x => x.Item == tempItemQuantity.Item);
-
-                        if (tempItem.Amount >= tempItemQuantity.Amount)
-                        {
-                            itemNecessary++;
-                        }
-                        else
-                        {
-                            Debug.Log("u need materials");
-                            break;
-                        }
-                    }
-                }
-                if (itemNecessary == RecipeDictionary[item].itemsNecessary.Length)
-                {
-                    inListToFill.Add(RecipeDictionary[item]);
+                    canBeCrafted = false;
+                    break;
                 }
             }
+
+            if (canBeCrafted) inListToFill.Add(recipe);
         }
     }
     
