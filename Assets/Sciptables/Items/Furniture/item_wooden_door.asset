@@ -17,4 +17,5 @@ MonoBehaviour:
   m_DepleteOnUse: 1
   m_Prefab: {fileID: 3529091284425415555, guid: f5ab6ab99b674fd4d8af477f68b2cf5e,
     type: 3}
+  m_Size: {x: 1, y: 3}
   m_PlacingLayer: 0

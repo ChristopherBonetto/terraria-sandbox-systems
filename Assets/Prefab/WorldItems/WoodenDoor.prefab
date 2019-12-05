@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 2266167998720543085, guid: 00ddd3e883ebfa44eb9d21e00717eb99,
+  m_Sprite: {fileID: -505569832891563508, guid: 00ddd3e883ebfa44eb9d21e00717eb99,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -152,9 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4894f112d54994bbf261021e76de3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Size: {x: 1, y: 3}
   m_MaxHitPoints: 12
   m_GroupID: 1
+  m_DefaultReferenceItem: {fileID: 11400000, guid: 01833cbdcb2f2d843856fa6bcfdc0d4d,
+    type: 2}
   m_OpenState:
     Layer: Background
     VisualSprite: {fileID: 2266167998720543085, guid: 00ddd3e883ebfa44eb9d21e00717eb99,

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb5b4938d702cb74e9dc8f717ce70165, type: 3}
-  m_Name: item_wooden_chair
+  m_Name: item_iron_door
   m_EditorClassIdentifier: 
-  ItemName: Wooden Chair
-  ItemSprite: {fileID: 21300000, guid: 3c530b198235812439cec6476c60d018, type: 3}
-  m_DepleteOnUse: 1
-  m_Prefab: {fileID: 4182113379686396503, guid: d69d91e34912c724f9efb764d49dc884,
+  ItemName: Iron Door
+  ItemSprite: {fileID: 21300000, guid: f0aa22bfe07cc994eba83ee6e14391af, type: 3}
+  m_DepleteOnUse: 0
+  m_Prefab: {fileID: 5855253744796673626, guid: e5b367548e0df4a43b8285c21b687f06,
     type: 3}
-  m_Size: {x: 1, y: 2}
-  m_PlacingLayer: 1
+  m_Size: {x: 1, y: 3}
+  m_PlacingLayer: 0

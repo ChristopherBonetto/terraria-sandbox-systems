@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class TItem : ScriptableObject
+[CreateAssetMenu(menuName = "Item/Generic Item")]
+public class TItem : ScriptableObject
 {
     public bool DepleteOnUse { get { return m_DepleteOnUse; } }
 
     [Space]
     public new string ItemName = "";
-        
+
     [Space]
     public Sprite ItemSprite;
 
     [SerializeField] private bool m_DepleteOnUse;
 
-    public abstract bool Use(TPlayerController inUser, TPointerData inData);
-    
+    public virtual bool Use(TPlayerController inUser, TPointerData inData)
+    {
+        return false;
+    }
 }
 
 

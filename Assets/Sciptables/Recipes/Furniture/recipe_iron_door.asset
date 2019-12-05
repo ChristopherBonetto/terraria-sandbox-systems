@@ -9,16 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19064dcf4b39a154a930fc9bd93c3549, type: 3}
-  m_Name: tile_iron_bar
+  m_Script: {fileID: 11500000, guid: 7bb769bceb853f7468d7ef6dfab8f0c3, type: 3}
+  m_Name: recipe_iron_door
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: -5572587935474933706, guid: 465591d5fed0afe42862df7f22cd6122,
-    type: 3}
-  m_DefaultGameObject: {fileID: 0}
-  m_DefaultColliderType: 0
-  m_TilingRules: []
-  m_HitPoints: 8
-  m_ContainedItems:
+  itemsNecessary:
   - Item: {fileID: 11400000, guid: 86b3c3b0c0b103246987be796dda9e4e, type: 2}
+    Amount: 4
+  itemToObtain:
+    Item: {fileID: 11400000, guid: 537608a464edc4b4da9deb820997b894, type: 2}
     Amount: 1
-  m_GroupID: 0

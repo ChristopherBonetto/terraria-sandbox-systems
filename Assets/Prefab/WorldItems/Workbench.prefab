@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8606439366861538037}
   - component: {fileID: 9024731016638439800}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,8 +91,7 @@ GameObject:
   - component: {fileID: 7834204137284810386}
   - component: {fileID: 1500590553076034054}
   - component: {fileID: 8051295990738567597}
-  - component: {fileID: 4483667912577704684}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: Workbench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,8 +123,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 1, y: 0.5}
   m_SpriteTilingProperty:
@@ -152,25 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88515eadb8281ed4ba43493a9f280ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Size: {x: 2, y: 1}
   m_MaxHitPoints: 12
-  m_GroupID: 1
---- !u!251 &4483667912577704684
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6760386132354355881}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 125
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 0
+  m_GroupID: 0
+  m_DefaultReferenceItem: {fileID: 11400000, guid: 24e6e0c96177d9b4aa8e5e433f9c26b5,
+    type: 2}
