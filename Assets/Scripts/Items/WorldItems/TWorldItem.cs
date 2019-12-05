@@ -27,11 +27,9 @@ public class TWorldItem : MonoBehaviour
     /// </summary>
     public SpriteRenderer SpriteRendererComponent { get; private set; }
 
-    public TItem ReferenceItem { get; set; }
+    public TItemWorldObject ReferenceItem { get; set; }
 
     public TMap PlacingLayer { get; set; }
-
-    public Vector2Int Size { get { return m_Size; } }
 
     public TWorldGroupID GroupID { get { return m_GroupID; } }
 
@@ -39,11 +37,11 @@ public class TWorldItem : MonoBehaviour
 
     #region Serialize variables
 
-    [SerializeField] private Vector2Int m_Size;
-
     [SerializeField] private int m_MaxHitPoints;
 
     [SerializeField] private TWorldGroupID m_GroupID;
+
+    [SerializeField] private TItemWorldObject m_DefaultReferenceItem;
 
     private int m_HitPoints;
 
@@ -61,6 +59,8 @@ public class TWorldItem : MonoBehaviour
     protected virtual void Start()
     {
         m_HitPoints = m_MaxHitPoints;
+
+        if (!ReferenceItem) ReferenceItem = m_DefaultReferenceItem;
     }
 
     #endregion
@@ -87,7 +87,8 @@ public class TWorldItem : MonoBehaviour
 
             pickup.LoadItem(new TItemQuantity(ReferenceItem));
 
-            pickup.TransformComponent.position = TransformComponent.position;
+            pickup.TransformComponent.position = TransformComponent.position + TTilemapManager.SharedInstance.CellSize.x * ReferenceItem.Size.x * Vector3.right / 2
+                                                                             + TTilemapManager.SharedInstance.CellSize.y * ReferenceItem.Size.y * Vector3.up / 2;
 
             pickup.gameObject.SetActive(true);
         }

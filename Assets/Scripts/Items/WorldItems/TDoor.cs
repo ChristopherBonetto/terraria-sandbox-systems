@@ -31,6 +31,7 @@ public class TDoor : TWorldItem, IInteractable
 
     protected override void Start()
     {
+        base.Start();
         LoadState(m_ClosedState);
     }
 
