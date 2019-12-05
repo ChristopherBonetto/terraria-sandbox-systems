@@ -7,7 +7,11 @@ public class TItemWorldObject : TItemPositionable
 {
     public TWorldItem Prefab { get { return m_Prefab; } }
 
+    public Vector2Int Size { get { return m_Size; } }
+
     [SerializeField] private TWorldItem m_Prefab;
+
+    [SerializeField] private Vector2Int m_Size;
 
     [SerializeField] private TMap m_PlacingLayer;
 
@@ -15,8 +19,8 @@ public class TItemWorldObject : TItemPositionable
     {
         if (!inUser.IsInActionRange(inData.GridPosition)) return false;
 
-        Vector3 itemExtents = Prefab.Size.x * TTilemapManager.SharedInstance.CellSize.x / 2 * Vector3.right
-                                + Prefab.Size.y * TTilemapManager.SharedInstance.CellSize.y / 2 * Vector3.up;
+        Vector3 itemExtents = m_Size.x * TTilemapManager.SharedInstance.CellSize.x / 2 * Vector3.right
+                                + m_Size.y * TTilemapManager.SharedInstance.CellSize.y / 2 * Vector3.up;
 
         Vector3 itemPosition = TTilemapManager.SharedInstance.CellToWorld(inData.GridPosition);
 
@@ -43,7 +47,7 @@ public class TItemWorldObject : TItemPositionable
         Vector3Int currentCell;
 
         // Check if each of those tiles can be considered grounded (= has another tile below)
-        for (int i = 0; i < Prefab.Size.x; i++)
+        for (int i = 0; i < m_Size.x; i++)
         {
             currentCell = inData.GridPosition + Vector3Int.right * i;
 
