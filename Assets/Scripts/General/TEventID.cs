@@ -12,5 +12,8 @@ public enum TEventID
     OnItemEquipped,
     OnItemUnequipped,
     OnInventoryOpen,
-    OnSelectSlotWithNumber
+    OnSelectSlotWithNumber,
+    OnCollectionTextDisabled,
+    OnTileDamaged,
+    OnTileDestroyed
 }
