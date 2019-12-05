@@ -240,6 +240,12 @@ public class TTilemapManager : MonoBehaviour
                 // Destroy Tile and remove it from damage tracking dictionary
                 tile.DestroySelf(m_Tilemaps[mapIndex], inCell);
                 m_TileDamage[mapIndex].Remove(inCell);
+
+                TEventManager.TriggerEvent(TEventID.OnTileDestroyed, inCell);
+            }
+            else
+            {
+                TEventManager.TriggerEvent(TEventID.OnTileDamaged, inCell, m_TileDamage[mapIndex][inCell] / (float)tile.HitPoints);
             }
         }
 
@@ -247,6 +253,7 @@ public class TTilemapManager : MonoBehaviour
         else if (inDamageDealt >= tile.HitPoints)
         {
             tile.DestroySelf(m_Tilemaps[mapIndex], inCell);
+            TEventManager.TriggerEvent(TEventID.OnTileDestroyed, inCell);
         }
 
         // CASE 3: the Tile hasn't been damaged yet, but the damage is NOT enough to destroy it
@@ -254,6 +261,7 @@ public class TTilemapManager : MonoBehaviour
         {
             // Add the Tile position to damage tracking dictionary
             m_TileDamage[mapIndex].Add(inCell, inDamageDealt);
+            TEventManager.TriggerEvent(TEventID.OnTileDamaged, inCell, inDamageDealt / (float)tile.HitPoints);
         }
     }
 
