@@ -14,11 +14,6 @@ public class TItem : ScriptableObject
     public Sprite ItemSprite;
 
     [SerializeField] private bool m_DepleteOnUse;
-
-    public virtual bool Use(TPlayerController inUser, TPointerData inData)
-    {
-        return false;
-    }
 }
 
 

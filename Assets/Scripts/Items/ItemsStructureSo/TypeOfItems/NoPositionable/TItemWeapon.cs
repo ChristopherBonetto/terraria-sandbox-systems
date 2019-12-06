@@ -15,7 +15,7 @@ public enum WeaponInteractWithTile
 }
 
 [CreateAssetMenu(fileName = "WeaponItem", menuName = "Item/OtherItems/NoPositionable/Weapon")]
-public class TItemWeapon : TItem
+public class TItemWeapon : TItem, IUsable
 {
     [System.Serializable]
     public struct PlayerAndEnvInteraction
@@ -49,7 +49,7 @@ public class TItemWeapon : TItem
     public float AttackSpeed = 1;
 
 
-    public override bool Use(TPlayerController user, TPointerData inData)
+    public bool Use(TPlayerController user, TPointerData inData)
     {
         if (user.CanAttack())
         {

@@ -16,10 +16,4 @@ public class TItemArmor : TItem
     public ArmorType ArmorType;
 
     public int Defence = 1;
-
-    public override bool Use(TPlayerController user, TPointerData inData)
-    {
-        Debug.Log("Equip armor");
-        return true;
-    }
 }

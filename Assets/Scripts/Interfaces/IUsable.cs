@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IUsable
 {
-    void OnUse();
+    bool Use(TPlayerController inUser, TPointerData inData);
 }
