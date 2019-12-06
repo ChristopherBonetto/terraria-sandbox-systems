@@ -11,7 +11,17 @@ namespace Terraria.AI
         /// SerializeField
         /// </summary>
 
+        [SerializeField] private TItemQuantity m_Containeditem;
+
+        /// <summary>
+        /// Private
+        /// </summary>
+
         private TEnemyHealthBar m_HealthSlider; // Take it from the pool
+        private float m_MaxHealth;
+        private float m_Defense;
+        private float m_CurrentHealth;
+        private float m_LastHealth;
 
         /// <summary>
         /// Properties
@@ -38,16 +48,6 @@ namespace Terraria.AI
 
             }
         }
-
-        /// <summary>
-        /// Private
-        /// </summary>
-
-        private float m_MaxHealth;
-        private float m_Defense;
-        private float m_CurrentHealth;
-        private float m_LastHealth;
-
 
 
         /// <summary>
@@ -104,9 +104,27 @@ namespace Terraria.AI
 
         private void DisposeToDead()
         {
-            // Particle
-           
+            // Turn off slider, 
+            // spawn the dropped item, 
+            // turn off this game object.
+
             m_HealthSlider.gameObject.SetActive(false);
+
+            // Get Pickup object from the pool
+            GameObject pickupObj = ObjectPooler.SharedInstance.GetPooledObject("Pickup");
+
+            if (pickupObj)
+            {
+                // Load Item
+                TItemPickup pickup = pickupObj.GetComponent<TItemPickup>();
+                pickup.LoadItem(m_Containeditem);
+
+                // Set Pickup position
+                pickup.TransformComponent.position = transform.position;
+
+                // Show Pickup
+                pickupObj.SetActive(true);
+            }
 
             gameObject.SetActive(false);
         }
