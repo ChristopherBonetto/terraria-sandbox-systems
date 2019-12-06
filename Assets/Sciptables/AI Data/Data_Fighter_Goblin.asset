@@ -20,4 +20,4 @@ MonoBehaviour:
   m_Damage: 1
   m_Speed: 3
   m_JumpForce: 50
-  m_KbResist: 20
+  m_KbResist: 3

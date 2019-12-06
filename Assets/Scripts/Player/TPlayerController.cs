@@ -113,6 +113,12 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     [SerializeField] private RuntimeAnimatorController m_DefaultAnim;
     [SerializeField] private Animator m_Anim;
 
+    // equipment visual
+
+    [Header("Equipment")]
+    [SerializeField] private SpriteRenderer[] m_ArmorsRenderer;
+    [SerializeField] private Sprite[] m_DefaultArmorsSprite;
+
     // Property, "get" only
 
     public Transform Legs => m_Legs;
@@ -415,6 +421,27 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
             DataAssigned.Defense = m_DataToAssign.Defense + armor.Defence;
             DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
+
+            // View
+
+            switch (armor.ArmorType)
+            {
+                case ArmorType.Head:
+                    m_ArmorsRenderer[0].sprite = armor.ItemSprite;
+                    break;
+
+                case ArmorType.Arms:
+                    m_ArmorsRenderer[1].sprite = armor.ItemSprite;
+                    break;
+
+                case ArmorType.Chest:
+                    m_ArmorsRenderer[2].sprite = armor.ItemSprite;
+                    break;
+
+                case ArmorType.Legs:
+                    m_ArmorsRenderer[3].sprite = armor.ItemSprite;
+                    break;
+            }
         }
     }
 
@@ -436,6 +463,27 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
             DataAssigned.Defense = m_DataToAssign.Defense;
             DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
+
+            // View
+
+            switch (armor.ArmorType)
+            {
+                case ArmorType.Head:
+                    m_ArmorsRenderer[0].sprite = m_DefaultArmorsSprite[0];
+                    break;
+
+                case ArmorType.Arms:
+                    m_ArmorsRenderer[1].sprite = m_DefaultArmorsSprite[0];
+                    break;
+
+                case ArmorType.Chest:
+                    m_ArmorsRenderer[2].sprite = m_DefaultArmorsSprite[0];
+                    break;
+
+                case ArmorType.Legs:
+                    m_ArmorsRenderer[3].sprite = m_DefaultArmorsSprite[0];
+                    break;
+            }
         }
     }
 
