@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e57e2ca84e6100c478d3ebbecb85fcc5, type: 3}
-  m_Name: Data_FighterAI
+  m_Name: Data_Fighter_Goblin
   m_EditorClassIdentifier: 
-  m_MonsterName: Zombie
-  m_ID: 1
-  m_Type: 2
-  m_MaxHealth: 8
-  m_Defense: 1
+  m_MonsterName: Goblin
+  m_ID: 2
+  m_Type: 3
+  m_MaxHealth: 10
+  m_Defense: 3
   m_Damage: 1
-  m_Speed: 2
-  m_JumpForce: 60
-  m_KbResist: 0
+  m_Speed: 3
+  m_JumpForce: 50
+  m_KbResist: 20

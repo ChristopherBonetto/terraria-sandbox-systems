@@ -93,7 +93,7 @@ namespace Terraria.AI
             // Pool text where display the damage taken
             GameObject text = ObjectPooler.SharedInstance.GetPooledObject("DamageText");
             text.SetActive(true);
-            text.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+            text.transform.position = transform.position;
 
             if (!m_HealthSlider.gameObject.activeSelf)
                 m_HealthSlider.gameObject.SetActive(true);

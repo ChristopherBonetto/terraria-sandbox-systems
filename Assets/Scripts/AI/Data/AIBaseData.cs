@@ -7,6 +7,7 @@ namespace Terraria.AI
         None,
         Slime,
         Undead,
+        Goblin,
     }
 
     [CreateAssetMenu(fileName = "Data_MonsterName", menuName = "Terraria/AI/Data")]
@@ -25,7 +26,10 @@ namespace Terraria.AI
         [SerializeField] private float m_Damage;
         [SerializeField] private float m_Speed;
         [SerializeField] private float m_JumpForce;
-        [SerializeField] private float m_KbResist;
+
+        [Space]
+        [Range(0, 100)]
+        [SerializeField] private int m_KbResist;
 
         //[Header("Drops")]
 

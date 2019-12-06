@@ -10,9 +10,13 @@ namespace Terraria.AI
         /// SerializeField
         /// </summary>
 
+        [Header("Animator")]
+        [SerializeField] private Animator m_Anim;
+
         [Header("Jump variables")]
         [SerializeField] private Transform m_Legs;
         [SerializeField] private LayerMask m_JumpableLayers;
+        [SerializeField] private float m_JumpCoolDown;
 
         [Header("Detection")]
         [SerializeField] private LayerMask m_PlayerMask;
@@ -25,6 +29,10 @@ namespace Terraria.AI
         private bool m_ImFreeze;
         private float m_CurrentFreezeTime;
         private Collider2D m_PlayerCollider;
+
+        // Jump Fix
+
+        private float m_CurrentJumpCoolDown;
         private bool m_ImMoving;
 
         /// <summary>
@@ -62,17 +70,17 @@ namespace Terraria.AI
         {
             if (!m_ImMoving)
             {
-                // if there are something between enemy and player
-                if (Physics2D.Raycast(m_Transform.position, m_Player.transform.position - m_Transform.position, m_Radius, m_JumpableLayers))
+                if (CanJump())
                 {
-                    Vector2 checkLeft = Vector2.down + (Vector2.right * m_Collider.bounds.extents.x);
-                    Vector2 checkRight = Vector2.down + (Vector2.right * -m_Collider.bounds.extents.x);
-
-                    // if it's touching the ground
-                    // Jumps
-                    if (Physics2D.Raycast(m_Legs.position, checkLeft, 0.1f, m_JumpableLayers) ||
-                        Physics2D.Raycast(m_Legs.position, checkRight, 0.1f, m_JumpableLayers))
-                        m_Rb.AddForce(Vector2.up * Data.JumpForce);
+                    // if there are something between enemy and player
+                    if (Physics2D.Raycast(m_Transform.position, m_Player.transform.position - m_Transform.position, m_Radius, m_JumpableLayers))
+                    {
+                        // if it's touching the ground
+                        // Jumps
+                        if (Physics2D.Raycast(m_Legs.position + (Vector3.right * m_Collider.bounds.extents.x), Vector2.down, 0.1f, m_JumpableLayers) ||
+                            Physics2D.Raycast(m_Legs.position + (Vector3.right * -m_Collider.bounds.extents.x), Vector2.down, 0.1f, m_JumpableLayers))
+                            m_Rb.AddForce(Vector2.up * Data.JumpForce);
+                    }
                 }
             }
         }
@@ -95,6 +103,26 @@ namespace Terraria.AI
             }
             else
                 m_ImMoving = false;
+
+            m_Anim.SetBool("IsMoving", m_ImMoving);
+        }
+
+        /// <summary>
+        /// Fix multiple addforce in short time.
+        /// </summary>
+        /// <returns></returns>
+        private bool CanJump()
+        {
+            if (m_CurrentJumpCoolDown <= 0)
+            {
+                m_CurrentJumpCoolDown = m_JumpCoolDown;
+                return true;
+            }
+            else
+            {
+                m_CurrentJumpCoolDown -= Time.deltaTime;
+                return false;
+            }
         }
     }
 }
