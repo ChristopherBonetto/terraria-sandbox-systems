@@ -21,4 +21,4 @@ MonoBehaviour:
   m_GameStartTime:
     m_Hours: 9
     m_Minutes: 30
-  m_DayMinuteDurationInSeconds: 0.01
+  m_DayMinuteDurationInSeconds: 0.1

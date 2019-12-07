@@ -1744,8 +1744,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb30f50142fd254893ee46196bd133e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DayLight: {fileID: 11400000, guid: f474476787d19e34dae8704ec071d425, type: 2}
-  m_NightLight: {fileID: 11400000, guid: be32881cbc3e90041b0636288b1f59da, type: 2}
+  m_Phases:
+  - {fileID: 11400000, guid: 6fc026a9bf84ff14cb2d99a345012f12, type: 2}
+  - {fileID: 11400000, guid: 0fbc285465a77dc459056de836d9bc93, type: 2}
 --- !u!1001 &1263228690
 PrefabInstance:
   m_ObjectHideFlags: 0
