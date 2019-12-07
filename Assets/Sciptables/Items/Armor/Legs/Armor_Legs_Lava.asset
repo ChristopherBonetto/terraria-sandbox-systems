@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d3f4d79bb06cc245bcb5462e8a30b88, type: 3}
-  m_Name: Armor_Chest_Lava
+  m_Name: Armor_Legs_Lava
   m_EditorClassIdentifier: 
-  ItemName: Lava Chest
-  ItemSprite: {fileID: -4052343159862365419, guid: 8d969595f207fa0448dcce524d77a4ff,
+  ItemName: 
+  ItemSprite: {fileID: -335148211808128109, guid: 5e931cd463133b54ea7d43de30eec27b,
     type: 3}
   m_DepleteOnUse: 0
   m_TextToRead: {fileID: 0}
-  ArmorType: 2
-  ArmorAnim: {fileID: 22100000, guid: f27a72f358219964587556c891daaa0e, type: 2}
-  Defence: 4
+  ArmorType: 3
+  ArmorAnim: {fileID: 22100000, guid: 78021f1930029df4483903300781bd8a, type: 2}
+  Defence: 1

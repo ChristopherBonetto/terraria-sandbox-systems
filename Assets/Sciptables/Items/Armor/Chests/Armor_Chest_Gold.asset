@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3f4d79bb06cc245bcb5462e8a30b88, type: 3}
+  m_Name: Armor_Chest_Gold
+  m_EditorClassIdentifier: 
+  ItemName: Gold Chest
+  ItemSprite: {fileID: 2101482829041187484, guid: ca958eabd37bac640a2dd11cb6fdfbe5,
+    type: 3}
+  m_DepleteOnUse: 0
+  m_TextToRead: {fileID: 0}
+  ArmorType: 2
+  ArmorAnim: {fileID: 22100000, guid: 522f92bba59db724abafb79c164ebc58, type: 2}
+  Statistics:
+    MaxHealth: 0
+    Defense: 3
+    Damage: 0
+    AttackSpeed: 0
+    KbResist: 5
+    Speed: 0.5
+    JumpForce: 0

@@ -24,5 +24,11 @@ MonoBehaviour:
     InteractableLayer:
       serializedVersion: 2
       m_Bits: 512
-  Attack: 3
-  AttackSpeed: 1.1
+  Statistics:
+    MaxHealth: 0
+    Defense: 0
+    Damage: 3
+    AttackSpeed: 0.1
+    KbResist: 0
+    Speed: 0
+    JumpForce: 0

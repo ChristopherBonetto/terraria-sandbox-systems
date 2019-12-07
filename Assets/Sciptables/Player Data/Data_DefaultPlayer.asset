@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7a1621cdbf0d147ac8fc450f03e4f2, type: 3}
   m_Name: Data_DefaultPlayer
   m_EditorClassIdentifier: 
-  MaxHealth: 6
-  Defense: 0
-  Damage: 1
-  AttackSpeed: 1
-  KbResist: 20
-  Speed: 5
-  JumpForce: 90
+  Statistics:
+    MaxHealth: 6
+    Defense: 1
+    Damage: 1
+    AttackSpeed: 1
+    KbResist: 5
+    Speed: 5
+    JumpForce: 90
   MaxActionDistance: 3

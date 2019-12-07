@@ -10,13 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d3f4d79bb06cc245bcb5462e8a30b88, type: 3}
-  m_Name: Armor_Chest_Purple
+  m_Name: Armor_Legs_Gold
   m_EditorClassIdentifier: 
-  ItemName: Purple Chest
-  ItemSprite: {fileID: -3116726813522182155, guid: 2f534fc33d5879e449f8558be045663e,
+  ItemName: 
+  ItemSprite: {fileID: 1145648126413562040, guid: 1681c4307b1b7fc4d957799a38c71f95,
     type: 3}
   m_DepleteOnUse: 0
   m_TextToRead: {fileID: 0}
-  ArmorType: 2
-  ArmorAnim: {fileID: 22100000, guid: 2ee74012ae2341746a8e13b510e99b5d, type: 2}
-  Defence: 10
+  ArmorType: 3
+  ArmorAnim: {fileID: 22100000, guid: 9e106efe3539c4c43ba4db33036ecf28, type: 2}
+  Statistics:
+    MaxHealth: 0
+    Defense: 0
+    Damage: 0
+    AttackSpeed: 0
+    KbResist: 0
+    Speed: 0
+    JumpForce: 0

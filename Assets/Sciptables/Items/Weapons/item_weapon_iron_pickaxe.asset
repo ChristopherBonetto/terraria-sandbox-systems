@@ -15,6 +15,7 @@ MonoBehaviour:
   ItemName: Iron Pickaxe
   ItemSprite: {fileID: 21300000, guid: a6d7e9984488a7047936a18eca586b38, type: 3}
   m_DepleteOnUse: 0
+  m_TextToRead: {fileID: 0}
   VisualAndInteraction:
     DamageableWorldGroups: 0000000001000000
     AttackType: 0
@@ -23,5 +24,11 @@ MonoBehaviour:
     InteractableLayer:
       serializedVersion: 2
       m_Bits: 512
-  Attack: 5
-  AttackSpeed: 0.7
+  Statistics:
+    MaxHealth: 0
+    Defense: 0
+    Damage: 10
+    AttackSpeed: 0.3
+    KbResist: 0
+    Speed: 0
+    JumpForce: 0

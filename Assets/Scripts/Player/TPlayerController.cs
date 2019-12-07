@@ -119,7 +119,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
     public Transform Legs => m_Legs;
     public Animator Anim => m_Anim;
-    public float KbResist => DataAssigned.KbResist;
+    public float KbResist => DataAssigned.Statistics.KbResist;
 
 
     #endregion
@@ -186,7 +186,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
             float sign = Mathf.Sign(myPos.x - collidingPos.x);
 
-            Vector2 knockEffect = (Vector2.right * sign * GeneralEffects.KbEffect(DataAssigned.KbResist)) +
+            Vector2 knockEffect = (Vector2.right * sign * GeneralEffects.KbEffect(KbResist)) +
                                     Vector2.up * GeneralEffects.KbGlobalEffect * 0.5f;
 
             // Execute knock back
@@ -206,7 +206,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         // Init components
         base.Start();
         m_HandToAttack.gameObject.SetActive(false);
-        DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
+        DefenseComponent.Init(DataAssigned.Statistics.MaxHealth, DataAssigned.Statistics.Defense);
 
         // Update visual
         TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, DefenseComponent);
@@ -248,7 +248,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
                 Vector2 scale = new Vector2(m_LocalScale.x * inDirection, m_LocalScale.y);
 
                 m_Transform.localScale = scale; 
-                transform.position += (Vector3.right * inDirection) * DataAssigned.Speed * Time.deltaTime;
+                transform.position += (Vector3.right * inDirection) * DataAssigned.Statistics.Speed * Time.deltaTime;
 
             }
         }
@@ -264,7 +264,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         {
             if (Physics2D.Raycast(Legs.position, Vector2.down + Vector2.right * m_Collider.bounds.extents.x, 0.3f, m_JumpableLayers) ||
                 Physics2D.Raycast(Legs.position, Vector2.down + Vector2.right * -m_Collider.bounds.extents.x, 0.3f, m_JumpableLayers))
-                    m_Rb.AddForce(Vector2.up * DataAssigned.JumpForce);
+                    m_Rb.AddForce(Vector2.up * DataAssigned.Statistics.JumpForce);
 
         }
 
@@ -330,7 +330,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         if (!m_HandToAttack.gameObject.activeSelf)
         {
             m_HandToAttack.gameObject.SetActive(true);
-            Anim.SetFloat("AttackMultiplier", DataAssigned.AttackSpeed);
+            Anim.SetFloat("AttackMultiplier", DataAssigned.Statistics.AttackSpeed);
             Anim.SetTrigger("Attack");
             return true;
         }
@@ -365,10 +365,9 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         {
             TItemWeapon weapon = item.ItemInSlot.Item as TItemWeapon;
 
-            DataAssigned.Damage = m_DataToAssign.Damage + weapon.Attack;
-            DataAssigned.AttackSpeed = m_DataToAssign.AttackSpeed + weapon.AttackSpeed;
+            DataAssigned.Statistics += weapon.Statistics;
 
-            m_HandToAttack.Damage = m_DataToAssign.Damage + weapon.Attack;
+            m_HandToAttack.Damage = DataAssigned.Statistics.Damage;
             m_HandToAttack.AttackType = weapon.VisualAndInteraction.AttackType;
             m_HandToAttack.InteractableLayer = weapon.VisualAndInteraction.InteractableLayer;
             m_HandToAttack.WeaponIcon.sprite = weapon.ItemSprite;
@@ -397,10 +396,9 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         {
             TItemWeapon weapon = item.ItemInSlot.Item as TItemWeapon;
 
-            DataAssigned.Damage = m_DataToAssign.Damage - weapon.Attack;
-            DataAssigned.AttackSpeed = m_DataToAssign.AttackSpeed - weapon.AttackSpeed;
+            DataAssigned.Statistics -= weapon.Statistics;
 
-            m_HandToAttack.Damage = m_DataToAssign.Damage + weapon.Attack;
+            m_HandToAttack.Damage = DataAssigned.Statistics.Damage;
             m_HandToAttack.AttackType = PlayerAttackType.Melee;
             m_HandToAttack.InteractableLayer = LayerMask.NameToLayer("Default");
             m_HandToAttack.WeaponIcon.sprite = null;
@@ -423,16 +421,14 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
             // Init health and defense.
 
-            DataAssigned.Defense = m_DataToAssign.Defense + armor.Defence;
-            DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
+            DataAssigned.Statistics += armor.Statistics;
+            DefenseComponent.Init(DataAssigned.Statistics.MaxHealth, DataAssigned.Statistics.Defense);
 
             // View
 
             int typeToInt = (int)armor.ArmorType;
             m_ArmorsView[typeToInt].SetSprite(armor.ItemSprite);
             m_ArmorsView[typeToInt].SetAnimator(armor.ArmorAnim);
-
-            Debug.Log("Armor Equipped");
         }
     }
 
@@ -452,8 +448,8 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
             // Init health and defense.
 
-            DataAssigned.Defense = m_DataToAssign.Defense;
-            DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
+            DataAssigned.Statistics -= armor.Statistics;
+            DefenseComponent.Init(DataAssigned.Statistics.MaxHealth, DataAssigned.Statistics.Defense);
 
             // View
 

@@ -41,12 +41,10 @@ public class TItemWeapon : TItem, IUsable
     /// 
     public PlayerAndEnvInteraction VisualAndInteraction;
 
-    [Header("Stats")]
-
-    public int Attack = 1;
-
-    [Tooltip("This value change the animation speed")]
-    public float AttackSpeed = 1;
+    /// <summary>
+    /// Contain all statistics that will be added to the player.
+    /// </summary>
+    public TStatistics Statistics;
 
 
     public bool Use(TPlayerController user, TPointerData inData)
@@ -63,12 +61,12 @@ public class TItemWeapon : TItem, IUsable
 
                     if (hitItem && VisualAndInteraction.DamageableWorldGroups.Contains(hitItem.GroupID))
                     {
-                        hitItem.TakeDamage(Attack);
+                        hitItem.TakeDamage(Statistics.Damage);
                         return true;
                     }
                 }
 
-                TTilemapManager.SharedInstance.TryDamageTile(inData.GridPosition, VisualAndInteraction.DamageableWorldGroups, Attack);
+                TTilemapManager.SharedInstance.TryDamageTile(inData.GridPosition, VisualAndInteraction.DamageableWorldGroups, Statistics.Damage);
                 return true;
             }
         }

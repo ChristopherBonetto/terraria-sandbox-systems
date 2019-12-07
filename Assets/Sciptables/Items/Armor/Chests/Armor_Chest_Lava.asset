@@ -10,13 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d3f4d79bb06cc245bcb5462e8a30b88, type: 3}
-  m_Name: Armor_Chest_Gold
+  m_Name: Armor_Chest_Lava
   m_EditorClassIdentifier: 
-  ItemName: Gold Chest
-  ItemSprite: {fileID: 2101482829041187484, guid: ca958eabd37bac640a2dd11cb6fdfbe5,
+  ItemName: Lava Chest
+  ItemSprite: {fileID: -4052343159862365419, guid: 8d969595f207fa0448dcce524d77a4ff,
     type: 3}
   m_DepleteOnUse: 0
   m_TextToRead: {fileID: 0}
   ArmorType: 2
-  ArmorAnim: {fileID: 22100000, guid: 522f92bba59db724abafb79c164ebc58, type: 2}
-  Defence: 1
+  ArmorAnim: {fileID: 22100000, guid: f27a72f358219964587556c891daaa0e, type: 2}
+  Statistics:
+    MaxHealth: 0
+    Defense: 5
+    Damage: 1
+    AttackSpeed: 0.1
+    KbResist: 12
+    Speed: 0
+    JumpForce: 1

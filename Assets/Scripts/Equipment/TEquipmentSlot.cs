@@ -19,13 +19,13 @@ public class TEquipmentSlot : TInventorySlot
             {
                 m_itemInSlot = value;
                 TEventManager.TriggerEvent<TInventorySlot>(TEventID.OnItemEquipped, this as TInventorySlot);
-                //Debug.Log("equipped");
+                Debug.Log("equipped");
             }
             else
             {
                 TEventManager.TriggerEvent<TInventorySlot>(TEventID.OnItemUnequipped, this as TInventorySlot);
                 m_itemInSlot = value;
-                //Debug.Log("unequipped");
+                Debug.Log("unequipped");
             }
             
         }
