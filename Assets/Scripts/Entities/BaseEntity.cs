@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class BaseEntity : MonoBehaviour
 {
+
+    /// <summary>
+    /// Transform component.
+    /// </summary>
+
+    public Transform TransformComponent { get { return m_Transform; } }
+
     [Header("Unity components to store")]
 
     [SerializeField] protected Transform m_Transform;

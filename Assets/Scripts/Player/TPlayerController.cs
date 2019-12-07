@@ -8,9 +8,6 @@ using System.Collections;
 [RequireComponent(typeof(TPlayerDefenseComponent))]
 public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 {
-    public static TPlayerController SharedInstance { get; private set; }
-
-
     /// <summary>
     /// Contain reference to item in player's hand.
     /// </summary>
@@ -155,20 +152,9 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemUnequipped, OnItemUnequipped);
     }
 
-    private void Awake()
-    {
-        SharedInstance = this;
-    }
-
     protected override void Start()
     {
-        // Init components
-        base.Start();
-        m_HandToAttack.gameObject.SetActive(false);
-        DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
-
-        // Update visual
-        TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, DefenseComponent);
+        Init();
 
         PlayerInventoryComponent.InventorySlotsReference();
         PlayerCraftComponent.CraftingButtonsReference();
@@ -212,6 +198,20 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         }
     }
 
+    #endregion
+
+    #region Initialization
+
+    public void Init()
+    {
+        // Init components
+        base.Start();
+        m_HandToAttack.gameObject.SetActive(false);
+        DefenseComponent.Init(DataAssigned.MaxHealth, DataAssigned.Defense);
+
+        // Update visual
+        TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, DefenseComponent);
+    }
     #endregion
 
     #region Movement
