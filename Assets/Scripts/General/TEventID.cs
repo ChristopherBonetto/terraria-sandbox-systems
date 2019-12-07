@@ -15,5 +15,8 @@ public enum TEventID
     OnSelectSlotWithNumber,
     OnCollectionTextDisabled,
     OnTileDamaged,
-    OnTileDestroyed
+    OnTileDestroyed,
+    OnTimeStarted,
+    OnMinutePassed,
+    OnDayNightChanged
 }
