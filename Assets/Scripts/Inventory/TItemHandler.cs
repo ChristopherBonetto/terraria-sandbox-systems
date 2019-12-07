@@ -35,7 +35,10 @@ public class TItemHandler : MonoBehaviour
         TEventManager.UnsubscribeFrom<bool>(TEventID.OnInventoryOpen, ResetSelectedItemWithEvent);
     }
 
-
+    private void Update()
+    {
+        
+    }
 
     private void Awake()
     {

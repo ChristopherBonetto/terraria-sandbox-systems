@@ -30,13 +30,35 @@ public class TEquipmentSlot : TInventorySlot
             {
                 if (tempArmor.ArmorType == m_typeOfEquippableItem)
                 {
-                    InsertItemToSlot(inSlot.ItemInSlot);
-                    inSlot.ShowImage(false);
-                    inSlot.ItemInSlot = TItemQuantity.Empty;
+                    if(ItemInSlot.Item == null)
+                    {
+                        InsertItemToSlot(inSlot.ItemInSlot);
+                        inSlot.ShowImage(false);
+                        inSlot.ItemInSlot = TItemQuantity.Empty;
+                    }
+                    else
+                    {
+                        if(inSlot == this)
+                        {
+                            ShowImage(true);
+                        }
+                        else
+                        {
+                            TItemQuantity tempItem = this.ItemInSlot;
+                            InsertItemToSlot(inSlot.ItemInSlot);
+                            inSlot.InsertItemToSlot(tempItem);
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    inSlot.ShowImage(true);
                 }
             }
         }
         inSlot = null;
         TItemHandler.SharedInstance.SelectedItem = inSlot;
+
     }
 }

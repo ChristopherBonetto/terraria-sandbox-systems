@@ -118,7 +118,7 @@ public class TInputManager : MonoBehaviour
     #region Keyboard Input System
     private void CheckKeyboardNumber()
     {
-        if (Input.anyKeyDown)
+        if (inventoryBool && Input.anyKeyDown)
         {
             int? tempNumber = ReturnKeyboardNumber();
 
