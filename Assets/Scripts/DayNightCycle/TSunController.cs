@@ -55,7 +55,7 @@ public class TSunController : MonoBehaviour
     {
         m_Sprite.SetActive(true);
 
-        float speed = m_CurveInterval / (m_Duration.ToMinutes() * TTimeManager.SharedInstance.TimeSettings.DayMinuteDuration);
+        float speed = 2 * m_CurveInterval / (m_Duration.ToMinutes() * TTimeManager.SharedInstance.TimeSettings.DayMinuteDuration);
 
         for (float t = -m_CurveInterval + startingMinute * 2 * m_CurveInterval / m_Duration.ToMinutes(); t <= m_CurveInterval; t += speed * Time.deltaTime)
         {
