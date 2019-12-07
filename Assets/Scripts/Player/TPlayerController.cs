@@ -431,6 +431,8 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             int typeToInt = (int)armor.ArmorType;
             m_ArmorsView[typeToInt].SetSprite(armor.ItemSprite);
             m_ArmorsView[typeToInt].SetAnimator(armor.ArmorAnim);
+
+            Debug.Log("Armor Equipped");
         }
     }
 

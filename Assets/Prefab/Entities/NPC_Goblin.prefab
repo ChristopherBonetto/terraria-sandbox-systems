@@ -127,7 +127,7 @@ MonoBehaviour:
   m_PlayerMask:
     serializedVersion: 2
     m_Bits: 4096
-  m_Radius: 10
+  m_Radius: 20
 --- !u!95 &8640013285988398684
 Animator:
   serializedVersion: 3

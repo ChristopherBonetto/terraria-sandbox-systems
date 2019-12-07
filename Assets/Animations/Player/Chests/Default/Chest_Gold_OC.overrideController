@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Chest_Gold_OC
+  m_Controller: {fileID: 9100000, guid: d9c5885284b62ae43ad24ff0a0747b89, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ccea1390f57fbec4bb9593e054f4fb29, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ccea1390f57fbec4bb9593e054f4fb29, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 936610f2f99f7ce47a63b5f883293cc2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 936610f2f99f7ce47a63b5f883293cc2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7de05395b11f56a4fa967b1458ca2d95, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7de05395b11f56a4fa967b1458ca2d95, type: 2}
