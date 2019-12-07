@@ -22,11 +22,12 @@ public class TInputManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] private TPlayerController m_UserPlayer;
 
     [SerializeField] private KeyCode m_keyToOpenInventory;
+
     private bool inventoryBool = false;
 
+    private TPlayerController m_UserPlayer;
     
 
     #region MonoBehaviour cycle
@@ -47,18 +48,24 @@ public class TInputManager : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(PointerTrackerCoroutine());
+        TEventManager.SubscribeTo<TPlayerController>(TEventID.OnPlayerSpawned, SetUserPlayer);
         StartCoroutine(WaitToStart());
     }
 
     private void OnDisable()
     {
+        TEventManager.UnsubscribeFrom<TPlayerController>(TEventID.OnPlayerSpawned, SetUserPlayer);
         StopAllCoroutines();
     }
 
     #endregion
 
     #region Private methods
+
+    private void SetUserPlayer(TPlayerController inPlayer)
+    {
+        m_UserPlayer = inPlayer;
+    }
 
     /// <summary>
     /// Checks for Mouse inputs and invokes associated events.
@@ -193,55 +200,6 @@ public class TInputManager : MonoBehaviour
     }
     #endregion
 
-    /// <summary>
-    /// Checks if the pointer moved from a grid cell to another and raises an event when it happens. The coroutine runs only if there is at least one subscriber to the event.
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator PointerTrackerCoroutine()
-    {
-        // Wait for subscribers
-        yield return new WaitUntil(IsPointerTrackingBeingRequested);
-
-        // On first frame, save cell
-        Vector3Int oldPointerCell = TTilemapManager.SharedInstance.WorldToGridPosition(CameraFollow.MainCamera.ScreenToWorldPoint(Input.mousePosition));
-
-        yield return null;
-
-        // From second frame on, perform the check when running
-        Vector3Int newPointerCell;
-
-        while (Application.isPlaying)
-        {
-            // If there no subscribers, wait for new subscribers
-            if (IsPointerTrackingBeingRequested())
-            {
-                // Get current cell the pointer is hovering on
-                newPointerCell = TTilemapManager.SharedInstance.WorldToGridPosition(CameraFollow.MainCamera.ScreenToWorldPoint(Input.mousePosition));
-
-                // If it's different from the previous one, update it and raise event
-                if (newPointerCell != oldPointerCell)
-                {
-                    oldPointerCell = newPointerCell;
-                    TEventManager.TriggerEvent(TEventID.OnPointerMovedOnGrid, new TPointerData(Input.mousePosition));
-                }
-                
-                yield return null;
-            }
-            else
-            {
-                yield return new WaitUntil(IsPointerTrackingBeingRequested);
-            }
-        }
-    }
-
-    /// <summary>
-    /// Checks if anyone is requesting pointer tracking.
-    /// </summary>
-    /// <returns>True if pointer tracking is requested.</returns>
-    private bool IsPointerTrackingBeingRequested()
-    {
-        return TEventManager.Exists(TEventID.OnPointerMovedOnGrid);
-    }
 
     #endregion
 

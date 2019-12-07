@@ -113,8 +113,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     // equipment visual
 
     [Header("Equipment")]
-    [SerializeField] private SpriteRenderer[] m_ArmorsView;
-    [SerializeField] private Sprite[] m_DefaultArmorsSprite;
+    [SerializeField] private TArmorView[] m_ArmorsView;
 
     // Property, "get" only
 
@@ -250,8 +249,10 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
                 m_Transform.localScale = scale; 
                 transform.position += (Vector3.right * inDirection) * DataAssigned.Speed * Time.deltaTime;
+
             }
         }
+        SetAnimToPlay("IsMoving", inDirection != 0);
     }
 
     /// <summary>
@@ -264,6 +265,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             if (Physics2D.Raycast(Legs.position, Vector2.down + Vector2.right * m_Collider.bounds.extents.x, 0.3f, m_JumpableLayers) ||
                 Physics2D.Raycast(Legs.position, Vector2.down + Vector2.right * -m_Collider.bounds.extents.x, 0.3f, m_JumpableLayers))
                     m_Rb.AddForce(Vector2.up * DataAssigned.JumpForce);
+
         }
 
         else if (!Input.GetKey(KeyCode.Space) || m_Rb.velocity.y < 0)
@@ -273,6 +275,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             m_Rb.velocity += Vector2.up * gravity;
         }
 
+        SetAnimToPlay("IsJumping", m_Rb.velocity.y > 0);
     }
 
     #endregion
@@ -340,14 +343,6 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     public void TurnOffItemRoot()
     {
         m_HandToAttack.gameObject.SetActive(false);
-    }
-
-    /// <summary>
-    /// Able to choose player attack type in animation event.
-    /// </summary>
-    public void SetAttackType(PlayerAttackType type)
-    {
-        m_HandToAttack.AttackType = type;
     }
 
     #endregion
@@ -434,9 +429,8 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             // View
 
             int typeToInt = (int)armor.ArmorType;
-            m_ArmorsView[(int)armor.ArmorType].sprite = armor.ItemSprite;
-
-            Debug.Log("Equip Armor");
+            m_ArmorsView[typeToInt].SetSprite(armor.ItemSprite);
+            m_ArmorsView[typeToInt].SetAnimator(armor.ArmorAnim);
         }
     }
 
@@ -462,7 +456,19 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             // View
 
             int typeToInt = (int)armor.ArmorType;
-            m_ArmorsView[typeToInt].sprite = m_DefaultArmorsSprite[typeToInt];
+            m_ArmorsView[typeToInt].ResteValues();
+        }
+    }
+
+    #endregion
+
+    #region Animation
+
+    private void SetAnimToPlay(string inName, bool inValue)
+    {
+        foreach (var anim in m_ArmorsView)
+        {
+            anim.SetAnim(inName, inValue);
         }
     }
 

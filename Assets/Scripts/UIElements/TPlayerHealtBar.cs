@@ -16,11 +16,13 @@ public class TPlayerHealtBar : MonoBehaviour
     private void OnEnable()
     {
         TEventManager.SubscribeTo<IDefend>(TEventID.OnHealthUpdate, UpdateHealthBar);
+        TEventManager.SubscribeTo<TPlayerController>(TEventID.OnPlayerSpawned, SetTargetHealth);
     }
 
     private void OnDisable()
     {
         TEventManager.UnsubscribeFrom<IDefend>(TEventID.OnHealthUpdate, UpdateHealthBar);
+        TEventManager.UnsubscribeFrom<TPlayerController>(TEventID.OnPlayerSpawned, SetTargetHealth);
     }
 
     /// <summary>
@@ -33,5 +35,10 @@ public class TPlayerHealtBar : MonoBehaviour
             m_Slider.maxValue = defendComponent.MaxHealth;
             m_Slider.value = defendComponent.CurrentHealth;
         }
+    }
+
+    private void SetTargetHealth(TPlayerController inPlayer)
+    {
+        m_TargetHealth = inPlayer.DefenseComponent as TPlayerDefenseComponent;
     }
 }
