@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Duration:
     m_Hours: 9
     m_Minutes: 0
-  m_CurveInterval: 30
+  m_CurveInterval: 45
   m_Sprite: {fileID: 1471019840}
 --- !u!1 &121416271
 GameObject:
@@ -322867,7 +322867,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ContainedItem.Item
       value: 
-      objectReference: {fileID: 11400000, guid: 0568b4b54050a4a4f958ce25650b40b8,
+      objectReference: {fileID: 11400000, guid: 73039a8ca7fc2a8488ac1b2607a77876,
         type: 2}
     - target: {fileID: 3082695195315352123, guid: d3607189e60a4654aaf6cfd50dee54d0,
         type: 3}

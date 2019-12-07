@@ -18,5 +18,5 @@ MonoBehaviour:
     m_Minutes: 30
   m_BlendState: {fileID: 11400000, guid: 86f1f3cb23530744d9d3b72d3e95c83d, type: 2}
   m_BlendDuration:
-    m_Hours: 2
+    m_Hours: 1
     m_Minutes: 30
