@@ -14,13 +14,11 @@ public class TItemsDatabase : MonoBehaviour
         Collection = Instantiate(m_inputCollection) as TItemCollection;
     }
 
-    private void Update()
+    public void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            Debug.Log(Collection.AllItemsInCollection.Count);
+            Debug.Log(Collection.AllItemsInCollection[0].values);
         }
     }
-
-
 }

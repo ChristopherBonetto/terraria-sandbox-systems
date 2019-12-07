@@ -16,5 +16,6 @@ MonoBehaviour:
   ItemSprite: {fileID: 2101482829041187484, guid: ca958eabd37bac640a2dd11cb6fdfbe5,
     type: 3}
   m_DepleteOnUse: 0
+  m_TextToRead: {fileID: 4900000, guid: 2144ed575cfb95a4688785792377879b, type: 3}
   ArmorType: 0
   Defence: 1
