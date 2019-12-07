@@ -17,22 +17,20 @@ public class TEquipmentSlot : TInventorySlot
         {
             if (m_itemInSlot == TItemQuantity.Empty)
             {
-                TEventManager.TriggerEvent<TInventorySlot>(TEventID.OnItemEquipped, this);
+                m_itemInSlot = value;
+                TEventManager.TriggerEvent<TInventorySlot>(TEventID.OnItemEquipped, this as TInventorySlot);
                 Debug.Log("equipped");
             }
             else
             {
-                TEventManager.TriggerEvent<TInventorySlot>(TEventID.OnItemUnequipped, this);
+                TEventManager.TriggerEvent<TInventorySlot>(TEventID.OnItemUnequipped, this as TInventorySlot);
+                m_itemInSlot = value;
                 Debug.Log("unequipped");
             }
-            m_itemInSlot = value;
+            
         }
     }
-
-    public override void SelectSlot()
-    {
-        base.SelectSlot();
-    }
+    
 
     protected override void FillThisSlot(TInventorySlot inSlot)
     {
