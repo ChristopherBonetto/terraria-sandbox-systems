@@ -7,23 +7,30 @@ public class TUIManager : MonoBehaviour
 {
     public static TUIManager SharedInstance { get; private set; }
 
-    public bool m_isInventoryUIOpen { get; private set; }
-
-    public List<GameObject> m_InventorySlotsUI { get; private set; } = new List<GameObject>();
-
     [Header("Equipment")]
     [SerializeField] private GameObject m_equipmentPanel;
+
+    #region Description
+
+    [Space, SerializeField] private GameObject m_descriptionPanel;
+    private Text m_descriptionText;
+
+    private List<string> m_listOfTexts = new List<string>();
+
+    #endregion
 
     #region Inventory
 
     [Header("Inventory")]
     [SerializeField] private GameObject m_inventoryItemsHolder;
-    [SerializeField] private GameObject m_inventorySlotPrefab;
     [SerializeField] private RectTransform m_inventoryUI;
 
     private Vector2 m_startingInventorySize;
 
-    
+    public List<GameObject> m_InventorySlotsUI { get; private set; } = new List<GameObject>();
+
+    public bool m_isInventoryUIOpen { get; private set; }
+
     #endregion
 
     #region Crafting
@@ -40,10 +47,16 @@ public class TUIManager : MonoBehaviour
     private void OnEnable()
     {
         TEventManager.SubscribeTo<bool>(TEventID.OnInventoryOpen, OpenCloseInventory);
+        TEventManager.SubscribeTo<bool>(TEventID.OnOpenCloseDescription, OpenCloseDescription);
+
+        TEventManager.SubscribeTo<List<string>>(TEventID.OnShowTextDescription, ShowDescriptionText);
     }
     private void OnDisable()
     {
         TEventManager.UnsubscribeFrom<bool>(TEventID.OnInventoryOpen, OpenCloseInventory);
+        TEventManager.UnsubscribeFrom<bool>(TEventID.OnOpenCloseDescription, OpenCloseDescription);
+
+        TEventManager.UnsubscribeFrom<List<string>>(TEventID.OnShowTextDescription, ShowDescriptionText);
     }
 
 
@@ -52,11 +65,18 @@ public class TUIManager : MonoBehaviour
         SharedInstance = this;
 
         m_startingInventorySize = m_inventoryUI.sizeDelta;
+
+        m_descriptionText = m_descriptionPanel.GetComponentInChildren<Text>();
+    }
+
+    private void Start()
+    {
+        OpenCloseDescription(false);
     }
 
 
     #region OpenClose Inventory
-    
+
     //What happens to the ui when the inventory is open or close
     public void OpenCloseInventory(bool inIsOpen)
     {
@@ -124,5 +144,26 @@ public class TUIManager : MonoBehaviour
     {
         if(m_isInventoryUIOpen)
         m_craftingScrollBar.value += inScrollSpeed;
-    }    
+    }
+    
+    public void OpenCloseDescription(bool inIsOpen)
+    {
+        m_descriptionPanel.SetActive(inIsOpen);
+    }
+
+    public void ShowDescriptionText(List<string> inList)
+    {
+        if(inList != null)
+        {
+            for (int i = 0; i < inList.Count; i++)
+            {
+                m_descriptionText.text = m_descriptionText.text + inList[i].ToString() + " ";
+            }
+        }
+        else
+        {
+            m_descriptionText.text = null;
+        }
+        
+    }
 }

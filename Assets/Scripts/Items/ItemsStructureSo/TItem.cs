@@ -23,9 +23,11 @@ public class TItem : ScriptableObject
     #region Read Description
 
     [Space, SerializeField] private TextAsset m_TextToRead;
+    public TextAsset TextToRead { get { return m_TextToRead; } private set { } }
+
     private string path;
 
-    public List<string> values { get; private set; } = new List<string>();
+    public List<string> textValues { get; private set; } = new List<string>();
 
     public void Awake()
     {
@@ -35,7 +37,6 @@ public class TItem : ScriptableObject
         {
             ReadTextFile(path);
         }
-
     }
 
     void ReadTextFile(string file_path)
@@ -45,7 +46,7 @@ public class TItem : ScriptableObject
         while (!inp_stm.EndOfStream)
         {
             string inp_ln = inp_stm.ReadLine();
-            values.Add(inp_ln);
+            textValues.Add(inp_ln);
         }
         inp_stm.Close();
     }

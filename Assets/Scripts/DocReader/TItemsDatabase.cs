@@ -4,21 +4,38 @@ using UnityEngine;
 
 public class TItemsDatabase : MonoBehaviour
 {
+    public static TItemsDatabase SharedInstance;
+
     [SerializeField] private TItemCollection m_inputCollection;
     public TItemCollection Collection { get; private set; }
 
-    
+    private void OnEnable()
+    {
+        TEventManager.SubscribeTo<TItem>(TEventID.OnSearchItem, SearchItemInCollection);
+    }
+    private void OnDisable()
+    {
+        TEventManager.UnsubscribeFrom<TItem>(TEventID.OnSearchItem, SearchItemInCollection);
+    }
+
 
     private void Awake()
     {
+        SharedInstance = this;
+
         Collection = Instantiate(m_inputCollection) as TItemCollection;
     }
 
-    public void Update()
+
+    public void SearchItemInCollection(TItem inItem)
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        for(int i = 0; i < Collection.AllItemsInCollection.Count; i++)
         {
-            Debug.Log(Collection.AllItemsInCollection[0].values);
+            if(Collection.AllItemsInCollection[i].ItemName == inItem.ItemName)
+            {
+                TEventManager.TriggerEvent<List<string>>(TEventID.OnShowTextDescription, Collection.AllItemsInCollection[i].textValues);
+                return;
+            }
         }
     }
 }

@@ -19,5 +19,8 @@ public enum TEventID
     OnTimeStarted,
     OnMinutePassed,
     OnDayNightChanged,
-    OnInventoryCreated
+    OnInventoryCreated,
+    OnSearchItem,
+    OnOpenCloseDescription,
+    OnShowTextDescription
 }

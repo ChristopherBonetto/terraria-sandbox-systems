@@ -145,11 +145,18 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        if(ItemInSlot != TItemQuantity.Empty && ItemInSlot.Item.TextToRead != null)
+        {
+            TEventManager.TriggerEvent<bool>(TEventID.OnOpenCloseDescription, true);
+            TEventManager.TriggerEvent<TItem>(TEventID.OnSearchItem, this.ItemInSlot.Item);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        
+        TEventManager.TriggerEvent<bool>(TEventID.OnOpenCloseDescription, false);
+        TEventManager.TriggerEvent<List<string>>(TEventID.OnShowTextDescription, null);
     }
+
+    
 }

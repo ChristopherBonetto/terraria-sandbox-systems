@@ -16,6 +16,8 @@ public class TItemCollection : ScriptableObject
             for(int j = 0; j < Collection[i].List.Count; j++)
             {
                 TItem tempItem = Instantiate(Collection[i].List[j]);
+                tempItem.name = Collection[i].List[j].name;
+                
                 AllItemsInCollection.Add(tempItem);
             }
         }
