@@ -14,6 +14,7 @@ public enum ArmorType
 public class TItemArmor : TItem
 {
     public ArmorType ArmorType;
+    public AnimatorOverrideController ArmorController;
 
     public int Defence = 1;
 }

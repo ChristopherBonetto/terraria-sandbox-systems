@@ -116,7 +116,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     // equipment visual
 
     [Header("Equipment")]
-    [SerializeField] private SpriteRenderer[] m_ArmorsRenderer;
+    [SerializeField] private SpriteRenderer[] m_ArmorsView;
     [SerializeField] private Sprite[] m_DefaultArmorsSprite;
 
     // Property, "get" only
@@ -266,10 +266,11 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
                     m_Rb.AddForce(Vector2.up * DataAssigned.JumpForce);
         }
 
-        else if (!Input.GetKey(KeyCode.Space))
+        else if (!Input.GetKey(KeyCode.Space) || m_Rb.velocity.y < 0)
         {
-            if ((m_Rb.velocity.y > 0))
-                m_Rb.velocity += Vector2.up * (Physics2D.gravity.y + 9.0f);
+            // Reduce gravity effect applied.
+            float gravity = (Physics2D.gravity.y + 9.5f);
+            m_Rb.velocity += Vector2.up * gravity;
         }
 
     }
@@ -359,7 +360,11 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     public void OnItemSelected(TInventorySlot item)
     {
         // Is it a weapon?
-        // Update: stats, layerMask, sprite, animator controller.s
+        // Update: 
+        // stats, 
+        // layerMask, 
+        // sprite, 
+        // animator controller.
 
         if (item.ItemInSlot.Item is TItemWeapon)
         {
@@ -387,7 +392,11 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         if (!item) return;
 
         // Is it a weapon?
-        // Update: stats, layerMask, sprite, animator controller.s
+        // Update: 
+        // stats, 
+        // layerMask, 
+        // sprite, 
+        // animator controller.
 
         if (item.ItemInSlot.Item is TItemWeapon)
         {
@@ -424,24 +433,10 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
             // View
 
-            switch (armor.ArmorType)
-            {
-                case ArmorType.Head:
-                    m_ArmorsRenderer[0].sprite = armor.ItemSprite;
-                    break;
+            int typeToInt = (int)armor.ArmorType;
+            m_ArmorsView[(int)armor.ArmorType].sprite = armor.ItemSprite;
 
-                case ArmorType.Arms:
-                    m_ArmorsRenderer[1].sprite = armor.ItemSprite;
-                    break;
-
-                case ArmorType.Chest:
-                    m_ArmorsRenderer[2].sprite = armor.ItemSprite;
-                    break;
-
-                case ArmorType.Legs:
-                    m_ArmorsRenderer[3].sprite = armor.ItemSprite;
-                    break;
-            }
+            Debug.Log("Equip Armor");
         }
     }
 
@@ -466,24 +461,8 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
             // View
 
-            switch (armor.ArmorType)
-            {
-                case ArmorType.Head:
-                    m_ArmorsRenderer[0].sprite = m_DefaultArmorsSprite[0];
-                    break;
-
-                case ArmorType.Arms:
-                    m_ArmorsRenderer[1].sprite = m_DefaultArmorsSprite[0];
-                    break;
-
-                case ArmorType.Chest:
-                    m_ArmorsRenderer[2].sprite = m_DefaultArmorsSprite[0];
-                    break;
-
-                case ArmorType.Legs:
-                    m_ArmorsRenderer[3].sprite = m_DefaultArmorsSprite[0];
-                    break;
-            }
+            int typeToInt = (int)armor.ArmorType;
+            m_ArmorsView[typeToInt].sprite = m_DefaultArmorsSprite[typeToInt];
         }
     }
 

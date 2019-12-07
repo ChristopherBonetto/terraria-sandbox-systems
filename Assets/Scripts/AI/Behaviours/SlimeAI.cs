@@ -37,6 +37,17 @@ namespace Terraria.AI
         private Transform m_TargetToChase;
 
 
+
+        private void OnEnable()
+        {
+
+        }
+
+        private void OnDisable()
+        {
+            
+        }
+
         protected override void Start()
         {
             base.Start();

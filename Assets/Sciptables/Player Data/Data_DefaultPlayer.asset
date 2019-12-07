@@ -18,5 +18,5 @@ MonoBehaviour:
   AttackSpeed: 1
   KbResist: 20
   Speed: 5
-  JumpForce: 80
+  JumpForce: 90
   MaxActionDistance: 3

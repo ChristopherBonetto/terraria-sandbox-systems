@@ -5,6 +5,63 @@ TextureImporter:
   - first:
       213: 1145648126413562040
     second: Armor_Legs_4_0
+  - first:
+      213: 1976418363514344314
+    second: Armor_Legs_4_1
+  - first:
+      213: -1993231957601746081
+    second: Armor_Legs_4_2
+  - first:
+      213: -2308978370260889701
+    second: Armor_Legs_4_3
+  - first:
+      213: -8636929823620516700
+    second: Armor_Legs_4_4
+  - first:
+      213: 7273597346212135756
+    second: Armor_Legs_4_5
+  - first:
+      213: 6802209650588002477
+    second: Armor_Legs_4_6
+  - first:
+      213: -1347493074354238589
+    second: Armor_Legs_4_7
+  - first:
+      213: 2192883535492342181
+    second: Armor_Legs_4_8
+  - first:
+      213: 7629091232458190710
+    second: Armor_Legs_4_9
+  - first:
+      213: 7621280262417558950
+    second: Armor_Legs_4_10
+  - first:
+      213: 7994751532617093651
+    second: Armor_Legs_4_11
+  - first:
+      213: -667325236676496161
+    second: Armor_Legs_4_12
+  - first:
+      213: -5850182483572855278
+    second: Armor_Legs_4_13
+  - first:
+      213: 1302901969104671825
+    second: Armor_Legs_4_14
+  - first:
+      213: -3574173178393186356
+    second: Armor_Legs_4_15
+  - first:
+      213: -6737945314258178778
+    second: Armor_Legs_4_16
+  - first:
+      213: -391425680926994040
+    second: Armor_Legs_4_17
+  - first:
+      213: 241631605832971801
+    second: Armor_Legs_4_18
+  - first:
+      213: 3007752774100030226
+    second: Armor_Legs_4_19
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -63,7 +120,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -75,7 +132,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -87,7 +144,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: iPhone
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -99,7 +156,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -121,7 +178,7 @@ TextureImporter:
         width: 20
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,6 +186,405 @@ TextureImporter:
       bones: []
       spriteID: b0e047be28f47ce4cb8cf10c21bce916
       internalID: 1145648126413562040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_1
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1009
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6eb28a6fa52cf847a2eed9d7025a808
+      internalID: 1976418363514344314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_2
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 953
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9134a8e025a017444a468255e70ae13c
+      internalID: -1993231957601746081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_3
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 897
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82296a2d14f877e49b20590007fd2ad6
+      internalID: -2308978370260889701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_4
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 841
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d139f988a8bd742b850890bd80b4fc
+      internalID: -8636929823620516700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_5
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 785
+        width: 28
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 310ac892ede93734a8069066e326cd22
+      internalID: 7273597346212135756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_6
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 729
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eacfa87a97aceb46b2e220a8e3fbac6
+      internalID: 6802209650588002477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_7
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 674
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f41c837f97f1aa548abb95ff44a6d3dd
+      internalID: -1347493074354238589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_8
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 618
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e771eea3eaaca7541acfd03cf967d0d4
+      internalID: 2192883535492342181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_9
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 562
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9c4a26a9323f6c49b37a014111b6f1f
+      internalID: 7629091232458190710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_10
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 505
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a746e67c65eb3a0459e1ec6aa45d3717
+      internalID: 7621280262417558950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_11
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 449
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 782663b20d321da46aa72adb7c584e4c
+      internalID: 7994751532617093651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_12
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 393
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46a1540e1a4ec3a4a9fd0c9ee19a66ff
+      internalID: -667325236676496161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_13
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 337
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0a769d2dea0fca489ff09090bb32699
+      internalID: -5850182483572855278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_14
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 282
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27a35d6812e75e24bb7c78a2bee2a99b
+      internalID: 1302901969104671825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_15
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 226
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f35f5a7986ef03846b3881a83a5bff66
+      internalID: -3574173178393186356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_16
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 170
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52337c090ab219a41b73887ace2cce7a
+      internalID: -6737945314258178778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_17
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 113
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f4b9a526a6f224090dbf332349025e
+      internalID: -391425680926994040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_18
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 57
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3713fb0b3a99ee54781bc9f433c44fe2
+      internalID: 241631605832971801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_Legs_4_19
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cf17b74b061af248898a042a0c49baa
+      internalID: 3007752774100030226
       vertices: []
       indices: 
       edges: []

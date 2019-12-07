@@ -414,7 +414,7 @@ MonoBehaviour:
   m_HandToAttack: {fileID: 7853118608564259667}
   m_DefaultAnim: {fileID: 9100000, guid: ccc9a0a0f7cf9b54db50a2ac813134c1, type: 2}
   m_Anim: {fileID: 1321226293937296316}
-  m_ArmorsRenderer:
+  m_ArmorsView:
   - {fileID: 1872175614204033691}
   - {fileID: 850957693183744867}
   - {fileID: 8553489099988431995}
