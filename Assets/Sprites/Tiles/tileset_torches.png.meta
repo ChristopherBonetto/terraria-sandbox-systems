@@ -1,0 +1,3763 @@
+fileFormatVersion: 2
+guid: 722c969062f887946924f04500bca08d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3592528888054542000
+    second: tileset_torches_0
+  - first:
+      213: -9138872906862554722
+    second: tileset_torches_1
+  - first:
+      213: -3887046644656713732
+    second: tileset_torches_2
+  - first:
+      213: 6242152693193602206
+    second: tileset_torches_3
+  - first:
+      213: 6676087966781046865
+    second: tileset_torches_4
+  - first:
+      213: -5883253771236043698
+    second: tileset_torches_5
+  - first:
+      213: 6809056116390323788
+    second: tileset_torches_6
+  - first:
+      213: 7538465795602219110
+    second: tileset_torches_7
+  - first:
+      213: 1506369459556245792
+    second: tileset_torches_8
+  - first:
+      213: 6177759117720667188
+    second: tileset_torches_9
+  - first:
+      213: 5122282287962118286
+    second: tileset_torches_10
+  - first:
+      213: 9176138554883780046
+    second: tileset_torches_11
+  - first:
+      213: -4482209324288920654
+    second: tileset_torches_12
+  - first:
+      213: 4361617732773930602
+    second: tileset_torches_13
+  - first:
+      213: -4966589139411291871
+    second: tileset_torches_14
+  - first:
+      213: -2980146344333554322
+    second: tileset_torches_15
+  - first:
+      213: 8799098600450987751
+    second: tileset_torches_16
+  - first:
+      213: -1653023673836528576
+    second: tileset_torches_17
+  - first:
+      213: 5447054220374506509
+    second: tileset_torches_18
+  - first:
+      213: 5190173169215418306
+    second: tileset_torches_19
+  - first:
+      213: -3313429929418165779
+    second: tileset_torches_20
+  - first:
+      213: -6767188452057739612
+    second: tileset_torches_21
+  - first:
+      213: 5490869236963856112
+    second: tileset_torches_22
+  - first:
+      213: -8321615365431458872
+    second: tileset_torches_23
+  - first:
+      213: -5783864992787193886
+    second: tileset_torches_24
+  - first:
+      213: 3123178931377928840
+    second: tileset_torches_25
+  - first:
+      213: -5388631992156787609
+    second: tileset_torches_26
+  - first:
+      213: 249714312250645617
+    second: tileset_torches_27
+  - first:
+      213: 3066485714285047792
+    second: tileset_torches_28
+  - first:
+      213: 2599998594456908186
+    second: tileset_torches_29
+  - first:
+      213: -9092074861515064146
+    second: tileset_torches_30
+  - first:
+      213: 6598059776709732181
+    second: tileset_torches_31
+  - first:
+      213: -2288333948549528987
+    second: tileset_torches_32
+  - first:
+      213: 1487470533331481261
+    second: tileset_torches_33
+  - first:
+      213: -6925597987177745471
+    second: tileset_torches_34
+  - first:
+      213: 149709265878298575
+    second: tileset_torches_35
+  - first:
+      213: -3281590433084478185
+    second: tileset_torches_36
+  - first:
+      213: 4954650543978215714
+    second: tileset_torches_37
+  - first:
+      213: -927314249038353531
+    second: tileset_torches_38
+  - first:
+      213: -865481720720029501
+    second: tileset_torches_39
+  - first:
+      213: 4188287716899302786
+    second: tileset_torches_40
+  - first:
+      213: 4380827779441089620
+    second: tileset_torches_41
+  - first:
+      213: 7145010397937889588
+    second: tileset_torches_42
+  - first:
+      213: 5571520369112350103
+    second: tileset_torches_43
+  - first:
+      213: -1577227178768514085
+    second: tileset_torches_44
+  - first:
+      213: -6175289806342296817
+    second: tileset_torches_45
+  - first:
+      213: -748578181219870234
+    second: tileset_torches_46
+  - first:
+      213: 6078829786966577045
+    second: tileset_torches_47
+  - first:
+      213: 7134129801871817965
+    second: tileset_torches_48
+  - first:
+      213: 6995584170403725502
+    second: tileset_torches_49
+  - first:
+      213: -4873604773847598608
+    second: tileset_torches_50
+  - first:
+      213: -1679689923069531699
+    second: tileset_torches_51
+  - first:
+      213: 5334783454744666191
+    second: tileset_torches_52
+  - first:
+      213: 8049511379656337677
+    second: tileset_torches_53
+  - first:
+      213: -5659608999587615711
+    second: tileset_torches_54
+  - first:
+      213: 5229614886004445051
+    second: tileset_torches_55
+  - first:
+      213: 1087299773518986093
+    second: tileset_torches_56
+  - first:
+      213: -379315539863831775
+    second: tileset_torches_57
+  - first:
+      213: -7353809111676524531
+    second: tileset_torches_58
+  - first:
+      213: -1414843870935780520
+    second: tileset_torches_59
+  - first:
+      213: -5368419012117045467
+    second: tileset_torches_60
+  - first:
+      213: -730197772642809378
+    second: tileset_torches_61
+  - first:
+      213: -2489785452097456125
+    second: tileset_torches_62
+  - first:
+      213: 1452019600948238530
+    second: tileset_torches_63
+  - first:
+      213: 6975653708239204857
+    second: tileset_torches_64
+  - first:
+      213: 3803461972033091224
+    second: tileset_torches_65
+  - first:
+      213: 3894729791911582419
+    second: tileset_torches_66
+  - first:
+      213: -6482247816715201521
+    second: tileset_torches_67
+  - first:
+      213: -170878355006463640
+    second: tileset_torches_68
+  - first:
+      213: 5820439406834631136
+    second: tileset_torches_69
+  - first:
+      213: -1645451247315170899
+    second: tileset_torches_70
+  - first:
+      213: -2623456893135914379
+    second: tileset_torches_71
+  - first:
+      213: 5010469983278731191
+    second: tileset_torches_72
+  - first:
+      213: -2031598148718151402
+    second: tileset_torches_73
+  - first:
+      213: 301310021177708065
+    second: tileset_torches_74
+  - first:
+      213: -5887969072970406307
+    second: tileset_torches_75
+  - first:
+      213: -3254155017026885298
+    second: tileset_torches_76
+  - first:
+      213: -1323386917938420914
+    second: tileset_torches_77
+  - first:
+      213: -2702472233311448785
+    second: tileset_torches_78
+  - first:
+      213: -705545814149662660
+    second: tileset_torches_79
+  - first:
+      213: -5380381971673656686
+    second: tileset_torches_80
+  - first:
+      213: -4502295874402811839
+    second: tileset_torches_81
+  - first:
+      213: 4874380976462159249
+    second: tileset_torches_82
+  - first:
+      213: -6287713804908540148
+    second: tileset_torches_83
+  - first:
+      213: -4722789403638314342
+    second: tileset_torches_84
+  - first:
+      213: -1051438253285909775
+    second: tileset_torches_85
+  - first:
+      213: -2509596881585304218
+    second: tileset_torches_86
+  - first:
+      213: -6811195908413279084
+    second: tileset_torches_87
+  - first:
+      213: 1961274667749855599
+    second: tileset_torches_88
+  - first:
+      213: -8378000695107880827
+    second: tileset_torches_89
+  - first:
+      213: -7575685205680784269
+    second: tileset_torches_90
+  - first:
+      213: -8388818832687599779
+    second: tileset_torches_91
+  - first:
+      213: 7763290712750734382
+    second: tileset_torches_92
+  - first:
+      213: -1994338949486465368
+    second: tileset_torches_93
+  - first:
+      213: -1233836946613081644
+    second: tileset_torches_94
+  - first:
+      213: 4036597449927576597
+    second: tileset_torches_95
+  - first:
+      213: 3594849873866058836
+    second: tileset_torches_96
+  - first:
+      213: -776338887577104854
+    second: tileset_torches_97
+  - first:
+      213: -1577175205919197646
+    second: tileset_torches_98
+  - first:
+      213: -3386282739792412423
+    second: tileset_torches_99
+  - first:
+      213: 1401800785898767736
+    second: tileset_torches_100
+  - first:
+      213: -92916536286193298
+    second: tileset_torches_101
+  - first:
+      213: 4880026642052595217
+    second: tileset_torches_102
+  - first:
+      213: -2030387331952065838
+    second: tileset_torches_103
+  - first:
+      213: 5197071046246833061
+    second: tileset_torches_104
+  - first:
+      213: 2697662279835759335
+    second: tileset_torches_105
+  - first:
+      213: -6634458795706073206
+    second: tileset_torches_106
+  - first:
+      213: -1707580190807239289
+    second: tileset_torches_107
+  - first:
+      213: 1754261323530134345
+    second: tileset_torches_108
+  - first:
+      213: -8032938867302953088
+    second: tileset_torches_109
+  - first:
+      213: -3053899037172176714
+    second: tileset_torches_110
+  - first:
+      213: -3693542610234697427
+    second: tileset_torches_111
+  - first:
+      213: -1670380986575872065
+    second: tileset_torches_112
+  - first:
+      213: -1058019189419528618
+    second: tileset_torches_113
+  - first:
+      213: -4316229635861764272
+    second: tileset_torches_114
+  - first:
+      213: -253763438125204538
+    second: tileset_torches_115
+  - first:
+      213: 2655451709411294142
+    second: tileset_torches_116
+  - first:
+      213: -16160251687998031
+    second: tileset_torches_117
+  - first:
+      213: -5713721954360990938
+    second: tileset_torches_118
+  - first:
+      213: -2460780577065054563
+    second: tileset_torches_119
+  - first:
+      213: 6833033373004912432
+    second: tileset_torches_120
+  - first:
+      213: -4263974279317666345
+    second: tileset_torches_121
+  - first:
+      213: 115248312012336552
+    second: tileset_torches_122
+  - first:
+      213: 6076895939681903459
+    second: tileset_torches_123
+  - first:
+      213: 1619763230797366881
+    second: tileset_torches_124
+  - first:
+      213: 7698879848935438492
+    second: tileset_torches_125
+  - first:
+      213: -3491828488861534782
+    second: tileset_torches_126
+  - first:
+      213: -7747104818978996856
+    second: tileset_torches_127
+  - first:
+      213: -2262342873153878724
+    second: tileset_torches_128
+  - first:
+      213: 2855778337445138830
+    second: tileset_torches_129
+  - first:
+      213: 6311508814884949908
+    second: tileset_torches_130
+  - first:
+      213: 1496181901518404676
+    second: tileset_torches_131
+  - first:
+      213: -7410045325663839018
+    second: tileset_torches_132
+  - first:
+      213: 1805573093317372633
+    second: tileset_torches_133
+  - first:
+      213: 1220524325280158530
+    second: tileset_torches_134
+  - first:
+      213: -4560886914975032604
+    second: tileset_torches_135
+  - first:
+      213: -8322224732485858868
+    second: tileset_torches_136
+  - first:
+      213: -2304057491223144166
+    second: tileset_torches_137
+  - first:
+      213: 121089328814970076
+    second: tileset_torches_138
+  - first:
+      213: 2840706178512430839
+    second: tileset_torches_139
+  - first:
+      213: -2880415425890143081
+    second: tileset_torches_140
+  - first:
+      213: -4919753648017365214
+    second: tileset_torches_141
+  - first:
+      213: -2316353992067947418
+    second: tileset_torches_142
+  - first:
+      213: 5294788499998233080
+    second: tileset_torches_143
+  - first:
+      213: -1094275192483036081
+    second: tileset_torches_144
+  - first:
+      213: 5721869841154273349
+    second: tileset_torches_145
+  - first:
+      213: -3033298989579711780
+    second: tileset_torches_146
+  - first:
+      213: 5051588880787363358
+    second: tileset_torches_147
+  - first:
+      213: -2464969616360522599
+    second: tileset_torches_148
+  - first:
+      213: -9005362244660592515
+    second: tileset_torches_149
+  - first:
+      213: 7064603109820070753
+    second: tileset_torches_150
+  - first:
+      213: 7873492451592226582
+    second: tileset_torches_151
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tileset_torches_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 332
+        width: 16
+        height: 20
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a47cb1b35447d54cadea3e0f52a2aa9
+      internalID: -3592528888054542000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 336
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987afbd9eaedf164eaa81ad7e949f669
+      internalID: -9138872906862554722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 336
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0953deeefb233f64d9684cdc14e4bafd
+      internalID: -3887046644656713732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 336
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c61ede544ea41ab46aa0a1632c573db0
+      internalID: 6242152693193602206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_4
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 336
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b32498c3a49764c408714e7e173da420
+      internalID: 6676087966781046865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_5
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 336
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7feb4641fbd253e43b942d1601ea31b9
+      internalID: -5883253771236043698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_6
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 336
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a6e75acc28796440bb55218b595db84
+      internalID: 6809056116390323788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3299f0223df008b4ba2621e155561295
+      internalID: 7538465795602219110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_8
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd9f2927c5b21ce42903652545f6aa5e
+      internalID: 1506369459556245792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_9
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f0dfd41b633f90428c20f401b250e3c
+      internalID: 6177759117720667188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_10
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d2f91b71be7e1d4bbdecdd60dbbca5e
+      internalID: 5122282287962118286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_11
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6cb5ddf8e6cec543bacf5d1121d38f4
+      internalID: 9176138554883780046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_12
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53697cb8367d6fe4aa34c8b165af7ac1
+      internalID: -4482209324288920654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_13
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 320
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57a654277d20d234d942c51a452fbdf4
+      internalID: 4361617732773930602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bc26312010366645abe855570974011
+      internalID: -4966589139411291871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_15
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 304
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1042ccca4aacb1740aab709831a1d0ab
+      internalID: -2980146344333554322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_16
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 304
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 355016a79a59c1f499e9746deef1eb1a
+      internalID: 8799098600450987751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_17
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 304
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aba94be43d217494c87dd548af0232c8
+      internalID: -1653023673836528576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_18
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 304
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c2af9edb5cab9d47a12990278a2ce64
+      internalID: 5447054220374506509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_19
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 304
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aefcd0c1b1036a84ca302bfed6616805
+      internalID: 5190173169215418306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_20
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 304
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31fe56511cfeedb42a7c1790185fb788
+      internalID: -3313429929418165779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a82900428032b5849b9b6984c92a3a11
+      internalID: -6767188452057739612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_22
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6ec58a8691b4b34f92c572e881855dd
+      internalID: 5490869236963856112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_23
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f0c0e5657c22c4db2da8b401d870c8
+      internalID: -8321615365431458872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_24
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a01b0765a3cf6746aa64918f3bc8379
+      internalID: -5783864992787193886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_25
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6ccbfa1e0728834bb9698da7d943824
+      internalID: 3123178931377928840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_26
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2be1dfce886dbb41ba5abf0a8c373ba
+      internalID: -5388631992156787609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_27
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53dc8347e82b8964d8024bc5ba6d6368
+      internalID: 249714312250645617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 272
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7b0354da8bfe2a4c89c06a4a1f4c5e0
+      internalID: 3066485714285047792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_29
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 272
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fd27427afa451749bee8492a6aee560
+      internalID: 2599998594456908186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_30
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 272
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c69b4bab65362a74abc27ab3b89c2b46
+      internalID: -9092074861515064146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_31
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 272
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63f27f803ae9f924c848b3ee9aa674df
+      internalID: 6598059776709732181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_32
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 272
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1072a4e0c80d5b4ea18290077478ded
+      internalID: -2288333948549528987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_33
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 272
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5e92a2489e4d694c9e1f1b70f9bc20b
+      internalID: 1487470533331481261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_34
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 272
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db8152160c666e24fb3f57a27b48aea2
+      internalID: -6925597987177745471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 561bfeefedcc8f140b05c903d954be61
+      internalID: 149709265878298575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_36
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 256
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4a7cd0ce6adb0a42a1bad5bc971c774
+      internalID: -3281590433084478185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_37
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 256
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cea373650d59ef4b8088e05d5d11fd4
+      internalID: 4954650543978215714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_38
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 256
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 777b0b36e53ad3c429120df43a21825d
+      internalID: -927314249038353531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_39
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 256
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bdd0437b506804428e2f0045bd073f7
+      internalID: -865481720720029501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_40
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 256
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58e8af6f72744c840a93f4ab6a7dcaf7
+      internalID: 4188287716899302786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_41
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 256
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a02e2c31052be4fbd98506f90915a7
+      internalID: 4380827779441089620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa42ff6926d6b1846a65d97ae952bf05
+      internalID: 7145010397937889588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_43
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a30b4abd6790c4241964285e4b028ebd
+      internalID: 5571520369112350103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_44
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dbb86312edfb5f4a8649cf5477c0671
+      internalID: -1577227178768514085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_45
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc6ae834cd3b9da48a951718b232cdbf
+      internalID: -6175289806342296817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_46
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ae1d3bd6f1df384796e5a8ed358d46e
+      internalID: -748578181219870234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_47
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dc082ec695b52c4b8a9b1982af1ca18
+      internalID: 6078829786966577045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2bd73fbb18f03a418ae2ea04fc30ea9
+      internalID: 7134129801871817965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_49
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 592de80ae16017b43b0b2838138d1cb8
+      internalID: 6995584170403725502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_50
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c54b016ceae11994a8a2185716c6f719
+      internalID: -4873604773847598608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_51
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 915adfd79a8426543b546397330b662f
+      internalID: -1679689923069531699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_52
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1de9e0d299b640f4d8b43452081f6759
+      internalID: 5334783454744666191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_53
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f24ba2892f9d04943b306c33c5f9c3c5
+      internalID: 8049511379656337677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_54
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cc45f4662dcce648a75b9dbaf0eef2a
+      internalID: -5659608999587615711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb76e82b4e61e8d409e610590fc0ef4e
+      internalID: 5229614886004445051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_56
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59896458d5d7d63408f20946ab5c2c08
+      internalID: 1087299773518986093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_57
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66e1f7a8e9d52714f808424eeb8548f9
+      internalID: -379315539863831775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_58
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e60110f363b6eac46a3720d467804b53
+      internalID: -7353809111676524531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_59
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b6e8f8f6531651428457fc339143713
+      internalID: -1414843870935780520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_60
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48fb980fd1d3da34597114207c4adf99
+      internalID: -5368419012117045467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_61
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5829513408797e4f9bf7cff6c0a1b60
+      internalID: -730197772642809378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_62
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72a37b831d6e02b4f8e47ee76ca5f436
+      internalID: -2489785452097456125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_63
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc5cdb4d0a3d7544a2193c320da420b
+      internalID: 1452019600948238530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_64
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46173f8aebfc4ea408ae1fbd4b97ff6d
+      internalID: 6975653708239204857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_65
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2e475a66b8eedb4d8c4e603d8151e71
+      internalID: 3803461972033091224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_66
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c8ce81270806ac45a25f83779bdf99c
+      internalID: 3894729791911582419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_67
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c69749e3fd06de143ba0007a6d27f4f4
+      internalID: -6482247816715201521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_68
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78afbd9162034764598b570cf8fa2803
+      internalID: -170878355006463640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_69
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31ced1822d000b14fa268438e05f089e
+      internalID: 5820439406834631136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_70
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d788cfbb36b8e714e924384a0103c518
+      internalID: -1645451247315170899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_71
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09917be4d2600f94a83f4a57afa2fdb6
+      internalID: -2623456893135914379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_72
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 684ec845152d31345a1804d3a6826981
+      internalID: 5010469983278731191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_73
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7822f91c730cf644c8cbd2db8b3ffba2
+      internalID: -2031598148718151402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_74
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 645f252f57617454690e0985f1a5a233
+      internalID: 301310021177708065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_75
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70493aa7fc91ae446b7436880f614bb7
+      internalID: -5887969072970406307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_76
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee7329f49230ee144a224011a1a857f6
+      internalID: -3254155017026885298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_77
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb0811decd42f43469b57dff0160393e
+      internalID: -1323386917938420914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_78
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a37053a6feefad64995ccc27cdebec7e
+      internalID: -2702472233311448785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_79
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a16666322519ae498914acb29c1b66d
+      internalID: -705545814149662660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_80
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a620758864420fc4da5e1fab8626d450
+      internalID: -5380381971673656686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_81
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1fc7ef659561ff4689e32a86e957ed2
+      internalID: -4502295874402811839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_82
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b8b600953f7ef14ea07d0a3042fb174
+      internalID: 4874380976462159249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_83
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 510eb5e0d71ae3e429b91be075a7a1c5
+      internalID: -6287713804908540148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_84
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9d5a5173cbbf0847bb5ecad77d383e8
+      internalID: -4722789403638314342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_85
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed07670fc9aad3e4e8a40a6407902002
+      internalID: -1051438253285909775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_86
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a5ed9be079bc1a40856e97ded412b10
+      internalID: -2509596881585304218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_87
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 778cab20dba9f144ba0098e2ae7184b2
+      internalID: -6811195908413279084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_88
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef7e0e4d4ee2bad48b788a84b50b00f3
+      internalID: 1961274667749855599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_89
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f9498af85123949a76ddb61f35058f
+      internalID: -8378000695107880827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19ee1429e2a0668469ef1c860e791cb3
+      internalID: -7575685205680784269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_91
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c335854eba203c046af18822780d3e50
+      internalID: -8388818832687599779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_92
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc1cd75a5dcfe044ea7f10fdecd99c52
+      internalID: 7763290712750734382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_93
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 914d19da9156cec4ba3841b67485bc26
+      internalID: -1994338949486465368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_94
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a07b66a561a829c429048dfd161c863e
+      internalID: -1233836946613081644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_95
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a5eb1a956d34384fa906c23943783bc
+      internalID: 4036597449927576597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_96
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beb805dbd62604648993bdc732a67de0
+      internalID: 3594849873866058836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_97
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670e8a9a9471f7547bf71cc8526f42b4
+      internalID: -776338887577104854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_98
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a79089565b372e4b8b7e63b72a5fc5d
+      internalID: -1577175205919197646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_99
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb0206a3d9f0eca49a0b6db634506c9a
+      internalID: -3386282739792412423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_100
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6f03439f2cdbdd4f9f56601a91cc716
+      internalID: 1401800785898767736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_101
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d23ffe093744e4189c50adb9204eec
+      internalID: -92916536286193298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_102
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 190bdf728e1f55e4092a7699ba590408
+      internalID: 4880026642052595217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_103
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9686583af113d944eaa3252cbf854270
+      internalID: -2030387331952065838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_104
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f476f92aef17fb444ba02a004eede23a
+      internalID: 5197071046246833061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_105
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3567c11c865785e4bbe37b81667de72c
+      internalID: 2697662279835759335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_106
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a03be0ffe5913fa4da14415848d6545c
+      internalID: -6634458795706073206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_107
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 915dfe6c1547ee6459928ff996ca9ea9
+      internalID: -1707580190807239289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_108
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf8f1a8003c32644d8e450834dda0282
+      internalID: 1754261323530134345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_109
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1284e32e0d08c804b9c371d031a779ac
+      internalID: -8032938867302953088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_110
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e7c95fcd4f388448ad79846d5630191
+      internalID: -3053899037172176714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_111
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 691235c4c53f87941ae18db25ca7ffff
+      internalID: -3693542610234697427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_112
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 308d6848703929444a454d75827f31a5
+      internalID: -1670380986575872065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_113
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d24d5113cd1c5c4199fded0e38a860e
+      internalID: -1058019189419528618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_114
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42892839da6c20a459afc2a1eee12258
+      internalID: -4316229635861764272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_115
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c99f340cd725e984984c674a3367bf14
+      internalID: -253763438125204538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_116
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 477042bac6475394aa28aa69f9b58f9c
+      internalID: 2655451709411294142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_117
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f07b6f8a1f9861e46adc1cd0bd5753c8
+      internalID: -16160251687998031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_118
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 703e9b91d7bb3824a9a275671a6601a1
+      internalID: -5713721954360990938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_119
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4aac215501e4c4884817b287ddb693
+      internalID: -2460780577065054563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_120
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396e34a723e21af41949149c7ca55656
+      internalID: 6833033373004912432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_121
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8b477ef0f6078c4ab1b29f22fd7c886
+      internalID: -4263974279317666345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_122
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c2c893b8909c7547b28881acc93b88d
+      internalID: 115248312012336552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_123
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d7a8d3d5620a1840828229d37ef9f4b
+      internalID: 6076895939681903459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_124
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e192b125eb1c94a4fbf266ca20fb4f1f
+      internalID: 1619763230797366881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_125
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c34e1d84ba794c7499e31e722cd783ea
+      internalID: 7698879848935438492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_126
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e014d795f597c81488d43b8ffd993851
+      internalID: -3491828488861534782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_127
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db0b6bf09fe513c4eb9d7fff13767ef9
+      internalID: -7747104818978996856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_128
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbbb63ebb322ba54cb6e4ae5fb64c042
+      internalID: -2262342873153878724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_129
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3ede1b8c3fad9944b84e7bbe0b7ea2d
+      internalID: 2855778337445138830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_130
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01fcf5c5c78059d4e9791ab05f98380d
+      internalID: 6311508814884949908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_131
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99cd873575eb94542895b90627891bb5
+      internalID: 1496181901518404676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_132
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38045b507cfd9724ab39de97e61758c0
+      internalID: -7410045325663839018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_133
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4447dbe60812aff45b735d059e8d5bcf
+      internalID: 1805573093317372633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_134
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6df6a296d1b78cc44a25d6af837dec6e
+      internalID: 1220524325280158530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_135
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 548939a0f75752647b1c9448d4852031
+      internalID: -4560886914975032604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_136
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8038a3c6cf018649bb5f03f99036827
+      internalID: -8322224732485858868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_137
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 946181e3bcee87b4a9bd0a57a21b83cf
+      internalID: -2304057491223144166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_138
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47070b3421b2a2148924acd6e92e0112
+      internalID: 121089328814970076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_139
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6b880ab296578d4cabbc608c353d7bf
+      internalID: 2840706178512430839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_140
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d113ebf884f89e4cbc9968ff6454fc7
+      internalID: -2880415425890143081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_141
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aa5124be2125c846a7bebbd314694f4
+      internalID: -4919753648017365214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_142
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe1953186189d0847bf70bf0c78346f7
+      internalID: -2316353992067947418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_143
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2df1750ced3a73478d1df88f9840a95
+      internalID: 5294788499998233080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_144
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe1d692659d624944aeb699a7903f996
+      internalID: -1094275192483036081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_145
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f6d971e90870da48a430ac8565dc76a
+      internalID: 5721869841154273349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_146
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edfda81945d005044ae80021d1346b68
+      internalID: -3033298989579711780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_147
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ffff8cdcc6388b4786207ed44eec5a4
+      internalID: 5051588880787363358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_148
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32a2278dc413b1e4a9f4d9d654f0435c
+      internalID: -2464969616360522599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_149
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee60bbc3d0ee4a4ca5cbb935bccbee8
+      internalID: -9005362244660592515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_150
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3d4e71b1874cda4e8c2e64a63fed48f
+      internalID: 7064603109820070753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_torches_151
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d3f19349b3cde34b895c622de0497ca
+      internalID: 7873492451592226582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
