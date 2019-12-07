@@ -153,11 +153,16 @@ public class TUIManager : MonoBehaviour
 
     public void ShowDescriptionText(List<string> inList)
     {
+        
         if(inList != null)
         {
             for (int i = 0; i < inList.Count; i++)
             {
-                m_descriptionText.text = m_descriptionText.text + inList[i].ToString() + " ";
+                //if(i == 0)
+                //{
+                //    m_descriptionText.text.
+                //}
+                m_descriptionText.text = m_descriptionText.text + inList[i].ToString() + "\n";
             }
         }
         else
