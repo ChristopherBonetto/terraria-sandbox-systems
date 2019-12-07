@@ -27,6 +27,7 @@ public class TInventory : MonoBehaviour
 
 
 
+
     private void Awake()
     {
         m_myPlayer = gameObject.GetComponent<TPlayerController>();
@@ -68,6 +69,8 @@ public class TInventory : MonoBehaviour
             }
             TUIManager.SharedInstance.AddInventorySlotUI(item);
         }
+
+        GiveReferenceToThisInventory();
     }
 
     public void AddSlotToInventory(TInventorySlot inSlotToAdd)
@@ -75,11 +78,6 @@ public class TInventory : MonoBehaviour
         if (!InventorySlots.Contains(inSlotToAdd))
         {
             InventorySlots.Add(inSlotToAdd);
-            inSlotToAdd.TakeInventoryRef(this);
-        }
-        else
-        {
-            Debug.Log("the list contains this element");
         }
     }
 
@@ -87,6 +85,11 @@ public class TInventory : MonoBehaviour
     public void ChangeOpenCloseInventoryBool(bool inIsOpen)
     {
         m_isInventoryOpen = inIsOpen;
+    }
+
+    public void GiveReferenceToThisInventory()
+    {
+        TEventManager.TriggerEvent<TInventory>(TEventID.OnInventoryCreated, this);
     }
 
 

@@ -18,5 +18,6 @@ public enum TEventID
     OnTileDestroyed,
     OnTimeStarted,
     OnMinutePassed,
-    OnDayNightChanged
+    OnDayNightChanged,
+    OnInventoryCreated
 }

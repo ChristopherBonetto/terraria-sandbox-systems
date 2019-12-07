@@ -4,23 +4,37 @@ using UnityEngine;
 
 public class TEquipmentSlot : TInventorySlot
 {
-    [Space, SerializeField] ArmorType m_typeOfEquippableItem;
+    [Space, SerializeField] private ArmorType m_typeOfEquippableItem;
 
-
-    public override void SelectSlot()
+    
+    public override TItemQuantity ItemInSlot
     {
-        if (TItemHandler.SharedInstance.SelectedItem)
-            FillThisSlot(TItemHandler.SharedInstance.SelectedItem);
-
-        else if (ItemInSlot != TItemQuantity.Empty)
+        get
         {
-            TItemHandler.SharedInstance.SelectedItem = this;
-            ShowImage(false);
+            return m_itemInSlot;
+        }
+        set
+        {
+            if (m_itemInSlot == TItemQuantity.Empty)
+            {
+                TEventManager.TriggerEvent<TInventorySlot>(TEventID.OnItemEquipped, this);
+                Debug.Log("equipped");
+            }
+            else
+            {
+                TEventManager.TriggerEvent<TInventorySlot>(TEventID.OnItemUnequipped, this);
+                Debug.Log("unequipped");
+            }
+            m_itemInSlot = value;
         }
     }
 
+    public override void SelectSlot()
+    {
+        base.SelectSlot();
+    }
 
-    public override void FillThisSlot(TInventorySlot inSlot)
+    protected override void FillThisSlot(TInventorySlot inSlot)
     {
         if (inSlot.ItemInSlot.Item is TItemArmor)
         {
@@ -49,7 +63,6 @@ public class TEquipmentSlot : TInventorySlot
                             inSlot.InsertItemToSlot(tempItem);
                         }
                     }
-                    
                 }
                 else
                 {

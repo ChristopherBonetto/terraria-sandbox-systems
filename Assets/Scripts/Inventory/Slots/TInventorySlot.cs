@@ -12,19 +12,36 @@ public class TInventorySlot : MonoBehaviour
         set { m_slotImage.sprite = value; }
     }
 
-    public TItemQuantity ItemInSlot;
-    public TInventory InventoryRef { get; private set; }
+    protected TItemQuantity m_itemInSlot;
+    public virtual TItemQuantity ItemInSlot
+    {
+        get
+        {
+            return m_itemInSlot;
+        }
+        set
+        {
+            m_itemInSlot = value;
+        }
+    }
+
+    public TInventory InventoryRef { get; protected set; }
 
     [SerializeField] protected Image m_slotImage;
 
-        
-    public void InsertItemToSlot(TItemQuantity inItemToAdd)
-    {
-        ItemInSlot = inItemToAdd;
-        m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
-        ShowImage(true);
-    }
     
+
+
+    protected void OnEnable()
+    {
+        TEventManager.SubscribeTo<TInventory>(TEventID.OnInventoryCreated, TakeInventoryRef);
+    }
+    protected void OnDisable()
+    {
+        TEventManager.UnsubscribeFrom<TInventory>(TEventID.OnInventoryCreated, TakeInventoryRef);
+    }
+
+
     public virtual void SelectSlot()
     {
         if (TItemHandler.SharedInstance.SelectedItem)
@@ -39,7 +56,7 @@ public class TInventorySlot : MonoBehaviour
 
     public void DepleteAmount(int inDepletedAmount)
     {
-        ItemInSlot.Amount -= inDepletedAmount;
+        m_itemInSlot.Amount -= inDepletedAmount;
 
         if (ItemInSlot.Amount <= 0)
             Clear();
@@ -61,7 +78,7 @@ public class TInventorySlot : MonoBehaviour
 
     #region Drag and Drop event
 
-    public virtual void FillThisSlot(TInventorySlot inSlot)
+    protected virtual void FillThisSlot(TInventorySlot inSlot)
     {
         TInventorySlot tempSlot = TItemHandler.SharedInstance.SelectedItem;
 
@@ -104,7 +121,14 @@ public class TInventorySlot : MonoBehaviour
     }
     #endregion
 
-    public void TakeInventoryRef(TInventory inInventory)
+    public void InsertItemToSlot(TItemQuantity inItemToAdd)
+    {
+        ItemInSlot = inItemToAdd;
+        m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
+        ShowImage(true);
+    }
+
+    protected virtual void TakeInventoryRef(TInventory inInventory)
     {
         InventoryRef = inInventory;
     }
