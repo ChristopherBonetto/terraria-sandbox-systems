@@ -73,5 +73,6 @@ public class TPlayerDefenseComponent : MonoBehaviour, IDefend
     private void DisposeToDead()
     {
         gameObject.SetActive(false);
+        TEventManager.TriggerEvent(TEventID.OnPlayerDied);
     }
 }

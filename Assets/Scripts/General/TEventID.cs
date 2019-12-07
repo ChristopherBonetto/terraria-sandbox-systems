@@ -22,5 +22,9 @@ public enum TEventID
     OnInventoryCreated,
     OnSearchItem,
     OnOpenCloseDescription,
-    OnShowTextDescription
+    OnShowTextDescription,
+    OnPlayerDied,
+    OnSpawnPointSelected,
+    OnSpawnPointRemoved,
+    OnPlayerSpawned
 }

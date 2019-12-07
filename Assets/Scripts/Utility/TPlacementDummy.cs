@@ -77,7 +77,7 @@ public class TPlacementDummy : MonoBehaviour
             {
                 oldPointerCell = newPointerCell;
 
-                if (TPlayerController.SharedInstance.IsInActionRange(newPointerCell))
+                if (GameManager.SharedInstance.PlayerInstance.IsInActionRange(newPointerCell))
                 {
                     m_TransformComponent.position = TTilemapManager.SharedInstance.CellToWorld(newPointerCell);
                     if (!m_SpriteRendererComponent.gameObject.activeInHierarchy) m_SpriteRendererComponent.gameObject.SetActive(true);
