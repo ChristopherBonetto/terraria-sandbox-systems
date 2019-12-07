@@ -22,16 +22,18 @@ public class TAmbientLightController : MonoBehaviour
 
     private void OnEnable()
     {
-        TEventManager.SubscribeTo<int>(TEventID.OnMinutePassed, UpdateView);
+        TEventManager.SubscribeTo<TDayTime>(TEventID.OnMinutePassed, UpdateView);
     }
 
     private void OnDisable()
     {
-        TEventManager.UnsubscribeFrom<int>(TEventID.OnMinutePassed, UpdateView);
+        TEventManager.UnsubscribeFrom<TDayTime>(TEventID.OnMinutePassed, UpdateView);
     }
 
-    private void UpdateView(int inCurrentMinutes)
+    private void UpdateView(TDayTime inCurrentTime)
     {
+        int inCurrentMinutes = inCurrentTime.ToMinutes();
+
         m_Percentage = inCurrentMinutes < TDayTime.HALF_DAY_MINUTES ? inCurrentMinutes / (float)TDayTime.HALF_DAY_MINUTES : (TDayTime.DAY_MINUTES - inCurrentMinutes) / (float)TDayTime.HALF_DAY_MINUTES;
 
         m_MainCamera.backgroundColor = Color.Lerp(m_NightLight.BackgroundColor, m_DayLight.BackgroundColor, m_Percentage);

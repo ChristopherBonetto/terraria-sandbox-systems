@@ -94,16 +94,16 @@ public struct TDayTime
         m_Minutes = Mathf.Min(inMinutes, 59);
     }
 
-    public static TDayTime TimeBetween(TDayTime a, TDayTime b)
+
+    public static int MinutesBetween(TDayTime time1, TDayTime time2)
     {
-        if (a < b)
-        {
-            return new TDayTime(b.Hours - a.Hours, b.Minutes - a.Minutes);
-        }
+        int minutes1 = time1.ToMinutes();
+        int minutes2 = time2.ToMinutes();
+
+        if (minutes1 < minutes2)
+            return minutes2 - minutes1;
         else
-        {
-            return new TDayTime(b.Hours + 24 - a.Hours, b.m_Minutes - a.m_Minutes);
-        }
+            return DAY_MINUTES - minutes1 + minutes2;
     }
 
     public int ToSeconds()
@@ -114,6 +114,19 @@ public struct TDayTime
     public int ToMinutes()
     {
         return m_Hours * 60 + m_Minutes;
+    }
+
+    public static TDayTime FromMinutes(int inMinutes)
+    {
+        int hours = 0;
+
+        while(inMinutes > 59)
+        {
+            hours++;
+            inMinutes -= 60;
+        }
+
+        return new TDayTime(hours, inMinutes);
     }
 
     public static bool operator ==(TDayTime a, TDayTime b)
@@ -128,11 +141,11 @@ public struct TDayTime
 
     public static bool operator >(TDayTime a, TDayTime b)
     {
-        return (a.Hours == b.Hours) ? a.Minutes > b.Minutes : a.Hours > b.Hours;
+        return a.ToMinutes() > b.ToMinutes();
     }
 
     public static bool operator <(TDayTime a, TDayTime b)
     {
-        return (a.Hours == b.Hours) ? a.Minutes < b.Minutes : a.Hours < b.Hours;
+        return a.ToMinutes() < b.ToMinutes();
     }
 }

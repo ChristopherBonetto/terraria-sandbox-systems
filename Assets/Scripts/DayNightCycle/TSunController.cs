@@ -6,71 +6,66 @@ public class TSunController : MonoBehaviour
 {
     public Transform TransformComponent { get; private set; }
 
-    [SerializeField] private Vector2 m_EllipseSemiAxes;
+    [SerializeField] private Curve2D m_Curve;
 
-    [SerializeField] private Transform m_Sun;
-    [SerializeField] private Transform m_Moon;
+    [SerializeField] private TDayTime m_StartTime;
+    [SerializeField] private TDayTime m_Duration;
+    [SerializeField] private float m_CurveInterval;
 
-    [SerializeField] private float m_Phase;
+    [SerializeField] private GameObject m_Sprite;
 
-    private const float ANGLE_INCREMENT = Mathf.PI / TDayTime.HALF_DAY_MINUTES;
-
-    private Vector3 m_Position;
-
-    private float angleRad;
+    private Vector3 m_CurrentPosition;
 
     private void Awake()
     {
         TransformComponent = transform;
-    }
 
-    private void Start()
-    {
-        m_Sun.gameObject.SetActive(true);
-        m_Moon.gameObject.SetActive(false);
-
-        m_Position.x = m_EllipseSemiAxes.x;
-
-        m_Sun.localPosition = m_Position;
-        m_Moon.localPosition = -m_Position;
+        m_CurrentPosition.z = TransformComponent.position.z;
     }
 
     private void OnEnable()
     {
-        TEventManager.SubscribeTo<int>(TEventID.OnMinutePassed, UpdatePositions);
+        TEventManager.SubscribeTo<TDayTime>(TEventID.OnMinutePassed, StartMovement);
+        TEventManager.SubscribeTo<TDayTime>(TEventID.OnTimeStarted, InitPosition);
     }
 
     private void OnDisable()
     {
-        TEventManager.UnsubscribeFrom<int>(TEventID.OnMinutePassed, UpdatePositions);
+        TEventManager.UnsubscribeFrom<TDayTime>(TEventID.OnMinutePassed, StartMovement);
+        TEventManager.UnsubscribeFrom<TDayTime>(TEventID.OnTimeStarted, InitPosition);
     }
 
-    public void UpdatePositions(int inCurrentMinutes)
+    private void StartMovement(TDayTime inCurrentTime)
     {
-        angleRad = inCurrentMinutes * ANGLE_INCREMENT + m_Phase * Mathf.Deg2Rad;
+        if (inCurrentTime == m_StartTime) StartCoroutine(Move());
+    }
 
-        m_Position.x = Mathf.Cos(angleRad) * m_EllipseSemiAxes.x;
-        m_Position.y = Mathf.Sin(angleRad) * m_EllipseSemiAxes.y;
+    private void InitPosition(TDayTime inCurrentTime)
+    {
+        int minutesBetween = TDayTime.MinutesBetween(m_StartTime, inCurrentTime);
+        int durationMinutes = m_Duration.ToMinutes();
 
-        if (m_Sun.gameObject.activeInHierarchy)
+        if (minutesBetween < durationMinutes)
         {
-            if (m_Position.y > 0)
-                m_Sun.localPosition = m_Position;
-            else
-                SwitchActivation();
-        }
-        else
-        {
-            if (m_Position.y < 0)
-                m_Moon.localPosition = -m_Position;
-            else
-                SwitchActivation();
+            StartCoroutine(Move(minutesBetween));
         }
     }
 
-    private void SwitchActivation()
+    private IEnumerator Move(int startingMinute = 0)
     {
-        m_Sun.gameObject.SetActive(!m_Sun.gameObject.activeInHierarchy);
-        m_Moon.gameObject.SetActive(!m_Moon.gameObject.activeInHierarchy);
+        m_Sprite.SetActive(true);
+
+        float speed = m_CurveInterval / (m_Duration.ToMinutes() * TTimeManager.SharedInstance.TimeSettings.DayMinuteDuration);
+
+        for (float t = -m_CurveInterval + startingMinute * 2 * m_CurveInterval / m_Duration.ToMinutes(); t <= m_CurveInterval; t += speed * Time.deltaTime)
+        {
+            m_CurrentPosition.x = m_Curve.X(t);
+            m_CurrentPosition.y = m_Curve.Y(t);
+            TransformComponent.localPosition = m_CurrentPosition;
+            
+            yield return null;
+        }
+
+        m_Sprite.SetActive(false);
     }
 }

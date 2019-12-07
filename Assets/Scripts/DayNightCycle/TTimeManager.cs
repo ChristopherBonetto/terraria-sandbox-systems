@@ -6,17 +6,29 @@ using UnityEngine;
 
 public class TTimeManager : MonoBehaviour
 {
+    public static TTimeManager SharedInstance { get; private set; }
+
+    public TTimeSettings TimeSettings { get { return m_TimeSettings; } }
+
+    public TDayTime CurrentTime { get { return m_CurrentTime; } }
+
     [SerializeField] private TTimeSettings m_TimeSettings;
 
     private bool m_IsNight;
 
-    private int m_CurrentMinutes;
-    private int m_DayStartMinutes;
-    private int m_NightStartMinutes;
+    private TDayTime m_CurrentTime;
+
+    private void Awake()
+    {
+        SharedInstance = this;
+    }
 
     private void Start()
     {
-        m_CurrentMinutes = m_TimeSettings.GameStartTime.ToMinutes();
+        m_CurrentTime = m_TimeSettings.GameStartTime;
+
+
+        TEventManager.TriggerEvent(TEventID.OnTimeStarted, m_CurrentTime);
 
         m_IsNight = m_TimeSettings.IsStartingDuringNight;
 
@@ -27,17 +39,13 @@ public class TTimeManager : MonoBehaviour
     {
         while (Application.isPlaying)
         {
-            if (m_CurrentMinutes < TDayTime.DAY_MINUTES)
-                m_CurrentMinutes++;
-            else
-                m_CurrentMinutes = 0;
+            m_CurrentTime.Minutes++;
 
-
-            TEventManager.TriggerEvent(TEventID.OnMinutePassed, m_CurrentMinutes);
+            TEventManager.TriggerEvent(TEventID.OnMinutePassed, m_CurrentTime);
 
             if (m_IsNight)
             {
-                if (m_CurrentMinutes == m_DayStartMinutes)
+                if (m_CurrentTime == m_TimeSettings.DayStartTime)
                 {
                     m_IsNight = false;
                     TEventManager.TriggerEvent(TEventID.OnDayNightChanged, m_IsNight);
@@ -45,7 +53,7 @@ public class TTimeManager : MonoBehaviour
             }
             else
             {
-                if (m_CurrentMinutes == m_NightStartMinutes)
+                if (m_CurrentTime == m_TimeSettings.NightStartTime)
                 {
                     m_IsNight = true;
                     TEventManager.TriggerEvent(TEventID.OnDayNightChanged, m_IsNight);
