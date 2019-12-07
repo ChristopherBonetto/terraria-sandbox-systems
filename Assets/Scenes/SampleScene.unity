@@ -1442,15 +1442,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'CIAO MI CHIAMO
-
-    ANNA
-
-    CIAO CIAO
-
-    CIAO
-
-    CIAO'
+  m_Text: 
 --- !u!222 &1086640922
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -267986,7 +267978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_equipmentPanel: {fileID: 675961622}
-  m_descriptionPanel: {fileID: 1386756902}
+  m_descriptionPanel: {fileID: 1386756903}
   m_inventoryItemsHolder: {fileID: 753199491}
   m_inventoryUI: {fileID: 1444712113}
   m_craftingBar: {fileID: 1699912206}

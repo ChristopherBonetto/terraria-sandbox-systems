@@ -12,7 +12,7 @@ public class TUIManager : MonoBehaviour
 
     #region Description
 
-    [Space, SerializeField] private GameObject m_descriptionPanel;
+    [Space, SerializeField] private RectTransform m_descriptionPanel;
     private Text m_descriptionText;
 
     private List<string> m_listOfTexts = new List<string>();
@@ -47,14 +47,14 @@ public class TUIManager : MonoBehaviour
     private void OnEnable()
     {
         TEventManager.SubscribeTo<bool>(TEventID.OnInventoryOpen, OpenCloseInventory);
-        TEventManager.SubscribeTo<bool>(TEventID.OnOpenCloseDescription, OpenCloseDescription);
+        TEventManager.SubscribeTo<bool, Vector3>(TEventID.OnOpenCloseDescription, OpenCloseDescription);
 
         TEventManager.SubscribeTo<List<string>>(TEventID.OnShowTextDescription, ShowDescriptionText);
     }
     private void OnDisable()
     {
         TEventManager.UnsubscribeFrom<bool>(TEventID.OnInventoryOpen, OpenCloseInventory);
-        TEventManager.UnsubscribeFrom<bool>(TEventID.OnOpenCloseDescription, OpenCloseDescription);
+        TEventManager.UnsubscribeFrom<bool, Vector3>(TEventID.OnOpenCloseDescription, OpenCloseDescription);
 
         TEventManager.UnsubscribeFrom<List<string>>(TEventID.OnShowTextDescription, ShowDescriptionText);
     }
@@ -71,7 +71,7 @@ public class TUIManager : MonoBehaviour
 
     private void Start()
     {
-        OpenCloseDescription(false);
+        OpenCloseDescription(false, Vector2.zero);
     }
 
 
@@ -146,22 +146,18 @@ public class TUIManager : MonoBehaviour
         m_craftingScrollBar.value += inScrollSpeed;
     }
     
-    public void OpenCloseDescription(bool inIsOpen)
+    public void OpenCloseDescription(bool inIsOpen, Vector3 inPosition)
     {
-        m_descriptionPanel.SetActive(inIsOpen);
+        m_descriptionPanel.transform.position =  new Vector3(inPosition.x + m_descriptionPanel.rect.width/2, inPosition.y - m_descriptionPanel.rect.height / 2, inPosition.z);
+        m_descriptionPanel.gameObject.SetActive(inIsOpen);
     }
 
     public void ShowDescriptionText(List<string> inList)
     {
-        
         if(inList != null)
         {
             for (int i = 0; i < inList.Count; i++)
             {
-                //if(i == 0)
-                //{
-                //    m_descriptionText.text.
-                //}
                 m_descriptionText.text = m_descriptionText.text + inList[i].ToString() + "\n";
             }
         }

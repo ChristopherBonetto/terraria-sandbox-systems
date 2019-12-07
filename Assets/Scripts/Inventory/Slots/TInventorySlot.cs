@@ -22,6 +22,7 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
 
     public TInventory InventoryRef { get; protected set; }
 
+
     [SerializeField] protected Image m_slotImage;
 
     public Sprite ItemSprite
@@ -30,6 +31,7 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
         set { m_slotImage.sprite = value; }
     }
 
+    
     #region Slot's Events
 
     protected void OnEnable()
@@ -147,15 +149,18 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
     {
         if(ItemInSlot != TItemQuantity.Empty && ItemInSlot.Item.TextToRead != null)
         {
-            TEventManager.TriggerEvent<bool>(TEventID.OnOpenCloseDescription, true);
+            TEventManager.TriggerEvent<bool, Vector3>(TEventID.OnOpenCloseDescription, true, Input.mousePosition);
             TEventManager.TriggerEvent<TItem>(TEventID.OnSearchItem, this.ItemInSlot.Item);
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        TEventManager.TriggerEvent<bool>(TEventID.OnOpenCloseDescription, false);
-        TEventManager.TriggerEvent<List<string>>(TEventID.OnShowTextDescription, null);
+        if (ItemInSlot != TItemQuantity.Empty)
+        {
+            TEventManager.TriggerEvent<bool, Vector3>(TEventID.OnOpenCloseDescription, false, Vector2.zero);
+            TEventManager.TriggerEvent<List<string>>(TEventID.OnShowTextDescription, null);
+        }
     }
 
     
