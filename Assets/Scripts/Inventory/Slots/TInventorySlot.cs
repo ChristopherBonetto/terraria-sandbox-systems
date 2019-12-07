@@ -1,17 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class TInventorySlot : MonoBehaviour
-{  
-    public Sprite ItemSprite
-    {
-        get { return m_slotImage.sprite; }
-        set { m_slotImage.sprite = value; }
-    }
-
+public class TInventorySlot : MonoBehaviour, IShowDescription
+{
     protected TItemQuantity m_itemInSlot;
     public virtual TItemQuantity ItemInSlot
     {
@@ -29,8 +24,13 @@ public class TInventorySlot : MonoBehaviour
 
     [SerializeField] protected Image m_slotImage;
 
-    
+    public Sprite ItemSprite
+    {
+        get { return m_slotImage.sprite; }
+        set { m_slotImage.sprite = value; }
+    }
 
+    #region Slot's Events
 
     protected void OnEnable()
     {
@@ -41,7 +41,9 @@ public class TInventorySlot : MonoBehaviour
         TEventManager.UnsubscribeFrom<TInventory>(TEventID.OnInventoryCreated, TakeInventoryRef);
     }
 
+    #endregion
 
+    #region Button Action
     public virtual void SelectSlot()
     {
         if (TItemHandler.SharedInstance.SelectedItem)
@@ -53,30 +55,9 @@ public class TInventorySlot : MonoBehaviour
             if (InventoryRef.m_isInventoryOpen) ShowImage(false);
         }
     }
+    #endregion
 
-    public void DepleteAmount(int inDepletedAmount)
-    {
-        m_itemInSlot.Amount -= inDepletedAmount;
-
-        if (ItemInSlot.Amount <= 0)
-            Clear();
-    }
-
-    public void Clear()
-    {
-        ItemInSlot = TItemQuantity.Empty;
-        
-        ShowImage(false);
-
-        if (TItemHandler.SharedInstance.SelectedItem == this) TItemHandler.SharedInstance.SelectedItem = null;
-    }
-
-    public void ShowImage(bool inValue)
-    {
-        m_slotImage.gameObject.SetActive(inValue);
-    }
-
-    #region Drag and Drop event
+    #region Fill slot
 
     protected virtual void FillThisSlot(TInventorySlot inSlot)
     {
@@ -119,7 +100,6 @@ public class TInventorySlot : MonoBehaviour
         tempSlot = null;
         TItemHandler.SharedInstance.SelectedItem = tempSlot;
     }
-    #endregion
 
     public void InsertItemToSlot(TItemQuantity inItemToAdd)
     {
@@ -127,9 +107,49 @@ public class TInventorySlot : MonoBehaviour
         m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
         ShowImage(true);
     }
+    #endregion
+
+    #region Methods to manage the item in slot
+    public void ShowImage(bool inValue)
+    {
+        m_slotImage.gameObject.SetActive(inValue);
+    }
+
+    public void DepleteAmount(int inDepletedAmount)
+    {
+        m_itemInSlot.Amount -= inDepletedAmount;
+
+        if (ItemInSlot.Amount <= 0)
+            Clear();
+    }
+
+    public void Clear()
+    {
+        ItemInSlot = TItemQuantity.Empty;
+
+        ShowImage(false);
+
+        if (TItemHandler.SharedInstance.SelectedItem == this) TItemHandler.SharedInstance.SelectedItem = null;
+    }
+
+    #endregion
+
+
 
     protected virtual void TakeInventoryRef(TInventory inInventory)
     {
         InventoryRef = inInventory;
+    }
+
+
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        
     }
 }

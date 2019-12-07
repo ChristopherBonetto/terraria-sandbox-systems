@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d3f4d79bb06cc245bcb5462e8a30b88, type: 3}
-  m_Name: TestArmor
+  m_Script: {fileID: 11500000, guid: ae07868f7430e1c44940613aba9d37d6, type: 3}
+  m_Name: PureItemList
   m_EditorClassIdentifier: 
-  ItemName: TestArmor
-  ItemSprite: {fileID: 2101482829041187484, guid: ca958eabd37bac640a2dd11cb6fdfbe5,
-    type: 3}
-  m_DepleteOnUse: 0
-  ArmorType: 0
-  Defence: 1
+  List:
+  - {fileID: 11400000, guid: 0568b4b54050a4a4f958ce25650b40b8, type: 2}

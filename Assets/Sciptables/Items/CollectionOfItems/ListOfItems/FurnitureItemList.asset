@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae07868f7430e1c44940613aba9d37d6, type: 3}
+  m_Name: FurnitureItemList
+  m_EditorClassIdentifier: 
+  List:
+  - {fileID: 11400000, guid: 39f795ef37de4c449af4cc96f6bc9457, type: 2}
+  - {fileID: 11400000, guid: 537608a464edc4b4da9deb820997b894, type: 2}
+  - {fileID: 11400000, guid: c898fa60806fb1a4ba2216205c996a93, type: 2}
+  - {fileID: 11400000, guid: 01833cbdcb2f2d843856fa6bcfdc0d4d, type: 2}
+  - {fileID: 11400000, guid: 24e6e0c96177d9b4aa8e5e433f9c26b5, type: 2}
