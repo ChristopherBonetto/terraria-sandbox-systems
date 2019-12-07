@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ada3cb3915e2946b9186c3eb7d63ed, type: 3}
+  m_Name: NightPhase
+  m_EditorClassIdentifier: 
+  m_State: {fileID: 11400000, guid: be32881cbc3e90041b0636288b1f59da, type: 2}
+  m_StartTime:
+    m_Hours: 19
+    m_Minutes: 30
+  m_BlendState: {fileID: 11400000, guid: 4a458c0ad26397b40a10f1137d872043, type: 2}
+  m_BlendDuration:
+    m_Hours: 2
+    m_Minutes: 30

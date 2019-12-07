@@ -148,4 +148,27 @@ public struct TDayTime
     {
         return a.ToMinutes() < b.ToMinutes();
     }
+
+    public static TDayTime operator -(TDayTime a, TDayTime b)
+    {
+        int diff = a.ToMinutes() - b.ToMinutes();
+
+        if (diff < 0) diff = DAY_MINUTES - diff;
+
+        return FromMinutes(diff);
+    }
+
+    public static TDayTime operator +(TDayTime a, TDayTime b)
+    {
+        int sum = a.ToMinutes() + b.ToMinutes();
+
+        if (sum > DAY_MINUTES) sum -= DAY_MINUTES;
+
+        return FromMinutes(sum);
+    }
+
+    public static TDayTime operator /(TDayTime a, float b)
+    {
+        return FromMinutes(Mathf.RoundToInt(a.ToMinutes() / b));
+    }
 }

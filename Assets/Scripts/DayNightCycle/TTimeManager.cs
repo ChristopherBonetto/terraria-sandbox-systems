@@ -60,7 +60,7 @@ public class TTimeManager : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(m_TimeSettings.DayMinuteDuration);
+            yield return new WaitForSecondsRealtime(m_TimeSettings.DayMinuteDuration);
         }
     }
 }
