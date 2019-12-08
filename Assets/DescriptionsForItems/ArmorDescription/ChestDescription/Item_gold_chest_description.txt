@@ -1,0 +1,6 @@
+Item name : Gold Chest
+
+Defense :3
+
+Description :
+

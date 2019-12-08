@@ -17,4 +17,19 @@ public class TItemArmor : TItem
     public AnimatorOverrideController ArmorAnim;
 
     public TStatistics Statistics;
+
+    public override List<string> TakeAllInfos()
+    {
+        m_infos = new List<string>();
+        m_infos.Add("Item name : " + ItemName);
+        m_infos.Add("");
+
+        m_infos.Add("Defense :" + Statistics.Defense);
+        m_infos.Add("");
+
+        m_infos.Add("Description :");
+        m_infos.Add(m_descriptionField);
+
+        return m_infos;
+    }
 }

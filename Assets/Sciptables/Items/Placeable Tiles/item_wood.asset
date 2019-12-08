@@ -15,5 +15,7 @@ MonoBehaviour:
   ItemName: Wood
   ItemSprite: {fileID: 21300000, guid: e463d5e0702ed6b4da10844f043738a2, type: 3}
   m_DepleteOnUse: 1
+  m_descriptionField: 
+  m_TextToRead: {fileID: 4900000, guid: efde4029a7c6ac240aca2d6cd70daa9f, type: 3}
   m_Tile: {fileID: 11400000, guid: f8da2b6f2a1c03c48a75677c2f67478e, type: 2}
   m_TargetTilemap: 0

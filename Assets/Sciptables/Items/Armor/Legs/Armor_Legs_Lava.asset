@@ -16,7 +16,15 @@ MonoBehaviour:
   ItemSprite: {fileID: -335148211808128109, guid: 5e931cd463133b54ea7d43de30eec27b,
     type: 3}
   m_DepleteOnUse: 0
-  m_TextToRead: {fileID: 0}
+  m_descriptionField: 
+  m_TextToRead: {fileID: 4900000, guid: 095ea4ccba9eed0459924f434f03b92f, type: 3}
   ArmorType: 3
   ArmorAnim: {fileID: 22100000, guid: 78021f1930029df4483903300781bd8a, type: 2}
-  Defence: 1
+  Statistics:
+    MaxHealth: 0
+    Defense: 0
+    Damage: 0
+    AttackSpeed: 0
+    KbResist: 0
+    Speed: 0
+    JumpForce: 0

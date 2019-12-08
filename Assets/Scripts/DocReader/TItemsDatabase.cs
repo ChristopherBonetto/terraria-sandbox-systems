@@ -33,7 +33,7 @@ public class TItemsDatabase : MonoBehaviour
         {
             if(Collection.AllItemsInCollection[i].ItemName == inItem.ItemName)
             {
-                TEventManager.TriggerEvent<List<string>>(TEventID.OnShowTextDescription, Collection.AllItemsInCollection[i].textValues);
+                TEventManager.TriggerEvent<List<string>>(TEventID.OnShowTextDescription, Collection.AllItemsInCollection[i].m_textValues);
                 return;
             }
         }

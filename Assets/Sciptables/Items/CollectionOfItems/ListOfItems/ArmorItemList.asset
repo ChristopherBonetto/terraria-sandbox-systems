@@ -13,4 +13,9 @@ MonoBehaviour:
   m_Name: ArmorItemList
   m_EditorClassIdentifier: 
   List:
+  - {fileID: 11400000, guid: e365ff68a7218964f97e11c7ac9de1cc, type: 2}
+  - {fileID: 11400000, guid: 9009da60193b63e4b851bfd0e0bd691f, type: 2}
   - {fileID: 11400000, guid: 89f741fb541a49f4abfa3233e30103fd, type: 2}
+  - {fileID: 11400000, guid: 08d10f8f1a96d044aaf185c1f02ae3dd, type: 2}
+  - {fileID: 11400000, guid: af6fa8309e587b841a3f550106e2a102, type: 2}
+  - {fileID: 11400000, guid: d0afc451077ec0b45949245b12b76852, type: 2}

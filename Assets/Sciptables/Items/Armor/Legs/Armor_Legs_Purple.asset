@@ -16,7 +16,8 @@ MonoBehaviour:
   ItemSprite: {fileID: -8042117807890397378, guid: d925e694073804f499cf742b56eff261,
     type: 3}
   m_DepleteOnUse: 0
-  m_TextToRead: {fileID: 0}
+  m_descriptionField: 
+  m_TextToRead: {fileID: 4900000, guid: 2c83fd12f29791c4a9d8ee1330cd9e97, type: 3}
   ArmorType: 3
   ArmorAnim: {fileID: 22100000, guid: 9e87c06cb7ff54d4cbc9b8aca5cab54b, type: 2}
   Statistics:

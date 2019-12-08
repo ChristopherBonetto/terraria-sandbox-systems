@@ -15,5 +15,7 @@ MonoBehaviour:
   ItemName: Stone Block
   ItemSprite: {fileID: 21300000, guid: 87807740f67294940bfbd9a9a1e77219, type: 3}
   m_DepleteOnUse: 1
+  m_descriptionField: 
+  m_TextToRead: {fileID: 4900000, guid: 1284041d3c27e174b97e90cbf4fc49b7, type: 3}
   m_Tile: {fileID: 11400000, guid: 873a6f26962de8c489373fa060728be2, type: 2}
   m_TargetTilemap: 0

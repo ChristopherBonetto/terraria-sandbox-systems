@@ -15,5 +15,7 @@ MonoBehaviour:
   ItemName: Gold Brick
   ItemSprite: {fileID: 21300000, guid: 0d44ab7e4d635c94d91592276a61319d, type: 3}
   m_DepleteOnUse: 1
+  m_descriptionField: 
+  m_TextToRead: {fileID: 4900000, guid: 253f7b2c1169df6419c32caba89a7aab, type: 3}
   m_Tile: {fileID: 11400000, guid: 2b5c2f579c24abf4c9f2b03b8acf3d98, type: 2}
   m_TargetTilemap: 0
