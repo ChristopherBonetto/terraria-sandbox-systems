@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b41caf4b591f1b647aa3004b22572193
+guid: e7e844d6e2f2a5c45b611315c7fd3cc5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5653402562460897640
-    second: Armor_Head_6_0
+      213: -4627006291843494289
+    second: Armor_Head_5_0
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 23
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,22 +113,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Armor_Head_6_0
+      name: Armor_Head_5_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 1085
+        x: 3
+        y: 1087
         width: 30
         height: 30
-      alignment: 9
-      pivot: {x: 0.36888134, y: 0.46912843}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e5369546763e134ca738fd68d1b304b
-      internalID: 5653402562460897640
+      spriteID: 7528ee1ff5cbe4047bb3670c30361b57
+      internalID: -4627006291843494289
       vertices: []
       indices: 
       edges: []

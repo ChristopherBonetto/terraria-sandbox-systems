@@ -37,7 +37,6 @@ namespace Terraria.AI
 
                 if (m_CurrentHealth <= 0)
                     DisposeToDead();
-
             }
         }
 
@@ -100,6 +99,7 @@ namespace Terraria.AI
             if (!m_HealthSlider.gameObject.activeSelf)
                 m_HealthSlider.gameObject.SetActive(true);
 
+            m_LastHealth = CurrentHealth; // Use to calculate text displayed.
             CurrentHealth -= Mathf.Max(1, inAmount - Defense);
         }
 
