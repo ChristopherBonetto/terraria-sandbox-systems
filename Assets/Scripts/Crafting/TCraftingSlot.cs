@@ -9,7 +9,7 @@ public class TCraftingSlot : MonoBehaviour
 
     private TPlayerController m_myPlayer;
 
-    public TRecipe m_itemInSlot;
+    private TRecipe m_itemInSlot;
 
     private void Start()
     {
