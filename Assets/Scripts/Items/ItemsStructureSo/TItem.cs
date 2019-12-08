@@ -29,7 +29,10 @@ public class TItem : ScriptableObject
     [SerializeField] protected string m_descriptionField;
 
     [Space, SerializeField] private TextAsset m_TextToRead;
-    public TextAsset TextToRead { get { return m_TextToRead; } private set { } }
+    public TextAsset TextToRead { get { return m_TextToRead; } protected set { } }
+
+    public TextAsset m_textToRead;
+    
 
     private string m_filePath;
 
@@ -41,10 +44,15 @@ public class TItem : ScriptableObject
 
     public void Awake()
     {
-        m_filePath = AssetDatabase.GetAssetPath(m_TextToRead);
+        //#if UNITY_EDITOR
+        //m_filePath = AssetDatabase.GetAssetPath(m_TextToRead);
 
-        WriteAndReadDoc(TakeAllInfos());
+        //WriteAndReadDoc(TakeAllInfos());
+        //#endif
+
+        m_textValues = TakeAllInfos();
     }
+    
 
     public virtual List<string> TakeAllInfos()
     {
@@ -66,6 +74,7 @@ public class TItem : ScriptableObject
         {
             if (!File.Exists(m_filePath))
             {
+                Debug.Log("no");
                 return;
             }
 
@@ -95,7 +104,7 @@ public class TItem : ScriptableObject
     }
     
 
-    #endregion
+#endregion
 }
 
 
