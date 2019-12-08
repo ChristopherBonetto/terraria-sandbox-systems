@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Collider: {fileID: 4413473620299845115}
   m_Rb: {fileID: 4413473620299845114}
   m_Data: {fileID: 11400000, guid: 7f1ec781339447b40bb4bdc059b42187, type: 2}
-  m_Anim: {fileID: 8640013285988398684}
   m_Legs: {fileID: 4413473620619264438}
   m_JumpableLayers:
     serializedVersion: 2
@@ -127,7 +126,8 @@ MonoBehaviour:
   m_PlayerMask:
     serializedVersion: 2
     m_Bits: 4096
-  m_Radius: 20
+  m_Radius: 12
+  m_Anim: {fileID: 8640013285988398684}
 --- !u!95 &8640013285988398684
 Animator:
   serializedVersion: 3
