@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Data_Fighter_Goblin
   m_EditorClassIdentifier: 
   m_MonsterName: Goblin
-  m_ID: 2
   m_Type: 3
-  m_MaxHealth: 10
-  m_Defense: 3
-  m_Damage: 1
-  m_Speed: 3
-  m_JumpForce: 50
-  m_KbResist: 3
+  Statistics:
+    MaxHealth: 8
+    Defense: 2
+    Damage: 1
+    AttackSpeed: 1
+    KbResist: 5
+    Speed: 4
+    JumpForce: 45

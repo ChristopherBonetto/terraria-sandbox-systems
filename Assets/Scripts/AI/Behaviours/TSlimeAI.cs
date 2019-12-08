@@ -29,7 +29,7 @@ namespace Terraria.AI
 
         #endregion
 
-        public float KbResist => Data.KbResist;
+        public float KbResist => Data.Statistics.KbResist;
         public SlimeState CurrentState { get; private set; }
 
 
@@ -84,14 +84,14 @@ namespace Terraria.AI
                     if (!isPositive)
                         m_JumpVector.x = -m_JumpVector.x;
 
-                    m_Rb.AddForce(m_JumpVector * Data.JumpForce);
+                    m_Rb.AddForce(m_JumpVector * Data.Statistics.JumpForce);
                     break;
 
                 case SlimeState.Chasing:
                     var direction = (m_Player.transform.position - transform.position).normalized;
                     var fixDir = new Vector2(Mathf.Abs(m_JumpVector.x) * Mathf.Sign(direction.x), m_JumpVector.y);
 
-                    m_Rb.AddForce(fixDir * Data.JumpForce);
+                    m_Rb.AddForce(fixDir * Data.Statistics.JumpForce);
                     break;
             }
         }

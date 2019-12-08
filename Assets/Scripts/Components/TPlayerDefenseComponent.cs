@@ -112,5 +112,4 @@ public class TPlayerDefenseComponent : MonoBehaviour, IDefend
         gameObject.SetActive(false);
         TEventManager.TriggerEvent(TEventID.OnPlayerDied);
     }
-
 }

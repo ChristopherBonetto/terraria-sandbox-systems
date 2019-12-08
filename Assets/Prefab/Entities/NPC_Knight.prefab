@@ -130,8 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Containeditem:
-    Item: {fileID: 0}
-    Amount: 0
+    Item: {fileID: 11400000, guid: 9009da60193b63e4b851bfd0e0bd691f, type: 2}
+    Amount: 1
 --- !u!114 &5220120464172259523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Collider: {fileID: 5220120464172259520}
   m_Rb: {fileID: 5220120464172259521}
   m_Data: {fileID: 11400000, guid: ee91aefb32051e44c9e10626b97b1c3f, type: 2}
-  m_Anim: {fileID: 191727850418987879}
   m_Legs: {fileID: 5220120463818757261}
   m_JumpableLayers:
     serializedVersion: 2
@@ -158,6 +157,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   m_Radius: 30
+  m_Anim: {fileID: 191727850418987879}
 --- !u!95 &191727850418987879
 Animator:
   serializedVersion: 3

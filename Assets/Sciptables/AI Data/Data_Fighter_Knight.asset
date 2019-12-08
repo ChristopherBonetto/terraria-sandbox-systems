@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Data_Fighter_Knight
   m_EditorClassIdentifier: 
   m_MonsterName: Knight
-  m_ID: 5
   m_Type: 2
-  m_MaxHealth: 8
-  m_Defense: 4
-  m_Damage: 1
-  m_Speed: 5
-  m_JumpForce: 100
-  m_KbResist: 0
+  Statistics:
+    MaxHealth: 10
+    Defense: 2
+    Damage: 2
+    AttackSpeed: 1
+    KbResist: 20
+    Speed: 6
+    JumpForce: 120

@@ -11,20 +11,7 @@ public enum PlayerAttackType
 
 public class PlayerAttack : MonoBehaviour
 {
-    /// <summary>
-    /// Choose player attack type
-    /// </summary>
-
-    public PlayerAttackType AttackType { get; set; } = PlayerAttackType.Melee;
-
-    /// <summary>
-    /// Weapon sprite reference.
-    /// </summary>
-
-    public SpriteRenderer WeaponIcon { get { return m_WeaponIcon; } }
-
-
-    // Attack variables
+    #region SerializeField
 
     [Header("variable for every attack type")]
     public LayerMask InteractableLayer;
@@ -42,7 +29,20 @@ public class PlayerAttack : MonoBehaviour
     [Header("Visual")]
     [SerializeField] private SpriteRenderer m_WeaponIcon;
 
+    #endregion
+
     private Collider2D m_DetectedCollider;
+
+    /// <summary>
+    /// Choose player attack type
+    /// </summary>
+    public PlayerAttackType AttackType { get; set; } = PlayerAttackType.Melee;
+
+    /// <summary>
+    /// Weapon sprite reference.
+    /// </summary>
+    public SpriteRenderer WeaponIcon { get { return m_WeaponIcon; } }
+
 
     private void Update()
     {
@@ -110,7 +110,7 @@ public class PlayerAttack : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Linecast(transform.position, transform.position-transform.up * Range, InteractableLayer);
 
-        if (hit && m_DetectedCollider != hit)
+        if (hit && m_DetectedCollider != hit.collider)
         {
             IDefend entity = hit.collider.GetComponent<IDefend>();
             IKnockBackable ent = hit.collider.GetComponent<IKnockBackable>();

@@ -34,7 +34,7 @@ namespace Terraria.AI
 
         #endregion
 
-        public float KbResist => Data.KbResist;
+        public float KbResist => Data.Statistics.KbResist;
 
 
         private void Update()
@@ -77,7 +77,7 @@ namespace Terraria.AI
                         // Jumps
                         if (Physics2D.Raycast(leftLeg, Vector2.down, 0.1f, m_JumpableLayers) ||
                             Physics2D.Raycast(righttLeg, Vector2.down, 0.1f, m_JumpableLayers))
-                            m_Rb.AddForce(Vector2.up * Data.JumpForce);
+                            m_Rb.AddForce(Vector2.up * Data.Statistics.JumpForce);
                     }
                 }
             }
@@ -95,7 +95,7 @@ namespace Terraria.AI
                 Vector2 scale = new Vector2(m_LocalScale.x * -inDirection, m_LocalScale.y);
                 m_Transform.localScale = scale;
 
-                transform.position += (Vector3.right * inDirection) * Data.Speed * Time.deltaTime;
+                transform.position += (Vector3.right * inDirection) * Data.Statistics.Speed * Time.deltaTime;
 
                 m_ImMoving = true;
             }

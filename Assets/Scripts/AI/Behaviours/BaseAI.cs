@@ -9,22 +9,10 @@ namespace Terraria.AI
     [RequireComponent(typeof(TEnemyDefenseComponent))]
     public class BaseAI : BaseEntity
     {
-        /// <summary>
-        /// serializeField
-        /// </summary>
-
         [SerializeField] private AIBaseData m_Data;
-
-        /// <summary>
-        /// Private
-        /// </summary>
 
         private IDefend m_DefenseComponent;
         protected TPlayerController m_Player;   //Player reference
-
-        /// <summary>
-        /// Properties
-        /// </summary>
 
         public AIBaseData Data => m_Data;
         public IDefend DefenseComponent
@@ -37,11 +25,12 @@ namespace Terraria.AI
             }
         }
 
+
         protected override void Start()
         {
             base.Start();
 
-            DefenseComponent.Init(/*inMaxHealth:*/ Data.MaxHealth, /*inDefense:*/ Data.Defense);
+            DefenseComponent.Init( Data.Statistics.MaxHealth, Data.Statistics.Defense);
         }
 
         protected virtual void OnCollisionEnter2D(Collision2D collision)
@@ -51,7 +40,7 @@ namespace Terraria.AI
                 if (m_Player == null)
                     m_Player = collision.gameObject.GetComponent<TPlayerController>();
 
-                m_Player.DefenseComponent.TakeDamage(Data.Damage);
+                m_Player.DefenseComponent?.TakeDamage(Data.Statistics.Damage);
             }
         }
     }

@@ -129,8 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Containeditem:
-    Item: {fileID: 0}
-    Amount: 0
+    Item: {fileID: 11400000, guid: af6fa8309e587b841a3f550106e2a102, type: 2}
+    Amount: 1
 --- !u!114 &1006328636772779399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,8 +146,7 @@ MonoBehaviour:
   m_Transform: {fileID: 1006328636772779512}
   m_Collider: {fileID: 1006328636772779396}
   m_Rb: {fileID: 1006328636772779397}
-  m_Data: {fileID: 11400000, guid: 7f1ec781339447b40bb4bdc059b42187, type: 2}
-  m_Anim: {fileID: 5129461443357113891}
+  m_Data: {fileID: 11400000, guid: 55a91b01d3b56fd499963dd343cc8778, type: 2}
   m_Legs: {fileID: 1006328636589148617}
   m_JumpableLayers:
     serializedVersion: 2
@@ -157,6 +156,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   m_Radius: 15
+  m_Anim: {fileID: 5129461443357113891}
 --- !u!95 &5129461443357113891
 Animator:
   serializedVersion: 3

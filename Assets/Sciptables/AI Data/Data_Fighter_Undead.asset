@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Data_Fighter_Undead
   m_EditorClassIdentifier: 
   m_MonsterName: Zombie
-  m_ID: 1
   m_Type: 2
-  m_MaxHealth: 8
-  m_Defense: 1
-  m_Damage: 1
-  m_Speed: 2
-  m_JumpForce: 60
-  m_KbResist: 3
+  Statistics:
+    MaxHealth: 10
+    Defense: 1
+    Damage: 1
+    AttackSpeed: 1
+    KbResist: 5
+    Speed: 2
+    JumpForce: 60
