@@ -1454,8 +1454,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -10}
-  m_SizeDelta: {x: 230, y: 479.05}
+  m_AnchoredPosition: {x: -1.5199966, y: -6.0599976}
+  m_SizeDelta: {x: 222.77, y: 341.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1086640921
 MonoBehaviour:
@@ -267651,11 +267651,11 @@ RectTransform:
   m_Father: {fileID: 209941453}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16, y: 104}
-  m_SizeDelta: {x: 250, y: 500}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 250, y: 354}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1386756904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323862,16 +323862,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 209941453}
     m_Modifications:
-    - target: {fileID: -6597606975954177471, guid: dec818e6c2469a04e8cc3648e0d3eb49,
-        type: 3}
-      propertyPath: m_CurrentHeartsContainer
-      value: 
-      objectReference: {fileID: 1844327896}
-    - target: {fileID: -6597606975954177471, guid: dec818e6c2469a04e8cc3648e0d3eb49,
-        type: 3}
-      propertyPath: m_MaxHeartsContainer
-      value: 
-      objectReference: {fileID: 1135445855}
     - target: {fileID: 2474886374075947502, guid: dec818e6c2469a04e8cc3648e0d3eb49,
         type: 3}
       propertyPath: m_Name
@@ -323982,6 +323972,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: -6597606975954177471, guid: dec818e6c2469a04e8cc3648e0d3eb49,
+        type: 3}
+      propertyPath: m_CurrentHeartsContainer
+      value: 
+      objectReference: {fileID: 1844327896}
+    - target: {fileID: -6597606975954177471, guid: dec818e6c2469a04e8cc3648e0d3eb49,
+        type: 3}
+      propertyPath: m_MaxHeartsContainer
+      value: 
+      objectReference: {fileID: 1135445855}
     - target: {fileID: 3388463472126792784, guid: dec818e6c2469a04e8cc3648e0d3eb49,
         type: 3}
       propertyPath: m_AnchorMin.y

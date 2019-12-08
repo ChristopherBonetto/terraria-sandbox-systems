@@ -149,7 +149,7 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
     {
         if(ItemInSlot != TItemQuantity.Empty && ItemInSlot.Item.TextToRead != null)
         {
-            TEventManager.TriggerEvent<bool, Vector3>(TEventID.OnOpenCloseDescription, true, Input.mousePosition);
+            TEventManager.TriggerEvent<bool, Vector3>(TEventID.OnOpenCloseDescription, true, gameObject.transform.position);
             TEventManager.TriggerEvent<TItem>(TEventID.OnSearchItem, this.ItemInSlot.Item);
         }
     }
