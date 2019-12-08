@@ -6,9 +6,13 @@ public class TCraftingItemsComponent : MonoBehaviour
 {
     private TPlayerController m_myPlayer;
 
+    //List to store all the player items in inventory.
     public List<TItemQuantity> AllPlayerItems { get; private set; } = new List<TItemQuantity>();
+
+    //List of all craftable item to this player.
     public List<TRecipe> CraftableRecipes { get; private set; } = new List<TRecipe>();
 
+    //Reference to all avaible player crafting slot.
     public List<TCraftingSlot> CraftingSlots { get; private set; } = new List<TCraftingSlot>();
 
 
@@ -17,6 +21,14 @@ public class TCraftingItemsComponent : MonoBehaviour
         m_myPlayer = GetComponent<TPlayerController>();
     }
 
+
+    #region Starting crafting slot reference
+
+    /// <summary>
+    /// Take the list of craftable slot to the pooler.
+    /// And for each of these take his component <param TCraftingSlot="tempSlot"> reference and add it into the List <param CraftingSlots>.
+    /// </summary>
+    
     public void CraftingButtonsReference()
     {
         List<GameObject> CraftableSlotsObect = new List<GameObject>();
@@ -38,6 +50,14 @@ public class TCraftingItemsComponent : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Refresh List of craftable recipes
+
+    /// <summary>
+    /// Refresh all the lists and give them to the <param TRecipeContainer>.
+    /// It will fill <param CraftableRecipes> after checking wich ones items the player is able to craft.
+    /// </summary>
 
     public void FindAvaibleItems()
     {
@@ -65,6 +85,14 @@ public class TCraftingItemsComponent : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Craft Recipe
+
+    /// <summary>
+    /// It will remove resources to the player to craft a input recipe.
+    /// After that recalls <param FindAvaibleItems>
+    /// </summary>
 
     public void CraftRecipe(TRecipe inRecipeItem)
     {
@@ -77,4 +105,5 @@ public class TCraftingItemsComponent : MonoBehaviour
         FindAvaibleItems();
     }
 
+    #endregion
 }

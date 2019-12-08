@@ -6,6 +6,9 @@ public class TItemInHandComponent : MonoBehaviour
 {
     public TInventorySlot ItemInHand;
 
+
+    #region Item in hand events
+
     private void OnEnable()
     {
         TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, ChangeItem);
@@ -16,7 +19,10 @@ public class TItemInHandComponent : MonoBehaviour
         TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemSelected, ChangeItem);
         TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemDeselected, ClearItem);
     }
-        
+
+    #endregion
+
+    //Used to change the current player's item in hand.
     public void ChangeItem(TInventorySlot inItem)
     {
         ItemInHand = inItem;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TEquipmentSlot : TInventorySlot
 {
@@ -71,5 +72,16 @@ public class TEquipmentSlot : TInventorySlot
         inSlot = null;
         TItemHandler.SharedInstance.SelectedItem = inSlot;
 
+    }
+
+    public override void OnPointerEnter(PointerEventData eventData)
+    {
+        if (ItemInSlot != TItemQuantity.Empty && ItemInSlot.Item.TextToRead != null)
+        {
+            Vector3 positionOffset = new Vector3(gameObject.transform.position.x - 465, gameObject.transform.position.y - 50, gameObject.transform.position.z);
+
+            TEventManager.TriggerEvent<bool, Vector3>(TEventID.OnOpenCloseDescription, true, positionOffset);
+            TEventManager.TriggerEvent<TItem>(TEventID.OnSearchItem, this.ItemInSlot.Item);
+        }
     }
 }

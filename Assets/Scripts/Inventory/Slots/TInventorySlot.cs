@@ -145,11 +145,13 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
 
 
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if(ItemInSlot != TItemQuantity.Empty && ItemInSlot.Item.TextToRead != null)
         {
-            TEventManager.TriggerEvent<bool, Vector3>(TEventID.OnOpenCloseDescription, true, gameObject.transform.position);
+            Vector3 positionOffset = new Vector3(gameObject.transform.position.x + 40, gameObject.transform.position.y - 40, gameObject.transform.position.z);
+
+            TEventManager.TriggerEvent<bool, Vector3>(TEventID.OnOpenCloseDescription, true, positionOffset);
             TEventManager.TriggerEvent<TItem>(TEventID.OnSearchItem, this.ItemInSlot.Item);
         }
     }

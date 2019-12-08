@@ -148,7 +148,7 @@ public class TUIManager : MonoBehaviour
     
     public void OpenCloseDescription(bool inIsOpen, Vector3 inPosition)
     {
-        m_descriptionPanel.transform.position =  new Vector3(inPosition.x + 30, inPosition.y -30, inPosition.z);
+        m_descriptionPanel.transform.position = inPosition;
         m_descriptionPanel.gameObject.SetActive(inIsOpen);
     }
 
