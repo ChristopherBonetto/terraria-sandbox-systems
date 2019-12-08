@@ -1,4 +1,5 @@
-Item name : Gold Ore
+Item name : 
+Gold Ore
 
 Description :
 

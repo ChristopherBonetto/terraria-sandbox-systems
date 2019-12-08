@@ -1,4 +1,5 @@
-Item name : Gold Chest
+Item name : 
+Gold Chest
 
 Defense :3
 

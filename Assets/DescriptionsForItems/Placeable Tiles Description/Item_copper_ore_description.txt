@@ -1,4 +1,5 @@
-Item name : Copper Ore
+Item name : 
+Copper Ore
 
 Description :
 

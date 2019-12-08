@@ -1,4 +1,5 @@
-Item name : Copper Pickaxe
+Item name : 
+Copper Pickaxe
 
 Description :
 

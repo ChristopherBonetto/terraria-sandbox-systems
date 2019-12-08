@@ -1,4 +1,5 @@
-Item name : Copper Bar
+Item name : 
+Copper Bar
 
 Description :
 

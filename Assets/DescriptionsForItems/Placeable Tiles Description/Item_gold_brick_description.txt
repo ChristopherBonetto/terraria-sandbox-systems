@@ -1,4 +1,5 @@
-Item name : Gold Brick
+Item name : 
+Gold Brick
 
 Description :
 

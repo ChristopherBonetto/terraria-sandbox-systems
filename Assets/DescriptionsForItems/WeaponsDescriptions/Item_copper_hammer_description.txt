@@ -1,4 +1,5 @@
-Item name : Copper Hammer
+Item name : 
+Copper Hammer
 
 Description :
 

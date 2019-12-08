@@ -49,8 +49,10 @@ public class TItem : ScriptableObject
     public virtual List<string> TakeAllInfos()
     {
         m_infos = new List<string>();
-        m_infos.Add("Item name : " + ItemName);
+        m_infos.Add("Item name : ");
+        m_infos.Add(ItemName);
         m_infos.Add("");
+
         m_infos.Add("Description :");
         m_infos.Add(m_descriptionField);
 

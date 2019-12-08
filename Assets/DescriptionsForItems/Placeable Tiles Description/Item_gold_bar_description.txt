@@ -1,4 +1,5 @@
-Item name : Gold Bar
+Item name : 
+Gold Bar
 
 Description :
 

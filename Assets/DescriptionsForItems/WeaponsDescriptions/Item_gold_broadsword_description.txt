@@ -1,4 +1,5 @@
-Item name : Gold Broadsword
+Item name : 
+Gold Broadsword
 
 Description :
 
