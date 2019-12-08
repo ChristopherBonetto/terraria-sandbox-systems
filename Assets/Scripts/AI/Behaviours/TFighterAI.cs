@@ -6,12 +6,7 @@ namespace Terraria.AI
 {
     public class TFighterAI : BaseAI, IJump, IKnockBackable, IMovable
     {
-        /// <summary>
-        /// SerializeField
-        /// </summary>
-
-        [Header("Animator")]
-        [SerializeField] private Animator m_Anim;
+        #region SerializeField
 
         [Header("Jump variables")]
         [SerializeField] private Transform m_Legs;
@@ -22,22 +17,22 @@ namespace Terraria.AI
         [SerializeField] private LayerMask m_PlayerMask;
         [SerializeField] private float m_Radius;
 
-        /// <summary>
-        /// Private
-        /// </summary>
+        [Header("Animator")]
+        [SerializeField] private Animator m_Anim;
+
+        #endregion
+
+        #region Private
 
         private bool m_ImFreeze;
         private float m_CurrentFreezeTime;
         private Collider2D m_PlayerCollider;
 
         // Jump Fix
-
         private float m_CurrentJumpCoolDown;
         private bool m_ImMoving;
 
-        /// <summary>
-        /// Properties
-        /// </summary>
+        #endregion
 
         public float KbResist => Data.KbResist;
 
@@ -75,10 +70,13 @@ namespace Terraria.AI
                     // if there are something between enemy and player
                     if (Physics2D.Raycast(m_Transform.position, m_Player.transform.position - m_Transform.position, m_Radius, m_JumpableLayers))
                     {
+                        Vector2 leftLeg = (Vector2)m_Legs.position + (Vector2.right * m_Collider.bounds.extents.x);
+                        Vector2 righttLeg = (Vector2)m_Legs.position + (Vector2.right * -m_Collider.bounds.extents.x);
+
                         // if it's touching the ground
                         // Jumps
-                        if (Physics2D.Raycast(m_Legs.position + (Vector3.right * m_Collider.bounds.extents.x), Vector2.down, 0.1f, m_JumpableLayers) ||
-                            Physics2D.Raycast(m_Legs.position + (Vector3.right * -m_Collider.bounds.extents.x), Vector2.down, 0.1f, m_JumpableLayers))
+                        if (Physics2D.Raycast(leftLeg, Vector2.down, 0.1f, m_JumpableLayers) ||
+                            Physics2D.Raycast(righttLeg, Vector2.down, 0.1f, m_JumpableLayers))
                             m_Rb.AddForce(Vector2.up * Data.JumpForce);
                     }
                 }
@@ -95,8 +93,8 @@ namespace Terraria.AI
             if (!Physics2D.Raycast(m_Legs.position, Vector2.right * inDirection, m_Collider.bounds.extents.x + 0.1f, m_JumpableLayers))
             {
                 Vector2 scale = new Vector2(m_LocalScale.x * -inDirection, m_LocalScale.y);
-
                 m_Transform.localScale = scale;
+
                 transform.position += (Vector3.right * inDirection) * Data.Speed * Time.deltaTime;
 
                 m_ImMoving = true;

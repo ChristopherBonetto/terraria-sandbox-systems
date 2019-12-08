@@ -1,18 +1,83 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
-/// <summary>
-/// Player controller => It works as connection between model and view.
-/// </summary>
 [RequireComponent(typeof(TPlayerDefenseComponent))]
 public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 {
+    #region SerializeField
+
+    [SerializeField] private TPlayerData m_DataToAssign;
+
+
+    [Header("Jump variables")]
+    [SerializeField] private LayerMask m_JumpableLayers;
+    [SerializeField] private Transform m_Legs;
+
+
+    [Header("Weapon variables")]
+    [SerializeField] private PlayerAttack m_HandToAttack;
+
+
+    [Header("Animator")]
+    [SerializeField] private RuntimeAnimatorController m_DefaultAnim;
+    [SerializeField] private Animator m_Anim;
+
+
+    [Header("Equipment")]
+    [Tooltip("0 = head, 1 = arms, 2 = chest, 3 = legs")]
+    [SerializeField] private TArmorView[] m_ArmorsView;
+
+    #endregion
+
+    #region Private
+
+    private TPlayerData m_DataAssigned;
+
+    private TItemInHandComponent m_PlayerItem;
+    private TInventory m_PlayerInventoryComponent;
+    private TCraftingItemsComponent m_PlayerCraftComponent;
+
+    private IDefend m_DefenseComponent;
+
+    private bool m_ImFreeze;
+    private float m_FreezeTime;
+
+    private Collider2D m_NpcColliderHit;
+
+    #endregion
+
+    #region Property
+
+    /// <summary>
+    /// Return a copy of the data.
+    /// </summary>
+    public TPlayerData DataAssigned
+    {
+        get
+        {
+            if (m_DataAssigned == null)
+                m_DataAssigned = Instantiate(m_DataToAssign);
+            return m_DataAssigned;
+        }
+    }
+    public float KbResist => DataAssigned.Statistics.KbResist;
+
+    /// <summary>
+    /// health component
+    /// </summary>
+    public IDefend DefenseComponent
+    {
+        get
+        {
+            if (m_DefenseComponent == null)
+                m_DefenseComponent = GetComponent<IDefend>();
+            return m_DefenseComponent;
+        }
+    }
+
     /// <summary>
     /// Contain reference to item in player's hand.
     /// </summary>
-
-    private TItemInHandComponent m_PlayerItem;
     public TItemInHandComponent PlayerItem
     {
         get
@@ -28,8 +93,6 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     /// <summary>
     /// Inventory component
     /// </summary>
-
-    private TInventory m_PlayerInventoryComponent;
     public TInventory PlayerInventoryComponent
     {
         get
@@ -42,7 +105,6 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         }
     }
 
-    private TCraftingItemsComponent m_PlayerCraftComponent;
     public TCraftingItemsComponent PlayerCraftComponent
     {
         get
@@ -55,85 +117,15 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         }
     }
 
-    /// <summary>
-    /// health component
-    /// </summary>
-
-    private IDefend m_DefenseComponent;
-    public IDefend DefenseComponent
-    {
-        get
-        {
-            if (m_DefenseComponent == null)
-                m_DefenseComponent = GetComponent<IDefend>();
-            return m_DefenseComponent;
-        }
-    }
-
-    #region Data
-
-    /// <summary>
-    /// Return a copy of the data.
-    /// </summary>
-
-    [SerializeField] private TPlayerData m_DataToAssign;
-
-    private TPlayerData m_DataAssigned;
-    public TPlayerData DataAssigned
-    {
-        get
-        {
-            if (m_DataAssigned == null)
-                m_DataAssigned = Instantiate(m_DataToAssign);
-            return m_DataAssigned;
-        }
-    }
-
-    #endregion
-
-    #region SerializeField
-
-    /// Jump value / components
-
-    [Header("Jump variables")]
-    [SerializeField] private LayerMask m_JumpableLayers;
-    [SerializeField] private Transform m_Legs;
-
-    /// Weapon value / components
-
-    [Header("Weapon variables")]
-    [SerializeField] private PlayerAttack m_HandToAttack;
-
-    // Animator
-
-    [Header("Animator")]
-    [SerializeField] private RuntimeAnimatorController m_DefaultAnim;
-    [SerializeField] private Animator m_Anim;
-
-    // equipment visual
-
-    [Header("Equipment")]
-    [SerializeField] private TArmorView[] m_ArmorsView;
-
-    // Property, "get" only
-
     public Transform Legs => m_Legs;
     public Animator Anim => m_Anim;
-    public float KbResist => DataAssigned.Statistics.KbResist;
-
 
     #endregion
-
-    // @TEMP
-    private bool m_ImFreeze;
-    private float m_FreezeTime;
-    private Collider2D m_NcpColliderHit;
 
     #region MonoBehaviour cycle
 
     private void OnEnable()
     {
-        // subscribe to equip event
         TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, OnItemSelected);
         TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemDeselected, OnItemDeselect);
 
@@ -143,7 +135,6 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
     private void OnDisable()
     {
-        // unsubscibe to equip event.
         TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemSelected, OnItemSelected);
         TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemDeselected, OnItemDeselect);
 
@@ -170,7 +161,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             if (m_FreezeTime <= 0)
             {
                 m_ImFreeze = false;
-                Physics2D.IgnoreCollision(m_Collider, m_NcpColliderHit, false);
+                Physics2D.IgnoreCollision(m_Collider, m_NpcColliderHit, false);
             }
         }
     }
@@ -179,15 +170,20 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     {
         if (collision.gameObject.CompareTag("NPC"))
         {
-            m_NcpColliderHit = collision.collider;
+            m_NpcColliderHit = collision.collider;
 
+            // Find collision position.
             Vector2 collidingPos = collision.transform.position;
             Vector2 myPos = transform.position;
 
+
+            // calculate the sign of the knock back direction
             float sign = Mathf.Sign(myPos.x - collidingPos.x);
 
-            Vector2 knockEffect = (Vector2.right * sign * GeneralEffects.KbEffect(KbResist)) +
-                                    Vector2.up * GeneralEffects.KbGlobalEffect * 0.5f;
+            Vector2 knockEffect = (
+                Vector2.right * sign * GeneralEffects.KbEffect(KbResist) +  // Apply the resist to knock back effect.
+                Vector2.up * GeneralEffects.KbEffect(KbResist)
+            );
 
             // Execute knock back
             KnockBack(knockEffect);
@@ -199,19 +195,20 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
     #endregion
 
-    #region Initialization
 
+    /// <summary>
+    /// initialization of the player.
+    /// </summary>
     public void Init()
     {
-        // Init components
-        base.Start();
+        base.Start();   // store local scale.
+
         m_HandToAttack.gameObject.SetActive(false);
+
         DefenseComponent.Init(DataAssigned.Statistics.MaxHealth, DataAssigned.Statistics.Defense);
 
-        // Update visual
-        TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, DefenseComponent);
+        TEventManager.TriggerEvent<IDefend>(TEventID.OnHealthUpdate, DefenseComponent); // Update health
     }
-    #endregion
 
     #region Movement
 
@@ -223,11 +220,11 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     {
         m_ImFreeze = true;
         m_FreezeTime = inTime;
-        Physics2D.IgnoreCollision(m_Collider, m_NcpColliderHit, true);
+        Physics2D.IgnoreCollision(m_Collider, m_NpcColliderHit, true);
     }
     
     /// <summary>
-    /// Knock back effect, it's applied with gravity.
+    /// Knock back effect, it's applied with RigidBody.
     /// </summary>
     /// <param name="direction"></param>
     public void KnockBack(Vector2 direction)
@@ -245,11 +242,11 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         {
             if (!Physics2D.Raycast(m_Legs.position, Vector2.right * inDirection, 0.5f, m_JumpableLayers))
             {
+                // Update local scale
                 Vector2 scale = new Vector2(m_LocalScale.x * inDirection, m_LocalScale.y);
-
                 m_Transform.localScale = scale; 
-                transform.position += (Vector3.right * inDirection) * DataAssigned.Statistics.Speed * Time.deltaTime;
 
+                transform.position += (Vector3.right * inDirection) * DataAssigned.Statistics.Speed * Time.deltaTime;
             }
         }
         SetAnimToPlay("IsMoving", inDirection != 0);
@@ -262,10 +259,12 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Physics2D.Raycast(Legs.position, Vector2.down + Vector2.right * m_Collider.bounds.extents.x, 0.3f, m_JumpableLayers) ||
-                Physics2D.Raycast(Legs.position, Vector2.down + Vector2.right * -m_Collider.bounds.extents.x, 0.3f, m_JumpableLayers))
-                    m_Rb.AddForce(Vector2.up * DataAssigned.Statistics.JumpForce);
+            Vector2 leftLeg = (Vector2)Legs.position + (Vector2.right * m_Collider.bounds.extents.x);
+            Vector2 righttLeg = (Vector2)Legs.position + (Vector2.right * -m_Collider.bounds.extents.x);
 
+            if (Physics2D.Raycast(leftLeg, Vector2.down, 0.3f, m_JumpableLayers) ||
+                Physics2D.Raycast(righttLeg, Vector2.down, 0.3f, m_JumpableLayers))
+                    m_Rb.AddForce(Vector2.up * DataAssigned.Statistics.JumpForce);
         }
 
         else if (!Input.GetKey(KeyCode.Space) || m_Rb.velocity.y < 0)
@@ -355,26 +354,23 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     public void OnItemSelected(TInventorySlot item)
     {
         // Is it a weapon?
-        // Update: 
-        // stats, 
-        // layerMask, 
-        // sprite, 
-        // animator controller.
 
         if (item.ItemInSlot.Item is TItemWeapon)
         {
             TItemWeapon weapon = item.ItemInSlot.Item as TItemWeapon;
 
+            // Add statistics.
             DataAssigned.Statistics += weapon.Statistics;
 
+            // Update attack animation values.
             m_HandToAttack.Damage = DataAssigned.Statistics.Damage;
             m_HandToAttack.AttackType = weapon.VisualAndInteraction.AttackType;
             m_HandToAttack.InteractableLayer = weapon.VisualAndInteraction.InteractableLayer;
             m_HandToAttack.WeaponIcon.sprite = weapon.ItemSprite;
             m_HandToAttack.gameObject.SetActive(false);
 
+            // Override the animator controller
             m_Anim.runtimeAnimatorController = weapon.VisualAndInteraction.PlayerOverrideController;
-
         }
     }
 
@@ -386,23 +382,21 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
         if (!item) return;
 
         // Is it a weapon?
-        // Update: 
-        // stats, 
-        // layerMask, 
-        // sprite, 
-        // animator controller.
 
         if (item.ItemInSlot.Item is TItemWeapon)
         {
             TItemWeapon weapon = item.ItemInSlot.Item as TItemWeapon;
 
+            // Add statistics
             DataAssigned.Statistics -= weapon.Statistics;
 
+            // Update attack animations values
             m_HandToAttack.Damage = DataAssigned.Statistics.Damage;
             m_HandToAttack.AttackType = PlayerAttackType.Melee;
             m_HandToAttack.InteractableLayer = LayerMask.NameToLayer("Default");
             m_HandToAttack.WeaponIcon.sprite = null;
 
+            // Override the animator controller
             m_Anim.runtimeAnimatorController = m_DefaultAnim;
         }
     }
@@ -412,20 +406,15 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     /// </summary>
     public void OnItemEquipped(TInventorySlot item)
     {
-        // Update stats
-        // Update sprites.
-
         if (item.ItemInSlot.Item is TItemArmor)
         {
             TItemArmor armor = item.ItemInSlot.Item as TItemArmor;
 
-            // Init health and defense.
-
+            // Update statistics
             DataAssigned.Statistics += armor.Statistics;
             DefenseComponent.UpdateDefenseStats(DataAssigned.Statistics.MaxHealth, DataAssigned.Statistics.Defense);
 
             // View
-
             int typeToInt = (int)armor.ArmorType;
             m_ArmorsView[typeToInt].SetSprite(armor.ItemSprite);
             m_ArmorsView[typeToInt].SetAnimator(armor.ArmorAnim);
@@ -439,20 +428,15 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     {
         if (!item) return;
 
-        // Update stats
-        // Update sprites.
-
         if (item.ItemInSlot.Item is TItemArmor)
         {
             TItemArmor armor = item.ItemInSlot.Item as TItemArmor;
 
-            // Init health and defense.
-
+            // Update statistics
             DataAssigned.Statistics -= armor.Statistics;
             DefenseComponent.UpdateDefenseStats(DataAssigned.Statistics.MaxHealth, DataAssigned.Statistics.Defense);
 
             // View
-
             int typeToInt = (int)armor.ArmorType;
             m_ArmorsView[typeToInt].ResteValues();
         }
@@ -462,6 +446,12 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
     #region Animation
 
+    /// <summary>
+    /// Play the animation in common between player's animators.
+    /// ex : call jump animation => legs and chest play jump animation.
+    /// </summary>
+    /// <param name="inName"></param>
+    /// <param name="inValue"></param>
     private void SetAnimToPlay(string inName, bool inValue)
     {
         foreach (var anim in m_ArmorsView)

@@ -41,9 +41,8 @@ public class TItemWeapon : TItem, IUsable
     /// 
     public PlayerAndEnvInteraction VisualAndInteraction;
 
-    /// <summary>
-    /// Contain all statistics that will be added to the player.
-    /// </summary>
+
+    [Header("Armor statistics to add")]
     public TStatistics Statistics;
 
 

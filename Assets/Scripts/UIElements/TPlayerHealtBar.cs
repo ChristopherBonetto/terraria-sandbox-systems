@@ -7,7 +7,9 @@ public class TPlayerHealtBar : MonoBehaviour
 {
     [SerializeField] private TPlayerHealthContainer m_CurrentHeartsContainer;
     [SerializeField] private TPlayerHealthContainer m_MaxHeartsContainer;
+
     private TPlayerDefenseComponent m_TargetHealth;
+
     private int m_CurrentHeartsActive;
     private int m_MaxHeartsActive;
 
@@ -171,12 +173,14 @@ public class TPlayerHealtBar : MonoBehaviour
     {
         for (int i = 0; i < inPlayer.DataAssigned.Statistics.MaxHealth; i++)
         {
+            // Get from pool
             Image fullHeart = ObjectPooler.SharedInstance.GetPooledObject("FullHeart").GetComponent<Image>();
             Image backHeart = ObjectPooler.SharedInstance.GetPooledObject("BackHeart").GetComponent<Image>();
 
             fullHeart.transform.SetParent(m_CurrentHeartsContainer.transform);
             backHeart.transform.SetParent(m_MaxHeartsContainer.transform);
 
+            // Add to list
             m_CurrentHeartsContainer.Hearts.Add(fullHeart);
             m_MaxHeartsContainer.Hearts.Add(backHeart);
 

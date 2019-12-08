@@ -13,9 +13,13 @@ public enum ArmorType
 [CreateAssetMenu(fileName = "ArmorItem", menuName = "Item/OtherItems/NoPositionable/Armor")]
 public class TItemArmor : TItem
 {
+    [Header("Assign Armor Type")]
     public ArmorType ArmorType;
+
+    [Header("Assign a controller to override to player")]
     public AnimatorOverrideController ArmorAnim;
 
+    [Header("Armor statistics to add")]
     public TStatistics Statistics;
 
     public override List<string> TakeAllInfos()

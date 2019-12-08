@@ -8,21 +8,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data_PlayerName", menuName = "Terraria/Data/Player")]
 public class TPlayerData : ScriptableObject
 {
-    //[Header("Defense variables")]
-    //public int MaxHealth;
-    //public float Defense; 
-
-
-    //[Header("Fight variables")]
-    //public int Damage;
-    //public float AttackSpeed;
-    //[Range(0, 100)] public float KbResist;
-
-    //[Header("Movement variables")]
-    //public float Speed;
-    //public float JumpForce;
-
-
+    /// <summary>
+    /// All stats in common between enemy, weapon buff, armor buff...
+    /// </summary>
     public TStatistics Statistics;
 
     [Header("Action variables")]

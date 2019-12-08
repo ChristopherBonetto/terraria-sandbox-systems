@@ -11,22 +11,13 @@ namespace Terraria.AI
     }
 
     /// <summary>
-    /// Hops in one direction, slides on slopes, floats in water, follows player if damaged or it's nighttime.
+    /// Hops in one direction, slides on slopes, floats in water, follows player if damaged.
     /// </summary>
-    public class SlimeAI : BaseAI, IJump, IKnockBackable
+    public class TSlimeAI : BaseAI, IJump, IKnockBackable
     {
-        [SerializeField] private float m_DelayBetweenJump; 
+        [SerializeField] private float m_DelayBetweenJump;
 
-        /// <summary>
-        /// Properties
-        /// </summary>
-
-        public float KbResist => Data.KbResist;
-        public SlimeState CurrentState { get; private set; }
-
-        /// <summary>
-        /// Private 
-        /// </summary>
+        #region Private
 
         // Jump variables
         private float m_ActualDelay;
@@ -36,17 +27,11 @@ namespace Terraria.AI
         // Player ref.
         private Transform m_TargetToChase;
 
+        #endregion
 
+        public float KbResist => Data.KbResist;
+        public SlimeState CurrentState { get; private set; }
 
-        private void OnEnable()
-        {
-
-        }
-
-        private void OnDisable()
-        {
-            
-        }
 
         protected override void Start()
         {
@@ -113,7 +98,7 @@ namespace Terraria.AI
 
         public void Freeze(float inTime)
         {
-            // for now... do nothing.
+            // No freeze
         }
 
         public void KnockBack(Vector2 direction)
