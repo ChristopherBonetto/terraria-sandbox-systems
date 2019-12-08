@@ -22,9 +22,8 @@ public class TInputManager : MonoBehaviour
 
     #endregion
 
-
+    //Custom key to open or close intenvory
     [SerializeField] private KeyCode m_keyToOpenInventory;
-
     private bool inventoryBool = false;
 
     private TPlayerController m_UserPlayer;
@@ -46,9 +45,13 @@ public class TInputManager : MonoBehaviour
         OpenCloseInventory();
     }
 
+    #region Events
+
     private void OnEnable()
     {
         TEventManager.SubscribeTo<TPlayerController>(TEventID.OnPlayerSpawned, SetUserPlayer);
+
+        //Coroutine that wait the fixed update's end to close the intentory.
         StartCoroutine(WaitToStart());
     }
 
@@ -57,6 +60,8 @@ public class TInputManager : MonoBehaviour
         TEventManager.UnsubscribeFrom<TPlayerController>(TEventID.OnPlayerSpawned, SetUserPlayer);
         StopAllCoroutines();
     }
+
+    #endregion
 
     #endregion
 
@@ -101,6 +106,13 @@ public class TInputManager : MonoBehaviour
     }
 
     #region Inventory System
+
+    /// <summary>
+    /// Manage the inventory state.
+    /// <param WaitToStart> Used to wait the fixed update's end before to change the inventory state. Because it must wait that all slots are created.</param>
+    /// <param OpenCloseInvetory> Used to trigger <param OnInventoryOpen> event with input.</param>
+    /// </summary>
+    
     private IEnumerator WaitToStart()
     {
         yield return new WaitForFixedUpdate();
@@ -123,6 +135,12 @@ public class TInputManager : MonoBehaviour
     #endregion
 
     #region Keyboard Input System
+
+    /// <summary>
+    /// Used to check if the player touch the keyboard and if the button pressed was a number.
+    /// If this happens and the number is included 0 and 9, so calls <param SelectedSlot()> method of associated hotbar slot.
+    /// </summary>
+
     private void CheckKeyboardNumber()
     {
         if (inventoryBool && Input.anyKeyDown)
@@ -189,6 +207,11 @@ public class TInputManager : MonoBehaviour
     #endregion
 
     #region Crafting Scrollbar System
+
+    /// <summary>
+    /// Used to changing the Scrollbar values with <param Input.GetAxis>.
+    /// </summary>
+
     public void CheckScroll()
     {
         float scrollValue = Input.GetAxis("Mouse ScrollWheel");

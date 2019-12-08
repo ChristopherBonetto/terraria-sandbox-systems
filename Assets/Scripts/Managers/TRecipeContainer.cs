@@ -7,12 +7,20 @@ public class TRecipeContainer : MonoBehaviour
 {
     public static TRecipeContainer SharedIstance;
 
+    //Container of all recipes in the game.
     [SerializeField] private TRecipe[] m_recipes;
 
     private void Awake()
     {
         SharedIstance = this;
     }
+
+    #region Check Craftable Recipes
+
+    /// <summary>
+    /// Giving a list of items in input it will fill a fill a list of recipes.
+    /// This method check for each recipe contained in <param m_recipes> if the player have the necessary items.
+    /// </summary>
 
     public void CheckCraftableItem(List<TItemQuantity> inListOfItems, List<TRecipe> inListToFill)
     {
@@ -37,5 +45,7 @@ public class TRecipeContainer : MonoBehaviour
             if (canBeCrafted) inListToFill.Add(recipe);
         }
     }
-    
+
+    #endregion
+
 }

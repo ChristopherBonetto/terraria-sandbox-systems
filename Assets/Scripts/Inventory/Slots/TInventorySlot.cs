@@ -4,9 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// Class to manage the single inventory's slot.
+/// This class implement the interface <param IShowDescription> to trigger event when the mouse is over this item.
+/// </summary>
 public class TInventorySlot : MonoBehaviour, IShowDescription
 {
+    //The current item slotted
     protected TItemQuantity m_itemInSlot;
     public virtual TItemQuantity ItemInSlot
     {
@@ -20,11 +24,11 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
         }
     }
 
+    //Reference to the player's inventory.
     public TInventory InventoryRef { get; protected set; }
 
-
+    //To manage the current sprite of this slot.
     [SerializeField] protected Image m_slotImage;
-
     public Sprite ItemSprite
     {
         get { return m_slotImage.sprite; }
@@ -45,7 +49,13 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
 
     #endregion
 
-    #region Button Action
+    #region Manage Slot
+
+    /// <summary>
+    /// Used on Click of this button.
+    /// This method check the <param SelectedItem in TItemHandler> value.
+    /// If the selectedItem isn't null fill this slot else fill the selected item with this slot.
+    /// </summary>
     public virtual void SelectSlot()
     {
         if (TItemHandler.SharedInstance.SelectedItem)
@@ -57,10 +67,11 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
             if (InventoryRef.m_isInventoryOpen) ShowImage(false);
         }
     }
-    #endregion
 
-    #region Fill slot
-
+    /// <summary>
+    /// This method is used to fill this slot with a <param inSlot = TInventorySlot>, checking if is empy or not.
+    /// If this slot isn't empty so swap the contents of two slots.
+    /// </summary>
     protected virtual void FillThisSlot(TInventorySlot inSlot)
     {
         TInventorySlot tempSlot = TItemHandler.SharedInstance.SelectedItem;
@@ -103,20 +114,29 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
         TItemHandler.SharedInstance.SelectedItem = tempSlot;
     }
 
+    /// <summary>
+    /// Used to insert another item into this slot.
+    /// </summary>
     public void InsertItemToSlot(TItemQuantity inItemToAdd)
     {
         ItemInSlot = inItemToAdd;
         m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
         ShowImage(true);
     }
+
     #endregion
 
-    #region Methods to manage the item in slot
+    #region Minor methods to manage the item in slot
+
     public void ShowImage(bool inValue)
     {
         m_slotImage.gameObject.SetActive(inValue);
     }
 
+    /// <summary>
+    /// Used to reduces the amount of the current item in slot.
+    /// </summary>
+    /// <param name="inDepletedAmount"> amount to deplete </param>
     public void DepleteAmount(int inDepletedAmount)
     {
         m_itemInSlot.Amount -= inDepletedAmount;
@@ -137,14 +157,20 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
     #endregion
 
 
-
+    //Fill the inventory reference with the inventory that it created this slot.
     protected virtual void TakeInventoryRef(TInventory inInventory)
     {
         InventoryRef = inInventory;
     }
 
+    #region Trigger events when mouse is over this slot
 
-
+    /// <summary>
+    /// If the mouse is over this item, it will trigger two events.
+    /// First event Open the description panel with a offset.
+    /// Second event is used to search the item's description into the Collection.
+    /// </summary>
+    /// <param name="eventData"> current obj which has the mouse over it </param>
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if(ItemInSlot != TItemQuantity.Empty && ItemInSlot.Item.TextToRead != null)
@@ -156,6 +182,12 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
         }
     }
 
+    /// <summary>
+    /// When the mouse leaves this slots, it will trigger two events.
+    /// First event close the description panel.
+    /// Second event is used to reset the description.
+    /// </summary>
+    /// <param name="eventData"> current obj which has the mouse over it </param>
     public void OnPointerExit(PointerEventData eventData)
     {
         if (ItemInSlot != TItemQuantity.Empty)
@@ -165,5 +197,5 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
         }
     }
 
-    
+    #endregion
 }

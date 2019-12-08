@@ -9,34 +9,48 @@ public class TCraftingSlot : MonoBehaviour
 
     private TPlayerController m_myPlayer;
 
-    private TRecipe m_itemInSlot;
+    private TRecipe m_recipeInSlot;
 
+    
     private void Start()
     {
-        if (m_itemInSlot.itemToObtain != null)
+        if (m_recipeInSlot.itemToObtain != null)
         {
-            m_ItemImage.sprite = m_itemInSlot.itemToObtain.Item.ItemSprite;
+            m_ItemImage.sprite = m_recipeInSlot.itemToObtain.Item.ItemSprite;
         }
     }
 
+    #region Manage Recipe in slot
+
+    /// <summary>
+    /// Fill this slot with a recipe.
+    /// </summary>
     public void FillSlot(TRecipe inCraftableItem)
     {
         gameObject.SetActive(true);
         m_ItemImage.sprite = inCraftableItem.itemToObtain.Item.ItemSprite;
-        m_itemInSlot = inCraftableItem;
+        m_recipeInSlot = inCraftableItem;
     }
 
+    /// <summary>
+    /// Craft this recipe.
+    /// </summary>
     public void CraftItem()
     {
-        m_myPlayer.PlayerCraftComponent.CraftRecipe(m_itemInSlot);
+        m_myPlayer.PlayerCraftComponent.CraftRecipe(m_recipeInSlot);
     }
+
 
     public void CancelItem()
     {
-        //m_itemInSlot = TRecipeInfo.Empty;
         gameObject.SetActive(false);
     }
 
+    #endregion
+
+    /// <summary>
+    /// Take the reference to a player.
+    /// </summary>
     public void FillPlayerController(TPlayerController inPlayer)
     {
         m_myPlayer = inPlayer;

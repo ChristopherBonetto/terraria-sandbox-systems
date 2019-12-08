@@ -4,10 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+//Class to manage the current player's item in hand.
 public class TItemHandler : MonoBehaviour
 {
     public static TItemHandler SharedInstance;
 
+    #region Selected Item with events
+
+    private TInventorySlot m_SelectedItem;
+
+    //Changing the value of the Selected item, it will trigger a different event. 
     public TInventorySlot SelectedItem
     {
         get { return m_SelectedItem; }
@@ -23,8 +29,9 @@ public class TItemHandler : MonoBehaviour
         }
     }
 
-    private TInventorySlot m_SelectedItem;
+    #endregion
 
+    #region Events
 
     private void OnEnable()
     {
@@ -35,16 +42,14 @@ public class TItemHandler : MonoBehaviour
         TEventManager.UnsubscribeFrom<bool>(TEventID.OnInventoryOpen, ResetSelectedItemWithEvent);
     }
 
-    private void Update()
-    {
-        
-    }
+    #endregion
 
     private void Awake()
     {
         SharedInstance = this;
     }
 
+    //Used first of reset the current Selected item
     public void ResetSelectedItemWithEvent(bool inValue)
     {
         if(SelectedItem != null)

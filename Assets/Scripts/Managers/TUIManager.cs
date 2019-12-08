@@ -15,6 +15,8 @@ public class TUIManager : MonoBehaviour
     [Space, SerializeField] private RectTransform m_descriptionPanel;
     private Text m_descriptionText;
 
+
+    //Used to fill the Description Text with the values of this list.
     private List<string> m_listOfTexts = new List<string>();
 
     #endregion
@@ -22,11 +24,16 @@ public class TUIManager : MonoBehaviour
     #region Inventory
 
     [Header("Inventory")]
+
+    //Object that it will contains all the slots in UI like childrens.
     [SerializeField] private GameObject m_inventoryItemsHolder;
+
     [SerializeField] private RectTransform m_inventoryUI;
 
+    //The starting inventory size.s
     private Vector2 m_startingInventorySize;
 
+    //List that it contains the reference of each inventory slot in UI.
     public List<GameObject> m_InventorySlotsUI { get; private set; } = new List<GameObject>();
 
     public bool m_isInventoryUIOpen { get; private set; }
@@ -35,14 +42,17 @@ public class TUIManager : MonoBehaviour
 
     #region Crafting
 
-    public List<Button> CraftableSlots { get; private set; } = new List<Button>();
-
     [Header("Crafting")]
+
     [SerializeField] private GameObject m_craftingBar;
     [SerializeField] private Scrollbar m_craftingScrollBar;
 
+    //List that it contains the reference of each crafting slot in UI.
+    public List<Button> CraftableSlots { get; private set; } = new List<Button>();
+
     #endregion
 
+    #region Events
 
     private void OnEnable()
     {
@@ -59,6 +69,7 @@ public class TUIManager : MonoBehaviour
         TEventManager.UnsubscribeFrom<List<string>>(TEventID.OnShowTextDescription, ShowDescriptionText);
     }
 
+    #endregion
 
     private void Awake()
     {
@@ -77,7 +88,10 @@ public class TUIManager : MonoBehaviour
 
     #region OpenClose Inventory
 
-    //What happens to the ui when the inventory is open or close
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="inIsOpen"></param>
     public void OpenCloseInventory(bool inIsOpen)
     {
         m_isInventoryUIOpen = inIsOpen;
