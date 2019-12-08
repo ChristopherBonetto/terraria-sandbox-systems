@@ -12,4 +12,14 @@ public interface IDefend : IDamageable
     /// Initialize the max health and the armor as the model one.
     /// </summary>
     void Init(float inMaxHealth, float inDefense);
+
+    /// <summary>
+    /// Update max health in case the entity is buffed.
+    /// </summary>
+    void UpdateMaxHealth(float inMaxHealth);
+
+    /// <summary>
+    /// Update defense stats in case the entity is buffed.
+    /// </summary>
+    void UpdateDefenseStats(float inMaxHealth, float inDefense);
 }

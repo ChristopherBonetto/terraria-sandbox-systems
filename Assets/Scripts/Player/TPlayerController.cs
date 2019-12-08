@@ -422,7 +422,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             // Init health and defense.
 
             DataAssigned.Statistics += armor.Statistics;
-            DefenseComponent.Init(DataAssigned.Statistics.MaxHealth, DataAssigned.Statistics.Defense);
+            DefenseComponent.UpdateDefenseStats(DataAssigned.Statistics.MaxHealth, DataAssigned.Statistics.Defense);
 
             // View
 
@@ -449,7 +449,7 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             // Init health and defense.
 
             DataAssigned.Statistics -= armor.Statistics;
-            DefenseComponent.Init(DataAssigned.Statistics.MaxHealth, DataAssigned.Statistics.Defense);
+            DefenseComponent.UpdateDefenseStats(DataAssigned.Statistics.MaxHealth, DataAssigned.Statistics.Defense);
 
             // View
 

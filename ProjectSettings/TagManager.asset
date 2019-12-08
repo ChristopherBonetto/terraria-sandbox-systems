@@ -11,6 +11,8 @@ TagManager:
   - HealthBar
   - InventorySlot
   - FloatingText
+  - BackHeart
+  - FullHeart
   layers:
   - Default
   - TransparentFX

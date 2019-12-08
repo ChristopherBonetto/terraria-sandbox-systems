@@ -34,7 +34,8 @@ public class TPlayerDefenseComponent : MonoBehaviour, IDefend
     private float m_Defense;
     private float m_CurrentHealth;
 
-
+    [SerializeField] private float m_TimeToRegen;
+    private float m_CurrentTimeRegen;
 
 
     /// <summary>
@@ -48,8 +49,16 @@ public class TPlayerDefenseComponent : MonoBehaviour, IDefend
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.RightControl))
-            DamageEntity();
+        if (CurrentHealth < MaxHealth)
+        {
+            if (m_CurrentTimeRegen < 0)
+            {
+                CurrentHealth += 1;
+                m_CurrentTimeRegen = m_TimeToRegen;
+            }
+            else
+                m_CurrentTimeRegen -= Time.deltaTime;
+        }
     }
 
     public void Init(float inMaxHealth)
@@ -65,6 +74,23 @@ public class TPlayerDefenseComponent : MonoBehaviour, IDefend
         m_Defense = inDefense;
     }
 
+    public void UpdateMaxHealth(float inMaxHealth)
+    {
+        if (m_CurrentHealth > inMaxHealth)
+            m_CurrentHealth = inMaxHealth;
+
+        m_MaxHealth = inMaxHealth;
+    }
+
+    public void UpdateDefenseStats(float inMaxHealth, float inDefense)
+    {
+        if (m_CurrentHealth > inMaxHealth)
+            m_CurrentHealth = inMaxHealth;
+
+        m_MaxHealth = inMaxHealth;
+        m_Defense = inDefense;
+    }
+
     public void TakeDamage(float inAmount)
     {
         CurrentHealth -= Mathf.Max(1, inAmount - Defense);
@@ -75,4 +101,5 @@ public class TPlayerDefenseComponent : MonoBehaviour, IDefend
         gameObject.SetActive(false);
         TEventManager.TriggerEvent(TEventID.OnPlayerDied);
     }
+
 }

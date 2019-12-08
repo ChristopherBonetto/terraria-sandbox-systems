@@ -128,5 +128,16 @@ namespace Terraria.AI
 
             gameObject.SetActive(false);
         }
+
+        public void UpdateMaxHealth(float inMaxHealth)
+        {
+            m_MaxHealth = inMaxHealth;
+        }
+
+        public void UpdateDefenseStats(float inMaxHealth, float inDefense)
+        {
+            m_MaxHealth = inMaxHealth;
+            m_Defense = inDefense;
+        }
     }
 }
