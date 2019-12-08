@@ -17,7 +17,7 @@ MonoBehaviour:
     type: 3}
   m_DepleteOnUse: 0
   m_descriptionField: 
-  m_TextToRead: {fileID: 4900000, guid: 095ea4ccba9eed0459924f434f03b92f, type: 3}
+  m_textRef: {fileID: 4900000, guid: 095ea4ccba9eed0459924f434f03b92f, type: 3}
   ArmorType: 3
   ArmorAnim: {fileID: 22100000, guid: 78021f1930029df4483903300781bd8a, type: 2}
   Statistics:

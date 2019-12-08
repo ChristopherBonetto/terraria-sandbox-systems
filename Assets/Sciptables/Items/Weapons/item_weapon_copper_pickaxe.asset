@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemName: Copper Pickaxe
   ItemSprite: {fileID: 21300000, guid: d56f15712d2f51649ac7e1e652892be7, type: 3}
   m_DepleteOnUse: 0
-  m_TextToRead: {fileID: 4900000, guid: 5e46501f6db731e4288d776d8b0965ff, type: 3}
+  m_descriptionField: 
+  m_textRef: {fileID: 4900000, guid: 5e46501f6db731e4288d776d8b0965ff, type: 3}
   VisualAndInteraction:
     DamageableWorldGroups: 0000000001000000
     AttackType: 0

@@ -15,6 +15,8 @@ namespace UnityEngine.UI
             RectTransformComponent = GetComponent<RectTransform>();
         }
 
+        #region Events
+
         private void OnEnable()
         {
             TEventManager.SubscribeTo<TInventorySlot>(TEventID.OnItemSelected, StartFollowing);
@@ -26,6 +28,15 @@ namespace UnityEngine.UI
             TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemSelected, StartFollowing);
             TEventManager.UnsubscribeFrom<TInventorySlot>(TEventID.OnItemDeselected, StopFollowing);
         }
+
+        #endregion
+
+        #region Move image in mouse position
+
+        /// <summary>
+        /// <param OnItemSelected> start a coroutine that it tell to this item to follow the mouse position.
+        /// <param OnItemDeselected> stop the coroutine that it tell to this item to don't follow the mouse position.
+        /// </summary>
 
         private void StartFollowing(TInventorySlot inSlot)
         {
@@ -48,5 +59,7 @@ namespace UnityEngine.UI
                 yield return null;
             }
         }
+
+        #endregion
     }
 }

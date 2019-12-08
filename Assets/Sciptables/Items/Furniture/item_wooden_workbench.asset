@@ -16,7 +16,7 @@ MonoBehaviour:
   ItemSprite: {fileID: 21300000, guid: 3a5e834679e06004498c1879db97a3cb, type: 3}
   m_DepleteOnUse: 1
   m_descriptionField: 
-  m_TextToRead: {fileID: 4900000, guid: 6e411f23f7d20204ebd67d426f517568, type: 3}
+  m_textRef: {fileID: 4900000, guid: 6e411f23f7d20204ebd67d426f517568, type: 3}
   m_Prefab: {fileID: 8051295990738567597, guid: f437401df5da079418bb58f8bd462274,
     type: 3}
   m_Size: {x: 2, y: 1}
