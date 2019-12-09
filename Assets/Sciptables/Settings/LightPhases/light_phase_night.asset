@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54ada3cb3915e2946b9186c3eb7d63ed, type: 3}
-  m_Name: NightPhase
+  m_Name: light_phase_night
   m_EditorClassIdentifier: 
   m_State: {fileID: 11400000, guid: be32881cbc3e90041b0636288b1f59da, type: 2}
   m_StartTime:
