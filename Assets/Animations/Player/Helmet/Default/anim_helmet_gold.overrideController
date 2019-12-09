@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Helmet_Gold
+  m_Name: anim_helmet_gold
   m_Controller: {fileID: 9100000, guid: af936e01de8fb6e4ab857227d8274496, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: a04bd7f5cbe120141b57f016d16bb4e3, type: 2}

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08765a6c35196b84abafdb6fc5457205, type: 3}
-  m_Name: Time Settings
+  m_Name: settings_time
   m_EditorClassIdentifier: 
   m_DayStartTime:
     m_Hours: 4
@@ -21,4 +21,4 @@ MonoBehaviour:
   m_GameStartTime:
     m_Hours: 9
     m_Minutes: 30
-  m_DayMinuteDurationInSeconds: 0.1
+  m_DayMinuteDurationInSeconds: 0.25

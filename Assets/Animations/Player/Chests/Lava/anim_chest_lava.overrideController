@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Chest_Lava
+  m_Name: anim_chest_lava
   m_Controller: {fileID: 9100000, guid: d9c5885284b62ae43ad24ff0a0747b89, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: ccea1390f57fbec4bb9593e054f4fb29, type: 2}
