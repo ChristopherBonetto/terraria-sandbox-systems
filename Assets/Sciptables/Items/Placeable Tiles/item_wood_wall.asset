@@ -20,4 +20,4 @@ MonoBehaviour:
   m_textRef: {fileID: 4900000, guid: 606f75c7aeac09146ba0fa4ae2b99566, type: 3}
   m_DepleteOnUse: 1
   m_Tile: {fileID: 11400000, guid: f9b5eaf11d4dafd499808314881e515b, type: 2}
-  m_TargetTilemap: 1
+  m_TargetTilemap: 2
