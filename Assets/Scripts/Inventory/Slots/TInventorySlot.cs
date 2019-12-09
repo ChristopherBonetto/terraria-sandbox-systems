@@ -21,20 +21,24 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
         set
         {
             m_itemInSlot = value;
+
+            if (m_AmountText) m_AmountText.text = value.Amount > 0 ? value.Amount.ToString() : string.Empty;
         }
     }
 
     //Reference to the player's inventory.
     public TInventory InventoryRef { get; protected set; }
 
-    //To manage the current sprite of this slot.
-    [SerializeField] protected Image m_slotImage;
     public Sprite ItemSprite
     {
         get { return m_slotImage.sprite; }
         set { m_slotImage.sprite = value; }
     }
 
+    //To manage the current sprite of this slot.
+    [SerializeField] protected Image m_slotImage;
+
+    [SerializeField] protected Text m_AmountText;
     
     #region Slot's Events
 
@@ -121,6 +125,7 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
     {
         ItemInSlot = inItemToAdd;
         m_slotImage.sprite = ItemInSlot.Item.ItemSprite;
+        if (m_AmountText) m_AmountText.text = ItemInSlot.Amount.ToString();
         ShowImage(true);
     }
 
@@ -131,6 +136,7 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
     public void ShowImage(bool inValue)
     {
         m_slotImage.gameObject.SetActive(inValue);
+        if (m_AmountText) m_AmountText.gameObject.SetActive(inValue);
     }
 
     /// <summary>
@@ -143,6 +149,8 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
 
         if (ItemInSlot.Amount <= 0)
             Clear();
+        else if (m_AmountText)
+            m_AmountText.text = m_itemInSlot.Amount.ToString();
     }
 
     public void Clear()
@@ -152,6 +160,8 @@ public class TInventorySlot : MonoBehaviour, IShowDescription
         ShowImage(false);
 
         if (TItemHandler.SharedInstance.SelectedItem == this) TItemHandler.SharedInstance.SelectedItem = null;
+
+        if (m_AmountText) m_AmountText.text = string.Empty;
     }
 
     #endregion

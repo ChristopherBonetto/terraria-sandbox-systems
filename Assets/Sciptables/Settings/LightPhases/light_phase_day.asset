@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54ada3cb3915e2946b9186c3eb7d63ed, type: 3}
-  m_Name: DayPhase
+  m_Name: light_phase_day
   m_EditorClassIdentifier: 
   m_State: {fileID: 11400000, guid: f474476787d19e34dae8704ec071d425, type: 2}
   m_StartTime:
