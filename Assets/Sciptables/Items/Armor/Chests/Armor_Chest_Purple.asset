@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Armor_Chest_Purple
   m_EditorClassIdentifier: 
   ItemName: Purple Chest
-  ItemSprite: {fileID: -3116726813522182155, guid: 2f534fc33d5879e449f8558be045663e,
+  ItemSprite: {fileID: -3116726813522182155, guid: 81a2a3bf8840be24bb75fa01bdc2ffa2,
     type: 3}
   m_DepleteOnUse: 0
   m_descriptionField: Armor for chest, can buff multiple stats.

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Armor_Chest_Lava
   m_EditorClassIdentifier: 
   ItemName: Lava Chest
-  ItemSprite: {fileID: -4052343159862365419, guid: 8d969595f207fa0448dcce524d77a4ff,
+  ItemSprite: {fileID: -4052343159862365419, guid: 85123c4615c706440a881386c6dd9728,
     type: 3}
   m_DepleteOnUse: 0
   m_descriptionField: Armor for chest, can buff multiple stats.
