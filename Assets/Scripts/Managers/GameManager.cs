@@ -8,11 +8,17 @@ public class GameManager : MonoBehaviour
 
     public TPlayerController PlayerInstance { get; private set; }
 
-    [SerializeField] private Transform m_DefaultSpawnPoint;
-
+    [Header("Player")]
     [SerializeField] private TPlayerController m_PlayerPrefab;
 
+    [Header("Respawn")]
+    [SerializeField] private Transform m_DefaultSpawnPoint;
     [SerializeField] private float m_RespawnDelay;
+
+    [Space]
+
+    [SerializeField, TextArea] private string m_SpawnPointSetMessage;
+    [SerializeField] private float m_SpawnPointSetMessageDuration;
     private TSpawnPoint m_SpawnPoint;
 
     private void Awake()
@@ -45,6 +51,8 @@ public class GameManager : MonoBehaviour
     public void SetSpawnPoint(TSpawnPoint inSpawnPoint)
     {
         m_SpawnPoint = inSpawnPoint;
+
+        TEventManager.TriggerEvent(TEventID.OnMessageSent, m_SpawnPointSetMessage, m_SpawnPointSetMessageDuration);
     }
 
     public void RemoveSpawnPoint(TSpawnPoint inSpawnPoint)

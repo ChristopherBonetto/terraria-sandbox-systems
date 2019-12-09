@@ -4,7 +4,6 @@ using UnityEngine;
 
 public enum TEventID
 {
-    OnPointerMovedOnGrid,
     OnHealthUpdate,
 
     //Used when a item was collected.
@@ -28,10 +27,17 @@ public enum TEventID
     //Used to select a slot in hotbar.
     OnSelectSlotWithNumber,
 
-    
+    //Triggered when a message is sent
+    OnMessageSent,
+
+    //Triggered when a collection text is disabled
     OnCollectionTextDisabled,
+
+    //Triggered on Tile damaging
     OnTileDamaged,
     OnTileDestroyed,
+
+    //Triggered by the passing of time
     OnTimeStarted,
     OnMinutePassed,
     OnDayNightChanged,

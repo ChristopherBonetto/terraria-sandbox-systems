@@ -52,6 +52,14 @@ public class TUIManager : MonoBehaviour
 
     #endregion
 
+    #region Messages
+
+    [Header("Messages")]
+
+    [SerializeField] private Text m_MessageText;
+
+    #endregion
+
     #region Events
 
     private void OnEnable()
@@ -60,6 +68,8 @@ public class TUIManager : MonoBehaviour
         TEventManager.SubscribeTo<bool, Vector3>(TEventID.OnOpenCloseDescription, OpenCloseDescription);
 
         TEventManager.SubscribeTo<List<string>>(TEventID.OnShowTextDescription, ShowDescriptionText);
+
+        TEventManager.SubscribeTo<string, float>(TEventID.OnMessageSent, ShowMessage);
     }
     private void OnDisable()
     {
@@ -67,6 +77,8 @@ public class TUIManager : MonoBehaviour
         TEventManager.UnsubscribeFrom<bool, Vector3>(TEventID.OnOpenCloseDescription, OpenCloseDescription);
 
         TEventManager.UnsubscribeFrom<List<string>>(TEventID.OnShowTextDescription, ShowDescriptionText);
+
+        TEventManager.UnsubscribeFrom<string, float>(TEventID.OnMessageSent, ShowMessage);
     }
 
     #endregion
@@ -180,5 +192,18 @@ public class TUIManager : MonoBehaviour
             m_descriptionText.text = null;
         }
         
+    }
+
+    public void ShowMessage(string inMessage, float inDuration)
+    {
+        m_MessageText.text = inMessage;
+        m_MessageText.gameObject.SetActive(true);
+
+        Invoke("HideMessage", inDuration);
+    }
+
+    public void HideMessage()
+    {
+        m_MessageText.gameObject.SetActive(false);
     }
 }
