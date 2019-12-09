@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae07868f7430e1c44940613aba9d37d6, type: 3}
-  m_Name: PureItemList
+  m_Script: {fileID: 11500000, guid: 626f480969f831a41ae87d21fb8ee93f, type: 3}
+  m_Name: item_gel
   m_EditorClassIdentifier: 
-  List:
-  - {fileID: 11400000, guid: 0568b4b54050a4a4f958ce25650b40b8, type: 2}
-  - {fileID: 11400000, guid: ccbd046d5a5829a45be8a51e643ef586, type: 2}
+  ItemName: Gel
+  ItemSprite: {fileID: 21300000, guid: 0dfde74f57ebb5346a5ba0574014f6e9, type: 3}
+  m_descriptionField: 
+  m_textRef: {fileID: 0}

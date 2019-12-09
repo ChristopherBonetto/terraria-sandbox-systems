@@ -15,9 +15,6 @@ public class TItem : ScriptableObject
     [Space]
     public Sprite ItemSprite;
 
-    //Boolean used to check if it can decreases his amount.
-    [SerializeField] private bool m_DepleteOnUse;
-    public bool DepleteOnUse { get { return m_DepleteOnUse; } }
 
 
     #region Read Description

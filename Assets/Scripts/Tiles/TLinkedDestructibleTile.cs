@@ -69,6 +69,8 @@ namespace UnityEngine.Tilemaps
 
                 inTilemap.SetTile(current, null);
 
+                TEventManager.TriggerEvent(TEventID.OnTileDestroyed, current);
+
                 for (int i = 0; i < dirCount; i++)
                 {
                     next = current + dirs[i];

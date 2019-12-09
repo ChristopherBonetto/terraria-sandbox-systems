@@ -182,5 +182,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Containeditem:
-    Item: {fileID: 11400000, guid: 0568b4b54050a4a4f958ce25650b40b8, type: 2}
-    Amount: 1
+  - Item: {fileID: 11400000, guid: ccbd046d5a5829a45be8a51e643ef586, type: 2}
+    Amount: 5

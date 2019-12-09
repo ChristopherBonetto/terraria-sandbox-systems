@@ -38,7 +38,7 @@ public struct TStatistics
     {
         TStatistics result = new TStatistics();
 
-        result.MaxHealth =  a.MaxHealth - b.MaxHealth;
+        result.MaxHealth = a.MaxHealth - b.MaxHealth;
         result.Defense = a.Defense - b.Defense;
         result.Damage = a.Damage - b.Damage;
         result.AttackSpeed = a.AttackSpeed - b.AttackSpeed;

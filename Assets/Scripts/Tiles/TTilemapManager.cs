@@ -240,8 +240,6 @@ public class TTilemapManager : MonoBehaviour
                 // Destroy Tile and remove it from damage tracking dictionary
                 tile.DestroySelf(m_Tilemaps[mapIndex], inCell);
                 m_TileDamage[mapIndex].Remove(inCell);
-
-                TEventManager.TriggerEvent(TEventID.OnTileDestroyed, inCell);
             }
             else
             {

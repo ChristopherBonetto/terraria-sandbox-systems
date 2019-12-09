@@ -21,7 +21,7 @@ MonoBehaviour:
   ArmorType: 1
   ArmorAnim: {fileID: 22100000, guid: 522f92bba59db724abafb79c164ebc58, type: 2}
   Statistics:
-    MaxHealth: 0
+    MaxHealth: 1
     Defense: 3
     Damage: 0
     AttackSpeed: 0

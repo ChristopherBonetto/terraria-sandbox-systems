@@ -17,6 +17,8 @@ public enum WeaponInteractWithTile
 [CreateAssetMenu(fileName = "WeaponItem", menuName = "Item/OtherItems/NoPositionable/Weapon")]
 public class TItemWeapon : TItem, IUsable
 {
+    public bool DepleteOnUse { get { return m_DepleteOnUse; } }
+
     [System.Serializable]
     public struct PlayerAndEnvInteraction
     {
@@ -44,6 +46,10 @@ public class TItemWeapon : TItem, IUsable
 
     [Header("Armor statistics to add")]
     public TStatistics Statistics;
+
+
+    //Boolean used to check if it can decreases his amount.
+    [SerializeField] private bool m_DepleteOnUse;
 
 
     public bool Use(TPlayerController user, TPointerData inData)

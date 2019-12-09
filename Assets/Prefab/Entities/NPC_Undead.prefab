@@ -100,17 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Containeditem:
-  - Item: {fileID: 11400000, guid: 08d10f8f1a96d044aaf185c1f02ae3dd, type: 2}
+  - Item: {fileID: 11400000, guid: 04ecf7359be46b347abd43b711b083f8, type: 2}
     Amount: 1
-  - Item: {fileID: 11400000, guid: af6fa8309e587b841a3f550106e2a102, type: 2}
-    Amount: 1
-  - Item: {fileID: 11400000, guid: d0afc451077ec0b45949245b12b76852, type: 2}
-    Amount: 1
-  - Item: {fileID: 11400000, guid: 81c32d2f16338fc4792c27d9584619fc, type: 2}
-    Amount: 1
-  - Item: {fileID: 11400000, guid: 98a15fbf8f5f24144845b874413e3408, type: 2}
-    Amount: 1
-  - Item: {fileID: 11400000, guid: 25716d00f7cbc394ab681f13e6ce9166, type: 2}
+  - Item: {fileID: 11400000, guid: 91715d6473a67eb43ac6073584e5aa56, type: 2}
     Amount: 1
 --- !u!114 &5624309029446897808
 MonoBehaviour:

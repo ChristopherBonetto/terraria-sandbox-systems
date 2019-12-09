@@ -130,8 +130,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Containeditem:
-    Item: {fileID: 11400000, guid: 9009da60193b63e4b851bfd0e0bd691f, type: 2}
-    Amount: 1
+  - Item: {fileID: 11400000, guid: f2d507c75aa747847be46543b3863269, type: 2}
+    Amount: 0
+  - Item: {fileID: 11400000, guid: 89f741fb541a49f4abfa3233e30103fd, type: 2}
+    Amount: 0
 --- !u!114 &5220120464172259523
 MonoBehaviour:
   m_ObjectHideFlags: 0
