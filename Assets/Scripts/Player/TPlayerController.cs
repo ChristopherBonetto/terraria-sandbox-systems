@@ -293,10 +293,13 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
             bool successful = false;
 
             if (PlayerItem.ItemInHand.ItemInSlot.Item is IUsable usable)
-               successful = usable.Use(this, data);
+            {
+                successful = usable.Use(this, data);
 
-            if (successful && PlayerItem.ItemInHand.ItemInSlot.Item.DepleteOnUse)
-                PlayerItem.ItemInHand.DepleteAmount(1);
+                if (successful && usable.DepleteOnUse)
+                    PlayerItem.ItemInHand.DepleteAmount(1);
+
+            }
         }
     }
 

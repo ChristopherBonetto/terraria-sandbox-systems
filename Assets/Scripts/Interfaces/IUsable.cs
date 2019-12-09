@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IUsable
 {
+    bool DepleteOnUse { get; }
+
     bool Use(TPlayerController inUser, TPointerData inData);
 }
