@@ -5,27 +5,66 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Time Settings", menuName = "Time Settings")]
 public class TTimeSettings : ScriptableObject
 {
+    #region Public properties
+
+    /// <summary>
+    /// Time at which Day starts.
+    /// </summary>
     public TDayTime DayStartTime { get { return m_DayStartTime; } }
+
+    /// <summary>
+    /// Time at which Night starts.
+    /// </summary>
     public TDayTime NightStartTime { get { return m_NightStartTime; } }
 
+    /// <summary>
+    /// Time set at game startup.
+    /// </summary>
     public TDayTime GameStartTime { get { return m_GameStartTime; } }
 
+    /// <summary>
+    /// Duration of a game minute in realtime seconds.
+    /// </summary>
     public float DayMinuteDuration { get { return m_DayMinuteDurationInSeconds; } }
 
+    /// <summary>
+    /// Whether the game starts during night.
+    /// </summary>
     public bool IsStartingDuringNight { get { return GameStartTime < DayStartTime || GameStartTime > NightStartTime; } }
+
+    #endregion
+
+    #region Serialized variables
 
     [SerializeField] private TDayTime m_DayStartTime = new TDayTime(4, 30);
     [SerializeField] private TDayTime m_NightStartTime = new TDayTime(19, 30);
 
+    [Space]
+
     [SerializeField] private TDayTime m_GameStartTime = new TDayTime(8, 15);
+
+    [Space]
+
     [SerializeField] private float m_DayMinuteDurationInSeconds = 1;
+
+    #endregion
 }
 
+/// <summary>
+/// Struct representing Day Time in HH:MM format.
+/// </summary>
 [System.Serializable]
 public struct TDayTime
 {
-    public const int DAY_MINUTES = 1440;
-    public const int HALF_DAY_MINUTES = 720;
+    #region Constants
+
+    public const int HOURS_IN_DAY = 24;
+    public const int MINUTES_IN_HOUR = 60;
+    public const int DAY_MINUTES = HOURS_IN_DAY * MINUTES_IN_HOUR;
+
+    #endregion
+
+    #region Public properties
 
     public int Hours
     {
@@ -34,21 +73,21 @@ public struct TDayTime
         {
             int temp = value;
 
+            // Make hours wrap between 0 and HOURS_IN_DAY
             if (temp > 0)
             {
-                while (temp > 23)
-                    temp -= 24;
+                while (temp > HOURS_IN_DAY - 1)
+                    temp -= HOURS_IN_DAY;
             }
             else
             {
                 while (temp < 0)
-                    temp += 24;
+                    temp += HOURS_IN_DAY;
             }
 
             m_Hours = temp;
         }
     }
-
 
     public int Minutes
     {
@@ -58,11 +97,12 @@ public struct TDayTime
             int temp = value;
             int hours = 0;
 
+            // Make minutes wrap between 0 and MINUTES_IN_HOUR
             if (temp > 0)
             {
-                while (temp > 59)
+                while (temp > MINUTES_IN_HOUR-1)
                 {
-                    temp -= 60;
+                    temp -= MINUTES_IN_HOUR;
                     hours++;
                 }
             }
@@ -70,7 +110,7 @@ public struct TDayTime
             {
                 while (temp < 0)
                 {
-                    temp += 60;
+                    temp += MINUTES_IN_HOUR;
                     hours--;
                 }
             }
@@ -80,21 +120,50 @@ public struct TDayTime
         }
     }
 
+    #endregion
+
+    #region Serialized variables
+
     [SerializeField] private int m_Hours;
     [SerializeField] private int m_Minutes;
 
-    public override string ToString()
-    {
-        return ((Hours < 10) ? "0" + Hours.ToString() : Hours.ToString()) + ":" + ((Minutes < 10) ? "0" + Minutes.ToString() : Minutes.ToString());
-    }
+    #endregion
+
+    #region Constructor
 
     public TDayTime(int inHours = 0, int inMinutes = 0)
     {
-        m_Hours = Mathf.Min(inHours, 23);
-        m_Minutes = Mathf.Min(inMinutes, 59);
+        m_Hours = Mathf.Min(inHours, HOURS_IN_DAY-1);
+        m_Minutes = Mathf.Min(inMinutes, MINUTES_IN_HOUR-1);
     }
 
+    public TDayTime(int inMinutes = 0)
+    {
+        m_Hours = 0;
 
+        while (inMinutes > MINUTES_IN_HOUR - 1)
+        {
+            m_Hours++;
+            inMinutes -= MINUTES_IN_HOUR;
+        }
+
+        while (m_Hours > HOURS_IN_DAY - 1)
+            m_Hours -= HOURS_IN_DAY;
+
+        m_Minutes = inMinutes;
+    }
+
+    #endregion
+
+
+    #region Static methods
+
+    /// <summary>
+    /// Calculates minutes between two times.
+    /// </summary>
+    /// <param name="time1"></param>
+    /// <param name="time2"></param>
+    /// <returns></returns>
     public static int MinutesBetween(TDayTime time1, TDayTime time2)
     {
         int minutes1 = time1.ToMinutes();
@@ -106,28 +175,40 @@ public struct TDayTime
             return DAY_MINUTES - minutes1 + minutes2;
     }
 
-    public int ToSeconds()
-    {
-        return (m_Hours * 60 + m_Minutes) * 60;
-    }
-
-    public int ToMinutes()
-    {
-        return m_Hours * 60 + m_Minutes;
-    }
-
+    /// <summary>
+    /// Creates a time from minutes input.
+    /// </summary>
+    /// <param name="inMinutes"></param>
+    /// <returns></returns>
     public static TDayTime FromMinutes(int inMinutes)
     {
         int hours = 0;
 
-        while(inMinutes > 59)
+        while (inMinutes > MINUTES_IN_HOUR - 1)
         {
             hours++;
-            inMinutes -= 60;
+            inMinutes -= MINUTES_IN_HOUR;
         }
 
         return new TDayTime(hours, inMinutes);
     }
+
+    #endregion
+
+    #region Public methods
+
+    /// <summary>
+    /// Converts the time in HH:MM format to minutes.
+    /// </summary>
+    /// <returns></returns>
+    public int ToMinutes()
+    {
+        return m_Hours * MINUTES_IN_HOUR + m_Minutes;
+    }
+
+    #endregion
+
+    #region Operators and defaults overrides
 
     public static bool operator ==(TDayTime a, TDayTime b)
     {
@@ -171,4 +252,11 @@ public struct TDayTime
     {
         return FromMinutes(Mathf.RoundToInt(a.ToMinutes() / b));
     }
+
+    public override string ToString()
+    {
+        return ((Hours < 10) ? "0" + Hours.ToString() : Hours.ToString()) + ":" + ((Minutes < 10) ? "0" + Minutes.ToString() : Minutes.ToString());
+    }
+
+    #endregion
 }

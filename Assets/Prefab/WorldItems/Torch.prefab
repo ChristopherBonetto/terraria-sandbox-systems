@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -3592528888054542000, guid: 722c969062f887946924f04500bca08d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_GroupID: 1
   m_DefaultReferenceItem: {fileID: 11400000, guid: 73039a8ca7fc2a8488ac1b2607a77876,
     type: 2}
+  m_DefaultPlacingLayer: 0
 --- !u!1 &7922716134971068400
 GameObject:
   m_ObjectHideFlags: 0

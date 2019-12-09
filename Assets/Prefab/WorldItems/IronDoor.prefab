@@ -75,6 +75,7 @@ MonoBehaviour:
   m_GroupID: 1
   m_DefaultReferenceItem: {fileID: 11400000, guid: 537608a464edc4b4da9deb820997b894,
     type: 2}
+  m_DefaultPlacingLayer: 0
   m_OpenState:
     Layer: Background
     VisualSprite: {fileID: 3732458972298562171, guid: 00ddd3e883ebfa44eb9d21e00717eb99,
@@ -157,7 +158,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7538501969099780306, guid: 00ddd3e883ebfa44eb9d21e00717eb99,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

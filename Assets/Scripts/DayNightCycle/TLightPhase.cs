@@ -12,8 +12,12 @@ public class TLightPhase : ScriptableObject
     public TDayTime BlendStartTime { get { return m_StartTime - m_BlendDuration / 2; } }
     public TDayTime BlendDuration { get { return m_BlendDuration; } }
 
+    [Header("Phase data")]
+
     [SerializeField] private TLightingState m_State;
     [SerializeField] private TDayTime m_StartTime;
+
+    [Header("Blending")]
 
     [SerializeField] private TLightingState m_BlendState;
     [SerializeField] private TDayTime m_BlendDuration;

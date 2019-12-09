@@ -8,6 +8,9 @@ public class TWorldItem : MonoBehaviour
 {
     #region Public properties
 
+    /// <summary>
+    /// Sprite used for the WorldItem's rendering.
+    /// </summary>
     public Sprite ItemSprite
     {
         get
@@ -27,21 +30,51 @@ public class TWorldItem : MonoBehaviour
     /// </summary>
     public SpriteRenderer SpriteRendererComponent { get; private set; }
 
+    /// <summary>
+    /// Item corresponding to this World Item.
+    /// </summary>
     public TItemWorldObject ReferenceItem { get; set; }
 
+    /// <summary>
+    /// Layer on which the Item is placed.
+    /// </summary>
     public TMap PlacingLayer { get; set; }
 
+    /// <summary>
+    /// World Groud to which the World Item belongs to.
+    /// </summary>
     public TWorldGroupID GroupID { get { return m_GroupID; } }
 
     #endregion
 
     #region Serialize variables
 
+    /// <summary>
+    /// Max number of hit points the Item can have.
+    /// </summary>
     [SerializeField] private int m_MaxHitPoints;
 
+    /// <summary>
+    /// World Groud to which the World Item belongs to.
+    /// </summary>
     [SerializeField] private TWorldGroupID m_GroupID;
 
+    [Space]
+
+    /// <summary>
+    /// Item corresponding to this World Item.
+    /// </summary>
     [SerializeField] private TItemWorldObject m_DefaultReferenceItem;
+
+    /// <summary>
+    /// Layer on which the Item is placed.
+    /// </summary>
+    [SerializeField] private TMap m_DefaultPlacingLayer;
+
+
+    #endregion
+
+    #region Private variables
 
     private int m_HitPoints;
 
@@ -53,13 +86,19 @@ public class TWorldItem : MonoBehaviour
     {
         // Cache components references
         TransformComponent = transform;
+
         if(!SpriteRendererComponent) SpriteRendererComponent = GetComponentInChildren<SpriteRenderer>();
+
+        // Set default layer
+        PlacingLayer = m_DefaultPlacingLayer;
     }
 
     protected virtual void Start()
     {
+        // Set hit points
         m_HitPoints = m_MaxHitPoints;
 
+        // Set default reference item
         if (!ReferenceItem) ReferenceItem = m_DefaultReferenceItem;
     }
 
@@ -67,6 +106,10 @@ public class TWorldItem : MonoBehaviour
 
     #region Public methods
 
+    /// <summary>
+    /// Deals damage to the Item.
+    /// </summary>
+    /// <param name="inDamageDealt"></param>
     public void TakeDamage(int inDamageDealt = 1)
     {
         m_HitPoints -= inDamageDealt;
@@ -79,8 +122,12 @@ public class TWorldItem : MonoBehaviour
 
     #region Private methods
 
+    /// <summary>
+    /// Destroys the Item.
+    /// </summary>
     public void Destroy()
     {
+        // If there's a reference Item, drop a pickup containing it at the center of the World Item
         if (ReferenceItem)
         {
             TItemPickup pickup = ObjectPooler.SharedInstance.GetPooledObject("Pickup").GetComponent<TItemPickup>();
@@ -93,6 +140,7 @@ public class TWorldItem : MonoBehaviour
             pickup.gameObject.SetActive(true);
         }
 
+        // Destroy instance
         Destroy(gameObject);
     }
 

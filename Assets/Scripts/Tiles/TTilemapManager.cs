@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
+/// <summary>
+/// Enum associating Tilemaps labels to their index.
+/// As the index grows, the Tilemaps are further back.
+/// </summary>
 public enum TMap
 {
     Foreground = 0,
@@ -24,20 +28,22 @@ public class TTilemapManager : MonoBehaviour
 
     #region Public properties
 
+    // GRID DATA
+
     /// <summary>
     /// Grid cell size.
     /// </summary>
     public Vector3 CellSize { get; private set; }
 
-    /// <summary>
-    /// Cached reference to the attached Transform component.
-    /// </summary>
-    public Transform TransformComponent { get; private set; }
 
     #endregion
 
     #region Serialized variables
 
+    /// <summary>
+    /// Array of main Tilemaps references.
+    /// </summary>
+    [Tooltip("List of Tilemaps composing the game's world.")]
     [SerializeField] private Tilemap[] m_Tilemaps;
 
     #endregion
@@ -50,6 +56,9 @@ public class TTilemapManager : MonoBehaviour
     /// </summary>
     private Dictionary<Vector3Int, int>[] m_TileDamage;
 
+    /// <summary>
+    /// Cached count of main Tilemaps
+    /// </summary>
     private int m_TilemapsCount;
 
     #endregion
@@ -58,14 +67,25 @@ public class TTilemapManager : MonoBehaviour
 
     private void Awake()
     {
+        // Set singleton reference
         SharedInstance = this;
 
-        TransformComponent = transform;
 
+        // Cache Tilemaps count
         m_TilemapsCount = m_Tilemaps.Length;
 
+        // Stop everything if no Tilemap has been set
+        if (m_TilemapsCount == 0)
+        {
+            Debug.LogError("No Tilemaps references have been set on Tilemap Manager.");
+            return;
+        }
+
+        // Cache Cell Size (it won't change at runtime)
         CellSize = m_Tilemaps[0].cellSize;
 
+
+        // Init Tile Damage dictionaries
         m_TileDamage = new Dictionary<Vector3Int, int>[m_TilemapsCount];
 
         for (int i = 0; i < m_TilemapsCount; i++) m_TileDamage[i] = new Dictionary<Vector3Int, int>();
@@ -93,17 +113,6 @@ public class TTilemapManager : MonoBehaviour
     public Vector3 CellToWorldCenter(Vector3Int inPosition)
     {
         return m_Tilemaps[0].GetCellCenterWorld(inPosition);
-    }
-
-    /// <summary>
-    /// Returns the Tile at the specified cell on the target Tilemap.
-    /// </summary>
-    /// <param name="inCell">Cell position.</param>
-    /// <param name="inMap">Target Tilemap.</param>
-    /// <returns></returns>
-    public TDestructibleTile GetTile(Vector3Int inCell, TMap inMap = TMap.Foreground)
-    {
-        return GetTilemap(inMap)?.GetTile<TDestructibleTile>(inCell);
     }
 
     /// <summary>
@@ -166,11 +175,20 @@ public class TTilemapManager : MonoBehaviour
     {
         int mapIndex = (int)inMap;
 
-        // Check all four direction on target Tilemap
+        if (mapIndex < 0 || mapIndex >= m_TilemapsCount)
+        {
+            Debug.LogError("Required Tilemap " + inMap + " doesn't exist.");
+            return false;
+        }
+
+        // Check all four direction on target Tilemap and also in the same point on adjacent Tilemaps
         for (int i = Mathf.Max(0, mapIndex-1); i < Mathf.Min(m_TilemapsCount, mapIndex+1); i++)
         {
+            // If i is different from the required mapIndex, it means the current Tilemaps is an adjacent one
+            // Search on the spot: if it is occupied, return true
             if (i != mapIndex && m_Tilemaps[i].HasTile(inCell)) return true;
 
+            // Search in all four directions
             for (int j = 0; j < GridUtility.Directions.Length; j++)
             {
                 if (m_Tilemaps[i].HasTile(inCell + GridUtility.Directions[j]))
@@ -178,6 +196,7 @@ public class TTilemapManager : MonoBehaviour
             }
         }
 
+        // If no tile was found, return false
         return false;
     }
 
@@ -192,7 +211,7 @@ public class TTilemapManager : MonoBehaviour
         Tilemap targetMap = GetTilemap(inMap);
 
         if (targetMap)
-            return GetTilemap(inMap).HasTile(inCell);
+            return targetMap.HasTile(inCell);
 
         else
         {
@@ -201,11 +220,23 @@ public class TTilemapManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks if a cell may be considered grounded, i.e. it has another Tile below in the required Tilemap or the ones in front of it.
+    /// </summary>
+    /// <param name="inCell"></param>
+    /// <param name="inMap"></param>
+    /// <returns></returns>
     public bool IsGrounded(Vector3Int inCell, TMap inMap)
     {
-        int index = (int)inMap;
+        int mapIndex = (int)inMap;
 
-        for (int i = index; i > -1; i--)
+        if (mapIndex < 0 || mapIndex >= m_TilemapsCount)
+        {
+            Debug.LogError("Required Tilemap " + inMap + " doesn't exist.");
+            return false;
+        }
+
+        for (int i = mapIndex; i > -1; i--)
         {
             if (m_Tilemaps[i].HasTile(inCell + Vector3Int.down))
                 return true;
@@ -270,15 +301,15 @@ public class TTilemapManager : MonoBehaviour
     /// <returns></returns>
     private Tilemap GetTilemap(TMap inMap)
     {
-        int index = (int)inMap;
+        int mapIndex = (int)inMap;
 
-        if (index < 0 || index >= m_Tilemaps.Length)
+        if (mapIndex < 0 || mapIndex >= m_TilemapsCount)
         {
             Debug.LogError("The required Tilemap " + inMap + " does not exist.");
             return null;
         }
 
-        return m_Tilemaps[index];
+        return m_Tilemaps[mapIndex];
     }
 }
 
