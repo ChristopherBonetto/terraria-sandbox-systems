@@ -23,6 +23,7 @@ public class TEquipmentSlot : TInventorySlot
             if (m_itemInSlot == TItemQuantity.Empty)
             {
                 m_itemInSlot = value;
+                TItemArmor a = (TItemArmor)m_itemInSlot.Item as TItemArmor;
 
                 //After changing the slotted item equip it.
                 TEventManager.TriggerEvent<TInventorySlot>(TEventID.OnItemEquipped, this as TInventorySlot);
@@ -31,7 +32,15 @@ public class TEquipmentSlot : TInventorySlot
             {
                 //Disequip the slotted item and after change the value.
                 TEventManager.TriggerEvent<TInventorySlot>(TEventID.OnItemUnequipped, this as TInventorySlot);
+                TItemArmor a = (TItemArmor)m_itemInSlot.Item as TItemArmor;
+
                 m_itemInSlot = value;
+
+                //Swap two armor
+                if(m_itemInSlot != null)
+                {
+                    TEventManager.TriggerEvent<TInventorySlot>(TEventID.OnItemEquipped, this as TInventorySlot);
+                }
             }
         }
     }
