@@ -16,9 +16,9 @@ MonoBehaviour:
   ItemSprite: {fileID: -4052343159862365419, guid: 8d969595f207fa0448dcce524d77a4ff,
     type: 3}
   m_DepleteOnUse: 0
-  m_descriptionField: 
+  m_descriptionField: Armor for chest, can buff multiple stats.
   m_textRef: {fileID: 4900000, guid: 08b1245723195a64ba86b0412d49b356, type: 3}
-  ArmorType: 2
+  ArmorType: 1
   ArmorAnim: {fileID: 22100000, guid: f27a72f358219964587556c891daaa0e, type: 2}
   Statistics:
     MaxHealth: 0

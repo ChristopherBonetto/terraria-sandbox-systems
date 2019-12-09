@@ -529,7 +529,7 @@ MonoBehaviour:
     Amount: 1
   - Item: {fileID: 11400000, guid: 7b58208c933cea14788b8d8eba5c368f, type: 2}
     Amount: 1
-  - Item: {fileID: 11400000, guid: 89f741fb541a49f4abfa3233e30103fd, type: 2}
+  - Item: {fileID: 11400000, guid: 9009da60193b63e4b851bfd0e0bd691f, type: 2}
     Amount: 1
 --- !u!114 &3099554995139791071
 MonoBehaviour:

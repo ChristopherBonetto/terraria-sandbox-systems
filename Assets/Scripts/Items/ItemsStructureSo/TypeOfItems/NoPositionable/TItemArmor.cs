@@ -5,7 +5,6 @@ using UnityEngine;
 public enum ArmorType
 {
     Head,
-    Arms,
     Chest,
     Legs
 }

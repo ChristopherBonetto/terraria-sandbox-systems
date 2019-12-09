@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -323974,12 +323974,12 @@ PrefabInstance:
     - target: {fileID: 9051313932528846019, guid: 62ef2c84e830509429e6b21c6bc5c1e6,
         type: 3}
       propertyPath: m_typeOfEquippableItem
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1671791337267823509, guid: 62ef2c84e830509429e6b21c6bc5c1e6,
         type: 3}
       propertyPath: m_typeOfEquippableItem
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62ef2c84e830509429e6b21c6bc5c1e6, type: 3}
@@ -324799,6 +324799,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 4287853513261098770, guid: 83cfd6775336e0c4989370a5567fee63,
+        type: 3}
+      propertyPath: m_HealthSlider
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6376803399939636436, guid: 83cfd6775336e0c4989370a5567fee63,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -324853,11 +324858,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4287853513261098770, guid: 83cfd6775336e0c4989370a5567fee63,
-        type: 3}
-      propertyPath: m_HealthSlider
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83cfd6775336e0c4989370a5567fee63, type: 3}
