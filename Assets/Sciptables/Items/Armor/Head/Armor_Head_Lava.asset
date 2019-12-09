@@ -18,7 +18,7 @@ MonoBehaviour:
   m_descriptionField: 'Armor for head
 
     Buffs multiple stats'
-  m_textRef: {fileID: 0}
+  m_textRef: {fileID: 4900000, guid: 0b78b3bd7d185ea4ba069c7f9a2a67e3, type: 3}
   ArmorType: 0
   ArmorAnim: {fileID: 22100000, guid: 140eb282fc41d864b855e32619c26b92, type: 2}
   Statistics:
