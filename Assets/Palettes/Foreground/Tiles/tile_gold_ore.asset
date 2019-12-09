@@ -15,17 +15,13 @@ MonoBehaviour:
   m_DefaultSprite: {fileID: 3446823209507058911, guid: 5dc424e337ecdc34bb7c69820188f767,
     type: 3}
   m_DefaultGameObject: {fileID: 0}
-  m_DefaultColliderType: 1
+  m_DefaultColliderType: 2
   m_TilingRules:
-  - m_Neighbors: 0100000001000000010000000100000001000000010000000100000001000000
+  - m_Neighbors: 01000000010000000100000001000000
     m_NeighborPositions:
-    - {x: -1, y: 1, z: 0}
     - {x: 0, y: 1, z: 0}
-    - {x: 1, y: 1, z: 0}
     - {x: 1, y: 0, z: 0}
-    - {x: 1, y: -1, z: 0}
     - {x: 0, y: -1, z: 0}
-    - {x: -1, y: -1, z: 0}
     - {x: -1, y: 0, z: 0}
     m_Sprites:
     - {fileID: 3446823209507058911, guid: 5dc424e337ecdc34bb7c69820188f767, type: 3}

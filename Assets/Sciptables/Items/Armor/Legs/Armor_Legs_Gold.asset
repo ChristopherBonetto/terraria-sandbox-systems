@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3f4d79bb06cc245bcb5462e8a30b88, type: 3}
   m_Name: Armor_Legs_Gold
   m_EditorClassIdentifier: 
-  ItemName: 
+  ItemName: Gold Legs
   ItemSprite: {fileID: 1145648126413562040, guid: 38a8b3e50ddb6f44fb7710d4f470b26c,
     type: 3}
-  m_DepleteOnUse: 0
-  m_descriptionField: Armor for legs, can buff multiple stats.
+  m_descriptionField: 'Armor for legs
+
+    Buffs multiple stats'
   m_textRef: {fileID: 4900000, guid: 2da26a04f66e3ee41939d773e61cd650, type: 3}
   ArmorType: 2
   ArmorAnim: {fileID: 22100000, guid: 9e106efe3539c4c43ba4db33036ecf28, type: 2}

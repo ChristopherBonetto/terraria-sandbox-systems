@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Iron Door
   ItemSprite: {fileID: 21300000, guid: f0aa22bfe07cc994eba83ee6e14391af, type: 3}
-  m_DepleteOnUse: 0
-  m_descriptionField: 
+  m_descriptionField: 'Can be placed
+
+    Can be opened/closed'
   m_textRef: {fileID: 4900000, guid: 779ae297e858ef843be8a26b4f6a841a, type: 3}
+  m_DepleteOnUse: 0
   m_Prefab: {fileID: 5855253744796673626, guid: e5b367548e0df4a43b8285c21b687f06,
     type: 3}
   m_Size: {x: 1, y: 3}

@@ -15,8 +15,9 @@ MonoBehaviour:
   ItemName: Gold Arms
   ItemSprite: {fileID: 1932028912391629448, guid: 4b9b827bacc3b68408b7757c37d3896b,
     type: 3}
-  m_DepleteOnUse: 0
-  m_descriptionField: Armor for arms, buff the defense.
+  m_descriptionField: 'Armor for arms
+
+    Buffs defense'
   m_textRef: {fileID: 0}
   ArmorType: 1
   ArmorAnim: {fileID: 0}

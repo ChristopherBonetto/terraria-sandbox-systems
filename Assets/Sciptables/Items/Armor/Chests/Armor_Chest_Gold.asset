@@ -15,8 +15,9 @@ MonoBehaviour:
   ItemName: Gold Chest
   ItemSprite: {fileID: 2101482829041187484, guid: c0b0db44813645f4d90b566b4f61ebda,
     type: 3}
-  m_DepleteOnUse: 0
-  m_descriptionField: Armor for chest, can buff multiple stats.
+  m_descriptionField: 'Armor for chest
+
+    Buffs multiple stats'
   m_textRef: {fileID: 4900000, guid: ac5f4dbf23b5086439f94f34b858177c, type: 3}
   ArmorType: 1
   ArmorAnim: {fileID: 22100000, guid: 522f92bba59db724abafb79c164ebc58, type: 2}

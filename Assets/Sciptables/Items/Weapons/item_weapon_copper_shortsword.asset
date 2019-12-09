@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Copper Shortsword
   ItemSprite: {fileID: 21300000, guid: 87138c6328b59364f856f3576b470b85, type: 3}
-  m_DepleteOnUse: 0
-  m_descriptionField: 
+  m_descriptionField: Weapon
   m_textRef: {fileID: 4900000, guid: 5c6e26ecda30acd4eadd52e63bc707ce, type: 3}
   VisualAndInteraction:
     DamageableWorldGroups: 
@@ -33,3 +32,4 @@ MonoBehaviour:
     KbResist: 0
     Speed: 0
     JumpForce: 0
+  m_DepleteOnUse: 0

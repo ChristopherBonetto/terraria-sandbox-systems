@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Copper Axe
   ItemSprite: {fileID: 21300000, guid: b386673ad5fed9d42a0245be115893d1, type: 3}
-  m_DepleteOnUse: 0
-  m_descriptionField: ciao sono beppe
+  m_descriptionField: 'Weapon
+
+    Can chop trees'
   m_textRef: {fileID: 4900000, guid: 2144ed575cfb95a4688785792377879b, type: 3}
   VisualAndInteraction:
     DamageableWorldGroups: feffffff
@@ -33,3 +34,4 @@ MonoBehaviour:
     KbResist: 0
     Speed: 0
     JumpForce: 0
+  m_DepleteOnUse: 0

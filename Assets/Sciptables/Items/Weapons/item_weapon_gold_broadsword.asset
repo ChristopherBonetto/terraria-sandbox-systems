@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Gold Broadsword
   ItemSprite: {fileID: 21300000, guid: 50e316ef8a29a1545b90d67ab044ea74, type: 3}
-  m_DepleteOnUse: 0
-  m_descriptionField: 
+  m_descriptionField: Weapon
   m_textRef: {fileID: 4900000, guid: 543896a02b04a514da9560f3172648d7, type: 3}
   VisualAndInteraction:
     DamageableWorldGroups: 
@@ -33,3 +32,4 @@ MonoBehaviour:
     KbResist: 0
     Speed: 0
     JumpForce: 0
+  m_DepleteOnUse: 0

@@ -15,8 +15,9 @@ MonoBehaviour:
   ItemName: Gold Helmet
   ItemSprite: {fileID: 6137167858099664634, guid: 2e2002294729c7a4a9accdc88add7b85,
     type: 3}
-  m_DepleteOnUse: 0
-  m_descriptionField: Armor for head, can buff multiple stats.
+  m_descriptionField: 'Armor for head
+
+    Buffs multiple stats'
   m_textRef: {fileID: 0}
   ArmorType: 0
   ArmorAnim: {fileID: 22100000, guid: cf73ea8698f498148a976cd3b3e3fd6e, type: 2}

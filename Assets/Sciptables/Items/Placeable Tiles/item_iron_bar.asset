@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Iron Bar
   ItemSprite: {fileID: 21300000, guid: d5be491b5ffcbf44baeb4283120e7f86, type: 3}
-  m_DepleteOnUse: 1
-  m_descriptionField: 
+  m_descriptionField: 'Material
+
+    Can be placed'
   m_textRef: {fileID: 4900000, guid: 82fe82caac98e0b4580b44029ef33d9a, type: 3}
+  m_DepleteOnUse: 1
   m_Tile: {fileID: 11400000, guid: 2d0e510fbf478c8468394df9f1db6582, type: 2}
   m_TargetTilemap: 1
