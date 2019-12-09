@@ -144,6 +144,8 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
 
     protected override void Start()
     {
+        base.Start();   // store local scale.
+
         Init();
 
         PlayerInventoryComponent.InventorySlotsReference();
@@ -201,8 +203,6 @@ public class TPlayerController : BaseEntity, IKnockBackable, IJump, IMovable
     /// </summary>
     public void Init()
     {
-        base.Start();   // store local scale.
-
         m_HandToAttack.gameObject.SetActive(false);
 
         DefenseComponent.Init(DataAssigned.Statistics.MaxHealth, DataAssigned.Statistics.Defense);
