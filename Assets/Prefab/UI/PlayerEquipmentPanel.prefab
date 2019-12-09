@@ -147,9 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7b43c7e08cb5343af123f3e76adc21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemInSlot:
-    Item: {fileID: 0}
-    Amount: 0
   m_slotImage: {fileID: 2653850526275874002}
   m_typeOfEquippableItem: 0
 --- !u!1 &2653850525503450184
@@ -1472,7 +1469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -448.3333}
+  m_AnchoredPosition: {x: 60, y: -530.93335}
   m_SizeDelta: {x: 120, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2653850526323620076
@@ -2155,9 +2152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7b43c7e08cb5343af123f3e76adc21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemInSlot:
-    Item: {fileID: 0}
-    Amount: 0
   m_slotImage: {fileID: 2653850526553675604}
   m_typeOfEquippableItem: 1
 --- !u!1 &2653850526553675606
@@ -2647,7 +2641,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -25}
+  m_AnchoredPosition: {x: 60, y: -45}
   m_SizeDelta: {x: 120, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2653850526858596031
@@ -2726,7 +2720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -186.66667}
+  m_AnchoredPosition: {x: 60, y: -237.96667}
   m_SizeDelta: {x: 120, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2653850526869559245
@@ -3028,8 +3022,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -307.5}
-  m_SizeDelta: {x: 120, y: 585}
+  m_AnchoredPosition: {x: 120, y: -329.45}
+  m_SizeDelta: {x: 120, y: 658.9}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &2653850526933125904
 CanvasRenderer:
@@ -3052,7 +3046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.754717, g: 0.30555636, b: 0.2242791, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3084,10 +3078,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 20
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 0
+  m_Spacing: 40
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -3131,8 +3125,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -220}
-  m_SizeDelta: {x: 240, y: 600}
+  m_AnchoredPosition: {x: 0, y: -249.5}
+  m_SizeDelta: {x: 240, y: 658.9}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &2653850526973439760
 CanvasRenderer:
@@ -3187,7 +3181,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 15
+    m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 2
   m_Spacing: 0
@@ -3813,9 +3807,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7b43c7e08cb5343af123f3e76adc21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemInSlot:
-    Item: {fileID: 0}
-    Amount: 0
   m_slotImage: {fileID: 2653850527048828383}
   m_typeOfEquippableItem: 2
 --- !u!1 &2653850527380374463
@@ -4177,7 +4168,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 120, y: 585}
+  m_SizeDelta: {x: 120, y: 658.9}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &2653850527582964992
 CanvasRenderer:
@@ -4200,7 +4191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0, g: 0.18594038, b: 0.4433962, a: 0.6666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4232,10 +4223,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 20
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 0
+  m_Spacing: 40
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0

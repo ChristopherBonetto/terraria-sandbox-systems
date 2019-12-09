@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d3f4d79bb06cc245bcb5462e8a30b88, type: 3}
-  m_Name: Armor_Chest_Gold
+  m_Name: item_armor_chest_gold
   m_EditorClassIdentifier: 
   ItemName: Gold Chest
   ItemSprite: {fileID: 2101482829041187484, guid: c0b0db44813645f4d90b566b4f61ebda,

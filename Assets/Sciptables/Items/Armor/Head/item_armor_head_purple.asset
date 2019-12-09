@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d3f4d79bb06cc245bcb5462e8a30b88, type: 3}
-  m_Name: Armor_Head_Purple
+  m_Name: item_armor_head_purple
   m_EditorClassIdentifier: 
   ItemName: Gold Helmet
   ItemSprite: {fileID: -4627006291843494289, guid: e7e844d6e2f2a5c45b611315c7fd3cc5,

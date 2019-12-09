@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d3f4d79bb06cc245bcb5462e8a30b88, type: 3}
-  m_Name: Armor_Legs_Lava
+  m_Name: item_armor_legs_lava
   m_EditorClassIdentifier: 
   ItemName: Lava Legs
   ItemSprite: {fileID: -335148211808128109, guid: 2263920b7603f2c4886e08cb9df51c8f,
