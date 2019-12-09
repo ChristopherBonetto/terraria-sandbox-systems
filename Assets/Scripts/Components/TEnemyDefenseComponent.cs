@@ -8,7 +8,7 @@ namespace Terraria.AI
     public class TEnemyDefenseComponent : MonoBehaviour, IDefend
     {
 
-        [SerializeField] private TItemQuantity m_Containeditem;
+        [SerializeField] private TItemQuantity[] m_Containeditem;
 
         #region SerializeField
 
@@ -37,7 +37,6 @@ namespace Terraria.AI
 
                 if (m_CurrentHealth <= 0)
                     DisposeToDead();
-
             }
         }
 
@@ -100,6 +99,7 @@ namespace Terraria.AI
             if (!m_HealthSlider.gameObject.activeSelf)
                 m_HealthSlider.gameObject.SetActive(true);
 
+            m_LastHealth = CurrentHealth; // Use to calculate text displayed.
             CurrentHealth -= Mathf.Max(1, inAmount - Defense);
         }
 
@@ -108,20 +108,23 @@ namespace Terraria.AI
             // Turn off slider, 
             m_HealthSlider.gameObject.SetActive(false);
 
-            // Get Pickup object from the pool
-            GameObject pickupObj = ObjectPooler.SharedInstance.GetPooledObject("Pickup");
-
-            if (pickupObj)
+            for (int i = 0; i < m_Containeditem.Length; i++)
             {
-                // Load Item
-                TItemPickup pickup = pickupObj.GetComponent<TItemPickup>();
-                pickup.LoadItem(m_Containeditem);
+                // Get Pickup object from the pool
+                GameObject pickupObj = ObjectPooler.SharedInstance.GetPooledObject("Pickup");
 
-                // Set Pickup position
-                pickup.TransformComponent.position = transform.position;
+                if (pickupObj)
+                {
+                    // Load Item
+                    TItemPickup pickup = pickupObj.GetComponent<TItemPickup>();
+                    pickup.LoadItem(m_Containeditem[i]);
 
-                // Show Pickup
-                pickupObj.SetActive(true);
+                    // Set Pickup position
+                    pickup.TransformComponent.position = transform.position;
+
+                    // Show Pickup
+                    pickupObj.SetActive(true);
+                }
             }
 
             gameObject.SetActive(false);

@@ -16,7 +16,7 @@ MonoBehaviour:
   ItemSprite: {fileID: 21300000, guid: a6d7e9984488a7047936a18eca586b38, type: 3}
   m_DepleteOnUse: 0
   m_descriptionField: 
-  m_TextToRead: {fileID: 4900000, guid: ba48324eef1c04d4f977be66e0b17869, type: 3}
+  m_textRef: {fileID: 4900000, guid: ba48324eef1c04d4f977be66e0b17869, type: 3}
   VisualAndInteraction:
     DamageableWorldGroups: 0000000001000000
     AttackType: 0

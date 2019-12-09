@@ -31,38 +31,12 @@ public class TPlayerHealtBar : MonoBehaviour
     /// <summary>
     /// Current health (from "view")
     /// </summary>
-    public int CurrentHeartsActive
-    {
-        get
-        {
-            m_CurrentHeartsActive = 0;
-
-            foreach (var child in m_CurrentHeartsContainer.Hearts)
-            {
-                m_CurrentHeartsActive++;
-            }
-
-            return m_CurrentHeartsActive;
-        }
-    }
+    public int CurrentHearts => m_CurrentHeartsContainer.Hearts.Count;
 
     /// <summary>
     /// Max health (from "view")
     /// </summary>
-    private int MaxHeartsActive
-    {
-        get
-        {
-            m_MaxHeartsActive = 0;
-
-            foreach (var child in m_MaxHeartsContainer.Hearts)
-            {
-                m_MaxHeartsActive++;
-            }
-
-            return m_MaxHeartsActive;
-        }
-    }
+    private int MaxHearts => m_MaxHeartsContainer.Hearts.Count;
 
 
     private void OnEnable()
@@ -91,8 +65,6 @@ public class TPlayerHealtBar : MonoBehaviour
     {
         if (defendComponent == (IDefend)TargetHealth)
         {
-            int length = m_CurrentHeartsContainer.Hearts.Count;
-
             // In case it takes more than one damage.
             for (int i = 0; i < defendComponent.MaxHealth; i++)
             {
@@ -128,11 +100,8 @@ public class TPlayerHealtBar : MonoBehaviour
                 backHeart.enabled = true;
                 fullHeart.enabled = false;
 
-                if (MaxHeartsActive < Max + armor.Statistics.MaxHealth)
-                {
-                    m_MaxHeartsContainer.Hearts.Add(backHeart);
-                    m_CurrentHeartsContainer.Hearts.Add(fullHeart);
-                }
+                m_MaxHeartsContainer.Hearts.Add(backHeart);
+                m_CurrentHeartsContainer.Hearts.Add(fullHeart);
             }
         }
     }
@@ -142,8 +111,6 @@ public class TPlayerHealtBar : MonoBehaviour
     /// </summary>
     public void OnItemUnequipped(TInventorySlot item)
     {
-        if (!item) return;
-
         // Update stats
         // Update sprites.
 
@@ -153,10 +120,11 @@ public class TPlayerHealtBar : MonoBehaviour
 
             for (int i = 0; i < armor.Statistics.MaxHealth; i++)
             {
-                int index = MaxHeartsActive - 1 - i;
+                m_MaxHeartsContainer.Hearts[MaxHearts - armor.Statistics.MaxHealth + i].gameObject.SetActive(false);
+                m_CurrentHeartsContainer.Hearts[CurrentHearts - armor.Statistics.MaxHealth + i].gameObject.SetActive(false);
 
-                m_MaxHeartsContainer.Hearts[index].gameObject.SetActive(false);
-                m_CurrentHeartsContainer.Hearts[index].gameObject.SetActive(false);
+                m_MaxHeartsContainer.Hearts.RemoveAt(i);
+                m_CurrentHeartsContainer.Hearts.RemoveAt(i);
             }
         }
     }

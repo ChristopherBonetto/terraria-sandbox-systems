@@ -116,12 +116,12 @@ TextureImporter:
       name: Armor_Head_6_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 4
         y: 1085
         width: 30
         height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.36888134, y: 0.46912843}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

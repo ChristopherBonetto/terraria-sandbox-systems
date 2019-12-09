@@ -46,6 +46,8 @@ public class TArmorView : MonoBehaviour
     public void ResteValues()
     {
         m_ArmorRenderer.sprite = m_DefaultIcon;
+
+        if (m_DefaultAnim == null) return;
         m_ArmorAnim.runtimeAnimatorController = m_DefaultAnim;
     }
 

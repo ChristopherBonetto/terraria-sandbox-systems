@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3f4d79bb06cc245bcb5462e8a30b88, type: 3}
+  m_Name: Armor_Arms_Gold
+  m_EditorClassIdentifier: 
+  ItemName: Gold Arms
+  ItemSprite: {fileID: -884646881500663663, guid: 6752f92ea7182ec478fb6fd7e4a3913d,
+    type: 3}
+  m_DepleteOnUse: 0
+  m_descriptionField: Armor for arms, buff the defense.
+  m_textRef: {fileID: 0}
+  ArmorType: 1
+  ArmorAnim: {fileID: 0}
+  Statistics:
+    MaxHealth: 0
+    Defense: 1
+    Damage: 0
+    AttackSpeed: 0
+    KbResist: 0.2
+    Speed: 0
+    JumpForce: 0

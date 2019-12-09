@@ -101,9 +101,8 @@ public class TUIManager : MonoBehaviour
     #region OpenClose Inventory
 
     /// <summary>
-    /// 
+    /// Triggered from event, this method manage the closed and opened inventory.
     /// </summary>
-    /// <param name="inIsOpen"></param>
     public void OpenCloseInventory(bool inIsOpen)
     {
         m_isInventoryUIOpen = inIsOpen;
@@ -122,6 +121,9 @@ public class TUIManager : MonoBehaviour
         DisableButtons();
     }
 
+    /// <summary>
+    /// Disable all inventory slot buttons expect the first teen.
+    /// </summary>
     public void DisableButtons()
     {
         for (int i = 10; i < m_InventorySlotsUI.Count; i++)
@@ -144,6 +146,7 @@ public class TUIManager : MonoBehaviour
     #endregion
 
     #region List of Buttons (Inventory / Crafting)
+
     public void AddInventorySlotUI(GameObject inSlotToAdd)
     {
         if (!m_InventorySlotsUI.Contains(inSlotToAdd))
@@ -164,6 +167,7 @@ public class TUIManager : MonoBehaviour
             }
         }
     }
+
     #endregion
 
     public void ScrollCraftingBar(float inScrollSpeed)
@@ -171,13 +175,18 @@ public class TUIManager : MonoBehaviour
         if(m_isInventoryUIOpen)
         m_craftingScrollBar.value += inScrollSpeed;
     }
-    
+
+    #region Description Text
+
     public void OpenCloseDescription(bool inIsOpen, Vector3 inPosition)
     {
         m_descriptionPanel.transform.position = inPosition;
         m_descriptionPanel.gameObject.SetActive(inIsOpen);
     }
 
+    /// <summary>
+    /// Fill the description text with a list of string.
+    /// </summary>
     public void ShowDescriptionText(List<string> inList)
     {
         if(inList != null)
@@ -191,7 +200,6 @@ public class TUIManager : MonoBehaviour
         {
             m_descriptionText.text = null;
         }
-        
     }
 
     public void ShowMessage(string inMessage, float inDuration)
@@ -206,4 +214,5 @@ public class TUIManager : MonoBehaviour
     {
         m_MessageText.gameObject.SetActive(false);
     }
+    #endregion
 }

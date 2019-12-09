@@ -16,6 +16,6 @@ MonoBehaviour:
   ItemSprite: {fileID: 21300000, guid: 4121276c55f023a4aaffd2f8aaa9f2d2, type: 3}
   m_DepleteOnUse: 1
   m_descriptionField: 
-  m_TextToRead: {fileID: 4900000, guid: 5ad1ed3f77a7f87448768db47a81d6db, type: 3}
+  m_textRef: {fileID: 4900000, guid: 5ad1ed3f77a7f87448768db47a81d6db, type: 3}
   m_Tile: {fileID: 11400000, guid: eb3a5a39fdc470b4987124322af0cf53, type: 2}
   m_TargetTilemap: 0
