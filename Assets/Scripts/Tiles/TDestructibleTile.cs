@@ -63,6 +63,8 @@ namespace UnityEngine.Tilemaps
             // Drop Pickups containing the Items contained inside the Tile
             for (int i = 0; i < itemsCount; i++)
                 SpawnPickup(m_ContainedItems[i], cellCenter);
+
+            TEventManager.TriggerEvent(TEventID.OnTileDestroyed, inTileCell);
         }
 
         /// <summary>
