@@ -104,7 +104,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 8754774274180296192, guid: 32d8563b662df6a4198ae10db6b4f7f5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -131,9 +131,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Containeditem:
   - Item: {fileID: 11400000, guid: f2d507c75aa747847be46543b3863269, type: 2}
-    Amount: 0
+    Amount: 1
   - Item: {fileID: 11400000, guid: 89f741fb541a49f4abfa3233e30103fd, type: 2}
-    Amount: 0
+    Amount: 1
 --- !u!114 &5220120464172259523
 MonoBehaviour:
   m_ObjectHideFlags: 0
