@@ -1,4 +1,4 @@
-<h1 align="center">⛏️ Terraria Systems Replica</h1>
+<h1 align="center">⛏️ Terraria Sandbox Systems</h1>
 
 <p align="center">
   <img src="docs/images/terraria-replica-day.png" alt="Terraria systems replica gameplay during daytime" width="100%">
