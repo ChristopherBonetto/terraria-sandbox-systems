@@ -20,7 +20,7 @@
 <p align="center">
   <a href="https://drive.google.com/file/d/1hQqMkyFQBbslZfW9jQHp3CYebAsEG_qH/view"><strong>Watch Gameplay (1:32)</strong></a>
   ·
-  <strong>Windows Build — coming soon</strong>
+  <a href="https://github.com/ChristopherBonetto/terraria-sandbox-systems/releases/latest/download/TerrariaReplica-Windows.zip"><strong>Download the Windows Build</strong></a>
 </p>
 
 <p align="center">
@@ -133,7 +133,13 @@ The original assignment targeted additional flying enemy variants; the final pro
 
 ### Windows build
 
-A preserved Windows build has been located and is being verified before publication as a GitHub Release.
+A preserved Windows build is available from the latest GitHub Release:
+
+1. [Download `TerrariaReplica-Windows.zip`](https://github.com/ChristopherBonetto/terraria-sandbox-systems/releases/latest/download/TerrariaReplica-Windows.zip).
+2. Extract the archive.
+3. Run `TerrariaAssignment.exe`.
+
+Windows may display a security warning because this archived student build is not code-signed.
 
 ### Unity project
 
