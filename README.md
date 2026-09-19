@@ -131,7 +131,6 @@ The original assignment targeted additional flying enemy variants; the final pro
 ## 🎬 Media
 
 - [Portfolio gameplay video — combat, resource collection, building, crafting station, equipment, and day/night cycle (1:41)](https://youtu.be/bgqpMHmsTxc)
-- [Extended gameplay capture (2:05)](https://drive.google.com/file/d/1SIichOb299btG9pG4cApRij7s9YE8oWD/view)
 
 <p align="center">
   <img src="docs/images/terraria-replica-night.png" alt="Terraria systems replica during the night phase" width="720">
@@ -145,7 +144,7 @@ The original assignment targeted additional flying enemy variants; the final pro
 
 A preserved Windows build is available from the latest GitHub Release:
 
-1. [Download `TerrariaReplica-Windows.zip`](https://github.com/ChristopherBonetto/terraria-sandbox-systems/releases/latest/download/TerrariaReplica-Windows.zip).
+1. [Download TerrariaReplica-Windows.zip](https://github.com/ChristopherBonetto/terraria-sandbox-systems/releases/latest/download/TerrariaReplica-Windows.zip).
 2. Extract the archive.
 3. Run `TerrariaAssignment.exe`.
 
