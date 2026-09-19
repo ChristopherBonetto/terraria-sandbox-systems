@@ -18,16 +18,18 @@
 </p>
 
 <p align="center">
-  <a href="https://drive.google.com/file/d/1hQqMkyFQBbslZfW9jQHp3CYebAsEG_qH/view"><strong>Watch Gameplay (1:32)</strong></a>
+  <a href="https://youtu.be/bgqpMHmsTxc"><strong>Watch Gameplay (1:41)</strong></a>
   ·
   <a href="https://github.com/ChristopherBonetto/terraria-sandbox-systems/releases/latest/download/TerrariaReplica-Windows.zip"><strong>Download the Windows Build</strong></a>
 </p>
 
 <p align="center">
-  <img src="docs/media/inventory-crafting.webp" alt="Inventory, crafting, and equipment interface in the Terraria systems replica" width="720">
+  <a href="https://youtu.be/bgqpMHmsTxc">
+    <img src="docs/media/inventory-equipment.gif" alt="Placing a crafting station and equipping armour during daytime" width="720">
+  </a>
 </p>
 
-<p align="center"><sub>Inventory, hotbar, crafting, and equipment systems working together at runtime.</sub></p>
+<p align="center"><sub>Placeable crafting station, inventory, and armour equipment working together at runtime.</sub></p>
 
 ## 📌 Project Snapshot
 
@@ -46,6 +48,14 @@
 This project recreates a compact selection of *Terraria*-inspired sandbox systems: a destructible tilemap world, collectible resources, item placement, combat, enemies, crafting, equipment, and a day/night cycle. It was developed as a three-programmer academic assignment with an emphasis on coordinating several data-driven gameplay systems inside one playable loop.
 
 My primary responsibility was the item-facing architecture: inventory and hotbar behaviour, item data, crafting recipes and resource consumption, equipment slots, and the UI and input flows connecting those systems to the player.
+
+<p align="center">
+  <a href="https://youtu.be/bgqpMHmsTxc">
+    <img src="docs/media/combat-enemies.gif" alt="Player fighting multiple ground enemies" width="720">
+  </a>
+</p>
+
+<p align="center"><sub>Melee combat against multiple enemies, including damage feedback and item drops.</sub></p>
 
 ## 🕹️ How to Play
 
@@ -120,7 +130,7 @@ The original assignment targeted additional flying enemy variants; the final pro
 
 ## 🎬 Media
 
-- [Gameplay capture — inventory, crafting, equipment, combat, and world interaction (1:32)](https://drive.google.com/file/d/1hQqMkyFQBbslZfW9jQHp3CYebAsEG_qH/view)
+- [Portfolio gameplay video — combat, resource collection, building, crafting station, equipment, and day/night cycle (1:41)](https://youtu.be/bgqpMHmsTxc)
 - [Extended gameplay capture (2:05)](https://drive.google.com/file/d/1SIichOb299btG9pG4cApRij7s9YE8oWD/view)
 
 <p align="center">
