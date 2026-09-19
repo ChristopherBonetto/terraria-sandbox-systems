@@ -130,7 +130,7 @@ The original assignment targeted additional flying enemy variants; the final pro
 
 ## 🎬 Media
 
-- [Portfolio gameplay video — combat, resource collection, building, crafting station, equipment, and day/night cycle (1:41)](https://youtu.be/bgqpMHmsTxc)
+- [Gameplay video (1:41)](https://youtu.be/bgqpMHmsTxc)
 
 <p align="center">
   <img src="docs/images/terraria-replica-night.png" alt="Terraria systems replica during the night phase" width="720">
